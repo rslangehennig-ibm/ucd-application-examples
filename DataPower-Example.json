@@ -1,0 +1,689 @@
+{
+    "name": "DataPower-Example",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "DataPower-Import",
+        "description": "",
+        "created": 1576684681358,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": []
+            }
+        ]},
+        "processes": [
+            {
+                "name": "Export Artifact from DataPower",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/16f19baf-89d3-0738-9456-b68bf06ec954\/processes\/16f19bb3-bded-4b85-9a98-c21d371c74e1",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Create Version and Add Files",
+                            "from": "Export Object from DataPower Server",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "0e22af1eab720345cf00d6e001913a",
+                            "from": "Create Version and Add Files",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Delete Files and Directories",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Export Object from DataPower Server",
+                            "from": "Delete Files and Directories",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "0e22af1eab720345cf00d6e001913a",
+                            "x": -5,
+                            "y": 590,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Delete Files and Directories",
+                            "x": -100,
+                            "y": 155,
+                            "h": 70,
+                            "w": 310
+                        },
+                        {
+                            "name": "Create Version and Add Files",
+                            "x": -60,
+                            "y": 445,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "Export Object from DataPower Server",
+                            "x": -110,
+                            "y": 300,
+                            "h": 70,
+                            "w": 330
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "2beb6746-26ea-48df-87c1-a919d9fcc4a8",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "0e22af1eab720345cf00d6e001913a",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 73,
+                            "commandName": "Delete Files and Directories",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "baseDir": "\/opt\/IBM\/DataPower\/export",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "followSymlinks": "false",
+                                "caseSensitive": "true"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Delete Files and Directories",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Export Object",
+                            "pluginName": "DataPower",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "domainName": "${p:dpDomainName}",
+                                "objectClass": "HTTPService",
+                                "objectName": "${p:dpObjectName}",
+                                "refObjects": "true",
+                                "refFiles": "true",
+                                "allFiles": "false",
+                                "exportFile": "${p:componentProcess.defaultWorkDir}\/export.zip",
+                                "hostname": "${p:dpHostname}",
+                                "uid": "${p:dpUserid}",
+                                "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|Tz\/VbGUQkJMCXWx2EtX8DA==|Ey9cvFkbNTUt3wD6SYOXog==}",
+                                "portXMI": "${p:dpXMIPort}",
+                                "addlProperties": "",
+                                "memorySize": "default"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Export Object from DataPower Server",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 67,
+                            "commandName": "Create Version",
+                            "pluginName": "UrbanCode Deploy Versions",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "componentName": "${p:component.name}",
+                                "versionName": "${p:version.name}",
+                                "uploadFiles": "false",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "saveFileExecuteBits": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Version and Add Files",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Import Service (from Definition)",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/16f19baf-89d3-0738-9456-b68bf06ec954\/processes\/16f19f01-0f81-b06e-8a07-1ea1c32fb245",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Replace Tokens",
+                            "from": "Install Template",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Import (Definition)",
+                            "from": "Create Domain",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Save Configuration",
+                            "from": "Import (Definition)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install Template",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d055bd820ac055d703f4196f5ab3a5",
+                            "from": "Save Configuration",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Domain",
+                            "from": "Replace Tokens",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Save Configuration",
+                            "x": -110,
+                            "y": 840,
+                            "h": 90,
+                            "w": 350
+                        },
+                        {
+                            "name": "d055bd820ac055d703f4196f5ab3a5",
+                            "x": -5,
+                            "y": 980,
+                            "h": 90,
+                            "w": 140
+                        },
+                        {
+                            "name": "Replace Tokens",
+                            "x": -95,
+                            "y": 420,
+                            "h": 90,
+                            "w": 320
+                        },
+                        {
+                            "name": "Create Domain",
+                            "x": -90,
+                            "y": 560,
+                            "h": 90,
+                            "w": 310
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -110,
+                            "y": 140,
+                            "h": 90,
+                            "w": 350
+                        },
+                        {
+                            "name": "Install Template",
+                            "x": -95,
+                            "y": 280,
+                            "h": 90,
+                            "w": 320
+                        },
+                        {
+                            "name": "Import (Definition)",
+                            "x": -105,
+                            "y": 700,
+                            "h": 90,
+                            "w": 340
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "1668a0e9-13bc-4828-b7ee-5e0f76439905",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d055bd820ac055d703f4196f5ab3a5",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 13,
+                            "commandName": "Install Template",
+                            "pluginName": "UrbanCode Deploy Configuration Management",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "${p:server.url}\/",
+                                "requestId": "${p:request.id}",
+                                "name": "DCM_properties",
+                                "envPropValues": "${p:environment\/allProperties}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install Template",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 73,
+                            "commandName": "Replace Tokens",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "includes": "DCM_properties",
+                                "excludes": "",
+                                "envPropValues": "${p:environment\/allProperties}",
+                                "propertyPrefix": "",
+                                "explicitTokens": "@env.name@->${p:environment.name}\n@local.port@->${p:dp.local.port}\n@dpObjectName@->${p:dpObjectName}",
+                                "startDelimiter": "@",
+                                "endDelimiter": "@",
+                                "propFile": "replace_tokens.properties",
+                                "dir": "",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Replace Tokens",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Create Domain",
+                            "pluginName": "DataPower",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "newDomainName": "${p:dpDomainName}",
+                                "hostname": "${p:dpHostname}",
+                                "uid": "${p:dpUserid}",
+                                "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|y6R\/fFzKIlXXGLn5wP2RJA==|CX6lL1GlU59Szqxd8lTB8A==}",
+                                "portXMI": "${p:dpXMIPort}",
+                                "environment": "${p:environment.name}",
+                                "addlProperties": "",
+                                "memorySize": "default"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Domain",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Import (Definition)",
+                            "pluginName": "DataPower",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "fileImport": "${p:resource\/work.dir}\/${p:component.name}\/export.zip",
+                                "fileDefinition": "${p:resource\/work.dir}\/${p:component.name}\/DCM_properties",
+                                "domainName": "${p:dpDomainName}",
+                                "hostname": "${p:dpHostname}",
+                                "uid": "${p:dpUserid}",
+                                "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|OXjBiRpTJd\/g\/OlPAgPzXA==|RlpQBm7uJOu3OEbz2wfgSA==}",
+                                "portXMI": "${p:dpXMIPort}",
+                                "environment": "${p:environment.name}",
+                                "addlProperties": "",
+                                "memorySize": "default",
+                                "ignoreError": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Import (Definition)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Save Configuration",
+                            "pluginName": "DataPower",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "domainName": "${p:dpDomainName}",
+                                "hostname": "${p:dpHostname}",
+                                "uid": "${p:dpUserid}",
+                                "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|WyY+PvSf+8lEKr+vWbuEdg==|0VxpiENnVL8WP95CFnNRJw==}",
+                                "portXMI": "${p:dpXMIPort}",
+                                "environment": "${p:environment.name}",
+                                "addlProperties": "",
+                                "memorySize": "default"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Save Configuration",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [{
+            "name": "DCM_properties",
+            "data": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<dcm:definition xmlns:dcm=\"urn:datapower:configuration:manager\">\n\n  <dcm:deployment-policy environment=\"@env.name@\">\n    <modify-property name=\"@dpObjectName@\" prop-name=\"LocalPort\" new-prop-value=\"@local.port@\"\/>\n  <\/dcm:deployment-policy>\n\n<\/dcm:definition>",
+            "path": "components\/16f19baf-89d3-0738-9456-b68bf06ec954\/configTemplates\/DCM_properties"
+        }],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "DataPower-Import"
+            }],
+            "teamMappings": []
+        },
+        {
+            "name": "TEST",
+            "description": "",
+            "color": "#FFCF01",
+            "requireApprovals": true,
+            "noSelfApprovals": true,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "approvalProcess": {},
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "DataPower-Import"
+            }],
+            "teamMappings": []
+        }
+    ],
+    "processes": [{
+        "name": "Import from Definition",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "72337f32297ca4b5f4e32436c1fb19",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "02cba007e0d95693692592ff527790",
+                    "from": "72337f32297ca4b5f4e32436c1fb19",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "72337f32297ca4b5f4e32436c1fb19",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 350
+                },
+                {
+                    "name": "02cba007e0d95693692592ff527790",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "b9069dae-6a74-4e17-85a7-16a206264cfa",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "02cba007e0d95693692592ff527790",
+                    "children": []
+                },
+                {
+                    "componentName": "DataPower-Import",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "72337f32297ca4b5f4e32436c1fb19",
+                    "children": [{
+                        "componentName": "DataPower-Import",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "80e327b5-35e7-4d16-b43d-053c5a993e04",
+                        "children": [{
+                            "componentProcessName": "Import Service (from Definition)",
+                            "componentName": "DataPower-Import",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install: \"DataPower-Import\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [{
+            "name": "dpObjectName",
+            "label": "dpObjectName",
+            "pattern": "",
+            "type": "TEXT",
+            "value": "HTTPDemoService123",
+            "required": true,
+            "description": "",
+            "placeholder": ""
+        }],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "16ff2d67-822c-c56c-3b79-bbf47119b399",
+        "name": "Infrastructure",
+        "color": "#FDB813",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

@@ -1,0 +1,3282 @@
+{
+    "name": "IMS Bank using Ansible",
+    "description": "A banking app using IMS, infrastructure set up and deployment will be done with Ansible.  ",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "Ansible Infra Setup",
+            "description": "",
+            "created": 1602865801402,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run Ansible Infrastructure Setup Playbook",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/175323f2-8c45-e3f8-de46-da93aa8531c9\/processes\/17532434-6e3e-2e9a-e8f5-b6d38d40434d",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Clean Working Dir",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Ansible Inventory File",
+                            "from": "Clone Ansible Playbook",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "336f5c476544f88d01a26bf260d6c6",
+                            "from": "Run playbook",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Clone Ansible Playbook",
+                            "from": "Clean Working Dir",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run playbook",
+                            "from": "Create Ansible Inventory File",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "336f5c476544f88d01a26bf260d6c6",
+                            "x": -5,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Run playbook",
+                            "x": -35,
+                            "y": 490,
+                            "h": 70,
+                            "w": 180
+                        },
+                        {
+                            "name": "Create Ansible Inventory File",
+                            "x": -85,
+                            "y": 370,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "Clean Working Dir",
+                            "x": -50,
+                            "y": 130,
+                            "h": 70,
+                            "w": 210
+                        },
+                        {
+                            "name": "Clone Ansible Playbook",
+                            "x": -70,
+                            "y": 250,
+                            "h": 70,
+                            "w": 250
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "c7be17ff-f7f1-4aaa-9e95-62865399c80e",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "336f5c476544f88d01a26bf260d6c6",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "ronnieg",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|OVHwQcqL2GU4dQxNHINIwA==|nNl35IRpjW7t2m0baycUmg==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/opt\/ucd\/agent\/var\/work\/Ansible Infra Setup\/ansible-ucd-bank-of-z",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "ansible-playbook -i inventories\/zdt pre-ucd-deployment-infru-setup.yml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run playbook",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "ronnieg",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|03w\/ROQKqTH2vZ4lPCSaCA==|6OwZ2hQbFfyDYgxlUoDdgA==}",
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/opt\/ucd\/agent\/var\/work\/Ansible Infra Setup\/ansible-ucd-bank-of-z",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo \"zsystem:\n  hosts:\n    zdt:\n      ansible_host: ${p:environment\/ansible_host}\n      # ansible_port: ${p:environment\/ansible_port}\n      ansible_user: ${p:environment\/ansible_user}\n      ansible_python_interpreter: ${p:environment\/ansible_python_interpreter}\" > .\/inventories\/zdt",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Ansible Inventory File",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "ronnieg",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|Ulm9W0xEM3f\/I7XQD\/YSHw==|ULV0tSGwOGzyosdC5dj9ig==}",
+                            "impersonationUseSudo": true,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "git clone git@github.ibm.com:Ronald-Geraghty\/ansible-ucd-bank-of-z.git",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Clone Ansible Playbook",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "root",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|c0\/t8o8q2bkmY\/nXgvyBzw==|z5DvQW3LlsIQrm\/q8hI80A==}",
+                            "impersonationUseSudo": true,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "ls -al\npwd\nrm -vrf \/opt\/ucd\/agent\/var\/work\/Ansible\\ Infra\\ Setup\/*\nls -al\nmkdir ansible-ucd-bank-of-z\nchown ronnieg .\/ansible-ucd-bank-of-z\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Clean Working Dir",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "173b5058-d24c-ce07-285c-46e741ba105a",
+                "name": "Ansible",
+                "color": "#D9182D",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Ansible Post IMS Deploy",
+            "description": "",
+            "created": 1602866255523,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run Ansible Post Deployment Playbook",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17532461-6a39-c661-7857-b2ac3f73361c\/processes\/17532469-f570-88d9-313f-b4541027edfa",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Run playbook",
+                            "from": "Create Ansible Inventory File",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "666e8397804f5f0d936d5b46f6a1a7",
+                            "from": "Run playbook",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Ansible Inventory File",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Create Ansible Inventory File",
+                            "x": -85,
+                            "y": 180,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "Run playbook",
+                            "x": -35,
+                            "y": 350,
+                            "h": 70,
+                            "w": 180
+                        },
+                        {
+                            "name": "666e8397804f5f0d936d5b46f6a1a7",
+                            "x": -5,
+                            "y": 520,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "628b0406-007c-431d-a4c1-2b53d49098f9",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "666e8397804f5f0d936d5b46f6a1a7",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "ronnieg",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|U+Ou4ZIPP6XhDCSaULbkjA==|WkqZHi5ZmadV4NaGDnB9Mg==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/opt\/ucd\/agent\/var\/work\/Ansible Infra Setup\/ansible-ucd-bank-of-z",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo \"zsystem:\n  hosts:\n    zdt:\n      ansible_host: ${p:environment\/ansible_host}\n      # ansible_port: ${p:environment\/ansible_port}\n      ansible_user: ${p:environment\/ansible_user}\n      ansible_python_interpreter: ${p:environment\/ansible_python_interpreter}\" > .\/inventories\/zdt",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Ansible Inventory File",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "ronnieg",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|qxTFf9iPKwOtCSUJkWpMoA==|IQTjh8Fjw3C9UTt\/IRBkAg==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/opt\/ucd\/agent\/var\/work\/Ansible Infra Setup\/ansible-ucd-bank-of-z",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "ansible-playbook -i inventories\/zdt deprovision-ims-bank.yml\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run playbook",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "173b5058-d24c-ce07-285c-46e741ba105a",
+                "name": "Ansible",
+                "color": "#D9182D",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "IMS-Ansible-Configuration",
+            "description": "",
+            "created": 1592249766159,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemComponentProperties",
+                    "properties": [
+                        {
+                            "name": "useNamePattern",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "namePattern",
+                            "value": "${version}",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "nextNumber",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/home\/ronnieg\/ansible-ims-bank-app\/",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Run Ansible Infrastructure Setup Playbook",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/172b97b5-1190-926b-ee28-cd6a3c81d3d0\/processes\/172b9820-1205-e28f-728a-4fc9cce58d25",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Clean Working Dir",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Clone Ansible Playbook",
+                                "from": "Clean Working Dir",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create Ansible Inventory File",
+                                "from": "Clone Ansible Playbook",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run playbook",
+                                "from": "Create Ansible Inventory File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "336f5c476544f88d01a26bf260d6c6",
+                                "from": "Run playbook",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "336f5c476544f88d01a26bf260d6c6",
+                                "x": -5,
+                                "y": 610,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Create Ansible Inventory File",
+                                "x": -85,
+                                "y": 370,
+                                "h": 70,
+                                "w": 280
+                            },
+                            {
+                                "name": "Clone Ansible Playbook",
+                                "x": -70,
+                                "y": 250,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "Run playbook",
+                                "x": -35,
+                                "y": 490,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "Clean Working Dir",
+                                "x": -50,
+                                "y": 130,
+                                "h": 70,
+                                "w": 210
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "e7831bfc-16d9-48d5-aebd-d1876a02041d",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "336f5c476544f88d01a26bf260d6c6",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "ronnieg",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|T3eNJFBoiGlUt\/DRBZI5TQ==|wGS5Lrnmfe9\/NmkG7RaxsA==}",
+                                "impersonationUseSudo": true,
+                                "workingDir": "\/opt\/ucd\/agent\/var\/work\/IMS-Ansible-Configuration\/ansible-ucd-bank-of-z",
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ansible-playbook -i inventories\/zdt pre-ucd-deployment-infru-setup.yml",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run playbook",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "ronnieg",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|mwd4bdptq5ObQj5uwP1OpA==|c\/7vzZ7jgndqyUoYvlEzOA==}",
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/ucd\/agent\/var\/work\/IMS-Ansible-Configuration\/ansible-ucd-bank-of-z",
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"zsystem:\n  hosts:\n    zdt:\n      ansible_host: ${p:environment\/ansible_host}\n      # ansible_port: ${p:environment\/ansible_port}\n      ansible_user: ${p:environment\/ansible_user}\n      ansible_python_interpreter: ${p:environment\/ansible_python_interpreter}\" > .\/inventories\/zdt",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create Ansible Inventory File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "ronnieg",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|ikETbDELlKJYpYM+XM3A8g==|TKc6cco34RJzmR\/3aT4BqA==}",
+                                "impersonationUseSudo": true,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "git clone git@github.ibm.com:Ronald-Geraghty\/ansible-ucd-bank-of-z.git",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Clone Ansible Playbook",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ls -al\npwd\nrm -rf \/opt\/ucd\/agent\/var\/work\/IMS-Ansible-Configuration\/*\nls -al\nmkdir ansible-ucd-bank-of-z\nchown ronnieg .\/ansible-ucd-bank-of-z",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Clean Working Dir",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Run Ansible Post Deployment Playbook",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/172b97b5-1190-926b-ee28-cd6a3c81d3d0\/processes\/1750977f-d948-46b2-b7f8-411985fab6ed",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Clean Working Dir",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create Ansible Inventory File",
+                                "from": "Clone Ansible Playbook",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "666e8397804f5f0d936d5b46f6a1a7",
+                                "from": "Run playbook",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Clone Ansible Playbook",
+                                "from": "Clean Working Dir",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run playbook",
+                                "from": "Create Ansible Inventory File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "666e8397804f5f0d936d5b46f6a1a7",
+                                "x": -5,
+                                "y": 610,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Create Ansible Inventory File",
+                                "x": -85,
+                                "y": 370,
+                                "h": 70,
+                                "w": 280
+                            },
+                            {
+                                "name": "Run playbook",
+                                "x": -25,
+                                "y": 490,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "Clean Working Dir",
+                                "x": -50,
+                                "y": 130,
+                                "h": 70,
+                                "w": 210
+                            },
+                            {
+                                "name": "Clone Ansible Playbook",
+                                "x": -70,
+                                "y": 250,
+                                "h": 70,
+                                "w": 250
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "4f663411-8129-4dd4-945f-02c2aa306d4d",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "666e8397804f5f0d936d5b46f6a1a7",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ls -al\npwd\nrm -rf \/opt\/ibm-ucd\/agent\/var\/work\/IMS-Ansible-Configuration\/*\nls -al\nmkdir ansible-ucd-bank-of-z\nchown ronnieg .\/ansible-ucd-bank-of-z",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Clean Working Dir",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "ronnieg",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|iuA00kHarKA4xh8SKbPRUQ==|0McpO2NlRpgzi0orXqmDEA==}",
+                                "impersonationUseSudo": true,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "git clone git@github.ibm.com:Ronald-Geraghty\/ansible-ucd-bank-of-z.git",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Clone Ansible Playbook",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "ronnieg",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|Z3oOmGVMNk8Tpuxm83+org==|J\/hBvR6oH0xO1SbgCJhKBw==}",
+                                "impersonationUseSudo": true,
+                                "workingDir": "\/opt\/ibm-ucd\/agent\/var\/work\/IMS-Ansible-Configuration\/ansible-ucd-bank-of-z",
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"zsystem:\n  hosts:\n    zdt:\n      ansible_host: ${p:environment\/ansible_host}\n      # ansible_port: ${p:environment\/ansible_port}\n      ansible_user: ${p:environment\/ansible_user}\n      ansible_python_interpreter: ${p:environment\/ansible_python_interpreter}\" > .\/inventories\/zdt",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create Ansible Inventory File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "ronnieg",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|MYYHX03gIj64O88tnzxbXQ==|aWGt6ftFMFUnlfz1Rx3kAg==}",
+                                "impersonationUseSudo": true,
+                                "workingDir": "\/opt\/ibm-ucd\/agent\/var\/work\/IMS-Ansible-Configuration\/ansible-ucd-bank-of-z",
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ansible-playbook -i inventories\/zdt post-ucd-deploy.yml",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run playbook",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Uninstall",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "REMOVE",
+                    "status": "Active",
+                    "active": true,
+                    "path": "components\/172b97b5-1190-926b-ee28-cd6a3c81d3d0\/processes\/17643c8f-ee05-1992-28ba-c35afb6f9de6",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "a3fe0f123712e65e99f6675159fbe1",
+                                "from": "Shell",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Shell",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Shell",
+                                "x": -25,
+                                "y": 230,
+                                "h": 70,
+                                "w": 160
+                            },
+                            {
+                                "name": "a3fe0f123712e65e99f6675159fbe1",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "d64f306f-faf3-4c1a-87d0-b120be142420",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "a3fe0f123712e65e99f6675159fbe1",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"Hello\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Shell",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "173b5058-d24c-ce07-285c-46e741ba105a",
+                "name": "Ansible",
+                "color": "#D9182D",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "zOS App Deploy",
+            "description": "",
+            "created": 1600093496974,
+            "componentType": "ZOS",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "INCREMENTAL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [{
+                "name": "ucd.repository.type",
+                "label": "ucd.repository.type",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "value": "HFS",
+                "required": false,
+                "description": "Do not modify or delete",
+                "placeholder": ""
+            }],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Copy Artifacts",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/176241e7-61d2-6665-b398-69a3006aab43",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Deploy Data Sets",
+                                "from": "Copy Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Copy Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "258a272d81cb66648d6810b0e3df95",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "258a272d81cb66648d6810b0e3df95",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -70,
+                                "y": 350,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "Copy Artifacts",
+                                "x": -60,
+                                "y": 180,
+                                "h": 70,
+                                "w": 230
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "fd2a1a5d-df19-4c00-8cb5-802fae8051ea",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "258a272d81cb66648d6810b0e3df95",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": true,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 55,
+                                "commandName": "Copy Artifacts",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "basePath": "${p:ucd.repository.location}",
+                                    "versionName": "${p:version.name}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "repositoryType": "${p?:version\/ucd.repository.type}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Copy Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 55,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "printLogs": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "binderPath": "\/usr\/lib",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Copy Artifacts from Backup & Deploy",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/17629167-3926-2174-ae26-135413466283",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Copy Artifacts from Backup",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy Data Sets",
+                                "from": "Copy Artifacts from Backup",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "2a516762f3d476b39e5be3f6c55394",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -70,
+                                "y": 350,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "2a516762f3d476b39e5be3f6c55394",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Copy Artifacts from Backup",
+                                "x": -80,
+                                "y": 180,
+                                "h": 70,
+                                "w": 270
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "eb0e6d00-18a2-4826-a080-fc18c0d8355a",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "2a516762f3d476b39e5be3f6c55394",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "mkdir \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/zOS App Deploy\/174d55dd-9026-7fb1-177d-20a259394331\/ZeroBalanceBug\/\"\ncp \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/ZeroBalanceBug-Backup\/package.zip\" \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/zOS App Deploy\/174d55dd-9026-7fb1-177d-20a259394331\/ZeroBalanceBug\/\"\ncp \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/ZeroBalanceBug-Backup\/packageManifest.xml\" \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/zOS App Deploy\/174d55dd-9026-7fb1-177d-20a259394331\/ZeroBalanceBug\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Copy Artifacts from Backup",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 55,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "printLogs": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "binderPath": "\/usr\/lib",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/174d5408-8471-1b86-9ba6-644c4658bd08",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Download Artifacts for zOS",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "c49ca76b2dd0d152f2988c259817ca",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy Data Sets",
+                                "from": "Download Artifacts for zOS",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts for zOS",
+                                "x": -100,
+                                "y": 180,
+                                "h": 70,
+                                "w": 310
+                            },
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -70,
+                                "y": 350,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "c49ca76b2dd0d152f2988c259817ca",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "5db1fab0-ba4d-4c25-ad75-492354784e67",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "c49ca76b2dd0d152f2988c259817ca",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 32,
+                                "commandName": "Download Artifacts for zOS",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "versionId": "${p:version.id}",
+                                    "versionName": "${p:version.name}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "repositoryType": "${p?:version\/ucd.repository.type}",
+                                    "resourceId": "${p:resource.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts for zOS",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy Only",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/176241ca-e631-f2fc-6d8a-e7b90a6641dd",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Deploy Data Sets",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "c49ca76b2dd0d152f2988c259817ca",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -70,
+                                "y": 230,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "c49ca76b2dd0d152f2988c259817ca",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "8c2cbe1d-6de7-42de-aeb1-80dc97f25d97",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "c49ca76b2dd0d152f2988c259817ca",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 55,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "printLogs": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "binderPath": "\/usr\/lib",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Download Only",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/176241a4-7402-2d70-79d7-74ccfbd57164",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Download Artifacts for zOS",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "b051128cd887f333c2ff80d9d75c7f",
+                                "from": "Download Artifacts for zOS",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "b051128cd887f333c2ff80d9d75c7f",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Download Artifacts for zOS",
+                                "x": -100,
+                                "y": 230,
+                                "h": 70,
+                                "w": 310
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "32900eff-7e16-4811-96bc-6a169a4b2217",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "b051128cd887f333c2ff80d9d75c7f",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 35,
+                                "commandName": "Download Artifacts for zOS",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "versionId": "${p:version.id}",
+                                    "versionName": "${p:version.name}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "repositoryType": "${p?:version\/ucd.repository.type}",
+                                    "resourceId": "${p:resource.id}",
+                                    "maxMemory": "1G"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts for zOS",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Uninstall",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "REMOVE",
+                    "status": "Active",
+                    "active": true,
+                    "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/1762a339-f25a-dd36-c411-b2a653d936b4",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "a93126fe80010000059d9cd4d3ca06",
+                                "from": "Echo Hello",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Echo Hello",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Echo Hello",
+                                "x": -25,
+                                "y": 230,
+                                "h": 70,
+                                "w": 160
+                            },
+                            {
+                                "name": "a93126fe80010000059d9cd4d3ca06",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "3886d402-e07e-44d4-a4b3-37ab9c5d9475",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "a93126fe80010000059d9cd4d3ca06",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"hello\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Echo Hello",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "175323e6-4da3-d106-b9b6-233aebf18c73",
+                "name": "zOS",
+                "color": "#00B2EF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "zOS Smoke Test",
+            "description": "",
+            "created": 1602702560744,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run Smoke Test",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17528844-df59-370b-1060-ed931d16180d\/processes\/1752884f-0001-f98f-ea57-0ceafbe6cbb0",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "0d99859fdeea92781353e22c0a4bf2",
+                            "from": "Send HTTP Call",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Send HTTP Call",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Send HTTP Call",
+                            "x": -65,
+                            "y": 230,
+                            "h": 70,
+                            "w": 240
+                        },
+                        {
+                            "name": "0d99859fdeea92781353e22c0a4bf2",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "ffb99ca0-c7c7-4021-ae24-e78ac94addb2",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "0d99859fdeea92781353e22c0a4bf2",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 15,
+                            "commandName": "Send HTTP Call",
+                            "pluginName": "Web Utilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "${p:resource\/app-url}",
+                                "method": "POST",
+                                "headers": "\n",
+                                "data": "{\n    \"INPUT_AREA\":\n    {\n         \"customerNumber\": \"000000015\",\n         \"password\": \"password\"\n    }\n}",
+                                "contentType": "application\/json",
+                                "acceptType": "application\/json",
+                                "untrustedSSL": "false",
+                                "username": "ibmuser",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyuzap|FnXPvQp4mygnwY68PSK+ZQ==|niK0CMtrS3yXjXFuQDsKtw==}",
+                                "outFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Send HTTP Call",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [{
+        "name": "TEST",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": [
+            {
+                "name": "ansible_host",
+                "value": "172.26.1.2",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "ansible_port",
+                "value": "22",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "ansible_user",
+                "value": "ibmuser",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "ansible_python_interpreter",
+                "value": "\/u\/python\/usr\/lpp\/IBM\/cyp\/v3r8\/pyz\/bin\/python3",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "deploy.env.pds.mapping",
+                "value": "IMSBANK.IMS1.PGMLIB,IMSBANK.IMS1.PGMLIB",
+                "description": "",
+                "secure": false
+            }
+        ]},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/IMS Bank",
+            "tree": {
+                "name": "TEST",
+                "path": "\/IMS Bank\/TEST",
+                "description": "",
+                "parentName": "IMS Bank",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": [{
+                        "name": "app-url",
+                        "value": "http:\/\/rg-ucd-ansible1.fyre.ibm.com:1322\/imsbank\/api\/GetAccountSummary",
+                        "description": "",
+                        "secure": false
+                    }]
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/IMS Bank",
+            "tree": {
+                "name": "TEST",
+                "path": "\/IMS Bank\/TEST",
+                "description": "",
+                "parentName": "IMS Bank",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": [{
+                        "name": "app-url",
+                        "value": "http:\/\/rg-ucd-ansible1.fyre.ibm.com:1322\/imsbank\/api\/GetAccountSummary",
+                        "description": "",
+                        "secure": false
+                    }]
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [
+                    {
+                        "name": "RHEL Agent",
+                        "path": "\/IMS Bank\/TEST\/RHEL Agent",
+                        "description": "",
+                        "parentName": "TEST",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "RHEL Agent",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Ansible Infra Setup",
+                                "path": "\/IMS Bank\/TEST\/RHEL Agent\/Ansible Infra Setup",
+                                "description": "",
+                                "parentName": "RHEL Agent",
+                                "inheritTeam": true,
+                                "roleName": "Ansible Infra Setup",
+                                "roleProperties": {
+                                    "name": "Ansible Infra Setup",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Ansible Post IMS Deploy",
+                                "path": "\/IMS Bank\/TEST\/RHEL Agent\/Ansible Post IMS Deploy",
+                                "description": "",
+                                "parentName": "RHEL Agent",
+                                "inheritTeam": true,
+                                "roleName": "Ansible Post IMS Deploy",
+                                "roleProperties": {
+                                    "name": "Ansible Post IMS Deploy",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "IMS-Ansible-Configuration",
+                                "path": "\/IMS Bank\/TEST\/RHEL Agent\/IMS-Ansible-Configuration",
+                                "description": "",
+                                "parentName": "RHEL Agent",
+                                "inheritTeam": true,
+                                "roleName": "IMS-Ansible-Configuration",
+                                "roleProperties": {
+                                    "name": "IMS-Ansible-Configuration",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "zOS Smoke Test",
+                                "path": "\/IMS Bank\/TEST\/RHEL Agent\/zOS Smoke Test",
+                                "description": "",
+                                "parentName": "RHEL Agent",
+                                "inheritTeam": true,
+                                "roleName": "zOS Smoke Test",
+                                "roleProperties": {
+                                    "name": "zOS Smoke Test",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "name": "zOS_agent",
+                        "path": "\/IMS Bank\/TEST\/zOS_agent",
+                        "description": "",
+                        "parentName": "TEST",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "zOS_agent",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "zOS App Deploy",
+                            "path": "\/IMS Bank\/TEST\/zOS_agent\/zOS App Deploy",
+                            "description": "",
+                            "parentName": "zOS_agent",
+                            "inheritTeam": true,
+                            "roleName": "zOS App Deploy",
+                            "roleProperties": {
+                                "name": "zOS App Deploy",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }
+                ]
+            }
+        }],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "Ansible Infra Setup"
+            },
+            {
+                "properties": [],
+                "componentName": "Ansible Post IMS Deploy"
+            },
+            {
+                "properties": [],
+                "componentName": "IMS-Ansible-Configuration"
+            },
+            {
+                "properties": [],
+                "componentName": "zOS App Deploy"
+            },
+            {
+                "properties": [],
+                "componentName": "zOS Smoke Test"
+            }
+        ],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [
+        {
+            "name": "Only Z Deploy",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "a921b6972418fef6701a1219bd507a",
+                        "from": "6989edc5aef2c100f2294cdc4434d3",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "6989edc5aef2c100f2294cdc4434d3",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "6989edc5aef2c100f2294cdc4434d3",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "a921b6972418fef6701a1219bd507a",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "4ddcfafa-f89e-4760-9dcb-51b2972a5a63",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "a921b6972418fef6701a1219bd507a",
+                        "children": []
+                    },
+                    {
+                        "componentName": "zOS App Deploy",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "6989edc5aef2c100f2294cdc4434d3",
+                        "children": [{
+                            "componentName": "zOS App Deploy",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "b274ef9b-1895-49d2-abbc-d037874bff3e",
+                            "children": [{
+                                "componentProcessName": "Deploy",
+                                "componentName": "zOS App Deploy",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"zOS App Deploy\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy App (Ansible & UCD)",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "68d1c65b002a8b9ffd5fd906b0b4aa",
+                        "from": "8b72ec91470e092a581d70a0b8d304",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "41bb000827da4b3a671d2c5e03fe59",
+                        "from": "6a48e6bca1f9c40240799415ac1cc6",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "8b72ec91470e092a581d70a0b8d304",
+                        "from": "049eaeca1e1e4cc71d15fdc8bf29f2",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "049eaeca1e1e4cc71d15fdc8bf29f2",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "6a48e6bca1f9c40240799415ac1cc6",
+                        "from": "68d1c65b002a8b9ffd5fd906b0b4aa",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "41bb000827da4b3a671d2c5e03fe59",
+                        "x": -5,
+                        "y": 610,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "8b72ec91470e092a581d70a0b8d304",
+                        "x": -155,
+                        "y": 230,
+                        "h": 80,
+                        "w": 420
+                    },
+                    {
+                        "name": "049eaeca1e1e4cc71d15fdc8bf29f2",
+                        "x": -50,
+                        "y": 130,
+                        "h": 70,
+                        "w": 280
+                    },
+                    {
+                        "name": "68d1c65b002a8b9ffd5fd906b0b4aa",
+                        "x": -75,
+                        "y": 360,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "6a48e6bca1f9c40240799415ac1cc6",
+                        "x": -145,
+                        "y": 480,
+                        "h": 80,
+                        "w": 400
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "a2d0c4b3-feb3-481a-901d-5bd917dbbfd8",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "41bb000827da4b3a671d2c5e03fe59",
+                        "children": []
+                    },
+                    {
+                        "componentName": "zOS App Deploy",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "68d1c65b002a8b9ffd5fd906b0b4aa",
+                        "children": [{
+                            "componentName": "zOS App Deploy",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "5d31c7e3-5a96-467b-b608-d47690887a8d",
+                            "children": [{
+                                "componentProcessName": "Deploy Only",
+                                "componentName": "zOS App Deploy",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"zOS App Deploy\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "Ansible Infra Setup",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "8b72ec91470e092a581d70a0b8d304",
+                        "children": [{
+                            "componentProcessName": "Run Ansible Infrastructure Setup Playbook",
+                            "componentName": "Ansible Infra Setup",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Ansible Infra Setup\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Ansible Post IMS Deploy",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "6a48e6bca1f9c40240799415ac1cc6",
+                        "children": [{
+                            "componentProcessName": "Run Ansible Post Deployment Playbook",
+                            "componentName": "Ansible Post IMS Deploy",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Ansible Post IMS Deploy\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "zOS App Deploy",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "049eaeca1e1e4cc71d15fdc8bf29f2",
+                        "children": [{
+                            "componentName": "zOS App Deploy",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "1e36a7ff-e72c-4eb8-b2f1-dc75c655f1f1",
+                            "children": [{
+                                "componentProcessName": "Download Only",
+                                "componentName": "zOS App Deploy",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"zOS App Deploy\" (1)",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Uninstall",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "145bb79b9b65d47a7e4e48bc14429b",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "f352e73a1d8e6ea56d2a80a784cf32",
+                        "from": "145bb79b9b65d47a7e4e48bc14429b",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "f352e73a1d8e6ea56d2a80a784cf32",
+                        "x": -5,
+                        "y": 460,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "145bb79b9b65d47a7e4e48bc14429b",
+                        "x": -110,
+                        "y": 230,
+                        "h": 70,
+                        "w": 270
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "90b5e630-2d9b-4a5b-b76e-73c310305a6b",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "f352e73a1d8e6ea56d2a80a784cf32",
+                        "children": []
+                    },
+                    {
+                        "componentName": "zOS App Deploy",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "145bb79b9b65d47a7e4e48bc14429b",
+                        "children": [{
+                            "componentName": "zOS App Deploy",
+                            "component": {
+                                "name": "zOS App Deploy",
+                                "description": "",
+                                "created": 1600093496974,
+                                "componentType": "ZOS",
+                                "ignoreQualifiers": 0,
+                                "importAutomatically": false,
+                                "useVfs": false,
+                                "active": true,
+                                "deleted": false,
+                                "defaultVersionType": "INCREMENTAL",
+                                "cleanupDaysToKeep": 0,
+                                "cleanupCountToKeep": 0,
+                                "envPropDefs": [],
+                                "resPropDefs": [],
+                                "versionPropDefs": [{
+                                    "name": "ucd.repository.type",
+                                    "label": "ucd.repository.type",
+                                    "pattern": "",
+                                    "type": "TEXT",
+                                    "isHidden": false,
+                                    "value": "HFS",
+                                    "required": false,
+                                    "description": "Do not modify or delete",
+                                    "placeholder": ""
+                                }],
+                                "propSheetGroup": {"propSheets": [
+                                    {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    {
+                                        "name": "template",
+                                        "properties": []
+                                    }
+                                ]},
+                                "processes": [
+                                    {
+                                        "name": "Copy Artifacts",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "ADD",
+                                        "status": "Active",
+                                        "configActionType": "ADD",
+                                        "active": true,
+                                        "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/176241e7-61d2-6665-b398-69a3006aab43",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "Deploy Data Sets",
+                                                    "from": "Copy Artifacts",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Copy Artifacts",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "258a272d81cb66648d6810b0e3df95",
+                                                    "from": "Deploy Data Sets",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "258a272d81cb66648d6810b0e3df95",
+                                                    "x": -5,
+                                                    "y": 520,
+                                                    "h": 80,
+                                                    "w": 120
+                                                },
+                                                {
+                                                    "name": "Deploy Data Sets",
+                                                    "x": -70,
+                                                    "y": 350,
+                                                    "h": 70,
+                                                    "w": 250
+                                                },
+                                                {
+                                                    "name": "Copy Artifacts",
+                                                    "x": -60,
+                                                    "y": 180,
+                                                    "h": 70,
+                                                    "w": 230
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "fd2a1a5d-df19-4c00-8cb5-802fae8051ea",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "258a272d81cb66648d6810b0e3df95",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": true,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 55,
+                                                    "commandName": "Copy Artifacts",
+                                                    "pluginName": "zOS Utility",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "directoryOffset": ".",
+                                                        "basePath": "${p:ucd.repository.location}",
+                                                        "versionName": "${p:version.name}",
+                                                        "componentName": "${p:component.name}",
+                                                        "resourceId": "${p:resource.id}",
+                                                        "repositoryType": "${p?:version\/ucd.repository.type}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Copy Artifacts",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 55,
+                                                    "commandName": "Deploy Data Sets",
+                                                    "pluginName": "zOS Utility",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                                        "incrementalMode": "FULL",
+                                                        "containerFilter": "",
+                                                        "deleteCurrentContents": "false",
+                                                        "printLogs": "false",
+                                                        "checkAccess": "true",
+                                                        "doBackup": "true",
+                                                        "allowCreateDataset": "TRUE",
+                                                        "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                                        "allowCreateDirectory": "TRUE",
+                                                        "binderPath": "\/usr\/lib",
+                                                        "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                                        "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                                        "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                                        "versionName": "${p:version.name}",
+                                                        "versionId": "${p:version.id}",
+                                                        "versionType": "${p:version.type}",
+                                                        "componentName": "${p:component.name}",
+                                                        "resourceId": "${p:resource.id}",
+                                                        "componentId": "${p:component.id}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Deploy Data Sets",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "Copy Artifacts from Backup & Deploy",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "ADD",
+                                        "status": "Active",
+                                        "configActionType": "ADD",
+                                        "active": true,
+                                        "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/17629167-3926-2174-ae26-135413466283",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "Copy Artifacts from Backup",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Deploy Data Sets",
+                                                    "from": "Copy Artifacts from Backup",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "2a516762f3d476b39e5be3f6c55394",
+                                                    "from": "Deploy Data Sets",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "Deploy Data Sets",
+                                                    "x": -70,
+                                                    "y": 350,
+                                                    "h": 70,
+                                                    "w": 250
+                                                },
+                                                {
+                                                    "name": "2a516762f3d476b39e5be3f6c55394",
+                                                    "x": -5,
+                                                    "y": 520,
+                                                    "h": 80,
+                                                    "w": 120
+                                                },
+                                                {
+                                                    "name": "Copy Artifacts from Backup",
+                                                    "x": -80,
+                                                    "y": 180,
+                                                    "h": 70,
+                                                    "w": 270
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "eb0e6d00-18a2-4826-a080-fc18c0d8355a",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "2a516762f3d476b39e5be3f6c55394",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 9,
+                                                    "commandName": "Shell",
+                                                    "pluginName": "Shell",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "directoryOffset": ".",
+                                                        "shellInterpreter": "",
+                                                        "scriptBody": "mkdir \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/zOS App Deploy\/174d55dd-9026-7fb1-177d-20a259394331\/ZeroBalanceBug\/\"\ncp \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/ZeroBalanceBug-Backup\/package.zip\" \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/zOS App Deploy\/174d55dd-9026-7fb1-177d-20a259394331\/ZeroBalanceBug\/\"\ncp \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/ZeroBalanceBug-Backup\/packageManifest.xml\" \"\/Z24A\/opt\/ibm-ucd\/agent\/var\/work\/zOS App Deploy\/174d55dd-9026-7fb1-177d-20a259394331\/ZeroBalanceBug\"",
+                                                        "runAsDaemon": "false",
+                                                        "outputFile": ""
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Copy Artifacts from Backup",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 55,
+                                                    "commandName": "Deploy Data Sets",
+                                                    "pluginName": "zOS Utility",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                                        "incrementalMode": "FULL",
+                                                        "containerFilter": "",
+                                                        "deleteCurrentContents": "false",
+                                                        "printLogs": "false",
+                                                        "checkAccess": "true",
+                                                        "doBackup": "true",
+                                                        "allowCreateDataset": "TRUE",
+                                                        "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                                        "allowCreateDirectory": "TRUE",
+                                                        "binderPath": "\/usr\/lib",
+                                                        "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                                        "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                                        "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                                        "versionName": "${p:version.name}",
+                                                        "versionId": "${p:version.id}",
+                                                        "versionType": "${p:version.type}",
+                                                        "componentName": "${p:component.name}",
+                                                        "resourceId": "${p:resource.id}",
+                                                        "componentId": "${p:component.id}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Deploy Data Sets",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "Deploy",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "ADD",
+                                        "status": "Active",
+                                        "configActionType": "ADD",
+                                        "active": true,
+                                        "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/174d5408-8471-1b86-9ba6-644c4658bd08",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "Download Artifacts for zOS",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "c49ca76b2dd0d152f2988c259817ca",
+                                                    "from": "Deploy Data Sets",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Deploy Data Sets",
+                                                    "from": "Download Artifacts for zOS",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "Download Artifacts for zOS",
+                                                    "x": -100,
+                                                    "y": 180,
+                                                    "h": 70,
+                                                    "w": 310
+                                                },
+                                                {
+                                                    "name": "Deploy Data Sets",
+                                                    "x": -70,
+                                                    "y": 350,
+                                                    "h": 70,
+                                                    "w": 250
+                                                },
+                                                {
+                                                    "name": "c49ca76b2dd0d152f2988c259817ca",
+                                                    "x": -5,
+                                                    "y": 520,
+                                                    "h": 80,
+                                                    "w": 120
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "5db1fab0-ba4d-4c25-ad75-492354784e67",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "c49ca76b2dd0d152f2988c259817ca",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 32,
+                                                    "commandName": "Download Artifacts for zOS",
+                                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "directoryOffset": ".",
+                                                        "versionId": "${p:version.id}",
+                                                        "versionName": "${p:version.name}",
+                                                        "serverUrl": "${p:server.url}",
+                                                        "compId": "${p:component.id}",
+                                                        "repositoryType": "${p?:version\/ucd.repository.type}",
+                                                        "resourceId": "${p:resource.id}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Download Artifacts for zOS",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 53,
+                                                    "commandName": "Deploy Data Sets",
+                                                    "pluginName": "zOS Utility",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                                        "incrementalMode": "FULL",
+                                                        "containerFilter": "",
+                                                        "deleteCurrentContents": "false",
+                                                        "checkAccess": "true",
+                                                        "doBackup": "true",
+                                                        "allowCreateDataset": "TRUE",
+                                                        "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                                        "allowCreateDirectory": "TRUE",
+                                                        "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                                        "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                                        "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                                        "versionName": "${p:version.name}",
+                                                        "versionId": "${p:version.id}",
+                                                        "versionType": "${p:version.type}",
+                                                        "componentName": "${p:component.name}",
+                                                        "resourceId": "${p:resource.id}",
+                                                        "componentId": "${p:component.id}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Deploy Data Sets",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "Deploy Only",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "ADD",
+                                        "status": "Active",
+                                        "configActionType": "ADD",
+                                        "active": true,
+                                        "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/176241ca-e631-f2fc-6d8a-e7b90a6641dd",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "Deploy Data Sets",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "c49ca76b2dd0d152f2988c259817ca",
+                                                    "from": "Deploy Data Sets",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "Deploy Data Sets",
+                                                    "x": -70,
+                                                    "y": 230,
+                                                    "h": 70,
+                                                    "w": 250
+                                                },
+                                                {
+                                                    "name": "c49ca76b2dd0d152f2988c259817ca",
+                                                    "x": -5,
+                                                    "y": 450,
+                                                    "h": 80,
+                                                    "w": 120
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "8c2cbe1d-6de7-42de-aeb1-80dc97f25d97",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "c49ca76b2dd0d152f2988c259817ca",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 55,
+                                                    "commandName": "Deploy Data Sets",
+                                                    "pluginName": "zOS Utility",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                                        "incrementalMode": "FULL",
+                                                        "containerFilter": "",
+                                                        "deleteCurrentContents": "false",
+                                                        "printLogs": "false",
+                                                        "checkAccess": "true",
+                                                        "doBackup": "true",
+                                                        "allowCreateDataset": "TRUE",
+                                                        "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                                        "allowCreateDirectory": "TRUE",
+                                                        "binderPath": "\/usr\/lib",
+                                                        "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                                        "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                                        "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                                        "versionName": "${p:version.name}",
+                                                        "versionId": "${p:version.id}",
+                                                        "versionType": "${p:version.type}",
+                                                        "componentName": "${p:component.name}",
+                                                        "resourceId": "${p:resource.id}",
+                                                        "componentId": "${p:component.id}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Deploy Data Sets",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "Download Only",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "ADD",
+                                        "status": "Active",
+                                        "configActionType": "ADD",
+                                        "active": true,
+                                        "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/176241a4-7402-2d70-79d7-74ccfbd57164",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "Download Artifacts for zOS",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "b051128cd887f333c2ff80d9d75c7f",
+                                                    "from": "Download Artifacts for zOS",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "b051128cd887f333c2ff80d9d75c7f",
+                                                    "x": -5,
+                                                    "y": 450,
+                                                    "h": 80,
+                                                    "w": 120
+                                                },
+                                                {
+                                                    "name": "Download Artifacts for zOS",
+                                                    "x": -100,
+                                                    "y": 230,
+                                                    "h": 70,
+                                                    "w": 310
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "32900eff-7e16-4811-96bc-6a169a4b2217",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "b051128cd887f333c2ff80d9d75c7f",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 35,
+                                                    "commandName": "Download Artifacts for zOS",
+                                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "directoryOffset": ".",
+                                                        "versionId": "${p:version.id}",
+                                                        "versionName": "${p:version.name}",
+                                                        "serverUrl": "${p:server.url}",
+                                                        "compId": "${p:component.id}",
+                                                        "repositoryType": "${p?:version\/ucd.repository.type}",
+                                                        "resourceId": "${p:resource.id}",
+                                                        "maxMemory": "1G"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Download Artifacts for zOS",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "Uninstall",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "REMOVE",
+                                        "status": "Active",
+                                        "active": true,
+                                        "path": "components\/1748d012-69cd-1a5d-d44e-7383136ddc5d\/processes\/1762a339-f25a-dd36-c411-b2a653d936b4",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "a93126fe80010000059d9cd4d3ca06",
+                                                    "from": "Echo Hello",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Echo Hello",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "Echo Hello",
+                                                    "x": -25,
+                                                    "y": 230,
+                                                    "h": 70,
+                                                    "w": 160
+                                                },
+                                                {
+                                                    "name": "a93126fe80010000059d9cd4d3ca06",
+                                                    "x": -5,
+                                                    "y": 450,
+                                                    "h": 80,
+                                                    "w": 120
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "3886d402-e07e-44d4-a4b3-37ab9c5d9475",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "a93126fe80010000059d9cd4d3ca06",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 9,
+                                                    "commandName": "Shell",
+                                                    "pluginName": "Shell",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "directoryOffset": ".",
+                                                        "shellInterpreter": "",
+                                                        "scriptBody": "echo \"hello\"",
+                                                        "runAsDaemon": "false",
+                                                        "outputFile": ""
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Echo Hello",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "configTemplates": [],
+                                "genericProcesses": [],
+                                "teamMappings": [],
+                                "tags": [{
+                                    "id": "175323e6-4da3-d106-b9b6-233aebf18c73",
+                                    "name": "zOS",
+                                    "color": "#00B2EF",
+                                    "description": "",
+                                    "objectType": "Component"
+                                }]
+                            },
+                            "status": "Active",
+                            "selectionType": "ALL_EXISTING",
+                            "type": "uninstallAllVersionsIterator",
+                            "name": "4e491399e019e3d445e1a8734a3bdd",
+                            "children": [{
+                                "componentProcessName": "Uninstall",
+                                "componentName": "zOS App Deploy",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Uninstall: \"zOS App Deploy\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "173b5046-9324-c946-dbd3-3f87ebe1caf4",
+            "name": "Ansible",
+            "color": "#D9182D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "173b5050-03fe-32cf-538c-8e3713f7d4cd",
+            "name": "zOS",
+            "color": "#00648D",
+            "description": "",
+            "objectType": "Application"
+        }
+    ]
+}

@@ -1,0 +1,3036 @@
+{
+    "name": "PerfServletApp",
+    "description": "Used for simple end-to-end retrieval of performance data",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "PerfServletApp-EAR",
+        "description": "WebSphere ND Application",
+        "created": 1599189339021,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "componentTemplate": {
+            "securityResourceId": "170cb9f1-2ce2-c3b5-b377-b4fa47bf9728",
+            "path": "componentTemplates\/170cb9f1-2d43-23cb-04c6-a8fe6cbdd172",
+            "name": "WebSphere EAR Template",
+            "description": "An example component template for WebSphere EAR deployments",
+            "ignoreQualifiers": 0,
+            "componentType": "STANDARD",
+            "sourceConfigPluginName": "",
+            "tags": [{
+                "id": "173bb5f7-a10c-cc23-45e3-1652133d820a",
+                "name": "WebSphere",
+                "color": "#7F1C7D",
+                "description": "",
+                "objectType": "Component"
+            }],
+            "active": true,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "propDefs": [
+                {
+                    "name": "applicationName",
+                    "label": "Application Name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "PlantsByWebSphere",
+                    "required": true,
+                    "description": "The application name in the WAS Console",
+                    "placeholder": ""
+                },
+                {
+                    "name": "applicationEarName",
+                    "label": "EAR File Name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "PlantsByWebSphere.ear",
+                    "required": true,
+                    "description": "The name of the application EAR to deploy",
+                    "placeholder": ""
+                }
+            ],
+            "properties": [],
+            "processes": [{
+                "name": "Deploy EAR",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "componentTemplates\/170cb9f1-2d43-23cb-04c6-a8fe6cbdd172\/processes\/170cb9fd-9006-b06f-89e3-8659ff2b8bf3",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Start Application",
+                            "from": "Wait for Application",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install Or Update Application",
+                            "from": "Uninstall Application",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Application",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Uninstall Application",
+                            "from": "Stop Application",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "1b83c1ba63f577c49ce154d9c28c83",
+                            "from": "Start Application",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Wait for Application",
+                            "from": "Install Or Update Application",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Stop Application",
+                            "x": -145,
+                            "y": 310,
+                            "h": 110,
+                            "w": 440
+                        },
+                        {
+                            "name": "Start Application",
+                            "x": -150,
+                            "y": 950,
+                            "h": 110,
+                            "w": 450
+                        },
+                        {
+                            "name": "Uninstall Application",
+                            "x": -175,
+                            "y": 470,
+                            "h": 110,
+                            "w": 500
+                        },
+                        {
+                            "name": "Wait for Application",
+                            "x": -170,
+                            "y": 790,
+                            "h": 110,
+                            "w": 490
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -155,
+                            "y": 150,
+                            "h": 110,
+                            "w": 460
+                        },
+                        {
+                            "name": "1b83c1ba63f577c49ce154d9c28c83",
+                            "x": -10,
+                            "y": 1110,
+                            "h": 100,
+                            "w": 170
+                        },
+                        {
+                            "name": "Install Or Update Application",
+                            "x": -235,
+                            "y": 630,
+                            "h": 110,
+                            "w": 620
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "7ba09d79-b31c-4c6f-b322-1dad21e35cbe",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "1b83c1ba63f577c49ce154d9c28c83",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 123,
+                            "commandName": "Stop Application",
+                            "pluginName": "WAS - Deploy",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "appName": "${p:component\/applicationName}",
+                                "appEdition": "",
+                                "batch": "false",
+                                "scriptFile": "${p:request.id}.py",
+                                "cell": "${p?:resource\/websphere.cell}",
+                                "node": "${p?:resource\/websphere.node}",
+                                "server": "${p?:resource\/websphere.server}",
+                                "cluster": "${p?:resource\/websphere.cluster}",
+                                "commandPath": "${p?:resource\/websphere.commandPath}",
+                                "user": "${p?:resource\/websphere.user}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|jaBIV+U6GskPk09Lcd3veg==|au+VqOP12DvflEpaAXpTwQyiOXs0WBpMZFBrJ5lkYYcQI88zEWSwBpIlvsguucWe}",
+                                "host": "${p?:resource\/websphere.host}",
+                                "port": "${p?:resource\/websphere.port}",
+                                "connType": "${p?:resource\/websphere.connType}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Application",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 123,
+                            "commandName": "Uninstall Application",
+                            "pluginName": "WAS - Deploy",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "appName": "${p:component\/applicationName}",
+                                "appEdition": "",
+                                "batch": "false",
+                                "scriptFile": "${p:request.id}.py",
+                                "cell": "${p?:resource\/websphere.cell}",
+                                "node": "${p?:resource\/websphere.node}",
+                                "server": "${p?:resource\/websphere.server}",
+                                "cluster": "${p?:resource\/websphere.cluster}",
+                                "commandPath": "${p?:resource\/websphere.commandPath}",
+                                "user": "${p?:resource\/websphere.user}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|9fM5JBq1iI+y0XCYrelYWg==|EiGjMNMS3rfZUnGtLj7AnE5N\/wn2+PbWCrRnnSJJ2Wwr9VaxfJJ5pUp2iC9Vkzv4}",
+                                "host": "${p?:resource\/websphere.host}",
+                                "port": "${p?:resource\/websphere.port}",
+                                "connType": "${p?:resource\/websphere.connType}",
+                                "additionalArgs": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Uninstall Application",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 123,
+                            "commandName": "Install Or Update Application",
+                            "pluginName": "WAS - Deploy",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "context": "\/",
+                                "location": "${p:component\/applicationEarName}",
+                                "appName": "${p:component\/applicationName}",
+                                "appEdition": "",
+                                "editDesc": "",
+                                "path": "",
+                                "argString": "",
+                                "batch": "false",
+                                "scriptFile": "${p:request.id}.py",
+                                "partialUpdate": "false",
+                                "cell": "${p?:resource\/websphere.cell}",
+                                "node": "${p?:resource\/websphere.node}",
+                                "server": "${p?:resource\/websphere.server}",
+                                "cluster": "${p?:resource\/websphere.cluster}",
+                                "commandPath": "${p?:resource\/websphere.commandPath}",
+                                "user": "${p?:resource\/websphere.user}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|klsBzHmzIxZ3BnNbj+fA2g==|lGmmvcYWqL64ZI2oNCicbLnhHVVQW+wbJWlDa1+XVFCAntm1qxXo8YAeqLdkPckF}",
+                                "host": "${p?:resource\/websphere.host}",
+                                "port": "${p?:resource\/websphere.port}",
+                                "connType": "${p?:resource\/websphere.connType}",
+                                "additionalArgs": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install Or Update Application",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 123,
+                            "commandName": "Wait for Application",
+                            "pluginName": "WAS - Deploy",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "appName": "${p:component\/applicationName}",
+                                "appEdition": "",
+                                "timeout": "300",
+                                "interval": "10",
+                                "deleteTempFileOnFailure": "true",
+                                "cell": "${p?:resource\/websphere.cell}",
+                                "node": "${p?:resource\/websphere.node}",
+                                "server": "${p?:resource\/websphere.server}",
+                                "cluster": "${p?:resource\/websphere.cluster}",
+                                "commandPath": "${p?:resource\/websphere.commandPath}",
+                                "user": "${p?:resource\/websphere.user}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|q6BemLK0O+4KiPW9p7IUeQ==|nmRULSbyA8nIY5i4fOv21FPqtiTvfFcpgYTHsNRJk2GOJO3H7audIr+OjtwvPdNU}",
+                                "host": "${p?:resource\/websphere.host}",
+                                "port": "${p?:resource\/websphere.port}",
+                                "connType": "${p?:resource\/websphere.connType}",
+                                "additionalArgs": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Wait for Application",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 123,
+                            "commandName": "Start Application",
+                            "pluginName": "WAS - Deploy",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "appName": "${p:component\/applicationName}",
+                                "appEdition": "",
+                                "batch": "false",
+                                "scriptFile": "${p:request.id}.py",
+                                "cell": "${p?:resource\/websphere.cell}",
+                                "node": "${p?:resource\/websphere.node}",
+                                "server": "${p?:resource\/websphere.server}",
+                                "cluster": "${p?:resource\/websphere.cluster}",
+                                "commandPath": "${p?:resource\/websphere.commandPath}",
+                                "user": "${p?:resource\/websphere.user}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|58BlWNoJsF2j0uQzjbvnMw==|014kfdlfNLNo13JyBuD3vIc0CLZtrNk2faAje9RdizDk1OHQcxf17GLKlq3Tyf\/W}",
+                                "host": "${p?:resource\/websphere.host}",
+                                "port": "${p?:resource\/websphere.port}",
+                                "connType": "${p?:resource\/websphere.connType}",
+                                "additionalArgs": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start Application",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "genericProcesses": [],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000102",
+                "resourceTypeName": "Component Template",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }]
+        },
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "FileSystemVersionedComponentProperties",
+                "properties": [
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "includes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "excludes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "basePath",
+                        "value": "\/opt\/was-configuration\/PerfServlet",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "custom",
+                "properties": []
+            },
+            {
+                "name": "template",
+                "properties": [
+                    {
+                        "name": "applicationName",
+                        "value": "PerfServlet",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "applicationEarName",
+                        "value": "PerfServletApp.ear",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            }
+        ]},
+        "processes": [],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [{
+            "resourceTypeId": "20000000000000000000000000000101",
+            "resourceTypeName": "Component",
+            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+            "teamLabel": "WebSphere Team"
+        }],
+        "tags": [{
+            "id": "173bb5f7-a10c-cc23-45e3-1652133d820a",
+            "name": "WebSphere",
+            "color": "#7F1C7D",
+            "description": "",
+            "objectType": "Component"
+        }]
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/WebSphere\/PlantsByWebSphere",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV",
+                    "description": "",
+                    "parentName": "PlantsByWebSphere",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": [{
+                            "name": "app-url",
+                            "value": "http:\/\/169.61.11.68:9080\/PlantsByWebSphere\/",
+                            "description": "",
+                            "secure": false
+                        }]
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/WebSphere\/PlantsByWebSphere",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV",
+                    "description": "",
+                    "parentName": "PlantsByWebSphere",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": [{
+                            "name": "app-url",
+                            "value": "http:\/\/169.61.11.68:9080\/PlantsByWebSphere\/",
+                            "description": "",
+                            "secure": false
+                        }]
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "wasserver1.ajm.cloud",
+                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "wasserver1.ajm.cloud",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                            "teamLabel": "WebSphere Team"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "WebSphereCell - AppSrv01",
+                                "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/WebSphereCell - AppSrv01",
+                                "description": "WebSphere Application Server cell for profile AppSrv01",
+                                "parentName": "wasserver1.ajm.cloud",
+                                "inheritTeam": true,
+                                "roleName": "WebSphereCell",
+                                "roleProperties": {
+                                    "name": "WebSphereCell",
+                                    "properties": [
+                                        {
+                                            "name": "websphere.profilePath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/AppSrv01",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.commandPath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/AppSrv01\/bin\/",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.port",
+                                            "value": "8880",
+                                            "description": "",
+                                            "secure": false
+                                        }
+                                    ]
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                    "teamLabel": "WebSphere Team"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "devops25Cell01",
+                                "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01",
+                                "description": "WebSphere Application Server cell for profile Dmgr01",
+                                "parentName": "wasserver1.ajm.cloud",
+                                "inheritTeam": true,
+                                "roleName": "WebSphereCell",
+                                "roleProperties": {
+                                    "name": "WebSphereCell",
+                                    "properties": [
+                                        {
+                                            "name": "websphere.profilePath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/Dmgr01",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.commandPath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/Dmgr01\/bin\/",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.port",
+                                            "value": "8879",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell",
+                                            "value": "devops25Cell01",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.user",
+                                            "value": "wasadmin",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.password",
+                                            "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|5T+ND8I9OiPFpNeb9oHPwQ==|CpIy5A07mPbbVbybPN\/RVA==}",
+                                            "description": "",
+                                            "secure": true
+                                        },
+                                        {
+                                            "name": "websphere.host",
+                                            "value": "localhost",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.connType",
+                                            "value": "SOAP",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.enablebidi",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.cellregistered",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.shortname",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.biditextdirection",
+                                            "value": "LTR",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.celldiscoveryprotocol",
+                                            "value": "TCP",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.celltype",
+                                            "value": "DISTRIBUTED",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.discoveryaddressendpointname",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.multicastdiscoveryaddressendpointname",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.configurationtypes",
+                                            "description": "",
+                                            "secure": false
+                                        }
+                                    ]
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                    "teamLabel": "WebSphere Team"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [
+                                    {
+                                        "name": "Nodes",
+                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes",
+                                        "parentName": "devops25Cell01",
+                                        "inheritTeam": true,
+                                        "propSheet": {
+                                            "name": "custom",
+                                            "properties": []
+                                        },
+                                        "tags": [],
+                                        "teamMappings": [{
+                                            "resourceTypeId": "20000000000000000000000000000104",
+                                            "resourceTypeName": "Resource",
+                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                            "teamLabel": "WebSphere Team"
+                                        }],
+                                        "impersonationUseSudo": false,
+                                        "impersonationForce": false,
+                                        "prototype": false,
+                                        "children": [
+                                            {
+                                                "name": "devops25CellManager01",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01",
+                                                "parentName": "Nodes",
+                                                "inheritTeam": true,
+                                                "roleName": "WebSphereNode",
+                                                "roleProperties": {
+                                                    "name": "WebSphereNode",
+                                                    "properties": [
+                                                        {
+                                                            "name": "websphere.node.hostname",
+                                                            "value": "wasserver1.ajm.cloud",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node.profilename",
+                                                            "value": "Dmgr01",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node",
+                                                            "value": "devops25CellManager01",
+                                                            "description": "",
+                                                            "secure": false
+                                                        }
+                                                    ]
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": [
+                                                    {
+                                                        "name": "PBW-Cell",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/PBW-Cell",
+                                                        "description": "",
+                                                        "parentName": "devops25CellManager01",
+                                                        "inheritTeam": true,
+                                                        "roleName": "PBW-Cell",
+                                                        "roleProperties": {
+                                                            "name": "PBW-Cell",
+                                                            "properties": [{
+                                                                "name": "DEFAULTHOSTVIRTUALHOSTALIASES",
+                                                                "value": "*->9080\\n*->80\\n*->9443\\n*->5060\\n*->5061\\n*->443",
+                                                                "description": "",
+                                                                "secure": false
+                                                            }]
+                                                        },
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "name": "Portal Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/Portal Servers",
+                                                        "parentName": "devops25CellManager01",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "name": "Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/Servers",
+                                                        "parentName": "devops25CellManager01",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": [{
+                                                            "name": "dmgr",
+                                                            "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/Servers\/dmgr",
+                                                            "parentName": "Servers",
+                                                            "inheritTeam": true,
+                                                            "roleName": "WebSphereServer",
+                                                            "roleProperties": {
+                                                                "name": "WebSphereServer",
+                                                                "properties": [{
+                                                                    "name": "websphere.server",
+                                                                    "value": "dmgr",
+                                                                    "description": "",
+                                                                    "secure": false
+                                                                }]
+                                                            },
+                                                            "propSheet": {
+                                                                "name": "custom",
+                                                                "properties": []
+                                                            },
+                                                            "tags": [],
+                                                            "teamMappings": [{
+                                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                                "resourceTypeName": "Resource",
+                                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                "teamLabel": "WebSphere Team"
+                                                            }],
+                                                            "impersonationUseSudo": false,
+                                                            "impersonationForce": false,
+                                                            "prototype": false,
+                                                            "children": []
+                                                        }]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "devops25Node01",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01",
+                                                "parentName": "Nodes",
+                                                "inheritTeam": true,
+                                                "roleName": "WebSphereNode",
+                                                "roleProperties": {
+                                                    "name": "WebSphereNode",
+                                                    "properties": [
+                                                        {
+                                                            "name": "websphere.node.hostname",
+                                                            "value": "wasserver1.ajm.cloud",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node.profilename",
+                                                            "value": "AppSrv01",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node",
+                                                            "value": "devops25Node01",
+                                                            "description": "",
+                                                            "secure": false
+                                                        }
+                                                    ]
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": [
+                                                    {
+                                                        "name": "Portal Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Portal Servers",
+                                                        "parentName": "devops25Node01",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "name": "Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Servers",
+                                                        "parentName": "devops25Node01",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": [
+                                                            {
+                                                                "name": "DevServer1",
+                                                                "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Servers\/DevServer1",
+                                                                "parentName": "Servers",
+                                                                "inheritTeam": true,
+                                                                "roleName": "WebSphereServer",
+                                                                "roleProperties": {
+                                                                    "name": "WebSphereServer",
+                                                                    "properties": [{
+                                                                        "name": "websphere.server",
+                                                                        "value": "DevServer1",
+                                                                        "description": "",
+                                                                        "secure": false
+                                                                    }]
+                                                                },
+                                                                "propSheet": {
+                                                                    "name": "custom",
+                                                                    "properties": []
+                                                                },
+                                                                "tags": [],
+                                                                "teamMappings": [{
+                                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                                    "resourceTypeName": "Resource",
+                                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                    "teamLabel": "WebSphere Team"
+                                                                }],
+                                                                "impersonationUseSudo": false,
+                                                                "impersonationForce": false,
+                                                                "prototype": false,
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "name": "nodeagent",
+                                                                "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Servers\/nodeagent",
+                                                                "parentName": "Servers",
+                                                                "inheritTeam": true,
+                                                                "roleName": "WebSphereServer",
+                                                                "roleProperties": {
+                                                                    "name": "WebSphereServer",
+                                                                    "properties": [{
+                                                                        "name": "websphere.server",
+                                                                        "value": "nodeagent",
+                                                                        "description": "",
+                                                                        "secure": false
+                                                                    }]
+                                                                },
+                                                                "propSheet": {
+                                                                    "name": "custom",
+                                                                    "properties": []
+                                                                },
+                                                                "tags": [],
+                                                                "teamMappings": [{
+                                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                                    "resourceTypeName": "Resource",
+                                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                    "teamLabel": "WebSphere Team"
+                                                                }],
+                                                                "impersonationUseSudo": false,
+                                                                "impersonationForce": false,
+                                                                "prototype": false,
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ServerClusters",
+                                        "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters",
+                                        "parentName": "devops25Cell01",
+                                        "inheritTeam": true,
+                                        "propSheet": {
+                                            "name": "custom",
+                                            "properties": []
+                                        },
+                                        "tags": [],
+                                        "teamMappings": [{
+                                            "resourceTypeId": "20000000000000000000000000000104",
+                                            "resourceTypeName": "Resource",
+                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                            "teamLabel": "WebSphere Team"
+                                        }],
+                                        "impersonationUseSudo": false,
+                                        "impersonationForce": false,
+                                        "prototype": false,
+                                        "children": [{
+                                            "name": "DevCluster1",
+                                            "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1",
+                                            "parentName": "ServerClusters",
+                                            "inheritTeam": true,
+                                            "roleName": "WebSphereCluster",
+                                            "roleProperties": {
+                                                "name": "WebSphereCluster",
+                                                "properties": [{
+                                                    "name": "websphere.cluster",
+                                                    "value": "DevCluster1",
+                                                    "description": "",
+                                                    "secure": false
+                                                }]
+                                            },
+                                            "propSheet": {
+                                                "name": "custom",
+                                                "properties": []
+                                            },
+                                            "tags": [],
+                                            "teamMappings": [{
+                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                "resourceTypeName": "Resource",
+                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                "teamLabel": "WebSphere Team"
+                                            }],
+                                            "impersonationUseSudo": false,
+                                            "impersonationForce": false,
+                                            "prototype": false,
+                                            "children": [
+                                                {
+                                                    "name": "Online-Botanical-APP",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/Online-Botanical-APP",
+                                                    "description": "",
+                                                    "parentName": "DevCluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "Online-Botanical-APP",
+                                                    "roleProperties": {
+                                                        "name": "Online-Botanical-APP",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "Online-Botanical-SmokeTest",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/Online-Botanical-SmokeTest",
+                                                    "description": "",
+                                                    "parentName": "DevCluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "Online-Botanical-SmokeTest",
+                                                    "roleProperties": {
+                                                        "name": "Online-Botanical-SmokeTest",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PBW-Cluster",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PBW-Cluster",
+                                                    "description": "",
+                                                    "parentName": "DevCluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PBW-Cluster",
+                                                    "roleProperties": {
+                                                        "name": "PBW-Cluster",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PBW-EAR",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PBW-EAR",
+                                                    "description": "",
+                                                    "parentName": "DevCluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PBW-EAR",
+                                                    "roleProperties": {
+                                                        "name": "PBW-EAR",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PBW-SmokeTest",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PBW-SmokeTest",
+                                                    "description": "",
+                                                    "parentName": "DevCluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PBW-SmokeTest",
+                                                    "roleProperties": {
+                                                        "name": "PBW-SmokeTest",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PerfServletApp-EAR",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/DEV\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PerfServletApp-EAR",
+                                                    "description": "",
+                                                    "parentName": "DevCluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PerfServletApp-EAR",
+                                                    "roleProperties": {
+                                                        "name": "PerfServletApp-EAR",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                }
+                                            ]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "PerfServletApp-EAR"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/WebSphere\/PlantsByWebSphere",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/WebSphere\/PlantsByWebSphere\/QA",
+                    "description": "",
+                    "parentName": "PlantsByWebSphere",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": [{
+                            "name": "app-url",
+                            "value": "http:\/\/67.228.223.183:9080\/PlantsByWebSphere\/",
+                            "description": "",
+                            "secure": false
+                        }]
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/WebSphere\/PlantsByWebSphere",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/WebSphere\/PlantsByWebSphere\/QA",
+                    "description": "",
+                    "parentName": "PlantsByWebSphere",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": [{
+                            "name": "app-url",
+                            "value": "http:\/\/67.228.223.183:9080\/PlantsByWebSphere\/",
+                            "description": "",
+                            "secure": false
+                        }]
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver01.Andy-Moynahan-s-Account.cloud",
+                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver01.Andy-Moynahan-s-Account.cloud",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                            "teamLabel": "WebSphere Team"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "WebSphereCell - AppSrv-QA",
+                                "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/WebSphereCell - AppSrv-QA",
+                                "description": "WebSphere Application Server cell for profile AppSrv-QA",
+                                "parentName": "virtualserver01.Andy-Moynahan-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "WebSphereCell",
+                                "roleProperties": {
+                                    "name": "WebSphereCell",
+                                    "properties": [
+                                        {
+                                            "name": "websphere.profilePath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/AppSrv-QA",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.commandPath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/AppSrv-QA\/bin\/",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.port",
+                                            "value": "8880",
+                                            "description": "",
+                                            "secure": false
+                                        }
+                                    ]
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                    "teamLabel": "WebSphere Team"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "devops25Cell-QA",
+                                "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA",
+                                "description": "WebSphere Application Server cell for profile Dmgr-QA",
+                                "parentName": "virtualserver01.Andy-Moynahan-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "WebSphereCell",
+                                "roleProperties": {
+                                    "name": "WebSphereCell",
+                                    "properties": [
+                                        {
+                                            "name": "websphere.profilePath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/Dmgr-QA",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.commandPath",
+                                            "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/Dmgr-QA\/bin\/",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.port",
+                                            "value": "8879",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell",
+                                            "value": "devops25Cell-QA",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.user",
+                                            "value": "wasadmin",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.password",
+                                            "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|8eAN2aSNafrPviHG7XIDpA==|C6cVPku+ZVw6lUyr5h8n0Q==}",
+                                            "description": "",
+                                            "secure": true
+                                        },
+                                        {
+                                            "name": "websphere.host",
+                                            "value": "localhost",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.connType",
+                                            "value": "SOAP",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.enablebidi",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.cellregistered",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.shortname",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.biditextdirection",
+                                            "value": "LTR",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.celldiscoveryprotocol",
+                                            "value": "TCP",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.celltype",
+                                            "value": "DISTRIBUTED",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.discoveryaddressendpointname",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.multicastdiscoveryaddressendpointname",
+                                            "description": "",
+                                            "secure": false
+                                        },
+                                        {
+                                            "name": "websphere.cell.configurationtypes",
+                                            "description": "",
+                                            "secure": false
+                                        }
+                                    ]
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                    "teamLabel": "WebSphere Team"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [
+                                    {
+                                        "name": "Nodes",
+                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes",
+                                        "parentName": "devops25Cell-QA",
+                                        "inheritTeam": true,
+                                        "propSheet": {
+                                            "name": "custom",
+                                            "properties": []
+                                        },
+                                        "tags": [],
+                                        "teamMappings": [{
+                                            "resourceTypeId": "20000000000000000000000000000104",
+                                            "resourceTypeName": "Resource",
+                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                            "teamLabel": "WebSphere Team"
+                                        }],
+                                        "impersonationUseSudo": false,
+                                        "impersonationForce": false,
+                                        "prototype": false,
+                                        "children": [
+                                            {
+                                                "name": "devops25CellManager-QA",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25CellManager-QA",
+                                                "parentName": "Nodes",
+                                                "inheritTeam": true,
+                                                "roleName": "WebSphereNode",
+                                                "roleProperties": {
+                                                    "name": "WebSphereNode",
+                                                    "properties": [
+                                                        {
+                                                            "name": "websphere.node.hostname",
+                                                            "value": "virtualserver01.Andy-Moynahan-s-Account.cloud",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node.profilename",
+                                                            "value": "Dmgr-QA",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node",
+                                                            "value": "devops25CellManager-QA",
+                                                            "description": "",
+                                                            "secure": false
+                                                        }
+                                                    ]
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": [
+                                                    {
+                                                        "name": "PBW-Cell",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25CellManager-QA\/PBW-Cell",
+                                                        "description": "",
+                                                        "parentName": "devops25CellManager-QA",
+                                                        "inheritTeam": true,
+                                                        "roleName": "PBW-Cell",
+                                                        "roleProperties": {
+                                                            "name": "PBW-Cell",
+                                                            "properties": [{
+                                                                "name": "DEFAULTHOSTVIRTUALHOSTALIASES",
+                                                                "value": "*->9080\\n*->80\\n*->9443\\n*->5060\\n*->5061\\n*->443",
+                                                                "description": "",
+                                                                "secure": false
+                                                            }]
+                                                        },
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "name": "Portal Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25CellManager-QA\/Portal Servers",
+                                                        "parentName": "devops25CellManager-QA",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "name": "Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25CellManager-QA\/Servers",
+                                                        "parentName": "devops25CellManager-QA",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": [{
+                                                            "name": "dmgr",
+                                                            "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25CellManager-QA\/Servers\/dmgr",
+                                                            "parentName": "Servers",
+                                                            "inheritTeam": true,
+                                                            "roleName": "WebSphereServer",
+                                                            "roleProperties": {
+                                                                "name": "WebSphereServer",
+                                                                "properties": [{
+                                                                    "name": "websphere.server",
+                                                                    "value": "dmgr",
+                                                                    "description": "",
+                                                                    "secure": false
+                                                                }]
+                                                            },
+                                                            "propSheet": {
+                                                                "name": "custom",
+                                                                "properties": []
+                                                            },
+                                                            "tags": [],
+                                                            "teamMappings": [{
+                                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                                "resourceTypeName": "Resource",
+                                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                "teamLabel": "WebSphere Team"
+                                                            }],
+                                                            "impersonationUseSudo": false,
+                                                            "impersonationForce": false,
+                                                            "prototype": false,
+                                                            "children": []
+                                                        }]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "devops25Node-QA",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25Node-QA",
+                                                "parentName": "Nodes",
+                                                "inheritTeam": true,
+                                                "roleName": "WebSphereNode",
+                                                "roleProperties": {
+                                                    "name": "WebSphereNode",
+                                                    "properties": [
+                                                        {
+                                                            "name": "websphere.node.hostname",
+                                                            "value": "virtualserver01.Andy-Moynahan-s-Account.cloud",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node.profilename",
+                                                            "value": "AppSrv-QA",
+                                                            "description": "",
+                                                            "secure": false
+                                                        },
+                                                        {
+                                                            "name": "websphere.node",
+                                                            "value": "devops25Node-QA",
+                                                            "description": "",
+                                                            "secure": false
+                                                        }
+                                                    ]
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": [
+                                                    {
+                                                        "name": "Portal Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25Node-QA\/Portal Servers",
+                                                        "parentName": "devops25Node-QA",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "name": "Servers",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25Node-QA\/Servers",
+                                                        "parentName": "devops25Node-QA",
+                                                        "inheritTeam": true,
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": [
+                                                            {
+                                                                "name": "QAServer1",
+                                                                "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25Node-QA\/Servers\/QAServer1",
+                                                                "parentName": "Servers",
+                                                                "inheritTeam": true,
+                                                                "roleName": "WebSphereServer",
+                                                                "roleProperties": {
+                                                                    "name": "WebSphereServer",
+                                                                    "properties": [{
+                                                                        "name": "websphere.server",
+                                                                        "value": "QAServer1",
+                                                                        "description": "",
+                                                                        "secure": false
+                                                                    }]
+                                                                },
+                                                                "propSheet": {
+                                                                    "name": "custom",
+                                                                    "properties": []
+                                                                },
+                                                                "tags": [],
+                                                                "teamMappings": [{
+                                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                                    "resourceTypeName": "Resource",
+                                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                    "teamLabel": "WebSphere Team"
+                                                                }],
+                                                                "impersonationUseSudo": false,
+                                                                "impersonationForce": false,
+                                                                "prototype": false,
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "name": "nodeagent",
+                                                                "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/Nodes\/devops25Node-QA\/Servers\/nodeagent",
+                                                                "parentName": "Servers",
+                                                                "inheritTeam": true,
+                                                                "roleName": "WebSphereServer",
+                                                                "roleProperties": {
+                                                                    "name": "WebSphereServer",
+                                                                    "properties": [{
+                                                                        "name": "websphere.server",
+                                                                        "value": "nodeagent",
+                                                                        "description": "",
+                                                                        "secure": false
+                                                                    }]
+                                                                },
+                                                                "propSheet": {
+                                                                    "name": "custom",
+                                                                    "properties": []
+                                                                },
+                                                                "tags": [],
+                                                                "teamMappings": [{
+                                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                                    "resourceTypeName": "Resource",
+                                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                    "teamLabel": "WebSphere Team"
+                                                                }],
+                                                                "impersonationUseSudo": false,
+                                                                "impersonationForce": false,
+                                                                "prototype": false,
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ServerClusters",
+                                        "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters",
+                                        "parentName": "devops25Cell-QA",
+                                        "inheritTeam": true,
+                                        "propSheet": {
+                                            "name": "custom",
+                                            "properties": []
+                                        },
+                                        "tags": [],
+                                        "teamMappings": [{
+                                            "resourceTypeId": "20000000000000000000000000000104",
+                                            "resourceTypeName": "Resource",
+                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                            "teamLabel": "WebSphere Team"
+                                        }],
+                                        "impersonationUseSudo": false,
+                                        "impersonationForce": false,
+                                        "prototype": false,
+                                        "children": [{
+                                            "name": "QACluster1",
+                                            "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1",
+                                            "parentName": "ServerClusters",
+                                            "inheritTeam": true,
+                                            "roleName": "WebSphereCluster",
+                                            "roleProperties": {
+                                                "name": "WebSphereCluster",
+                                                "properties": [{
+                                                    "name": "websphere.cluster",
+                                                    "value": "QACluster1",
+                                                    "description": "",
+                                                    "secure": false
+                                                }]
+                                            },
+                                            "propSheet": {
+                                                "name": "custom",
+                                                "properties": []
+                                            },
+                                            "tags": [],
+                                            "teamMappings": [{
+                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                "resourceTypeName": "Resource",
+                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                "teamLabel": "WebSphere Team"
+                                            }],
+                                            "impersonationUseSudo": false,
+                                            "impersonationForce": false,
+                                            "prototype": false,
+                                            "children": [
+                                                {
+                                                    "name": "Online-Botanical-APP",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1\/Online-Botanical-APP",
+                                                    "description": "",
+                                                    "parentName": "QACluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "Online-Botanical-APP",
+                                                    "roleProperties": {
+                                                        "name": "Online-Botanical-APP",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "Online-Botanical-SmokeTest",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1\/Online-Botanical-SmokeTest",
+                                                    "description": "",
+                                                    "parentName": "QACluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "Online-Botanical-SmokeTest",
+                                                    "roleProperties": {
+                                                        "name": "Online-Botanical-SmokeTest",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PBW-Cluster",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1\/PBW-Cluster",
+                                                    "description": "",
+                                                    "parentName": "QACluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PBW-Cluster",
+                                                    "roleProperties": {
+                                                        "name": "PBW-Cluster",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PBW-EAR",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1\/PBW-EAR",
+                                                    "description": "",
+                                                    "parentName": "QACluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PBW-EAR",
+                                                    "roleProperties": {
+                                                        "name": "PBW-EAR",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PBW-SmokeTest",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1\/PBW-SmokeTest",
+                                                    "description": "",
+                                                    "parentName": "QACluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PBW-SmokeTest",
+                                                    "roleProperties": {
+                                                        "name": "PBW-SmokeTest",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PerfServletApp-EAR",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/QA\/virtualserver01.Andy-Moynahan-s-Account.cloud\/devops25Cell-QA\/ServerClusters\/QACluster1\/PerfServletApp-EAR",
+                                                    "description": "",
+                                                    "parentName": "QACluster1",
+                                                    "inheritTeam": true,
+                                                    "roleName": "PerfServletApp-EAR",
+                                                    "roleProperties": {
+                                                        "name": "PerfServletApp-EAR",
+                                                        "properties": []
+                                                    },
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                }
+                                            ]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "PerfServletApp-EAR"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team",
+                "resourceRoleId": "170abd23-4a5e-8105-bc2a-f2e07117a1f2",
+                "resourceRoleLabel": "Test Environment"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PERF",
+            "description": "",
+            "color": "#F389AF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "PerfServletApp-EAR"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue",
+                "tree": {
+                    "name": "wasserver1.ajm.cloud",
+                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud",
+                    "description": "",
+                    "parentName": "Blue",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "wasserver1.ajm.cloud",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue",
+                "tree": {
+                    "name": "wasserver1.ajm.cloud",
+                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud",
+                    "description": "",
+                    "parentName": "Blue",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "wasserver1.ajm.cloud",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "WebSphereCell - AppSrv01",
+                            "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/WebSphereCell - AppSrv01",
+                            "description": "WebSphere Application Server cell for profile AppSrv01",
+                            "parentName": "wasserver1.ajm.cloud",
+                            "inheritTeam": true,
+                            "roleName": "WebSphereCell",
+                            "roleProperties": {
+                                "name": "WebSphereCell",
+                                "properties": [
+                                    {
+                                        "name": "websphere.profilePath",
+                                        "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/AppSrv01",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.commandPath",
+                                        "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/AppSrv01\/bin\/",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.port",
+                                        "value": "8880",
+                                        "description": "",
+                                        "secure": false
+                                    }
+                                ]
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                "teamLabel": "WebSphere Team"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        },
+                        {
+                            "name": "devops25Cell01",
+                            "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01",
+                            "description": "WebSphere Application Server cell for profile Dmgr01",
+                            "parentName": "wasserver1.ajm.cloud",
+                            "inheritTeam": true,
+                            "roleName": "WebSphereCell",
+                            "roleProperties": {
+                                "name": "WebSphereCell",
+                                "properties": [
+                                    {
+                                        "name": "websphere.profilePath",
+                                        "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/Dmgr01",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.commandPath",
+                                        "value": "\/opt\/IBM\/WebSphere\/AppServer\/profiles\/Dmgr01\/bin\/",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.port",
+                                        "value": "8879",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell",
+                                        "value": "devops25Cell01",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.user",
+                                        "value": "wasadmin",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.password",
+                                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|x4GJ6TItE\/8hA+WMyhlz5A==|pWw\/niqwLYiXnT86y9LD6g==}",
+                                        "description": "",
+                                        "secure": true
+                                    },
+                                    {
+                                        "name": "websphere.host",
+                                        "value": "localhost",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.connType",
+                                        "value": "SOAP",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.enablebidi",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.cellregistered",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.shortname",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.biditextdirection",
+                                        "value": "LTR",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.celldiscoveryprotocol",
+                                        "value": "TCP",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.celltype",
+                                        "value": "DISTRIBUTED",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.discoveryaddressendpointname",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.multicastdiscoveryaddressendpointname",
+                                        "description": "",
+                                        "secure": false
+                                    },
+                                    {
+                                        "name": "websphere.cell.configurationtypes",
+                                        "description": "",
+                                        "secure": false
+                                    }
+                                ]
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                "teamLabel": "WebSphere Team"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [
+                                {
+                                    "name": "Nodes",
+                                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes",
+                                    "parentName": "devops25Cell01",
+                                    "inheritTeam": true,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [{
+                                        "resourceTypeId": "20000000000000000000000000000104",
+                                        "resourceTypeName": "Resource",
+                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                        "teamLabel": "WebSphere Team"
+                                    }],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": [
+                                        {
+                                            "name": "devops25CellManager01",
+                                            "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01",
+                                            "parentName": "Nodes",
+                                            "inheritTeam": true,
+                                            "roleName": "WebSphereNode",
+                                            "roleProperties": {
+                                                "name": "WebSphereNode",
+                                                "properties": [
+                                                    {
+                                                        "name": "websphere.node.hostname",
+                                                        "value": "wasserver1.ajm.cloud",
+                                                        "description": "",
+                                                        "secure": false
+                                                    },
+                                                    {
+                                                        "name": "websphere.node.profilename",
+                                                        "value": "Dmgr01",
+                                                        "description": "",
+                                                        "secure": false
+                                                    },
+                                                    {
+                                                        "name": "websphere.node",
+                                                        "value": "devops25CellManager01",
+                                                        "description": "",
+                                                        "secure": false
+                                                    }
+                                                ]
+                                            },
+                                            "propSheet": {
+                                                "name": "custom",
+                                                "properties": []
+                                            },
+                                            "tags": [],
+                                            "teamMappings": [{
+                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                "resourceTypeName": "Resource",
+                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                "teamLabel": "WebSphere Team"
+                                            }],
+                                            "impersonationUseSudo": false,
+                                            "impersonationForce": false,
+                                            "prototype": false,
+                                            "children": [
+                                                {
+                                                    "name": "Portal Servers",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/Portal Servers",
+                                                    "parentName": "devops25CellManager01",
+                                                    "inheritTeam": true,
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "Servers",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/Servers",
+                                                    "parentName": "devops25CellManager01",
+                                                    "inheritTeam": true,
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": [{
+                                                        "name": "dmgr",
+                                                        "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25CellManager01\/Servers\/dmgr",
+                                                        "parentName": "Servers",
+                                                        "inheritTeam": true,
+                                                        "roleName": "WebSphereServer",
+                                                        "roleProperties": {
+                                                            "name": "WebSphereServer",
+                                                            "properties": [{
+                                                                "name": "websphere.server",
+                                                                "value": "dmgr",
+                                                                "description": "",
+                                                                "secure": false
+                                                            }]
+                                                        },
+                                                        "propSheet": {
+                                                            "name": "custom",
+                                                            "properties": []
+                                                        },
+                                                        "tags": [],
+                                                        "teamMappings": [{
+                                                            "resourceTypeId": "20000000000000000000000000000104",
+                                                            "resourceTypeName": "Resource",
+                                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                            "teamLabel": "WebSphere Team"
+                                                        }],
+                                                        "impersonationUseSudo": false,
+                                                        "impersonationForce": false,
+                                                        "prototype": false,
+                                                        "children": []
+                                                    }]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "devops25Node01",
+                                            "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01",
+                                            "parentName": "Nodes",
+                                            "inheritTeam": true,
+                                            "roleName": "WebSphereNode",
+                                            "roleProperties": {
+                                                "name": "WebSphereNode",
+                                                "properties": [
+                                                    {
+                                                        "name": "websphere.node.hostname",
+                                                        "value": "wasserver1.ajm.cloud",
+                                                        "description": "",
+                                                        "secure": false
+                                                    },
+                                                    {
+                                                        "name": "websphere.node.profilename",
+                                                        "value": "AppSrv01",
+                                                        "description": "",
+                                                        "secure": false
+                                                    },
+                                                    {
+                                                        "name": "websphere.node",
+                                                        "value": "devops25Node01",
+                                                        "description": "",
+                                                        "secure": false
+                                                    }
+                                                ]
+                                            },
+                                            "propSheet": {
+                                                "name": "custom",
+                                                "properties": []
+                                            },
+                                            "tags": [],
+                                            "teamMappings": [{
+                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                "resourceTypeName": "Resource",
+                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                "teamLabel": "WebSphere Team"
+                                            }],
+                                            "impersonationUseSudo": false,
+                                            "impersonationForce": false,
+                                            "prototype": false,
+                                            "children": [
+                                                {
+                                                    "name": "Portal Servers",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Portal Servers",
+                                                    "parentName": "devops25Node01",
+                                                    "inheritTeam": true,
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "Servers",
+                                                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Servers",
+                                                    "parentName": "devops25Node01",
+                                                    "inheritTeam": true,
+                                                    "propSheet": {
+                                                        "name": "custom",
+                                                        "properties": []
+                                                    },
+                                                    "tags": [],
+                                                    "teamMappings": [{
+                                                        "resourceTypeId": "20000000000000000000000000000104",
+                                                        "resourceTypeName": "Resource",
+                                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                        "teamLabel": "WebSphere Team"
+                                                    }],
+                                                    "impersonationUseSudo": false,
+                                                    "impersonationForce": false,
+                                                    "prototype": false,
+                                                    "children": [
+                                                        {
+                                                            "name": "DevServer1",
+                                                            "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Servers\/DevServer1",
+                                                            "parentName": "Servers",
+                                                            "inheritTeam": true,
+                                                            "roleName": "WebSphereServer",
+                                                            "roleProperties": {
+                                                                "name": "WebSphereServer",
+                                                                "properties": [{
+                                                                    "name": "websphere.server",
+                                                                    "value": "DevServer1",
+                                                                    "description": "",
+                                                                    "secure": false
+                                                                }]
+                                                            },
+                                                            "propSheet": {
+                                                                "name": "custom",
+                                                                "properties": []
+                                                            },
+                                                            "tags": [],
+                                                            "teamMappings": [{
+                                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                                "resourceTypeName": "Resource",
+                                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                "teamLabel": "WebSphere Team"
+                                                            }],
+                                                            "impersonationUseSudo": false,
+                                                            "impersonationForce": false,
+                                                            "prototype": false,
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "name": "nodeagent",
+                                                            "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/Nodes\/devops25Node01\/Servers\/nodeagent",
+                                                            "parentName": "Servers",
+                                                            "inheritTeam": true,
+                                                            "roleName": "WebSphereServer",
+                                                            "roleProperties": {
+                                                                "name": "WebSphereServer",
+                                                                "properties": [{
+                                                                    "name": "websphere.server",
+                                                                    "value": "nodeagent",
+                                                                    "description": "",
+                                                                    "secure": false
+                                                                }]
+                                                            },
+                                                            "propSheet": {
+                                                                "name": "custom",
+                                                                "properties": []
+                                                            },
+                                                            "tags": [],
+                                                            "teamMappings": [{
+                                                                "resourceTypeId": "20000000000000000000000000000104",
+                                                                "resourceTypeName": "Resource",
+                                                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                                "teamLabel": "WebSphere Team"
+                                                            }],
+                                                            "impersonationUseSudo": false,
+                                                            "impersonationForce": false,
+                                                            "prototype": false,
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "ServerClusters",
+                                    "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters",
+                                    "parentName": "devops25Cell01",
+                                    "inheritTeam": true,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [{
+                                        "resourceTypeId": "20000000000000000000000000000104",
+                                        "resourceTypeName": "Resource",
+                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                        "teamLabel": "WebSphere Team"
+                                    }],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": [{
+                                        "name": "DevCluster1",
+                                        "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1",
+                                        "parentName": "ServerClusters",
+                                        "inheritTeam": true,
+                                        "roleName": "WebSphereCluster",
+                                        "roleProperties": {
+                                            "name": "WebSphereCluster",
+                                            "properties": [{
+                                                "name": "websphere.cluster",
+                                                "value": "DevCluster1",
+                                                "description": "",
+                                                "secure": false
+                                            }]
+                                        },
+                                        "propSheet": {
+                                            "name": "custom",
+                                            "properties": []
+                                        },
+                                        "tags": [],
+                                        "teamMappings": [{
+                                            "resourceTypeId": "20000000000000000000000000000104",
+                                            "resourceTypeName": "Resource",
+                                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                            "teamLabel": "WebSphere Team"
+                                        }],
+                                        "impersonationUseSudo": false,
+                                        "impersonationForce": false,
+                                        "prototype": false,
+                                        "children": [
+                                            {
+                                                "name": "Online-Botanical-APP",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/Online-Botanical-APP",
+                                                "description": "",
+                                                "parentName": "DevCluster1",
+                                                "inheritTeam": true,
+                                                "roleName": "Online-Botanical-APP",
+                                                "roleProperties": {
+                                                    "name": "Online-Botanical-APP",
+                                                    "properties": []
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [{
+                                                    "id": "1708c9de-f7b9-2df3-979e-e2401cc7587d",
+                                                    "name": "Blue",
+                                                    "color": "#00B2EF",
+                                                    "description": "",
+                                                    "objectType": "Resource"
+                                                }],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": []
+                                            },
+                                            {
+                                                "name": "Online-Botanical-SmokeTest",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/Online-Botanical-SmokeTest",
+                                                "description": "",
+                                                "parentName": "DevCluster1",
+                                                "inheritTeam": true,
+                                                "roleName": "Online-Botanical-SmokeTest",
+                                                "roleProperties": {
+                                                    "name": "Online-Botanical-SmokeTest",
+                                                    "properties": []
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [{
+                                                    "id": "1708c9de-f7b9-2df3-979e-e2401cc7587d",
+                                                    "name": "Blue",
+                                                    "color": "#00B2EF",
+                                                    "description": "",
+                                                    "objectType": "Resource"
+                                                }],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": []
+                                            },
+                                            {
+                                                "name": "PBW-EAR",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PBW-EAR",
+                                                "description": "",
+                                                "parentName": "DevCluster1",
+                                                "inheritTeam": true,
+                                                "roleName": "PBW-EAR",
+                                                "roleProperties": {
+                                                    "name": "PBW-EAR",
+                                                    "properties": []
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [{
+                                                    "id": "1708c9de-f7b9-2df3-979e-e2401cc7587d",
+                                                    "name": "Blue",
+                                                    "color": "#00B2EF",
+                                                    "description": "",
+                                                    "objectType": "Resource"
+                                                }],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": []
+                                            },
+                                            {
+                                                "name": "PBW-SmokeTest",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PBW-SmokeTest",
+                                                "description": "",
+                                                "parentName": "DevCluster1",
+                                                "inheritTeam": true,
+                                                "roleName": "PBW-SmokeTest",
+                                                "roleProperties": {
+                                                    "name": "PBW-SmokeTest",
+                                                    "properties": []
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": []
+                                            },
+                                            {
+                                                "name": "PerfServletApp-EAR",
+                                                "path": "\/WebSphere\/PlantsByWebSphere\/PROD-2\/Blue\/wasserver1.ajm.cloud\/devops25Cell01\/ServerClusters\/DevCluster1\/PerfServletApp-EAR",
+                                                "description": "",
+                                                "parentName": "DevCluster1",
+                                                "inheritTeam": true,
+                                                "roleName": "PerfServletApp-EAR",
+                                                "roleProperties": {
+                                                    "name": "PerfServletApp-EAR",
+                                                    "properties": []
+                                                },
+                                                "propSheet": {
+                                                    "name": "custom",
+                                                    "properties": []
+                                                },
+                                                "tags": [],
+                                                "teamMappings": [{
+                                                    "resourceTypeId": "20000000000000000000000000000104",
+                                                    "resourceTypeName": "Resource",
+                                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                                    "teamLabel": "WebSphere Team"
+                                                }],
+                                                "impersonationUseSudo": false,
+                                                "impersonationForce": false,
+                                                "prototype": false,
+                                                "children": []
+                                            }
+                                        ]
+                                    }]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "PerfServletApp-EAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-EAR",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "b41ac8a1f41b14b1e8f9620f911b62",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "7c29eddb9fc34713bcd08ea6883743",
+                    "from": "b41ac8a1f41b14b1e8f9620f911b62",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "b41ac8a1f41b14b1e8f9620f911b62",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 280
+                },
+                {
+                    "name": "7c29eddb9fc34713bcd08ea6883743",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "c4f80436-2e4f-4749-8aed-b436c92c8b25",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "7c29eddb9fc34713bcd08ea6883743",
+                    "children": []
+                },
+                {
+                    "componentName": "PerfServletApp-EAR",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "b41ac8a1f41b14b1e8f9620f911b62",
+                    "children": [{
+                        "componentName": "PerfServletApp-EAR",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "d1d7efd4-87d6-4559-935b-6d3f4fe09cdd",
+                        "children": [{
+                            "componentProcessName": "Deploy EAR",
+                            "componentName": "PerfServletApp-EAR",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"PerfServletApp-EAR\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [{
+        "resourceTypeId": "20000000000000000000000000000100",
+        "resourceTypeName": "Application",
+        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+        "teamLabel": "WebSphere Team"
+    }],
+    "tags": [{
+        "id": "17082286-6893-dd4f-3dc6-411073d8e0f4",
+        "name": "WebSphere",
+        "color": "#7F1C7D",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

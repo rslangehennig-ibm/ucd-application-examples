@@ -1,0 +1,950 @@
+{
+    "name": "API-Contacts",
+    "description": "An IBM API Connect example deployment",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "API-Contacts-RTAS",
+            "description": "",
+            "created": 1605294065718,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Start Rational Test Automation Server (RTAS)",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/175c2fb8-847e-9214-439a-e7bc6104899b\/processes\/175c2fbf-c1bb-050c-0073-a938d15373cb",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Run IBM Rational Test Automation Server test",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d61dc6afce1ee7d652f7d0fcea355d",
+                            "from": "Run IBM Rational Test Automation Server test",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "d61dc6afce1ee7d652f7d0fcea355d",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Run IBM Rational Test Automation Server test",
+                            "x": -155,
+                            "y": 230,
+                            "h": 70,
+                            "w": 420
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "e58835f9-c1c8-4093-b123-e95ef16e31f5",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d61dc6afce1ee7d652f7d0fcea355d",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 1,
+                            "commandName": "Run IBM Rational Test Automation Server test",
+                            "pluginName": "IBM Rational Test Automation Server",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "otsUrl": "https:\/\/169.48.27.115:3000\/",
+                                "offlineToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|0bNyuyoMT4uQW\/1EpkNuaQ==|YBiHWuh\/eNuf8f8Xw5quICUVpB0ZhPOuOG2W8NH1gXBR1c2rqzwWZXTh5EyNVi4yCrBOLzVMNBXLVlcdIAevIEJfJkKtBz6G9M9KAknGGTL1bdoPUm13xevurvlfvdTdg6hUsfOk\/k9pKq793GVEh34It4lXKf\/HcTQDRhtBRZHNp2Gp84wJu0L0HSSNl5gbXbt\/94ogAfQ2AMQSeukegz\/hSh1ww0CWmsqp80db7gQjdi3yB+V00Mi+ebwDB3HyrH74+j4GfFsWmXtK+4z0J+a1pHTddx9C9tt9GTHDaI\/uka\/42qbBArKDM4cZ4W3zjLRetQHLPqyGjSYLO2eXVJ0PUOwhepFh7STBbcffvIf6ObnVB\/F9OyVY\/poGY81jZyMQZClGJ3LITsWhWhVTjNia2TXDPoBoyW4xiAsprnrhN7g46h1H8x5s0NxZ7poNWNibsGvjFRbdSiB7HuQ\/FmAzDIN\/lRQZlcts+RsiEjIKznodh0c1bPZBegHWVhUWPzc79GwV58ahzAlMfWUIKEoojhozV\/GfXunVKhgiqddtyxkcXfDFZffygR8aUHqMBQPmtOYUROzYGE3cXvWa\/tyPQi0+nNWGdHxvVRSW99fa7Hl\/PJ\/BX7N3ORaJgRl7O8MWyyS3XENb+X+XhrTx9jNuRpoeI3LhHXYsp20yZgvx+B3AUznvJmK0RtutmloJxjalTjtmymaFig\/XEA4ecOFRKUvZ1D8A+UbrgIFARC7gBO8vygxy68May8MrW09vm6bfTX9fP1wSDc41+MI1a17ARCpHeJPNK\/CRFoyxj2U6\/K3CMM10IOcu1iuwWcbZyY9z1MdQf8BggJKmbXry0Q==}",
+                                "filepath": "API\/Logical\/All.gts",
+                                "branchName": "master",
+                                "repoName": "https:\/\/github.com\/ibm-rtvs\/build-verify",
+                                "projName": "RTAS Build verification tests",
+                                "startDate": "",
+                                "datasets": "",
+                                "variables": "",
+                                "tags": "",
+                                "secretsCollectionName": "",
+                                "ritEnv": "local",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|K0pw56iCoxQ1Y3h1SUvlPw==|ZQmgxwi1YStmwQiAGXqRbw==}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run IBM Rational Test Automation Server test",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "API-Contacts-YAML",
+            "description": "",
+            "created": 1605043932534,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "Git",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": [
+                        {
+                            "name": "apic.server",
+                            "value": "apic-demo-mgmt-platform-api-cp4i-apic.jgrcp4iocp45-dcd557ed086a97d77c2297a53c025612-0000.tor01.containers.appdomain.cloud",
+                            "description": "The API Connect Server",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.username",
+                            "value": "rlange",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.password",
+                            "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|Bt6Dz+cZQ13ujDVeXb+ROg==|X0hRV4WvpSWORcXbtWebOw==}",
+                            "description": "",
+                            "secure": true
+                        },
+                        {
+                            "name": "apic.path",
+                            "value": "\/downloads\/api-connect\/apic",
+                            "description": "Path to the APIC command line client",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.realm",
+                            "value": "provider\/default-idp-2",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "jgr-org",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "GitComponentProperties",
+                    "properties": [
+                        {
+                            "name": "branch",
+                            "value": "main",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "username",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "password",
+                            "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|q87EgzLj5A9I\/yFlCa2CIw==|fvQCd3S1Q9SbHcOwWFSWZQ==}",
+                            "description": "",
+                            "secure": true
+                        },
+                        {
+                            "name": "watchTags",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "recursive",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "trustAllCerts",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "value": "**\/*",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "value": ".git\/*\n.git\/**\n.git\/refs\/*\n.git\/objects\/*\n.git\/logs\/*\n.git\/info\/*\n.git\/hooks\/*\n.git\nREADME.md",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "gitPath",
+                            "value": "git",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "repoUrl",
+                            "value": "https:\/\/github.com\/rslangehennig\/apiconnect-contacts.git",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy-Product",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/175b412c-d87c-3741-4e14-83725649412c\/processes\/175b417a-0ef3-a586-55d8-d12474583916",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Publish API Product Definitions",
+                            "from": "Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Login",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "7c2f87e96239e4445a382c5974de2e",
+                            "from": "Smoke Test API",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Smoke Test API",
+                            "from": "Publish API Product Definitions",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Login",
+                            "x": -30,
+                            "y": 250,
+                            "h": 70,
+                            "w": 170
+                        },
+                        {
+                            "name": "Smoke Test API",
+                            "x": -65,
+                            "y": 490,
+                            "h": 70,
+                            "w": 240
+                        },
+                        {
+                            "name": "Publish API Product Definitions",
+                            "x": -110,
+                            "y": 370,
+                            "h": 70,
+                            "w": 330
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 130,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "7c2f87e96239e4445a382c5974de2e",
+                            "x": -5,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "ddb5776d-18b7-4d50-a53c-e10b3122af44",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "7c2f87e96239e4445a382c5974de2e",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 32,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 7,
+                            "commandName": "Login",
+                            "pluginName": "IBM API Connect",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "server": "${p:component\/apic.server}",
+                                "username": "${p:apic.username}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|taSJpwZUxLeiyM1sjC52Ag==|bXp+MHsimVDJRytuBi17Bz4Yjp6sY+kEVBFmlpVK7pY=}",
+                                "realm": "${p?:apic.realm}",
+                                "apicPath": "${p?:component\/apic.path}",
+                                "loggerLevel": "INFO"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Login",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 7,
+                            "commandName": "Publish API Product Definitions",
+                            "pluginName": "IBM API Connect",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "server": "${p:component\/apic.server}",
+                                "organization": "${p:component\/apic.organization}",
+                                "catalog": "${p:component\/apic.catalog}",
+                                "definition": "${p:resource\/work.dir}\/API-Contacts-YAML\/contacts-product.yaml",
+                                "stage": "false",
+                                "space": "",
+                                "apicPath": "${p?:component\/apic.path}",
+                                "loggerLevel": "INFO"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Publish API Product Definitions",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 15,
+                            "commandName": "Send HTTP Call",
+                            "pluginName": "Web Utilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "https:\/\/apic-demo-gw-gateway-cp4i-apic.jgrcp4iocp45-dcd557ed086a97d77c2297a53c025612-0000.tor01.containers.appdomain.cloud\/jgr-org\/test\/jgrmqapi\/v1\/contacts",
+                                "method": "POST",
+                                "headers": "accept: application\/json\ncontent-type: application\/json",
+                                "data": "{\n  \"metadata\": {\n    \"code\": \"TEST\"\n  },\n  \"payload\": {\n    \"id\": \"5383331948527616\",\n    \"fname\": \"Olga\",\n    \"lname\": \"Romiti\",\n    \"email\": \"tal@be.lc\",\n    \"phone\": \"(962) 740-8275\",\n    \"company\": \"nofesewitusoriwu\",\n    \"comments\": \"nagzo\"\n  }\n}",
+                                "contentType": "*\/*",
+                                "acceptType": "*\/*",
+                                "untrustedSSL": "true",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|fDSJcOD7qPAwoItwlOwhuQ==|Dh74wAV4dODlYGrgt3N17Q==}",
+                                "outFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Smoke Test API",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [{
+        "name": "Test",
+        "description": "",
+        "color": "#FFCF01",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": []},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/CloudPak-for-Integrations\/API-Connect",
+            "tree": {
+                "name": "Test",
+                "path": "\/CloudPak-for-Integrations\/API-Connect\/Test",
+                "description": "",
+                "parentName": "API-Connect",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/CloudPak-for-Integrations\/API-Connect",
+            "tree": {
+                "name": "Test",
+                "path": "\/CloudPak-for-Integrations\/API-Connect\/Test",
+                "description": "",
+                "parentName": "API-Connect",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "virtualserver02",
+                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Test\/virtualserver02",
+                    "description": "",
+                    "parentName": "Test",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "virtualserver02",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "API-Contacts-RTAS",
+                            "path": "\/CloudPak-for-Integrations\/API-Connect\/Test\/virtualserver02\/API-Contacts-RTAS",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "API-Contacts-RTAS",
+                            "roleProperties": {
+                                "name": "API-Contacts-RTAS",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        },
+                        {
+                            "name": "API-Contacts-YAML",
+                            "path": "\/CloudPak-for-Integrations\/API-Connect\/Test\/virtualserver02\/API-Contacts-YAML",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "API-Contacts-YAML",
+                            "roleProperties": {
+                                "name": "API-Contacts-YAML",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }
+                    ]
+                }]
+            }
+        }],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "API-Contacts-RTAS"
+            },
+            {
+                "properties": [],
+                "componentName": "API-Contacts-YAML"
+            }
+        ],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [
+        {
+            "name": "Deploy",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "6575575a49b6d3a7c291c3ad0c9475",
+                        "from": "3afce35b38bf236c323350d6d42d34",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "3afce35b38bf236c323350d6d42d34",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "3afce35b38bf236c323350d6d42d34",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 280
+                    },
+                    {
+                        "name": "6575575a49b6d3a7c291c3ad0c9475",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "e511829d-5713-436e-a4df-2fadb73b7b3f",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "6575575a49b6d3a7c291c3ad0c9475",
+                        "children": []
+                    },
+                    {
+                        "componentName": "API-Contacts-YAML",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "3afce35b38bf236c323350d6d42d34",
+                        "children": [{
+                            "componentName": "API-Contacts-YAML",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "039f4bd2-02f9-4af2-b9d8-d330c2b0b943",
+                            "children": [{
+                                "componentProcessName": "Deploy-Product",
+                                "componentName": "API-Contacts-YAML",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"API-Contacts-YAML\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy_and_RunTests",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "ff2dcb39042d7d064122732fc9adf7",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a03c0c3001447030d6b8594c5aaa49",
+                        "from": "ff2dcb39042d7d064122732fc9adf7",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "4406501cf33ef2bb282bfd0867253b",
+                        "from": "a03c0c3001447030d6b8594c5aaa49",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "a03c0c3001447030d6b8594c5aaa49",
+                        "x": -165,
+                        "y": 350,
+                        "h": 80,
+                        "w": 440
+                    },
+                    {
+                        "name": "4406501cf33ef2bb282bfd0867253b",
+                        "x": -5,
+                        "y": 520,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "ff2dcb39042d7d064122732fc9adf7",
+                        "x": -85,
+                        "y": 180,
+                        "h": 70,
+                        "w": 280
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "9cae343f-4fb3-4fe4-8d84-321264991bb4",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "4406501cf33ef2bb282bfd0867253b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "API-Contacts-YAML",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "ff2dcb39042d7d064122732fc9adf7",
+                        "children": [{
+                            "componentName": "API-Contacts-YAML",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "a61a3582-e541-4cfa-b810-d0060585ffac",
+                            "children": [{
+                                "componentProcessName": "Deploy-Product",
+                                "componentName": "API-Contacts-YAML",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"API-Contacts-YAML\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "API-Contacts-RTAS",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a03c0c3001447030d6b8594c5aaa49",
+                        "children": [{
+                            "componentProcessName": "Start Rational Test Automation Server (RTAS)",
+                            "componentName": "API-Contacts-RTAS",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"API-Contacts-RTAS\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "RunTests",
+            "description": "This invokes Rational Test Automation Server (RTAS) to run tests",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "129fa829329e88da2c9e3515d1d5a8",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "6e051c716a20de203d218fbd76f67f",
+                        "from": "129fa829329e88da2c9e3515d1d5a8",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "129fa829329e88da2c9e3515d1d5a8",
+                        "x": -165,
+                        "y": 230,
+                        "h": 80,
+                        "w": 440
+                    },
+                    {
+                        "name": "6e051c716a20de203d218fbd76f67f",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "f0ef62fb-51e7-48e8-9c7a-e22396c3a426",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "6e051c716a20de203d218fbd76f67f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "API-Contacts-RTAS",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "129fa829329e88da2c9e3515d1d5a8",
+                        "children": [{
+                            "componentProcessName": "Start Rational Test Automation Server (RTAS)",
+                            "componentName": "API-Contacts-RTAS",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"API-Contacts-RTAS\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "175b4139-db94-01d4-7cb8-5a9c7e0a6164",
+        "name": "API Connect",
+        "color": "#00B2EF",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

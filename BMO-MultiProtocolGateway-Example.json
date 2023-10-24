@@ -1,0 +1,2573 @@
+{
+    "name": "BMO-MultiProtocolGateway-Example",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "BMO-AutoDP",
+            "description": "This component is used to initiate deployments",
+            "created": 1585756664591,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Download New Request File",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/17136767-31ec-2128-ce3d-7b2b4405eb34\/processes\/17138faa-25c0-0a70-a37f-735a3d062262",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "f327f11ffa6a9224d3fdd4c97e163d",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "f327f11ffa6a9224d3fdd4c97e163d",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 230,
+                                "h": 70,
+                                "w": 260
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "a8383147-e59d-4149-9bdf-50011d1dc129",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "f327f11ffa6a9224d3fdd4c97e163d",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/tmp\/bmo",
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Trigger-AutoDP",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/17136767-31ec-2128-ce3d-7b2b4405eb34\/processes\/1713679f-cefb-b6a1-d568-30cb45bf36f3",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "d2b9b5b796a1ee7fa6777a78a995fd",
+                                "from": "Run Application Process - Generic",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "RequestFile-GetTemplate",
+                                "from": "RequestFile-GetEnv",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "d2b9b5b796a1ee7fa6777a78a995fd",
+                                "from": "Run Application Process - PassThruMPG",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Application Process - Generic",
+                                "from": "Which Template Type?",
+                                "type": "VALUE",
+                                "value": "GenericMPG"
+                            },
+                            {
+                                "to": "Run Application Process - PassThruMPG",
+                                "from": "Which Template Type?",
+                                "type": "VALUE",
+                                "value": "PassThruMPG"
+                            },
+                            {
+                                "to": "RequestFile-GetFileName",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Which Template Type?",
+                                "from": "RequestFile-GetTemplate",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "RequestFile-GetEnv",
+                                "from": "RequestFile-GetFileName",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "d2b9b5b796a1ee7fa6777a78a995fd",
+                                "x": 14.388020833333371,
+                                "y": 1110,
+                                "h": 100,
+                                "w": 160
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -145,
+                                "y": 150,
+                                "h": 110,
+                                "w": 440
+                            },
+                            {
+                                "name": "Run Application Process - PassThruMPG",
+                                "x": -548.1119791666666,
+                                "y": 950,
+                                "h": 110,
+                                "w": 650
+                            },
+                            {
+                                "name": "Which Template Type?",
+                                "x": -324.5703125,
+                                "y": 790,
+                                "h": 110,
+                                "w": 830
+                            },
+                            {
+                                "name": "Run Application Process - Generic",
+                                "x": 131.88802083333337,
+                                "y": 950,
+                                "h": 110,
+                                "w": 560
+                            },
+                            {
+                                "name": "RequestFile-GetTemplate",
+                                "x": -135.71614583333337,
+                                "y": 630,
+                                "h": 110,
+                                "w": 440
+                            },
+                            {
+                                "name": "RequestFile-GetFileName",
+                                "x": -148.45052083333337,
+                                "y": 310,
+                                "h": 110,
+                                "w": 450
+                            },
+                            {
+                                "name": "RequestFile-GetEnv",
+                                "x": -105.3515625,
+                                "y": 470,
+                                "h": 110,
+                                "w": 370
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "75538422-bd2e-401c-8942-6d0a6c5821fe",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "d2b9b5b796a1ee7fa6777a78a995fd",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 80,
+                                "commandName": "Run Application Process",
+                                "pluginName": "UrbanCode Deploy Applications",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "application": "BMO-MultiProtocolGateway-Example",
+                                    "process": "Deploy-PassThruMPG-XML",
+                                    "environment": "${p:RequestFile-GetEnv\/TargetEnvironment}",
+                                    "snapshot": "",
+                                    "onlyChanged": "false",
+                                    "componentVersions": "BMO-AutoDP:latest",
+                                    "requestProperties": "Request-Filename:${p:RequestFile-GetFileName\/ReqFilename}",
+                                    "waitForProcess": "true",
+                                    "timeout": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Application Process - PassThruMPG",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "postProcessingScript": {
+                                    "id": "17136c72-9c5f-8517-4457-499a1fb7e7ce",
+                                    "name": "BMO-AutoDP",
+                                    "description": "This post processing script is used to get target environment for deployment",
+                                    "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nproperties.put('Exists', 'False');\n\nscanner.register(\"TargetDomain\", function(lineNumber, line) {\n    var envName = line.substring(line.lastIndexOf('=')+1).trim();\n    \/\/ The '=' is the symbol after which the environment name value starts.\n    properties.put(\"TargetEnvironment\", envName);\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}"
+                                },
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "cat *.req | grep TargetDomain",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "RequestFile-GetEnv",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "postProcessingScript": {
+                                    "id": "17136fff-51f1-99aa-2c18-83f1759ae870",
+                                    "name": "BMO-AUTODP-TEMPLATENAME",
+                                    "description": "",
+                                    "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nproperties.put('Exists', 'False');\n\nscanner.register(\"TemplateName\", function(lineNumber, line) {\n    var templateName = line.substring(line.lastIndexOf('=')+1).trim();\n    \/\/ The '=' is the symbol after which the template name value starts.\n    properties.put(\"TemplateName\", templateName);\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}"
+                                },
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "cat *.req | grep TemplateName",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "RequestFile-GetTemplate",
+                                "children": []
+                            },
+                            {
+                                "propertyName": "${p:RequestFile-GetTemplate\/TemplateName}",
+                                "type": "switch",
+                                "name": "Which Template Type?",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 80,
+                                "commandName": "Run Application Process",
+                                "pluginName": "UrbanCode Deploy Applications",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "application": "foo",
+                                    "process": "bar",
+                                    "environment": "bar",
+                                    "snapshot": "",
+                                    "onlyChanged": "false",
+                                    "componentVersions": "",
+                                    "requestProperties": "",
+                                    "waitForProcess": "true",
+                                    "timeout": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Application Process - Generic",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "postProcessingScript": {
+                                    "id": "17139108-df52-8e84-b053-9f930b036ad1",
+                                    "name": "BMO-AUTODP-REQFILENAME",
+                                    "description": "",
+                                    "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nproperties.put('Exists', 'False');\n\nscanner.register(\"Filename\", function(lineNumber, line) {\n    var filename = line.substring(line.lastIndexOf('=')+1).trim();\n    \/\/ The '=' is the symbol after which the template name value starts.\n    properties.put(\"ReqFilename\", filename);\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}\n"
+                                },
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "cat *.req | grep Filename",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "RequestFile-GetFileName",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "BMO-MPG-Generic",
+            "description": "",
+            "created": 1585578458218,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Deploy Simple Zip",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/1712bd73-c782-bdbd-5724-a36d944bad67\/processes\/171324d8-894b-b424-0aa7-1fa11c7812d7",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Import (Basic)",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Save Configuration",
+                                "from": "Import (Basic)",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "00efff97e3fc1676462f4b9bf11df5",
+                                "from": "Save Configuration",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Import (Basic)",
+                                "x": -60,
+                                "y": 180,
+                                "h": 70,
+                                "w": 230
+                            },
+                            {
+                                "name": "Save Configuration",
+                                "x": -75,
+                                "y": 350,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "00efff97e3fc1676462f4b9bf11df5",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "103a0d58-4386-4d74-a50c-f8d8931bd06d",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "00efff97e3fc1676462f4b9bf11df5",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Import (Basic)",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "fileImport": "\/opt\/aaron\/ZZZTaylorSimpleMPGwithFSH.zip",
+                                    "domainName": "DEV",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|j05wZHDacTdGvihlVmZjNA==|iXZLqpWbe8Iq4JFnLNAOmQ==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default",
+                                    "ignoreError": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Import (Basic)",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Save Configuration",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "domainName": "DEV",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|G478xvzBWWHBBMH9KMbAsQ==|KKxV1QH+ScJq4x7x\/KgqcA==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Save Configuration",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy-Generic-MPG",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/1712bd73-c782-bdbd-5724-a36d944bad67\/processes\/1713291b-3d36-d265-478c-4117cbfef872",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "68ce7ad2e667311b5b7dc3d62d10ef",
+                                "from": "Upload Directory",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Upload Directory",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "68ce7ad2e667311b5b7dc3d62d10ef",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Upload Directory",
+                                "x": -70,
+                                "y": 230,
+                                "h": 70,
+                                "w": 250
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "f0974396-8013-4a5f-829b-e87d43ffde42",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "68ce7ad2e667311b5b7dc3d62d10ef",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": true,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Upload Directory",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "fromDir": "\/opt\/aaron\/AWSConsumerMPG\/ALERTS",
+                                    "domainName": "${p:dpDomainName}",
+                                    "toDir": "local:\/\/\/AWSServiceMPG\/ALERTS",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|ZdPY2f6sqL8XbJU6HyOHbg==|tiBepXbinPD\/89ppWn1nBQ==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Upload Directory",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "BMO-PassThruMPG",
+            "description": "This example includes steps to substitute values inside the configuration XML file prior to deployment ",
+            "created": 1585578473456,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "basePath",
+                            "value": "\/tmp\/aaron",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Deploy-PassThruMPG",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/1712bd77-7fec-faf2-0131-61d4ecba2e0e\/processes\/1712bd9d-79b7-3546-9f3d-7d6e632efbd4",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Replace Tokens",
+                                "from": "Install Template",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Import (Basic)",
+                                "from": "Replace Tokens",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Save Configuration",
+                                "from": "Import (Basic)",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Template",
+                                "from": "ReadRequestFile",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "ReadRequestFile",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "821460f39d716aa1ad76b84268e003",
+                                "from": "Save Configuration",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Replace Tokens",
+                                "x": -125,
+                                "y": 470,
+                                "h": 110,
+                                "w": 400
+                            },
+                            {
+                                "name": "Install Template",
+                                "x": -125,
+                                "y": 310,
+                                "h": 110,
+                                "w": 400
+                            },
+                            {
+                                "name": "ReadRequestFile",
+                                "x": -145,
+                                "y": 150,
+                                "h": 110,
+                                "w": 440
+                            },
+                            {
+                                "name": "821460f39d716aa1ad76b84268e003",
+                                "x": -5,
+                                "y": 950,
+                                "h": 100,
+                                "w": 160
+                            },
+                            {
+                                "name": "Import (Basic)",
+                                "x": -115,
+                                "y": 630,
+                                "h": 110,
+                                "w": 380
+                            },
+                            {
+                                "name": "Download the Request File",
+                                "x": -145,
+                                "y": 1060,
+                                "h": 110,
+                                "w": 460
+                            },
+                            {
+                                "name": "Save Configuration",
+                                "x": -145,
+                                "y": 790,
+                                "h": 110,
+                                "w": 440
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "18ce8306-f647-4845-9713-d48f3048223b",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "821460f39d716aa1ad76b84268e003",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 13,
+                                "commandName": "Install Template",
+                                "pluginName": "UrbanCode Deploy Configuration Management",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "serverUrl": "${p:server.url}\/",
+                                    "requestId": "${p:request.id}",
+                                    "name": "export2.xml",
+                                    "envPropValues": "${p:environment\/allProperties}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Template",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Replace Tokens",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "includes": "**\/export2.xml",
+                                    "excludes": "",
+                                    "envPropValues": "${p:environment\/allProperties}",
+                                    "propertyPrefix": "",
+                                    "explicitTokens": "@@SERVICE_NAME@@->${p:ReadRequestFile\/SERVICE_NAME}\n@@SERVICE_FLOW@@->${p:ReadRequestFile\/SERVICE_FLOW}\n@@BACKEND_URL@@->${p:ReadRequestFile\/BACKEND_URL}\n@@SERVICE_TIMEOUT@@->${p:ReadRequestFile\/SERVICE_TIMEOUT}\n@@SERVICE_PAYLOAD_SIZE@@->${p:ReadRequestFile\/SERVICE_PAYLOAD_SIZE}",
+                                    "startDelimiter": "@@",
+                                    "endDelimiter": "@@",
+                                    "propFile": "replace_tokens.properties",
+                                    "dir": "",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Tokens",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "git clone https:\/\/github.com\/rslangehennig\/datapower.git",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download the Request File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/tmp\/bmo",
+                                "pluginVersion": 73,
+                                "commandName": "Read Property File",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "file": "${p:Request-Filename}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "ReadRequestFile",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Import (Basic)",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "fileImport": "${p:componentProcess.defaultWorkDir}\/export2.xml",
+                                    "domainName": "${p: dpDomainName}",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|KfejfjkmjOEPzPSBL1b4xg==|5B\/5fSx7nGsRBrr6QjYFrg==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default",
+                                    "ignoreError": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Import (Basic)",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Save Configuration",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "domainName": "${p: dpDomainName}",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|SusfMEZETDX7S4taEv+D9A==|jhBxr+T934TI\/76fzHROEQ==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Save Configuration",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy-PassThruMPG-From-Zip",
+                    "description": "THIS PROCESS WHICH USES A ZIP IS NOT NEEDED",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/1712bd77-7fec-faf2-0131-61d4ecba2e0e\/processes\/17131db5-c6c2-b5ce-5749-851b556a6d40",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Create New Zip File",
+                                "from": "Update File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "ReadRequestFile",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Tokens",
+                                "from": "Unzip Template",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Save Configuration",
+                                "from": "Import (Basic)",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Unzip Template",
+                                "from": "ReadRequestFile",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "821460f39d716aa1ad76b84268e003",
+                                "from": "Save Configuration",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Update File",
+                                "from": "Replace Tokens",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "ReadRequestFile",
+                                "from": "Download the Request File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Import (Basic)",
+                                "from": "Create New Zip File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Import (Basic)",
+                                "x": 135,
+                                "y": 1070,
+                                "h": 110,
+                                "w": 390
+                            },
+                            {
+                                "name": "Replace Tokens",
+                                "x": 120,
+                                "y": 630,
+                                "h": 110,
+                                "w": 420
+                            },
+                            {
+                                "name": "ReadRequestFile",
+                                "x": 96.66666666666669,
+                                "y": 310,
+                                "h": 110,
+                                "w": 460
+                            },
+                            {
+                                "name": "Update File",
+                                "x": 190,
+                                "y": 790,
+                                "h": 110,
+                                "w": 280
+                            },
+                            {
+                                "name": "Download the Request File",
+                                "x": 335,
+                                "y": 150,
+                                "h": 110,
+                                "w": 480
+                            },
+                            {
+                                "name": "Create New Zip File",
+                                "x": 140,
+                                "y": 910,
+                                "h": 110,
+                                "w": 380
+                            },
+                            {
+                                "name": "Unzip Template",
+                                "x": 168.33333333333337,
+                                "y": 470,
+                                "h": 110,
+                                "w": 320
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -155,
+                                "y": 150,
+                                "h": 110,
+                                "w": 460
+                            },
+                            {
+                                "name": "Save Configuration",
+                                "x": 95,
+                                "y": 1230,
+                                "h": 110,
+                                "w": 470
+                            },
+                            {
+                                "name": "821460f39d716aa1ad76b84268e003",
+                                "x": 245,
+                                "y": 1390,
+                                "h": 100,
+                                "w": 170
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "26b37bb8-5c0d-4e2c-a4ca-7f6535ea970f",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "821460f39d716aa1ad76b84268e003",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Replace Tokens",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "includes": "**\/export.xml",
+                                    "excludes": "",
+                                    "envPropValues": "${p:environment\/allProperties}",
+                                    "propertyPrefix": "",
+                                    "explicitTokens": "@@SERVICE_NAME@@->${p:ReadRequestFile\/SERVICE_NAME}\n@@SERVICE_FLOW@@->${p:ReadRequestFile\/SERVICE_FLOW}\n@@BACKEND_URL@@->${p:ReadRequestFile\/BACKEND_URL}\n@@SERVICE_TIMEOUT@@->${p:ReadRequestFile\/SERVICE_TIMEOUT}\n@@SERVICE_PAYLOAD_SIZE@@->${p:ReadRequestFile\/SERVICE_PAYLOAD_SIZE}",
+                                    "startDelimiter": "@@",
+                                    "endDelimiter": "@@",
+                                    "propFile": "replace_tokens.properties",
+                                    "dir": "MPGTemplate",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Tokens",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "git clone https:\/\/github.com\/rslangehennig\/datapower.git",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download the Request File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/aaron",
+                                "pluginVersion": 73,
+                                "commandName": "Read Property File",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "file": "POC.req"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "ReadRequestFile",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "${p:componentProcess.defaultWorkDir}",
+                                "pluginVersion": 20,
+                                "commandName": "Import (Basic)",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "fileImport": "${p:componentProcess.defaultWorkDir}\/NewPassThruMPG.zip",
+                                    "domainName": "DEV",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|vZpvMITKbARBhvkS9GyPjQ==|W3QJQuXqd\/xr8Ra7lvYzYw==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default",
+                                    "ignoreError": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Import (Basic)",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Unzip",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "zip": "PassThruMPG.zip",
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "overwrite": "false",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Unzip Template",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "cd MPGTemplate\nzip -r NewPassThruMPG.zip *\nmv NewPassThruMPG.zip ..\/NewPassThruMPG.zip",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create New Zip File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Save Configuration",
+                                "pluginName": "DataPower",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "domainName": "DEV",
+                                    "hostname": "${p:dpHostname}",
+                                    "uid": "${p:dpUserid}",
+                                    "pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|grDo2MuhPutaAAEY3UZqqg==|L9I3IrwpnlIf4KUwX9v6XQ==}",
+                                    "portXMI": "${p:dpXMIPort}",
+                                    "environment": "${p:environment.name}",
+                                    "addlProperties": "",
+                                    "memorySize": "default"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Save Configuration",
+                                "children": []
+                            },
+                            {
+                                "templateName": "TaskCreated",
+                                "roleRestrictionData": {},
+                                "propDefs": [],
+                                "type": "componentManualTask",
+                                "name": "Update File",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [
+                {
+                    "name": "export.xml",
+                    "data": "\n        <datapower-configuration version=\"3\"><export-details><description>Exported Configuration<\/description><user>twu04<\/user><domain>DIT-Common-Services<\/domain><comment\/><product-id>719942X<\/product-id><product>XI50<\/product><display-product>XI52<\/display-product><model>DataPower XI50<\/model><display-model>DataPower XI52<\/display-model><device-name>10.192.44.222:9090<\/device-name><serial-number>68904148<\/serial-number><firmware-version>XI50.2018.4.1.9ki2<\/firmware-version><display-firmware-version>XI52.2018.4.1.9ki2<\/display-firmware-version><firmware-build>317938ki2<\/firmware-build><delivery-type>LTS<\/delivery-type><firmware-timestamp>2020\/02\/18 15:17:35<\/firmware-timestamp><current-date>2020-03-24<\/current-date><current-time>03:43:03 EDT<\/current-time><reset-date>2020-02-27<\/reset-date><reset-time>18:09:45 EST<\/reset-time><login-message\/><custom-ui-file>store:\/\/\/dev-banner.xml<\/custom-ui-file><intrusion-detection>enable<\/intrusion-detection><\/export-details><interface-data><interface name=\"mgt0\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.224\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.111\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.132\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.133\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.134\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.222\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.232\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.233\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.234\"\/><interface name=\"eth10\" type=\"Ethernet\" vers=\"ipv4\" ip-addr=\"10.192.44.240\"\/><\/interface-data><configuration domain=\"DIT-Common-Services\"><CryptoKey name=\"DataPowerBMOFGKey\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/servercert_datapower_dev.p12<\/Filename>\n<Password>password<\/Password>\n<PasswordAlias>off<\/PasswordAlias><\/CryptoKey><CryptoCertificate name=\"DataPowerBMOFGCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/servercert_datapower_dev.p12<\/Filename>\n<Password>password<\/Password>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoIdentCred name=\"DataPowerIDCredForChannel\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Key class=\"CryptoKey\">DataPowerBMOFGKey<\/Key>\n<Certificate class=\"CryptoCertificate\">DataPowerBMOFGCert<\/Certificate><\/CryptoIdentCred><CryptoCertificate name=\"OLBBDEFTCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/olbb2hub-publicKey.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"OLBBEFTRedesignCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>cert:\/\/\/olbb-audit-publickey-nonprod_Root.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>on<\/IgnoreExpiration><\/CryptoCertificate><CryptoValCred name=\"OLBBDEFTValCred\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Certificate class=\"CryptoCertificate\">OLBBDEFTCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">OLBBEFTRedesignCert<\/Certificate>\n<CertValidationMode>legacy<\/CertValidationMode>\n<UseCRL>on<\/UseCRL>\n<RequireCRL>off<\/RequireCRL>\n<CRLDPHandling>ignore<\/CRLDPHandling>\n<InitialPolicySet>2.5.29.32.0<\/InitialPolicySet>\n<ExplicitPolicy>off<\/ExplicitPolicy>\n<CheckDates>on<\/CheckDates><\/CryptoValCred><SSLServerProfile name=\"OLBBDEFTSSLServerProfile\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Protocols>\n<SSLv3>off<\/SSLv3>\n<TLSv1d0>on<\/TLSv1d0>\n<TLSv1d1>on<\/TLSv1d1>\n<TLSv1d2>on<\/TLSv1d2><\/Protocols>\n<Ciphers>ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_256_CBC_SHA384<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_256_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_256_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>RSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>RSA_WITH_AES_256_CBC_SHA256<\/Ciphers>\n<Ciphers>RSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>RSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>RSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>RSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>RSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Idcred class=\"CryptoIdentCred\">DataPowerIDCredForChannel<\/Idcred>\n<RequestClientAuth>on<\/RequestClientAuth>\n<RequireClientAuth>on<\/RequireClientAuth>\n<ValidateClientCert>on<\/ValidateClientCert>\n<SendClientAuthCAList>off<\/SendClientAuthCAList>\n<Valcred class=\"CryptoValCred\">OLBBDEFTValCred<\/Valcred>\n<Caching>on<\/Caching>\n<CacheTimeout>300<\/CacheTimeout>\n<CacheSize>20<\/CacheSize>\n<SSLOptions>\n<max-duration>off<\/max-duration>\n<max-renegotiation>off<\/max-renegotiation><\/SSLOptions>\n<MaxSSLDuration>60<\/MaxSSLDuration>\n<NumberOfRenegotiationAllowed>0<\/NumberOfRenegotiationAllowed>\n<ProhibitResumeOnReneg>off<\/ProhibitResumeOnReneg>\n<Compression>off<\/Compression>\n<AllowLegacyRenegotiation>off<\/AllowLegacyRenegotiation>\n<PreferServerCiphers>on<\/PreferServerCiphers>\n<EllipticCurves>secp521r1<\/EllipticCurves>\n<EllipticCurves>secp384r1<\/EllipticCurves>\n<EllipticCurves>secp256k1<\/EllipticCurves>\n<EllipticCurves>secp256r1<\/EllipticCurves><\/SSLServerProfile><HTTPSSourceProtocolHandler name=\"@@SERVICE_NAME@@HttpsFSH\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<LocalAddress>Data-Env3<\/LocalAddress>\n<LocalPort>8213<\/LocalPort>\n<HTTPVersion>HTTP\/1.1<\/HTTPVersion>\n<AllowedFeatures>\n<HTTP-1.0>on<\/HTTP-1.0>\n<HTTP-1.1>on<\/HTTP-1.1>\n<HTTP-2.0>off<\/HTTP-2.0>\n<POST>on<\/POST>\n<GET>on<\/GET>\n<PUT>on<\/PUT>\n<PATCH>off<\/PATCH>\n<HEAD>off<\/HEAD>\n<OPTIONS>off<\/OPTIONS>\n<TRACE>off<\/TRACE>\n<DELETE>off<\/DELETE>\n<CONNECT>off<\/CONNECT>\n<CustomMethods>off<\/CustomMethods>\n<QueryString>on<\/QueryString>\n<FragmentIdentifiers>on<\/FragmentIdentifiers>\n<DotDot>off<\/DotDot>\n<CmdExe>off<\/CmdExe><\/AllowedFeatures>\n<PersistentConnections>on<\/PersistentConnections>\n<MaxPersistentConnectionsReuse>0<\/MaxPersistentConnectionsReuse>\n<AllowCompression>off<\/AllowCompression>\n<AllowWebSocketUpgrade>off<\/AllowWebSocketUpgrade>\n<WebSocketIdleTimeout>0<\/WebSocketIdleTimeout>\n<MaxURLLen>16384<\/MaxURLLen>\n<MaxTotalHdrLen>128000<\/MaxTotalHdrLen>\n<MaxHdrCount>0<\/MaxHdrCount>\n<MaxNameHdrLen>0<\/MaxNameHdrLen>\n<MaxValueHdrLen>0<\/MaxValueHdrLen>\n<MaxQueryStringLen>0<\/MaxQueryStringLen>\n<CredentialCharset>protocol<\/CredentialCharset>\n<SSLServerConfigType>server<\/SSLServerConfigType>\n<SSLServer class=\"SSLServerProfile\">OLBBDEFTSSLServerProfile<\/SSLServer>\n<HTTP2MaxStreams>100<\/HTTP2MaxStreams>\n<HTTP2MaxFrameSize>16384<\/HTTP2MaxFrameSize>\n<HTTP2StreamHeader>off<\/HTTP2StreamHeader>\n<ChunkedEncoding>on<\/ChunkedEncoding><\/HTTPSSourceProtocolHandler><HTTPUserAgent name=\"GeneralUserAgent\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<MaxRedirects>8<\/MaxRedirects>\n<Timeout>300<\/Timeout><\/HTTPUserAgent><JSONSettings name=\"@@SERVICE_NAME@@JSON\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<JSONMaxNestingDepth>64<\/JSONMaxNestingDepth>\n<JSONMaxLabelLength>256<\/JSONMaxLabelLength>\n<JSONMaxValueLength>4194304<\/JSONMaxValueLength>\n<JSONMaxNumberLength>128<\/JSONMaxNumberLength>\n<JSONDocumentSize>4194304<\/JSONDocumentSize><\/JSONSettings><XMLManager name=\"@@SERVICE_NAME@@XMLManager\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<CacheSize>256<\/CacheSize>\n<SHA1Caching>on<\/SHA1Caching>\n<StaticDocumentCalls>on<\/StaticDocumentCalls>\n<SearchResults>on<\/SearchResults>\n<SupportTxWarn>off<\/SupportTxWarn>\n<Memoization>on<\/Memoization>\n<ParserLimitsBytesScanned>@@SERVICE_PAYLOAD_SIZE@@<\/ParserLimitsBytesScanned>\n<ParserLimitsElementDepth>512<\/ParserLimitsElementDepth>\n<ParserLimitsAttributeCount>128<\/ParserLimitsAttributeCount>\n<ParserLimitsMaxNodeSize>33554432<\/ParserLimitsMaxNodeSize>\n<ParserLimitsForbidExternalReferences>on<\/ParserLimitsForbidExternalReferences>\n<ParserLimitsExternalReferences>forbid<\/ParserLimitsExternalReferences>\n<ParserLimitsMaxPrefixes>1024<\/ParserLimitsMaxPrefixes>\n<ParserLimitsMaxNamespaces>1024<\/ParserLimitsMaxNamespaces>\n<ParserLimitsMaxLocalNames>60000<\/ParserLimitsMaxLocalNames>\n<DocCacheMaxDocs>5000<\/DocCacheMaxDocs>\n<DocCacheSize>0<\/DocCacheSize>\n<DocMaxWrites>32768<\/DocMaxWrites>\n<UserAgent class=\"HTTPUserAgent\">GeneralUserAgent<\/UserAgent>\n<JSONParserSettings class=\"JSONSettings\">@@SERVICE_NAME@@JSON<\/JSONParserSettings><\/XMLManager><CryptoCertificate name=\"ThawteTlsRsaCAG1IntCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/ThawteTLS_RSA_CA_G1.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"VeriSign-G4-intermediateCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Verisign-G4-intermediate.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"Verisign-G5-rootCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Verisign-G5-root.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"SymantecIntermediateCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Symantec_Class3_ Secure_Server_SHA256_SSL_CA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"ThawteIntermediateCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Thawte_IntermediateCA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"DigiCert_Global_CA_G2\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/DigiCert_Global_CA_G2.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"DigiCert_Global_Root_G2\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/BonRootCert.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"Comodo_RSA_Organization_IntermediateCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/COMODO_RSA_Organization_VSS_CA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"MSsignerSHA2cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/MS_QA_issuing_CA1.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"ComodoRSACertificationAuthorityCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Comodo.RSA.Certification.Authority.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"GoDaddyG2Cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/gd_bundle_new.crt<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"DigiCertChainCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/DigiCertSHA2SecureServerCA_new.crt<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"DigiHighAssuranceEVRootCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/DigiCertHighAssuranceEVRootCA.crt<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"GoogleInternetAuthorityG3Cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/GoogleInternetAuthorityG3.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"GlobalSignCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/GlobalSign.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"DigiSymcorInterCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/DigiCert_SymCorintermediate_SHA2.cer.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"ThawteIntermediateG2Cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/thawte_SSL_CA_G2.crt<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"Entrust_L1K_2024_ChainCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/entrust_L1K_2024_chain.crt<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"Entrust_L1KChainCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/entrust_L1Kchain.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"SymantecIntermediateEVCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Symantec_Class_3_Extended_Validation_SHA256_SSL_CA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"ThawteRSACA2018Cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/BMOFG-Root2.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"SectigoRSADomainValidationCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/SectigoRSADomainValidationSecureServerCA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"SectigoRSAOrganizationValidationCert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/SectigoRSAOrganizationValidationSecureServerCA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"Sectigo_ECC_CA_Cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/Sectigo ECC Organization Validation Secure Server CA.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoCertificate name=\"USERTrust_ECC_CA_Cert\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Filename>sharedcert:\/\/\/USERTrust ECC Certification Authority.cer<\/Filename>\n<PasswordAlias>off<\/PasswordAlias>\n<IgnoreExpiration>off<\/IgnoreExpiration><\/CryptoCertificate><CryptoValCred name=\"CAValCred\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Certificate class=\"CryptoCertificate\">ThawteTlsRsaCAG1IntCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">VeriSign-G4-intermediateCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">Verisign-G5-rootCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">SymantecIntermediateCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">ThawteIntermediateCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">DigiCert_Global_CA_G2<\/Certificate>\n<Certificate class=\"CryptoCertificate\">DigiCert_Global_Root_G2<\/Certificate>\n<Certificate class=\"CryptoCertificate\">Comodo_RSA_Organization_IntermediateCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">MSsignerSHA2cert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">ComodoRSACertificationAuthorityCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">GoDaddyG2Cert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">DigiCertChainCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">DigiHighAssuranceEVRootCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">GoogleInternetAuthorityG3Cert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">GlobalSignCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">DigiSymcorInterCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">ThawteIntermediateG2Cert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">Entrust_L1K_2024_ChainCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">Entrust_L1KChainCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">SymantecIntermediateEVCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">ThawteRSACA2018Cert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">SectigoRSADomainValidationCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">SectigoRSAOrganizationValidationCert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">Sectigo_ECC_CA_Cert<\/Certificate>\n<Certificate class=\"CryptoCertificate\">USERTrust_ECC_CA_Cert<\/Certificate>\n<CertValidationMode>legacy<\/CertValidationMode>\n<UseCRL>on<\/UseCRL>\n<RequireCRL>off<\/RequireCRL>\n<CRLDPHandling>ignore<\/CRLDPHandling>\n<InitialPolicySet>2.5.29.32.0<\/InitialPolicySet>\n<ExplicitPolicy>off<\/ExplicitPolicy>\n<CheckDates>on<\/CheckDates><\/CryptoValCred><SSLClientProfile name=\"OLBBPaymentSNIClientProfile\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Protocols>\n<SSLv3>off<\/SSLv3>\n<TLSv1d0>on<\/TLSv1d0>\n<TLSv1d1>on<\/TLSv1d1>\n<TLSv1d2>on<\/TLSv1d2><\/Protocols>\n<Ciphers>ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_256_CBC_SHA384<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_256_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_256_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>RSA_WITH_AES_256_GCM_SHA384<\/Ciphers>\n<Ciphers>RSA_WITH_AES_256_CBC_SHA256<\/Ciphers>\n<Ciphers>RSA_WITH_AES_256_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>RSA_WITH_AES_128_GCM_SHA256<\/Ciphers>\n<Ciphers>RSA_WITH_AES_128_CBC_SHA256<\/Ciphers>\n<Ciphers>RSA_WITH_AES_128_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>ECDHE_RSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_RSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>DHE_DSS_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Ciphers>RSA_WITH_3DES_EDE_CBC_SHA<\/Ciphers>\n<Idcred class=\"CryptoIdentCred\">DataPowerIDCredForChannel<\/Idcred>\n<ValidateServerCert>on<\/ValidateServerCert>\n<Valcred class=\"CryptoValCred\">CAValCred<\/Valcred>\n<Caching>on<\/Caching>\n<CacheTimeout>300<\/CacheTimeout>\n<CacheSize>100<\/CacheSize>\n<SSLClientFeatures>\n<use-sni>on<\/use-sni>\n<permit-insecure-servers>off<\/permit-insecure-servers>\n<compression>off<\/compression><\/SSLClientFeatures>\n<EllipticCurves>secp521r1<\/EllipticCurves>\n<EllipticCurves>secp384r1<\/EllipticCurves>\n<EllipticCurves>secp256k1<\/EllipticCurves>\n<EllipticCurves>secp256r1<\/EllipticCurves>\n<UseCustomSNIHostname>no<\/UseCustomSNIHostname>\n<ValidateHostname>off<\/ValidateHostname>\n<HostnameValidationFailOnError>off<\/HostnameValidationFailOnError><\/SSLClientProfile><Matching name=\"All\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<MatchRules>\n<Type>url<\/Type>\n<HttpTag\/>\n<HttpValue\/>\n<Url>*<\/Url>\n<ErrorCode\/>\n<XPATHExpression\/>\n<Method>default<\/Method>\n<CustomMethod\/><\/MatchRules>\n<MatchWithPCRE>off<\/MatchWithPCRE>\n<CombineWithOr>off<\/CombineWithOr><\/Matching><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_request_xform_0\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>xform<\/Type>\n<Input>NULL<\/Input>\n<Transform>local:\/\/\/common\/process\/xsl\/bmo-transaction-log.xsl<\/Transform>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<Output>NULL<\/Output>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_request_results_0\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>results<\/Type>\n<Input>NULL<\/Input>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyRule name=\"@@SERVICE_NAME@@MPG_Policy_rule_request\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_request_xform_0<\/Actions>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_request_results_0<\/Actions>\n<Direction>request-rule<\/Direction>\n<InputFormat>none<\/InputFormat>\n<OutputFormat>none<\/OutputFormat>\n<NonXMLProcessing>off<\/NonXMLProcessing>\n<Unprocessed>off<\/Unprocessed><\/StylePolicyRule><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_response_xform_1\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>xform<\/Type>\n<Input>NULL<\/Input>\n<Transform>local:\/\/\/dpcommon\/xsl\/bmo-transaction-log.xsl<\/Transform>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<Output>NULL<\/Output>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_response_xform_2\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>xform<\/Type>\n<Input>NULL<\/Input>\n<Transform>local:\/\/\/dpcommon\/xsl\/setResponseCode.xsl<\/Transform>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<Output>NULL<\/Output>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_response_results_1\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>results<\/Type>\n<Input>NULL<\/Input>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyRule name=\"@@SERVICE_NAME@@MPG_Policy_rule_response\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_response_xform_1<\/Actions>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_response_xform_2<\/Actions>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_response_results_1<\/Actions>\n<Direction>response-rule<\/Direction>\n<InputFormat>none<\/InputFormat>\n<OutputFormat>none<\/OutputFormat>\n<NonXMLProcessing>off<\/NonXMLProcessing>\n<Unprocessed>off<\/Unprocessed><\/StylePolicyRule><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_error_xform_3\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>xform<\/Type>\n<Input>NULL<\/Input>\n<Transform>local:\/\/\/dpcommon\/xsl\/bmo-transaction-log.xsl<\/Transform>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<Output>NULL<\/Output>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_error_gatewayscript_0\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>gatewayscript<\/Type>\n<Input>NULL<\/Input>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<GatewayScriptLocation>local:\/\/\/dpcommon\/js\/json_error_handling.js<\/GatewayScriptLocation>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<Output>PIPE<\/Output>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyAction name=\"@@SERVICE_NAME@@MPG_Policy_rule_error_results_2\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Type>results<\/Type>\n<Input>PIPE<\/Input>\n<ParseSettingsReference>\n<URL\/>\n<Literal\/>\n<Default\/><\/ParseSettingsReference>\n<ParseMetricsResultType>none<\/ParseMetricsResultType>\n<TransformLanguage>none<\/TransformLanguage>\n<ActionDebug persisted=\"false\">off<\/ActionDebug>\n<NoTranscodeUtf8>off<\/NoTranscodeUtf8>\n<NamedInOutLocationType>default<\/NamedInOutLocationType>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<OutputType>default<\/OutputType>\n<Transactional>off<\/Transactional>\n<SOAPValidation>body<\/SOAPValidation>\n<SQLSourceType>static<\/SQLSourceType>\n<JWSVerifyStripSignature>on<\/JWSVerifyStripSignature>\n<Asynchronous>off<\/Asynchronous>\n<ResultsMode>first-available<\/ResultsMode>\n<RetryCount>0<\/RetryCount>\n<RetryInterval>1000<\/RetryInterval>\n<MultipleOutputs>off<\/MultipleOutputs>\n<IteratorType>XPATH<\/IteratorType>\n<Timeout>0<\/Timeout>\n<MethodRewriteType>GET<\/MethodRewriteType>\n<MethodType>POST<\/MethodType>\n<MethodType2>POST<\/MethodType2><\/StylePolicyAction><StylePolicyRule name=\"@@SERVICE_NAME@@MPG_Policy_rule_error\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_error_xform_3<\/Actions>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_error_gatewayscript_0<\/Actions>\n<Actions class=\"StylePolicyAction\">@@SERVICE_NAME@@MPG_Policy_rule_error_results_2<\/Actions>\n<Direction>error-rule<\/Direction>\n<InputFormat>none<\/InputFormat>\n<OutputFormat>none<\/OutputFormat>\n<NonXMLProcessing>off<\/NonXMLProcessing>\n<Unprocessed>off<\/Unprocessed><\/StylePolicyRule><StylePolicy name=\"@@SERVICE_NAME@@MPG_Policy\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<DefStylesheetForSoap>store:\/\/\/filter-reject-all.xsl<\/DefStylesheetForSoap>\n<DefStylesheetForXsl>store:\/\/\/identity.xsl<\/DefStylesheetForXsl>\n<DefXQueryForJSON>store:\/\/\/reject-all-json.xq<\/DefXQueryForJSON>\n<PolicyMaps>\n<Match class=\"Matching\">All<\/Match>\n<Rule class=\"StylePolicyRule\">@@SERVICE_NAME@@MPG_Policy_rule_request<\/Rule><\/PolicyMaps>\n<PolicyMaps>\n<Match class=\"Matching\">All<\/Match>\n<Rule class=\"StylePolicyRule\">@@SERVICE_NAME@@MPG_Policy_rule_response<\/Rule><\/PolicyMaps>\n<PolicyMaps>\n<Match class=\"Matching\">All<\/Match>\n<Rule class=\"StylePolicyRule\">@@SERVICE_NAME@@MPG_Policy_rule_error<\/Rule><\/PolicyMaps><\/StylePolicy><PolicyAttachments name=\"@@SERVICE_NAME@@MPG\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<EnforcementMode>enforce<\/EnforcementMode>\n<PolicyReferences>on<\/PolicyReferences>\n<SLAEnforcementMode>allow-if-no-sla<\/SLAEnforcementMode><\/PolicyAttachments><MultiProtocolGateway name=\"@@SERVICE_NAME@@MPG\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<UserSummary>@@SERVICE_FLOW@@<\/UserSummary>\n<Priority>normal<\/Priority>\n<FrontProtocol class=\"HTTPSSourceProtocolHandler\">@@SERVICE_NAME@@HttpsFSH<\/FrontProtocol>\n<XMLManager class=\"XMLManager\">@@SERVICE_NAME@@XMLManager<\/XMLManager>\n<SSLClientConfigType>client<\/SSLClientConfigType>\n<SSLClient class=\"SSLClientProfile\">OLBBPaymentSNIClientProfile<\/SSLClient>\n<DefaultParamNamespace>http:\/\/www.datapower.com\/param\/config<\/DefaultParamNamespace>\n<QueryParamNamespace>http:\/\/www.datapower.com\/param\/query<\/QueryParamNamespace>\n<BackendUrl>@@BACKEND_URL@@<\/BackendUrl>\n<PropagateURI>on<\/PropagateURI>\n<MonitorProcessingPolicy>terminate-at-first-throttle<\/MonitorProcessingPolicy>\n<RequestAttachments>strip<\/RequestAttachments>\n<ResponseAttachments>strip<\/ResponseAttachments>\n<RequestAttachmentsFlowControl>off<\/RequestAttachmentsFlowControl>\n<ResponseAttachmentsFlowControl>off<\/ResponseAttachmentsFlowControl>\n<RootPartNotFirstAction>process-in-order<\/RootPartNotFirstAction>\n<FrontAttachmentFormat>dynamic<\/FrontAttachmentFormat>\n<BackAttachmentFormat>dynamic<\/BackAttachmentFormat>\n<MIMEFrontHeaders>on<\/MIMEFrontHeaders>\n<MIMEBackHeaders>on<\/MIMEBackHeaders>\n<StreamOutputToBack>buffer-until-verification<\/StreamOutputToBack>\n<StreamOutputToFront>buffer-until-verification<\/StreamOutputToFront>\n<MaxMessageSize>0<\/MaxMessageSize>\n<GatewayParserLimits>off<\/GatewayParserLimits>\n<ParserLimitsElementDepth>512<\/ParserLimitsElementDepth>\n<ParserLimitsAttributeCount>128<\/ParserLimitsAttributeCount>\n<ParserLimitsMaxNodeSize>33554432<\/ParserLimitsMaxNodeSize>\n<ParserLimitsForbidExternalReferences>on<\/ParserLimitsForbidExternalReferences>\n<ParserLimitsExternalReferences>forbid<\/ParserLimitsExternalReferences>\n<ParserLimitsMaxPrefixes>1024<\/ParserLimitsMaxPrefixes>\n<ParserLimitsMaxNamespaces>1024<\/ParserLimitsMaxNamespaces>\n<ParserLimitsMaxLocalNames>60000<\/ParserLimitsMaxLocalNames>\n<ParserLimitsAttachmentByteCount>2000000000<\/ParserLimitsAttachmentByteCount>\n<ParserLimitsAttachmentPackageByteCount>0<\/ParserLimitsAttachmentPackageByteCount>\n<DebugMode persisted=\"false\">off<\/DebugMode>\n<DebuggerType>internal<\/DebuggerType>\n<DebugHistory>25<\/DebugHistory>\n<FlowControl>off<\/FlowControl>\n<SOAPSchemaURL>store:\/\/\/schemas\/soap-envelope.xsd<\/SOAPSchemaURL>\n<FrontTimeout>@@SERVICE_TIMEOUT@@<\/FrontTimeout>\n<BackTimeout>@@SERVICE_TIMEOUT@@<\/BackTimeout>\n<FrontPersistentTimeout>180<\/FrontPersistentTimeout>\n<BackPersistentTimeout>180<\/BackPersistentTimeout>\n<IncludeResponseTypeEncoding>off<\/IncludeResponseTypeEncoding>\n<BackHTTPVersion>HTTP\/1.1<\/BackHTTPVersion>\n<PersistentConnections>on<\/PersistentConnections>\n<LoopDetection>off<\/LoopDetection>\n<DoHostRewriting>on<\/DoHostRewriting>\n<DoChunkedUpload>off<\/DoChunkedUpload>\n<ProcessHTTPErrors>on<\/ProcessHTTPErrors>\n<HTTPClientIPLabel>X-Client-IP<\/HTTPClientIPLabel>\n<HTTPLogCorIDLabel>X-Global-Transaction-ID<\/HTTPLogCorIDLabel>\n<InOrderMode>\n<Request>off<\/Request>\n<Backend>off<\/Backend>\n<Response>off<\/Response><\/InOrderMode>\n<WSAMode>sync2sync<\/WSAMode>\n<WSARequireAAA>on<\/WSARequireAAA>\n<WSAStrip>on<\/WSAStrip>\n<WSADefaultReplyTo>http:\/\/schemas.xmlsoap.org\/ws\/2004\/08\/addressing\/role\/anonymous<\/WSADefaultReplyTo>\n<WSADefaultFaultTo>http:\/\/schemas.xmlsoap.org\/ws\/2004\/08\/addressing\/role\/anonymous<\/WSADefaultFaultTo>\n<WSAForce>off<\/WSAForce>\n<WSAGenStyle>sync<\/WSAGenStyle>\n<WSAHTTPAsyncResponseCode>204<\/WSAHTTPAsyncResponseCode>\n<WSATimeout>120<\/WSATimeout>\n<WSRMEnabled>off<\/WSRMEnabled>\n<WSRMSequenceExpiration>3600<\/WSRMSequenceExpiration>\n<WSRMDestinationAcceptCreateSequence>on<\/WSRMDestinationAcceptCreateSequence>\n<WSRMDestinationMaximumSequences>400<\/WSRMDestinationMaximumSequences>\n<WSRMDestinationInOrder>off<\/WSRMDestinationInOrder>\n<WSRMDestinationMaximumInOrderQueueLength>10<\/WSRMDestinationMaximumInOrderQueueLength>\n<WSRMDestinationAcceptOffers>off<\/WSRMDestinationAcceptOffers>\n<WSRMFrontForce>off<\/WSRMFrontForce>\n<WSRMBackForce>off<\/WSRMBackForce>\n<WSRMBackCreateSequence>off<\/WSRMBackCreateSequence>\n<WSRMFrontCreateSequence>off<\/WSRMFrontCreateSequence>\n<WSRMSourceMakeOffer>off<\/WSRMSourceMakeOffer>\n<WSRMUsesSequenceSSL>off<\/WSRMUsesSequenceSSL>\n<WSRMSourceMaximumSequences>400<\/WSRMSourceMaximumSequences>\n<WSRMSourceRetransmissionInterval>10<\/WSRMSourceRetransmissionInterval>\n<WSRMSourceExponentialBackoff>on<\/WSRMSourceExponentialBackoff>\n<WSRMSourceMaximumRetransmissions>4<\/WSRMSourceMaximumRetransmissions>\n<WSRMSourceMaximumQueueLength>30<\/WSRMSourceMaximumQueueLength>\n<WSRMSourceRequestAckCount>1<\/WSRMSourceRequestAckCount>\n<WSRMSourceInactivityClose>360<\/WSRMSourceInactivityClose>\n<ForcePolicyExec>off<\/ForcePolicyExec>\n<RewriteErrors>on<\/RewriteErrors>\n<DelayErrors>on<\/DelayErrors>\n<DelayErrorsDuration>1000<\/DelayErrorsDuration>\n<RequestType>preprocessed<\/RequestType>\n<ResponseType>preprocessed<\/ResponseType>\n<FollowRedirects>on<\/FollowRedirects>\n<RewriteLocationHeader>off<\/RewriteLocationHeader>\n<StylePolicy class=\"StylePolicy\">@@SERVICE_NAME@@MPG_Policy<\/StylePolicy>\n<Type>static-backend<\/Type>\n<AllowCompression>off<\/AllowCompression>\n<EnableCompressedPayloadPassthrough>off<\/EnableCompressedPayloadPassthrough>\n<AllowCacheControlHeader>off<\/AllowCacheControlHeader>\n<PolicyAttachments class=\"PolicyAttachments\">@@SERVICE_NAME@@MPG<\/PolicyAttachments>\n<WSMAgentMonitor>off<\/WSMAgentMonitor>\n<WSMAgentMonitorPCM>all-messages<\/WSMAgentMonitorPCM>\n<ProxyHTTPResponse>off<\/ProxyHTTPResponse>\n<TransactionTimeout>0<\/TransactionTimeout><\/MultiProtocolGateway><\/configuration><files><file name=\"sharedcert:\/\/\/servercert_datapower_dev.p12\" src=\"sharedcert\/servercert_datapower_dev.p12\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/olbb2hub-publicKey.cer\" src=\"sharedcert\/olbb2hub-publicKey.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"cert:\/\/\/olbb-audit-publickey-nonprod_Root.cer\" src=\"cert\/olbb-audit-publickey-nonprod_Root.cer\" location=\"cert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/ThawteTLS_RSA_CA_G1.cer\" src=\"sharedcert\/ThawteTLS_RSA_CA_G1.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Verisign-G4-intermediate.cer\" src=\"sharedcert\/Verisign-G4-intermediate.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Verisign-G5-root.cer\" src=\"sharedcert\/Verisign-G5-root.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Symantec_Class3_ Secure_Server_SHA256_SSL_CA.cer\" src=\"sharedcert\/Symantec_Class3_ Secure_Server_SHA256_SSL_CA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Thawte_IntermediateCA.cer\" src=\"sharedcert\/Thawte_IntermediateCA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/DigiCert_Global_CA_G2.cer\" src=\"sharedcert\/DigiCert_Global_CA_G2.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/BonRootCert.cer\" src=\"sharedcert\/BonRootCert.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/COMODO_RSA_Organization_VSS_CA.cer\" src=\"sharedcert\/COMODO_RSA_Organization_VSS_CA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/MS_QA_issuing_CA1.cer\" src=\"sharedcert\/MS_QA_issuing_CA1.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Comodo.RSA.Certification.Authority.cer\" src=\"sharedcert\/Comodo.RSA.Certification.Authority.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/gd_bundle_new.crt\" src=\"sharedcert\/gd_bundle_new.crt\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/DigiCertSHA2SecureServerCA_new.crt\" src=\"sharedcert\/DigiCertSHA2SecureServerCA_new.crt\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/DigiCertHighAssuranceEVRootCA.crt\" src=\"sharedcert\/DigiCertHighAssuranceEVRootCA.crt\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/GoogleInternetAuthorityG3.cer\" src=\"sharedcert\/GoogleInternetAuthorityG3.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/GlobalSign.cer\" src=\"sharedcert\/GlobalSign.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/DigiCert_SymCorintermediate_SHA2.cer.cer\" src=\"sharedcert\/DigiCert_SymCorintermediate_SHA2.cer.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/thawte_SSL_CA_G2.crt\" src=\"sharedcert\/thawte_SSL_CA_G2.crt\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/entrust_L1K_2024_chain.crt\" src=\"sharedcert\/entrust_L1K_2024_chain.crt\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/entrust_L1Kchain.cer\" src=\"sharedcert\/entrust_L1Kchain.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Symantec_Class_3_Extended_Validation_SHA256_SSL_CA.cer\" src=\"sharedcert\/Symantec_Class_3_Extended_Validation_SHA256_SSL_CA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/BMOFG-Root2.cer\" src=\"sharedcert\/BMOFG-Root2.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/SectigoRSADomainValidationSecureServerCA.cer\" src=\"sharedcert\/SectigoRSADomainValidationSecureServerCA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/SectigoRSAOrganizationValidationSecureServerCA.cer\" src=\"sharedcert\/SectigoRSAOrganizationValidationSecureServerCA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/Sectigo ECC Organization Validation Secure Server CA.cer\" src=\"sharedcert\/Sectigo ECC Organization Validation Secure Server CA.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"sharedcert:\/\/\/USERTrust ECC Certification Authority.cer\" src=\"sharedcert\/USERTrust ECC Certification Authority.cer\" location=\"sharedcert\" key=\"true\"\/><file name=\"local:\/\/\/common\/process\/xsl\/bmo-transaction-log.xsl\" src=\"local\/common\/process\/xsl\/bmo-transaction-log.xsl\" location=\"local\" hash=\"VJ728DLFiFnnkk0h165x8veFCFw=\"\/><file name=\"local:\/\/\/dpcommon\/xsl\/bmo-transaction-log.xsl\" src=\"local\/dpcommon\/xsl\/bmo-transaction-log.xsl\" location=\"local\" hash=\"2hNGBWeR4lmY6i8S+HV8d7MQfAk=\"\/><file name=\"local:\/\/\/dpcommon\/xsl\/setResponseCode.xsl\" src=\"local\/dpcommon\/xsl\/setResponseCode.xsl\" location=\"local\" hash=\"5ax8FCCTRpOwuD5xB+0xdMHFLak=\"\/><file name=\"local:\/\/\/dpcommon\/js\/json_error_handling.js\" src=\"local\/dpcommon\/js\/json_error_handling.js\" location=\"local\" hash=\"DM+Rt9cof4vGlF3\/mdg4KxymTzI=\"\/><file name=\"webgui:\/\/\/clixform.xsl\" src=\"dp-aux\/clixform.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"JWCmCYFwjG0ku59O8LehfGCkiIM=\"\/><file name=\"webgui:\/\/\/SchemaUtil.xsl\" src=\"dp-aux\/SchemaUtil.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"ZnCYHBrcIPvfLAXYOIKIL0KXIbo=\"\/><file name=\"webgui:\/\/\/management.xsl\" src=\"dp-aux\/management.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"pi0c46mGrlbqTpsWjG3QUxFOCYU=\"\/><file name=\"webgui:\/\/\/map-dmz.xsl\" src=\"dp-aux\/map-dmz.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"S8LbpfukTeInHK2d6DnQfdiZmd4=\"\/><file name=\"webgui:\/\/\/drMgmt.xml\" src=\"dp-aux\/drMgmt.xml\" location=\"dp-aux\" internal=\"true\" hash=\"rguYxswTHPd7HQ9v8p9Uspr0CuQ=\"\/><file name=\"webgui:\/\/\/basetypes.xml\" src=\"dp-aux\/basetypes.xml\" location=\"dp-aux\" internal=\"true\" hash=\"HrLsg2FhC6fPlGYI25NijeP828E=\"\/><\/files><\/datapower-configuration>\n    ",
+                    "path": "components\/1712bd77-7fec-faf2-0131-61d4ecba2e0e\/configTemplates\/export.xml"
+                },
+                {
+                    "name": "export2.xml",
+                    "data": "\n        <datapower-configuration version=\"3\"><export-details><description>Exported Configuration<\/description><user>twu04<\/user><domain>DIT-Common-Services<\/domain><comment\/><product-id>5725<\/product-id><product>IDG<\/product><display-product>IDG<\/display-product><model>IBM DataPower Gateway<\/model><display-model>IBM DataPower Gateway<\/display-model><device-name>ciambccudtdpw01<\/device-name><serial-number>0000000<\/serial-number><firmware-version>IDG.2018.4.1.3hy<\/firmware-version><display-firmware-version>IDG.2018.4.1.3hy<\/display-firmware-version><firmware-build>307450hy<\/firmware-build><delivery-type>LTS<\/delivery-type><firmware-timestamp>2019\/03\/23 13:30:08<\/firmware-timestamp><current-date>2020-03-31<\/current-date><current-time>17:16:48 EDT<\/current-time><reset-date>2020-03-25<\/reset-date><reset-time>00:45:36 EDT<\/reset-time><login-message\/><custom-ui-file>local:\/\/\/DP_Banner.xml<\/custom-ui-file><\/export-details><interface-data\/><configuration domain=\"DIT-Common-Services\"><HTTPSourceProtocolHandler name=\"BHOBAuditLoggerHttpFSH\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<LocalAddress>Data_Localhost<\/LocalAddress>\n<LocalPort>8110<\/LocalPort>\n<HTTPVersion>HTTP\/1.1<\/HTTPVersion>\n<AllowedFeatures>\n<HTTP-1.0>on<\/HTTP-1.0>\n<HTTP-1.1>on<\/HTTP-1.1>\n<HTTP-2.0>off<\/HTTP-2.0>\n<POST>on<\/POST>\n<GET>on<\/GET>\n<PUT>on<\/PUT>\n<HEAD>off<\/HEAD>\n<OPTIONS>off<\/OPTIONS>\n<TRACE>off<\/TRACE>\n<DELETE>on<\/DELETE>\n<CONNECT>off<\/CONNECT>\n<CustomMethods>off<\/CustomMethods>\n<QueryString>on<\/QueryString>\n<FragmentIdentifiers>on<\/FragmentIdentifiers>\n<DotDot>off<\/DotDot>\n<CmdExe>off<\/CmdExe><\/AllowedFeatures>\n<PersistentConnections>on<\/PersistentConnections>\n<MaxPersistentConnectionsReuse>0<\/MaxPersistentConnectionsReuse>\n<AllowCompression>off<\/AllowCompression>\n<AllowWebSocketUpgrade>off<\/AllowWebSocketUpgrade>\n<WebSocketIdleTimeout>0<\/WebSocketIdleTimeout>\n<MaxURLLen>16384<\/MaxURLLen>\n<MaxTotalHdrLen>128000<\/MaxTotalHdrLen>\n<MaxHdrCount>0<\/MaxHdrCount>\n<MaxNameHdrLen>0<\/MaxNameHdrLen>\n<MaxValueHdrLen>0<\/MaxValueHdrLen>\n<MaxQueryStringLen>0<\/MaxQueryStringLen>\n<CredentialCharset>protocol<\/CredentialCharset>\n<HTTP2MaxStreams>100<\/HTTP2MaxStreams>\n<HTTP2MaxFrameSize>16384<\/HTTP2MaxFrameSize>\n<HTTP2StreamHeader>off<\/HTTP2StreamHeader>\n<ChunkedEncoding>on<\/ChunkedEncoding><\/HTTPSourceProtocolHandler><HTTPUserAgent name=\"default\" intrinsic=\"true\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<UserSummary>Default User Agent<\/UserSummary>\n<MaxRedirects>8<\/MaxRedirects>\n<Timeout>300<\/Timeout><\/HTTPUserAgent><XMLManager name=\"default\" intrinsic=\"true\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<UserSummary>Default XML-Manager<\/UserSummary>\n<CacheSize>256<\/CacheSize>\n<SHA1Caching>on<\/SHA1Caching>\n<StaticDocumentCalls>on<\/StaticDocumentCalls>\n<SearchResults>on<\/SearchResults>\n<SupportTxWarn>off<\/SupportTxWarn>\n<Memoization>on<\/Memoization>\n<ParserLimitsBytesScanned>@@SERVICE_PAYLOAD_SIZE@@<\/ParserLimitsBytesScanned>\n<ParserLimitsElementDepth>512<\/ParserLimitsElementDepth>\n<ParserLimitsAttributeCount>128<\/ParserLimitsAttributeCount>\n<ParserLimitsMaxNodeSize>33554432<\/ParserLimitsMaxNodeSize>\n<ParserLimitsForbidExternalReferences>on<\/ParserLimitsForbidExternalReferences>\n<ParserLimitsExternalReferences>forbid<\/ParserLimitsExternalReferences>\n<ParserLimitsMaxPrefixes>1024<\/ParserLimitsMaxPrefixes>\n<ParserLimitsMaxNamespaces>1024<\/ParserLimitsMaxNamespaces>\n<ParserLimitsMaxLocalNames>60000<\/ParserLimitsMaxLocalNames>\n<DocCacheMaxDocs>5000<\/DocCacheMaxDocs>\n<DocCacheSize>0<\/DocCacheSize>\n<DocMaxWrites>32768<\/DocMaxWrites>\n<UserAgent class=\"HTTPUserAgent\">default<\/UserAgent><\/XMLManager><StylePolicy name=\"default\" intrinsic=\"true\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<UserSummary>Default Processing Policy<\/UserSummary>\n<DefStylesheetForSoap>store:\/\/\/filter-reject-all.xsl<\/DefStylesheetForSoap>\n<DefStylesheetForXsl>store:\/\/\/identity.xsl<\/DefStylesheetForXsl>\n<DefXQueryForJSON>store:\/\/\/reject-all-json.xq<\/DefXQueryForJSON><\/StylePolicy><MultiProtocolGateway name=\"@@SERVICE_NAME@@MPG\" xmlns:env=\"http:\/\/www.w3.org\/2003\/05\/soap-envelope\" xmlns:dp=\"http:\/\/www.datapower.com\/schemas\/management\">\n<mAdminState>enabled<\/mAdminState>\n<UserSummary>@@SERVICE_FLOW@@<\/UserSummary>\n<Priority>normal<\/Priority>\n<FrontProtocol class=\"HTTPSourceProtocolHandler\">BHOBAuditLoggerHttpFSH<\/FrontProtocol>\n<XMLManager class=\"XMLManager\">default<\/XMLManager>\n<SSLClientConfigType>proxy<\/SSLClientConfigType>\n<DefaultParamNamespace>http:\/\/www.datapower.com\/param\/config<\/DefaultParamNamespace>\n<QueryParamNamespace>http:\/\/www.datapower.com\/param\/query<\/QueryParamNamespace>\n<BackendUrl>@@BACKEND_URL@@<\/BackendUrl>\n<PropagateURI>on<\/PropagateURI>\n<MonitorProcessingPolicy>terminate-at-first-throttle<\/MonitorProcessingPolicy>\n<RequestAttachments>strip<\/RequestAttachments>\n<ResponseAttachments>strip<\/ResponseAttachments>\n<RequestAttachmentsFlowControl>off<\/RequestAttachmentsFlowControl>\n<ResponseAttachmentsFlowControl>off<\/ResponseAttachmentsFlowControl>\n<RootPartNotFirstAction>process-in-order<\/RootPartNotFirstAction>\n<FrontAttachmentFormat>dynamic<\/FrontAttachmentFormat>\n<BackAttachmentFormat>dynamic<\/BackAttachmentFormat>\n<MIMEFrontHeaders>on<\/MIMEFrontHeaders>\n<MIMEBackHeaders>on<\/MIMEBackHeaders>\n<StreamOutputToBack>buffer-until-verification<\/StreamOutputToBack>\n<StreamOutputToFront>buffer-until-verification<\/StreamOutputToFront>\n<MaxMessageSize>0<\/MaxMessageSize>\n<GatewayParserLimits>off<\/GatewayParserLimits>\n<ParserLimitsElementDepth>512<\/ParserLimitsElementDepth>\n<ParserLimitsAttributeCount>128<\/ParserLimitsAttributeCount>\n<ParserLimitsMaxNodeSize>33554432<\/ParserLimitsMaxNodeSize>\n<ParserLimitsForbidExternalReferences>on<\/ParserLimitsForbidExternalReferences>\n<ParserLimitsExternalReferences>forbid<\/ParserLimitsExternalReferences>\n<ParserLimitsMaxPrefixes>1024<\/ParserLimitsMaxPrefixes>\n<ParserLimitsMaxNamespaces>1024<\/ParserLimitsMaxNamespaces>\n<ParserLimitsMaxLocalNames>60000<\/ParserLimitsMaxLocalNames>\n<ParserLimitsAttachmentByteCount>2000000000<\/ParserLimitsAttachmentByteCount>\n<ParserLimitsAttachmentPackageByteCount>0<\/ParserLimitsAttachmentPackageByteCount>\n<DebugMode persisted=\"false\">off<\/DebugMode>\n<DebuggerType>internal<\/DebuggerType>\n<DebugHistory>25<\/DebugHistory>\n<FlowControl>off<\/FlowControl>\n<SOAPSchemaURL>store:\/\/\/schemas\/soap-envelope.xsd<\/SOAPSchemaURL>\n<FrontTimeout>@@SERVICE_TIMEOUT@@<\/FrontTimeout>\n<BackTimeout>@@SERVICE_TIMEOUT@@<\/BackTimeout>\n<FrontPersistentTimeout>180<\/FrontPersistentTimeout>\n<BackPersistentTimeout>180<\/BackPersistentTimeout>\n<IncludeResponseTypeEncoding>off<\/IncludeResponseTypeEncoding>\n<BackHTTPVersion>HTTP\/1.1<\/BackHTTPVersion>\n<PersistentConnections>on<\/PersistentConnections>\n<LoopDetection>off<\/LoopDetection>\n<DoHostRewriting>on<\/DoHostRewriting>\n<DoChunkedUpload>off<\/DoChunkedUpload>\n<ProcessHTTPErrors>on<\/ProcessHTTPErrors>\n<HTTPClientIPLabel>X-Client-IP<\/HTTPClientIPLabel>\n<HTTPLogCorIDLabel>X-Global-Transaction-ID<\/HTTPLogCorIDLabel>\n<InOrderMode>\n<Request>off<\/Request>\n<Backend>off<\/Backend>\n<Response>off<\/Response><\/InOrderMode>\n<WSAMode>sync2sync<\/WSAMode>\n<WSARequireAAA>on<\/WSARequireAAA>\n<WSAStrip>on<\/WSAStrip>\n<WSADefaultReplyTo>http:\/\/schemas.xmlsoap.org\/ws\/2004\/08\/addressing\/role\/anonymous<\/WSADefaultReplyTo>\n<WSADefaultFaultTo>http:\/\/schemas.xmlsoap.org\/ws\/2004\/08\/addressing\/role\/anonymous<\/WSADefaultFaultTo>\n<WSAForce>off<\/WSAForce>\n<WSAGenStyle>sync<\/WSAGenStyle>\n<WSAHTTPAsyncResponseCode>204<\/WSAHTTPAsyncResponseCode>\n<WSATimeout>120<\/WSATimeout>\n<WSRMEnabled>off<\/WSRMEnabled>\n<WSRMSequenceExpiration>3600<\/WSRMSequenceExpiration>\n<WSRMDestinationAcceptCreateSequence>on<\/WSRMDestinationAcceptCreateSequence>\n<WSRMDestinationMaximumSequences>400<\/WSRMDestinationMaximumSequences>\n<WSRMDestinationInOrder>off<\/WSRMDestinationInOrder>\n<WSRMDestinationMaximumInOrderQueueLength>10<\/WSRMDestinationMaximumInOrderQueueLength>\n<WSRMDestinationAcceptOffers>off<\/WSRMDestinationAcceptOffers>\n<WSRMFrontForce>off<\/WSRMFrontForce>\n<WSRMBackForce>off<\/WSRMBackForce>\n<WSRMBackCreateSequence>off<\/WSRMBackCreateSequence>\n<WSRMFrontCreateSequence>off<\/WSRMFrontCreateSequence>\n<WSRMSourceMakeOffer>off<\/WSRMSourceMakeOffer>\n<WSRMUsesSequenceSSL>off<\/WSRMUsesSequenceSSL>\n<WSRMSourceMaximumSequences>400<\/WSRMSourceMaximumSequences>\n<WSRMSourceRetransmissionInterval>10<\/WSRMSourceRetransmissionInterval>\n<WSRMSourceExponentialBackoff>on<\/WSRMSourceExponentialBackoff>\n<WSRMSourceMaximumRetransmissions>4<\/WSRMSourceMaximumRetransmissions>\n<WSRMSourceMaximumQueueLength>30<\/WSRMSourceMaximumQueueLength>\n<WSRMSourceRequestAckCount>1<\/WSRMSourceRequestAckCount>\n<WSRMSourceInactivityClose>360<\/WSRMSourceInactivityClose>\n<ForcePolicyExec>off<\/ForcePolicyExec>\n<RewriteErrors>on<\/RewriteErrors>\n<DelayErrors>on<\/DelayErrors>\n<DelayErrorsDuration>1000<\/DelayErrorsDuration>\n<RequestType>soap<\/RequestType>\n<ResponseType>soap<\/ResponseType>\n<FollowRedirects>on<\/FollowRedirects>\n<RewriteLocationHeader>off<\/RewriteLocationHeader>\n<StylePolicy class=\"StylePolicy\">default<\/StylePolicy>\n<Type>static-backend<\/Type>\n<AllowCompression>off<\/AllowCompression>\n<AllowCacheControlHeader>off<\/AllowCacheControlHeader>\n<WSMAgentMonitor>off<\/WSMAgentMonitor>\n<WSMAgentMonitorPCM>all-messages<\/WSMAgentMonitorPCM>\n<ProxyHTTPResponse>off<\/ProxyHTTPResponse>\n<TransactionTimeout>0<\/TransactionTimeout><\/MultiProtocolGateway><\/configuration><files><file name=\"webgui:\/\/\/clixform.xsl\" src=\"dp-aux\/clixform.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"5D6rHcHlxffHkL6WqXFk5rM\/MSw=\"\/><file name=\"webgui:\/\/\/SchemaUtil.xsl\" src=\"dp-aux\/SchemaUtil.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"ZnCYHBrcIPvfLAXYOIKIL0KXIbo=\"\/><file name=\"webgui:\/\/\/management.xsl\" src=\"dp-aux\/management.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"pi0c46mGrlbqTpsWjG3QUxFOCYU=\"\/><file name=\"webgui:\/\/\/map-dmz.xsl\" src=\"dp-aux\/map-dmz.xsl\" location=\"dp-aux\" internal=\"true\" hash=\"S8LbpfukTeInHK2d6DnQfdiZmd4=\"\/><file name=\"webgui:\/\/\/drMgmt.xml\" src=\"dp-aux\/drMgmt.xml\" location=\"dp-aux\" internal=\"true\" hash=\"6fYaKg4C6F9rrSHc5VotBh+DVXg=\"\/><file name=\"webgui:\/\/\/basetypes.xml\" src=\"dp-aux\/basetypes.xml\" location=\"dp-aux\" internal=\"true\" hash=\"HrLsg2FhC6fPlGYI25NijeP828E=\"\/><\/files><\/datapower-configuration>\n    ",
+                    "path": "components\/1712bd77-7fec-faf2-0131-61d4ecba2e0e\/configTemplates\/export2.xml"
+                }
+            ],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "BMO-SmokeTest",
+            "description": "",
+            "created": 1585766595158,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Test MPG and Send Email",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/171370df-a65a-a2ed-9965-9378b2a97e0c\/processes\/171370e9-4f94-5c0d-b3bd-d6d81a6e0d88",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "24bbb0aa68b898776b318b944330da",
+                            "from": "Send HTTP Call",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Send HTTP Call",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Send HTTP Call",
+                            "x": -65,
+                            "y": 230,
+                            "h": 70,
+                            "w": 240
+                        },
+                        {
+                            "name": "24bbb0aa68b898776b318b944330da",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "2ebeb2d1-4263-4e75-a831-3d10ef933303",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "24bbb0aa68b898776b318b944330da",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 15,
+                            "commandName": "Send HTTP Call",
+                            "pluginName": "Web Utilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "http:\/\/www.google.com",
+                                "method": "GET",
+                                "headers": "",
+                                "data": "",
+                                "contentType": "*\/*",
+                                "acceptType": "*\/*",
+                                "untrustedSSL": "false",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyc4qa|Cl9\/EkV9v7BVZx6B990pug==|LedmWY6BOAW\/2rppdq3FdQ==}",
+                                "outFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Send HTTP Call",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [
+        {
+            "name": "AUTODP",
+            "description": "",
+            "color": "#008A52",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/BMO\/DataPower",
+                "tree": {
+                    "name": "AUTODP",
+                    "path": "\/BMO\/DataPower\/AUTODP",
+                    "description": "",
+                    "parentName": "DataPower",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/BMO\/DataPower",
+                "tree": {
+                    "name": "AUTODP",
+                    "path": "\/BMO\/DataPower\/AUTODP",
+                    "description": "",
+                    "parentName": "DataPower",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "bmo.ibmdevops.com",
+                        "path": "\/BMO\/DataPower\/AUTODP\/bmo.ibmdevops.com",
+                        "description": "",
+                        "parentName": "AUTODP",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "bmo.ibmdevops.com",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "BMO-AutoDP",
+                            "path": "\/BMO\/DataPower\/AUTODP\/bmo.ibmdevops.com\/BMO-AutoDP",
+                            "description": "",
+                            "parentName": "bmo.ibmdevops.com",
+                            "inheritTeam": true,
+                            "roleName": "BMO-AutoDP",
+                            "roleProperties": {
+                                "name": "BMO-AutoDP",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "BMO-AutoDP"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-MPG-Generic"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-PassThruMPG"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-SmokeTest"
+                }
+            ],
+            "teamMappings": []
+        },
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "dpDomainName",
+                    "value": "DEV",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpHostname",
+                    "value": "bmo.ibmdevops.com",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpPassword",
+                    "value": "Think2020!",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpUserid",
+                    "value": "admin",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpXMIPort",
+                    "value": "5550",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/BMO\/DataPower",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/BMO\/DataPower\/DEV",
+                    "description": "",
+                    "parentName": "DataPower",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/BMO\/DataPower",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/BMO\/DataPower\/DEV",
+                    "description": "",
+                    "parentName": "DataPower",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "bmo.ibmdevops.com",
+                        "path": "\/BMO\/DataPower\/DEV\/bmo.ibmdevops.com",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "bmo.ibmdevops.com",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "BMO-AutoDP",
+                                "path": "\/BMO\/DataPower\/DEV\/bmo.ibmdevops.com\/BMO-AutoDP",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-AutoDP",
+                                "roleProperties": {
+                                    "name": "BMO-AutoDP",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BMO-MPG-Generic",
+                                "path": "\/BMO\/DataPower\/DEV\/bmo.ibmdevops.com\/BMO-MPG-Generic",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-MPG-Generic",
+                                "roleProperties": {
+                                    "name": "BMO-MPG-Generic",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BMO-PassThruMPG",
+                                "path": "\/BMO\/DataPower\/DEV\/bmo.ibmdevops.com\/BMO-PassThruMPG",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-PassThruMPG",
+                                "roleProperties": {
+                                    "name": "BMO-PassThruMPG",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BMO-SmokeTest",
+                                "path": "\/BMO\/DataPower\/DEV\/bmo.ibmdevops.com\/BMO-SmokeTest",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-SmokeTest",
+                                "roleProperties": {
+                                    "name": "BMO-SmokeTest",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "BMO-AutoDP"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-MPG-Generic"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-PassThruMPG"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-SmokeTest"
+                }
+            ],
+            "teamMappings": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "dpDomainName",
+                    "value": "QA",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpHostname",
+                    "value": "bmo.ibmdevops.com",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpPassword",
+                    "value": "Think2020!",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpUserid",
+                    "value": "admin",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "dpXMIPort",
+                    "value": "5550",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/BMO\/DataPower",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/BMO\/DataPower\/QA",
+                    "description": "",
+                    "parentName": "DataPower",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/BMO\/DataPower",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/BMO\/DataPower\/QA",
+                    "description": "",
+                    "parentName": "DataPower",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "bmo.ibmdevops.com",
+                        "path": "\/BMO\/DataPower\/QA\/bmo.ibmdevops.com",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "bmo.ibmdevops.com",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "BMO-AutoDP",
+                                "path": "\/BMO\/DataPower\/QA\/bmo.ibmdevops.com\/BMO-AutoDP",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-AutoDP",
+                                "roleProperties": {
+                                    "name": "BMO-AutoDP",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BMO-PassThruMPG",
+                                "path": "\/BMO\/DataPower\/QA\/bmo.ibmdevops.com\/BMO-PassThruMPG",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-PassThruMPG",
+                                "roleProperties": {
+                                    "name": "BMO-PassThruMPG",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BMO-SmokeTest",
+                                "path": "\/BMO\/DataPower\/QA\/bmo.ibmdevops.com\/BMO-SmokeTest",
+                                "description": "",
+                                "parentName": "bmo.ibmdevops.com",
+                                "inheritTeam": true,
+                                "roleName": "BMO-SmokeTest",
+                                "roleProperties": {
+                                    "name": "BMO-SmokeTest",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "BMO-AutoDP"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-MPG-Generic"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-PassThruMPG"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BMO-SmokeTest"
+                }
+            ],
+            "teamMappings": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-PassThruMPG",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "e2478f5ee1a4b218eff67729c8a7cd",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "7da9e0232a6ee76230b8c5ab50bbef",
+                        "from": "e2478f5ee1a4b218eff67729c8a7cd",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "e2478f5ee1a4b218eff67729c8a7cd",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 360
+                    },
+                    {
+                        "name": "7da9e0232a6ee76230b8c5ab50bbef",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "48151a9b-4c79-4c9d-8159-7ace6a7d2a10",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "7da9e0232a6ee76230b8c5ab50bbef",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BMO-PassThruMPG",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "e2478f5ee1a4b218eff67729c8a7cd",
+                        "children": [{
+                            "componentName": "BMO-PassThruMPG",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "3ce3481d-6b49-4e40-9cab-14b7611f60db",
+                            "children": [{
+                                "componentProcessName": "Deploy-PassThruMPG-From-Zip",
+                                "componentName": "BMO-PassThruMPG",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"BMO-PassThruMPG\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Trigger_Deploy",
+            "description": "This is used by Jenkins to trigger deployments",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "202e11894693f5537b87c48be4b12d",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "f425e83ef0faed477c0eba6a64bd5f",
+                        "from": "202e11894693f5537b87c48be4b12d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "202e11894693f5537b87c48be4b12d",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 250
+                    },
+                    {
+                        "name": "f425e83ef0faed477c0eba6a64bd5f",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "d4d2c465-6c93-4a14-9da1-96753c226a2e",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "f425e83ef0faed477c0eba6a64bd5f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BMO-AutoDP",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "202e11894693f5537b87c48be4b12d",
+                        "children": [{
+                            "componentName": "BMO-AutoDP",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "7cb9271f-3cae-42d9-a134-2aefa8dd1420",
+                            "children": [{
+                                "componentProcessName": "Trigger-AutoDP",
+                                "componentName": "BMO-AutoDP",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"BMO-AutoDP\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-PassThruMPG-XML",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "cebf4d8e42aea9fbf7da34a674e0eb",
+                        "from": "00a1a8957ee5b2ed82029369dd20b8",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "c0289e73bdc5946e03840a2ea6be5d",
+                        "from": "8fa801aff6d7d8302e227deb909e0d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "8fa801aff6d7d8302e227deb909e0d",
+                        "from": "cebf4d8e42aea9fbf7da34a674e0eb",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "00a1a8957ee5b2ed82029369dd20b8",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "8fa801aff6d7d8302e227deb909e0d",
+                        "x": -160,
+                        "y": 515,
+                        "h": 110,
+                        "w": 450
+                    },
+                    {
+                        "name": "00a1a8957ee5b2ed82029369dd20b8",
+                        "x": -105,
+                        "y": 165,
+                        "h": 90,
+                        "w": 470
+                    },
+                    {
+                        "name": "cebf4d8e42aea9fbf7da34a674e0eb",
+                        "x": -155,
+                        "y": 330,
+                        "h": 110,
+                        "w": 440
+                    },
+                    {
+                        "name": "c0289e73bdc5946e03840a2ea6be5d",
+                        "x": -5,
+                        "y": 700,
+                        "h": 90,
+                        "w": 140
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "eb921b7e-636d-4f68-8327-33aa60013a25",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "c0289e73bdc5946e03840a2ea6be5d",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BMO-PassThruMPG",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "cebf4d8e42aea9fbf7da34a674e0eb",
+                        "children": [{
+                            "componentProcessName": "Deploy-PassThruMPG",
+                            "componentName": "BMO-PassThruMPG",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"BMO-PassThruMPG\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "BMO-SmokeTest",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "8fa801aff6d7d8302e227deb909e0d",
+                        "children": [{
+                            "componentProcessName": "Test MPG and Send Email",
+                            "componentName": "BMO-SmokeTest",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"BMO-SmokeTest\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "BMO-AutoDP",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "00a1a8957ee5b2ed82029369dd20b8",
+                        "children": [{
+                            "componentName": "BMO-AutoDP",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "478bf152-5efb-47d6-a0fb-afedffbb2361",
+                            "children": [{
+                                "componentProcessName": "Download New Request File",
+                                "componentName": "BMO-AutoDP",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"BMO-AutoDP\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "Request-Filename",
+                "label": "Request Filename",
+                "pattern": "",
+                "type": "TEXT",
+                "required": true,
+                "description": "The name of the request file to parse",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-SimpleXML",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "7eb47f78676e377ec17099a0a4588f",
+                        "from": "9962b35fce943598d43023e925a1d5",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "9962b35fce943598d43023e925a1d5",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "7eb47f78676e377ec17099a0a4588f",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "9962b35fce943598d43023e925a1d5",
+                        "x": -100,
+                        "y": 230,
+                        "h": 80,
+                        "w": 310
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "0703b778-77e3-40b3-a99c-161363e6a432",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "7eb47f78676e377ec17099a0a4588f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BMO-MPG-Generic",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "9962b35fce943598d43023e925a1d5",
+                        "children": [{
+                            "componentProcessName": "Deploy-Generic-MPG",
+                            "componentName": "BMO-MPG-Generic",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"BMO-MPG-Generic\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": []
+}

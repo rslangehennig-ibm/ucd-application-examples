@@ -1,0 +1,394 @@
+{
+    "name": "GitLab",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "GitLab",
+        "description": "",
+        "created": 1604348151048,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [{
+            "name": "Deploy",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/1758a9a0-5197-acac-1bea-19991156ba51\/processes\/1758ab32-c6e5-86a4-cab0-4938d48d0371",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Deploy",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "4a0486a34a97f591899d9c2fa8e263",
+                        "from": "Deploy",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 180,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "Deploy",
+                        "x": -25,
+                        "y": 350,
+                        "h": 70,
+                        "w": 160
+                    },
+                    {
+                        "name": "4a0486a34a97f591899d9c2fa8e263",
+                        "x": -5,
+                        "y": 520,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "42ca2713-e06c-4736-b0ab-e541c7e6d494",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "4a0486a34a97f591899d9c2fa8e263",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 32,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "pluginId": "com.urbancode.plugin.VFS",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "true",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "versionId": "${p:version.id}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "charset": "",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "pluginId": "com.urbancode.air.plugin.Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "echo deploy\nls -al\npwd",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [{
+            "name": "affirme",
+            "data": "<xml>\n<\/xml>",
+            "path": "components\/1758a9a0-5197-acac-1bea-19991156ba51\/configTemplates\/affirme"
+        }],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [{
+        "name": "DEV",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": []
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/GitLab",
+            "tree": {
+                "name": "DEV",
+                "path": "\/GitLab\/DEV",
+                "description": "",
+                "parentName": "GitLab",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/GitLab",
+            "tree": {
+                "name": "DEV",
+                "path": "\/GitLab\/DEV",
+                "description": "",
+                "parentName": "GitLab",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "virtualserver02",
+                    "path": "\/GitLab\/DEV\/virtualserver02",
+                    "description": "",
+                    "parentName": "DEV",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "virtualserver02",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "GitLab",
+                        "path": "\/GitLab\/DEV\/virtualserver02\/GitLab",
+                        "description": "",
+                        "parentName": "virtualserver02",
+                        "inheritTeam": true,
+                        "roleName": "GitLab",
+                        "roleProperties": {
+                            "name": "GitLab",
+                            "properties": []
+                        },
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": []
+                    }]
+                }]
+            }
+        }],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "GitLab"
+        }],
+        "teamMappings": [{
+            "resourceTypeId": "20000000000000000000000000000103",
+            "resourceTypeName": "Environment",
+            "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+            "teamLabel": "GitLab",
+            "resourceRoleId": "17792929-70a9-a142-45c2-a7694b024134",
+            "resourceRoleLabel": "Development"
+        }],
+        "deploymentTriggers": []
+    }],
+    "processes": [{
+        "name": "Deploy",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "09c949154b1a9925030dc7962efc12",
+                    "from": "9c2c0581db9777e993e9083252862a",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "9c2c0581db9777e993e9083252862a",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "09c949154b1a9925030dc7962efc12",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "9c2c0581db9777e993e9083252862a",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 190
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "ad89076c-388c-4a6e-8e3b-671c07dc5623",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "09c949154b1a9925030dc7962efc12",
+                    "children": []
+                },
+                {
+                    "componentName": "GitLab",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "9c2c0581db9777e993e9083252862a",
+                    "children": [{
+                        "componentName": "GitLab",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "72fa3319-a3dc-455c-a53a-9be20bc6534e",
+                        "children": [{
+                            "componentProcessName": "Deploy",
+                            "componentName": "GitLab",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"GitLab\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [],
+    "webhooks": []
+}

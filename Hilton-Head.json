@@ -1,0 +1,1599 @@
+{
+    "name": "Hilton-Head",
+    "description": "An example application for training purposes",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "Hilton-Head-Crabbing",
+        "description": "",
+        "created": 1642097794800,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/downloads\/Hilton-Head-Crabbing",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [
+            {
+                "name": "Deploy-App",
+                "description": "This deploys a WebSphere WAR file",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17e54a7d-f015-4dc9-1f2a-b6870f2e8d23\/processes\/17e54aac-f1a5-4993-cb2f-93a47594032a",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "aa6e2956ab77578d0bcb42034d4dd2",
+                            "from": "Add spices",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "7494f54f23253ad48f49ac6dbc09c6",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "aa6e2956ab77578d0bcb42034d4dd2",
+                            "from": "No spices needed",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "8024310dfcee4242f6f8df9670bc67",
+                            "from": "Deploy-EAR",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "from": "7494f54f23253ad48f49ac6dbc09c6",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "No spices needed",
+                            "from": "Which crab type selected?",
+                            "type": "VALUE",
+                            "value": ""
+                        },
+                        {
+                            "to": "Add spices",
+                            "from": "Which crab type selected?",
+                            "type": "VALUE",
+                            "value": "red"
+                        },
+                        {
+                            "to": "Which crab type selected?",
+                            "from": "Which Crab Type?",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Deploy-EAR",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Which Crab Type?",
+                            "from": "8024310dfcee4242f6f8df9670bc67",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "No spices needed",
+                            "x": 45,
+                            "y": 980,
+                            "h": 90,
+                            "w": 270
+                        },
+                        {
+                            "name": "7494f54f23253ad48f49ac6dbc09c6",
+                            "x": -95,
+                            "y": 140,
+                            "h": 90,
+                            "w": 320
+                        },
+                        {
+                            "name": "Which Crab Type?",
+                            "x": -83.26388888888886,
+                            "y": 700,
+                            "h": 90,
+                            "w": 280
+                        },
+                        {
+                            "name": "Which crab type selected?",
+                            "x": -173.6111111111111,
+                            "y": 840,
+                            "h": 90,
+                            "w": 450
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -110,
+                            "y": 280,
+                            "h": 90,
+                            "w": 350
+                        },
+                        {
+                            "name": "8024310dfcee4242f6f8df9670bc67",
+                            "x": -99.86111111111109,
+                            "y": 560,
+                            "h": 90,
+                            "w": 320
+                        },
+                        {
+                            "name": "Deploy-EAR",
+                            "x": -36.458333333333314,
+                            "y": 420,
+                            "h": 90,
+                            "w": 200
+                        },
+                        {
+                            "name": "Add spices",
+                            "x": -185,
+                            "y": 980,
+                            "h": 90,
+                            "w": 200
+                        },
+                        {
+                            "name": "aa6e2956ab77578d0bcb42034d4dd2",
+                            "x": -22.5,
+                            "y": 1120,
+                            "h": 90,
+                            "w": 140
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "9139c10f-801b-4783-b1d8-7049052acb53",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "aa6e2956ab77578d0bcb42034d4dd2",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "uname -a\npwd\nls -al\ncat *.war",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Deploy-EAR",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo Crab type is ${p:environment\/crab-type}",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Which Crab Type?",
+                            "children": []
+                        },
+                        {
+                            "propertyName": "${p:environment\/crab-type}",
+                            "type": "switch",
+                            "name": "Which crab type selected?",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo Add spices to our red crab",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Add spices",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo enjoy your crab without spices",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "No spices needed",
+                            "children": []
+                        },
+                        {
+                            "lockName": "${p:agent.name}-${p:environment\/profile-name}",
+                            "type": "acquireLock",
+                            "name": "7494f54f23253ad48f49ac6dbc09c6",
+                            "children": []
+                        },
+                        {
+                            "lockName": "${p:agent.name}-${p:environment\/profile-name}",
+                            "type": "releaseLock",
+                            "name": "8024310dfcee4242f6f8df9670bc67",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy-Properties",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17e54a7d-f015-4dc9-1f2a-b6870f2e8d23\/processes\/17ebb3df-92f3-7395-619f-23339b7ff3ba",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Copy Property Files to Target Directory",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "01b3e731f1be3a4ad082f36d167532",
+                            "from": "Copy Property Files to Target Directory",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "01b3e731f1be3a4ad082f36d167532",
+                            "x": -5,
+                            "y": 520,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Copy Property Files to Target Directory",
+                            "x": -25,
+                            "y": 350,
+                            "h": 70,
+                            "w": 340
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 180,
+                            "h": 70,
+                            "w": 260
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "8a2b62cc-0e1e-4f7f-9d66-75bae75fb112",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "01b3e731f1be3a4ad082f36d167532",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "pwd\nls -al\ncd properties\nls -al\ncp file1.properties \/tmp\ncp file2.properties \/tmp",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Copy Property Files to Target Directory",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Show-Vault-Secret-Example",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17e54a7d-f015-4dc9-1f2a-b6870f2e8d23\/processes\/184c0815-db5a-ad5a-3038-f34769161c5d",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "bc85c11da88ed71e06084cd3e4d39e",
+                            "from": "Vault Script",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Show Vault Secret without TR",
+                            "from": "Show Vault Secret using Environment Property",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Show Vault Secret",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "bc85c11da88ed71e06084cd3e4d39e",
+                            "from": "Show Vault Secret without TR",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Show Vault Secret using Environment Property",
+                            "from": "Show Vault Secret",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Vault Script",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Vault Script",
+                            "x": 80,
+                            "y": 130,
+                            "h": 70,
+                            "w": 170
+                        },
+                        {
+                            "name": "Show Vault Secret",
+                            "x": -160,
+                            "y": 130,
+                            "h": 70,
+                            "w": 210
+                        },
+                        {
+                            "name": "Show Vault Secret without TR",
+                            "x": -110,
+                            "y": 370,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "bc85c11da88ed71e06084cd3e4d39e",
+                            "x": 55,
+                            "y": 490,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Show Vault Secret using Environment Property",
+                            "x": -207.5,
+                            "y": 250,
+                            "h": 70,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "caf44ff4-1eb3-4b70-8b84-8a9588ec806c",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "bc85c11da88ed71e06084cd3e4d39e",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 13,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo ${p:secret:vault:randy:default:secret\/sample-secret:first-secret} | tr V v",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Vault Secret",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 13,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\n\n# Export your cluster's public URL and the default namespace called admin\nexport VAULT_ADDR=\"https:\/\/rlange-sample-cluster-public-vault-7d2aca42.70100e2c.z1.hashicorp.cloud:8200\";\nexport VAULT_NAMESPACE=\"admin\"\n\n\n# Authenticate to Vault using AppRole and save the resulting client token to interact with the cluster\nexport VAULT_TOKEN=$(curl -s --header \"X-Vault-Namespace: $VAULT_NAMESPACE\" \\\n    --request POST --data '{\"role_id\": \"aae6fc26-d0cd-c6f5-056f-8d83e306ee75\", \"secret_id\": \"09c654e0-8a81-7082-187a-70f403d128e3\"}' \\\n     $VAULT_ADDR\/v1\/auth\/approle\/login | jq -r '.auth.client_token' )\n\n# read your first secret\n\ncurl -s --header \"X-Vault-Token: $VAULT_TOKEN\" \\\n    --header \"X-Vault-Namespace: $VAULT_NAMESPACE\" \\\n    $VAULT_ADDR\/v1\/secret\/data\/sample-secret | jq -r \".data\"",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Vault Script",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 13,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo ${p:environment\/vault-secret-example}",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Vault Secret without TR",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 13,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo ${p:environment\/vault-secret-example} | tr V v",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Vault Secret using Environment Property",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [{
+            "resourceTypeId": "20000000000000000000000000000101",
+            "resourceTypeName": "Component",
+            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+            "teamLabel": "WebSphere Team"
+        }],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "crab-type",
+                        "value": "blue",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "profile-name",
+                        "value": "profile1",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Hilton-Head",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Hilton-Head\/DEV",
+                    "description": "",
+                    "parentName": "Hilton-Head",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Hilton-Head",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Hilton-Head\/DEV",
+                    "description": "",
+                    "parentName": "Hilton-Head",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "gitlab-ucd-agent-QA",
+                            "path": "\/Hilton-Head\/DEV\/gitlab-ucd-agent-QA",
+                            "description": "WebSphere Node where properties are deployed",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "gitlab-ucd-agent-QA",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                "teamLabel": "WebSphere Team"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Hilton-Head-Crabbing",
+                                "path": "\/Hilton-Head\/DEV\/gitlab-ucd-agent-QA\/Hilton-Head-Crabbing",
+                                "description": "",
+                                "parentName": "gitlab-ucd-agent-QA",
+                                "inheritTeam": true,
+                                "roleName": "Hilton-Head-Crabbing",
+                                "roleProperties": {
+                                    "name": "Hilton-Head-Crabbing",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [{
+                                    "id": "17ebb42e-46f6-3eaf-9f95-8a894aa2aa33",
+                                    "name": "WAS-Properties",
+                                    "color": "#7F1C7D",
+                                    "description": "",
+                                    "objectType": "Resource"
+                                }],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                    "teamLabel": "WebSphere Team"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        },
+                        {
+                            "name": "virtualserver02",
+                            "path": "\/Hilton-Head\/DEV\/virtualserver02",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "virtualserver02",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                "teamLabel": "WebSphere Team"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Hilton-Head-Crabbing",
+                                "path": "\/Hilton-Head\/DEV\/virtualserver02\/Hilton-Head-Crabbing",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Hilton-Head-Crabbing",
+                                "roleProperties": {
+                                    "name": "Hilton-Head-Crabbing",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [
+                                    {
+                                        "id": "17ebb437-82be-0b93-a422-47c9a91bf88f",
+                                        "name": "WAS-Application",
+                                        "color": "#AB1A86",
+                                        "description": "",
+                                        "objectType": "Resource"
+                                    },
+                                    {
+                                        "id": "17ebb42e-46f6-3eaf-9f95-8a894aa2aa33",
+                                        "name": "WAS-Properties",
+                                        "color": "#7F1C7D",
+                                        "description": "",
+                                        "objectType": "Resource"
+                                    }
+                                ],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                    "teamLabel": "WebSphere Team"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        }
+                    ]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Hilton-Head-Crabbing"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "crab-type",
+                        "value": "red",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "profile-name",
+                        "value": "profile-qa",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "vault-secret-example",
+                        "value": "${p:secret:vault:randy:default:secret\/sample-secret:first-secret}",
+                        "description": "This is an example of a property that pulls a secret from Vault",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Hilton-Head",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Hilton-Head\/QA",
+                    "description": "",
+                    "parentName": "Hilton-Head",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Hilton-Head",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Hilton-Head\/QA",
+                    "description": "",
+                    "parentName": "Hilton-Head",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                        "teamLabel": "WebSphere Team"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Hilton-Head\/QA\/virtualserver02",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                            "teamLabel": "WebSphere Team"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Hilton-Head-Crabbing",
+                            "path": "\/Hilton-Head\/QA\/virtualserver02\/Hilton-Head-Crabbing",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "Hilton-Head-Crabbing",
+                            "roleProperties": {
+                                "name": "Hilton-Head-Crabbing",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                "teamLabel": "WebSphere Team"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Hilton-Head-Crabbing"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team",
+                "resourceRoleId": "170abd23-4a5e-8105-bc2a-f2e07117a1f2",
+                "resourceRoleLabel": "Test Environment"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#F389AF",
+            "requireApprovals": true,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "approvalProcess": {
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "dc1e0d0ab901e038463b14aeab40b9",
+                            "from": "6a567ece026f840ecd1a675b3b194c",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "6a567ece026f840ecd1a675b3b194c",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "dc1e0d0ab901e038463b14aeab40b9",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "6a567ece026f840ecd1a675b3b194c",
+                            "x": -65,
+                            "y": 230,
+                            "h": 70,
+                            "w": 240
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "b33486ba-88bf-4fc3-974f-d60db52e8a79",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "dc1e0d0ab901e038463b14aeab40b9",
+                            "children": []
+                        },
+                        {
+                            "roleRestrictionData": {
+                                "contextType": "ENVIRONMENT",
+                                "roleRestrictions": []
+                            },
+                            "propDefs": [{
+                                "name": "snow-ticket",
+                                "label": "snow-ticket",
+                                "pattern": "",
+                                "type": "TEXT",
+                                "isHidden": false,
+                                "required": true,
+                                "description": "Service Now Ticket Number",
+                                "inherited": false,
+                                "index": 0
+                            }],
+                            "templateName": "ApprovalCreated",
+                            "commentRequired": true,
+                            "commentPrompt": "Please provide the ServiceNow ticket and provide your approval message",
+                            "roleId": "20000000000000000000000000010001",
+                            "role": {},
+                            "type": "environmentApprovalTask",
+                            "name": "6a567ece026f840ecd1a675b3b194c",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Hilton-Head-Crabbing"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team",
+                "resourceRoleId": "170aba0c-69d7-1509-b8cd-bb304ce2e791",
+                "resourceRoleLabel": "Production"
+            }],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-WAR-and-Properties",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "a906173d93a74ac7ce4a1ecd84781c",
+                        "from": "a9c6bd382141fe0b9d5233243efd75",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "924f0e0d572b27f745358f538f027c",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a9c6bd382141fe0b9d5233243efd75",
+                        "from": "924f0e0d572b27f745358f538f027c",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "a9c6bd382141fe0b9d5233243efd75",
+                        "x": -50,
+                        "y": 350,
+                        "h": 70,
+                        "w": 310
+                    },
+                    {
+                        "name": "924f0e0d572b27f745358f538f027c",
+                        "x": -90,
+                        "y": 180,
+                        "h": 70,
+                        "w": 290
+                    },
+                    {
+                        "name": "a906173d93a74ac7ce4a1ecd84781c",
+                        "x": -5,
+                        "y": 500,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "3db3c680-d441-48c9-895e-705e6d6393b6",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "a906173d93a74ac7ce4a1ecd84781c",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Hilton-Head-Crabbing",
+                        "tag": {
+                            "objectType": "Resource",
+                            "name": "WAS-Properties",
+                            "description": "",
+                            "color": "#7F1C7D"
+                        },
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "924f0e0d572b27f745358f538f027c",
+                        "children": [{
+                            "componentName": "Hilton-Head-Crabbing",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "049df7c3-84f1-479f-a3d1-0ab509861a08",
+                            "children": [{
+                                "componentProcessName": "Deploy-Properties",
+                                "componentName": "Hilton-Head-Crabbing",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"Hilton-Head-Crabbing\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "Hilton-Head-Crabbing",
+                        "tag": {
+                            "objectType": "Resource",
+                            "name": "WAS-Application",
+                            "description": "",
+                            "color": "#AB1A86"
+                        },
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a9c6bd382141fe0b9d5233243efd75",
+                        "children": [{
+                            "componentName": "Hilton-Head-Crabbing",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "2511f7e2-512d-4737-947d-2620a4f98d0a",
+                            "children": [{
+                                "componentProcessName": "Deploy-App",
+                                "componentName": "Hilton-Head-Crabbing",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"Hilton-Head-Crabbing\" (1)",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "9e97af5112165a22bbda2eb0c7db57",
+                        "from": "7c798fad68b19318ed3b25be954394",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "7c798fad68b19318ed3b25be954394",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "9e97af5112165a22bbda2eb0c7db57",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "7c798fad68b19318ed3b25be954394",
+                        "x": -90,
+                        "y": 230,
+                        "h": 70,
+                        "w": 290
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "dda00300-13fd-443e-b1be-183938812474",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "9e97af5112165a22bbda2eb0c7db57",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Hilton-Head-Crabbing",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "7c798fad68b19318ed3b25be954394",
+                        "children": [{
+                            "componentName": "Hilton-Head-Crabbing",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "0c9b1278-b4e5-406c-a21e-c359c833ecf8",
+                            "children": [{
+                                "componentProcessName": "Deploy-App",
+                                "componentName": "Hilton-Head-Crabbing",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"Hilton-Head-Crabbing\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Show Vault Secret",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "04cd5aa7afedeac8fcd6b773353b3f",
+                        "from": "cc8bf51f36edb0368d420791d6b877",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "cc8bf51f36edb0368d420791d6b877",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "cc8bf51f36edb0368d420791d6b877",
+                        "x": -110,
+                        "y": 230,
+                        "h": 80,
+                        "w": 330
+                    },
+                    {
+                        "name": "04cd5aa7afedeac8fcd6b773353b3f",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "4f470392-14b2-4ff8-aabc-05a51c394a4f",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "04cd5aa7afedeac8fcd6b773353b3f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Hilton-Head-Crabbing",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "cc8bf51f36edb0368d420791d6b877",
+                        "children": [{
+                            "componentProcessName": "Show-Vault-Secret-Example",
+                            "componentName": "Hilton-Head-Crabbing",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Show Vault Secret",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [{
+        "resourceTypeId": "20000000000000000000000000000100",
+        "resourceTypeName": "Application",
+        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+        "teamLabel": "WebSphere Team"
+    }],
+    "tags": [{
+        "id": "17ec5a9d-ed9d-c9c4-0f98-f0f6af5ef85c",
+        "name": "Training-Example",
+        "color": "#8F8D8A",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}

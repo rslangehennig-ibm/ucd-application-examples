@@ -1,0 +1,3000 @@
+{
+    "name": "OpenLiberty-System-Microservice",
+    "description": "An example OpenLiberty application",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "OpenLiberty-System-Microservice-WAR-Container",
+        "description": "This is the docker container for the WAR file application",
+        "created": 1634568145639,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [
+            {
+                "name": "Check OpenShfit Cluster Status",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17c9edf5-3dec-b824-5194-11397418fdf8",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "8d663968ea0914860f714cbfd40371",
+                            "from": "Show Current Deployment Status (rlange)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Show Current Deployment Status (rlange)",
+                            "from": "Show Current Routes and Services in Cluster (rlange)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Show Current Routes and Services in Cluster (rlange)",
+                            "from": "OpenShift Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Show Current Routes and Services in Cluster (rlange)",
+                            "x": -160,
+                            "y": 300,
+                            "h": 70,
+                            "w": 430
+                        },
+                        {
+                            "name": "OpenShift Login",
+                            "x": -45,
+                            "y": 155,
+                            "h": 70,
+                            "w": 200
+                        },
+                        {
+                            "name": "8d663968ea0914860f714cbfd40371",
+                            "x": -5,
+                            "y": 590,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Show Current Deployment Status (rlange)",
+                            "x": -125,
+                            "y": 445,
+                            "h": 70,
+                            "w": 360
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "8e38e824-f0e0-47d0-b237-8da92ed963a1",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "8d663968ea0914860f714cbfd40371",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"\"\necho \"\"\necho \"Routes in this namespace are:\" \noc get routes\necho \"\"\necho \"\"\necho \"Services in this namespace are:\"\noc get services",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Current Routes and Services in Cluster (rlange)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc project rlange\necho \"I am user $(id)\"\necho \"My current OpenShfit project is $(oc project)\"\necho \"\"\necho \"\"\necho \"Pods running in this namespace\"\noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Current Deployment Status (rlange)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Cleanup-LibertyContainer",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17c9edf5-39c0-fe28-8dd9-f10285d79e93",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Display Pods to Ensure they are Cleaning Up",
+                            "from": "OpenShift Delete Route",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Delete Liberty Service",
+                            "from": "OpenShift Delete Liberty Deployment",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Delete Route",
+                            "from": "OpenShift Delete Liberty Service",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Delete Liberty Deployment",
+                            "from": "OpenShift Login and Display Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "e147fea7067a58330bf08d9ab3b689",
+                            "from": "Display Pods to Ensure they are Cleaning Up",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display Details",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Display Pods to Ensure they are Cleaning Up",
+                            "x": -240,
+                            "y": 890,
+                            "h": 100,
+                            "w": 620
+                        },
+                        {
+                            "name": "OpenShift Delete Route",
+                            "x": -115,
+                            "y": 740,
+                            "h": 100,
+                            "w": 370
+                        },
+                        {
+                            "name": "OpenShift Delete Liberty Deployment",
+                            "x": -195,
+                            "y": 440,
+                            "h": 100,
+                            "w": 530
+                        },
+                        {
+                            "name": "e147fea7067a58330bf08d9ab3b689",
+                            "x": -5,
+                            "y": 1040,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -125,
+                            "y": 140,
+                            "h": 100,
+                            "w": 390
+                        },
+                        {
+                            "name": "OpenShift Delete Liberty Service",
+                            "x": -170,
+                            "y": 590,
+                            "h": 100,
+                            "w": 480
+                        },
+                        {
+                            "name": "OpenShift Login and Display Details",
+                            "x": -185,
+                            "y": 290,
+                            "h": 100,
+                            "w": 510
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "eeb35184-e1bb-41f3-8201-110572d89a74",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "e147fea7067a58330bf08d9ab3b689",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc delete route liberty-system-microservice-route --namespace=rlange",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Route",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\nls -al\noc delete -f liberty-deployment.yaml --namespace=rlange\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Liberty Deployment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\nls -al\noc delete -f liberty-service.yaml --namespace=rlange",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Liberty Service",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\necho \"I am user $(id)\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace\"\noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Pods to Ensure they are Cleaning Up",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Cleanup-LibertyContainer-using-Operator",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17d33f6c-22be-ee0c-9fb0-6b2ea47228e4",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "OpenShift Delete Liberty Operator Deployment",
+                            "from": "OpenShift Login and Display Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "e147fea7067a58330bf08d9ab3b689",
+                            "from": "Display Pods to Ensure they are Cleaning Up",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Operator YAML",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Display Pods to Ensure they are Cleaning Up",
+                            "from": "OpenShift Delete Liberty Operator Deployment",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display Details",
+                            "from": "Create Operator YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "OpenShift Login and Display Details",
+                            "x": -135,
+                            "y": 400,
+                            "h": 80,
+                            "w": 390
+                        },
+                        {
+                            "name": "OpenShift Delete Liberty Operator Deployment",
+                            "x": -175,
+                            "y": 530,
+                            "h": 80,
+                            "w": 470
+                        },
+                        {
+                            "name": "Create Operator YAML",
+                            "x": -80,
+                            "y": 270,
+                            "h": 80,
+                            "w": 280
+                        },
+                        {
+                            "name": "e147fea7067a58330bf08d9ab3b689",
+                            "x": -5,
+                            "y": 790,
+                            "h": 90,
+                            "w": 130
+                        },
+                        {
+                            "name": "Display Pods to Ensure they are Cleaning Up",
+                            "x": -170,
+                            "y": 660,
+                            "h": 80,
+                            "w": 460
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -90,
+                            "y": 140,
+                            "h": 80,
+                            "w": 300
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "274d745c-4f3a-46bf-93fe-a3be25f5c24b",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "e147fea7067a58330bf08d9ab3b689",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\nls -al\noc delete -f deploy-operator.yaml --namespace=rlange\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Liberty Operator Deployment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\necho \"I am user $(id)\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace\"\noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Pods to Ensure they are Cleaning Up",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "touch deploy-operator.yaml\necho \"apiVersion: openliberty.io\/v1beta1\nkind: OpenLibertyApplication\nmetadata:\n  name: openliberty-system-microservice\nspec:\n  applicationImage: quay.io\/rslangehennig0\/openliberty-system-microservice:${p:container-tag}\n  service:\n    type: ClusterIP\n    port: 9080\n  expose: true\" >> deploy-operator.yaml\n  \n  cat deploy-operator.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Operator YAML",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy Container from GitLab Registry",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17d0ac21-49b2-b30e-17f3-39b4a75d69c1",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Pull Docker Image",
+                            "from": "IsReviewEnvironment",
+                            "type": "VALUE",
+                            "value": ""
+                        },
+                        {
+                            "to": "Pull Docker Image",
+                            "from": "Send Instana a Release Marker",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Docker Container",
+                            "from": "Pull Docker Image",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Remove Docker Container",
+                            "from": "Stop Docker Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run Docker Container",
+                            "from": "Remove Docker Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Docker Login",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "IsReviewEnvironment",
+                            "from": "Docker Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Send Instana a Release Marker",
+                            "from": "IsReviewEnvironment",
+                            "type": "VALUE",
+                            "value": "REVIEW"
+                        },
+                        {
+                            "to": "7a401aac24694c1a02433648cddb4b",
+                            "from": "Run Docker Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Send Instana a Release Marker",
+                            "x": -327.46380124980953,
+                            "y": 470,
+                            "h": 110,
+                            "w": 520
+                        },
+                        {
+                            "name": "7a401aac24694c1a02433648cddb4b",
+                            "x": -53.50089246589698,
+                            "y": 1270,
+                            "h": 100,
+                            "w": 160
+                        },
+                        {
+                            "name": "Docker Login",
+                            "x": -110,
+                            "y": 150,
+                            "h": 110,
+                            "w": 370
+                        },
+                        {
+                            "name": "Pull Docker Image",
+                            "x": -146.56877557462877,
+                            "y": 630,
+                            "h": 110,
+                            "w": 430
+                        },
+                        {
+                            "name": "Run Docker Container",
+                            "x": -218.50089246589698,
+                            "y": 1110,
+                            "h": 110,
+                            "w": 490
+                        },
+                        {
+                            "name": "Stop Docker Container",
+                            "x": -194.7787242242672,
+                            "y": 790,
+                            "h": 110,
+                            "w": 490
+                        },
+                        {
+                            "name": "IsReviewEnvironment",
+                            "x": -188.73190062490477,
+                            "y": 310,
+                            "h": 110,
+                            "w": 530
+                        },
+                        {
+                            "name": "Remove Docker Container",
+                            "x": -231.6398083450821,
+                            "y": 950,
+                            "h": 110,
+                            "w": 540
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "35c53ae8-1501-4e43-a07d-7ffb99b50156",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "7a401aac24694c1a02433648cddb4b",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Docker Login",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "registry": "registry.gitlab.com",
+                                "dockerRegistryUserName": "container_user",
+                                "dockerRegistryUserPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|BevzQv+oOWFyV9ERbLgCZA==|82BF5heq5tJ\/+vPVkFpCNoyLgSzpvR5ygEcByjtkmVA=}",
+                                "dockerRegistryUserEmail": "",
+                                "globalOptions": "",
+                                "envVars": "",
+                                "awsCli": "",
+                                "region": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Docker Login",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Pull Docker Image",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "registry.gitlab.com\/gitlab-com\/alliances\/ibm-red-hat\/sandbox\/websphere\/openliberty-system-microservice:${p:container-tag}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Pull Docker Image",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Stop Docker Container",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "OpenLiberty-System-Microservice-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Docker Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Remove Docker Container",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "OpenLiberty-System-Microservice-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Remove Docker Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Run Docker Container",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "registry.gitlab.com\/gitlab-com\/alliances\/ibm-red-hat\/sandbox\/websphere\/openliberty-system-microservice:${p:container-tag}",
+                                "containerCommand": "",
+                                "container": "OpenLiberty-System-Microservice-${p:environment.name}",
+                                "commandOptions": "-d -p ${p:environment\/http-listening-port}:9080",
+                                "globalOptions": "${p?:resource\/docker.opts}",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Docker Container",
+                            "children": []
+                        },
+                        {
+                            "propertyName": "${p:environment.name}",
+                            "type": "switch",
+                            "name": "IsReviewEnvironment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "export timestamp=`date \"+%s000\"`\necho $timestamp\n\ncurl -k --location --request POST \"${p:instana_url}\/api\/releases\" \\\n  --header \"Authorization: apiToken ${p:instana_apiToken}\" \\\n  --header \"Content-Type: application\/json\" \\\n  --data \"{\n\t\\\"name\\\": \\\"${p:pipeline_name}\\\",\n\t\\\"start\\\": $timestamp\n}\"",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Send Instana a Release Marker",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy Container from Quay.io",
+                "description": "This process deploys the container using Docker",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17c93e1a-19cb-4b22-0b47-78a9850f5885",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Send Instana a Release Marker",
+                            "from": "IsReviewEnvironment",
+                            "type": "VALUE",
+                            "value": "REVIEW"
+                        },
+                        {
+                            "to": "Run Docker Container from quay.io",
+                            "from": "Remove Docker Container from quay.io",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "c6d868d2a33a5352b3576499465a64",
+                            "from": "Run Docker Container from quay.io",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Pull Docker Image from quay.io",
+                            "from": "IsReviewEnvironment",
+                            "type": "VALUE",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Docker Container from quay.io",
+                            "from": "Pull Docker Image from quay.io",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "IsReviewEnvironment",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Remove Docker Container from quay.io",
+                            "from": "Stop Docker Container from quay.io",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Pull Docker Image from quay.io",
+                            "from": "Send Instana a Release Marker",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Run Docker Container from quay.io",
+                            "x": -128.34820293270243,
+                            "y": 840,
+                            "h": 90,
+                            "w": 440
+                        },
+                        {
+                            "name": "Stop Docker Container from quay.io",
+                            "x": -145.87224622489774,
+                            "y": 560,
+                            "h": 90,
+                            "w": 450
+                        },
+                        {
+                            "name": "Pull Docker Image from quay.io",
+                            "x": -129.76344101039234,
+                            "y": 420,
+                            "h": 90,
+                            "w": 400
+                        },
+                        {
+                            "name": "Send Instana a Release Marker",
+                            "x": -23.765432098765444,
+                            "y": 280,
+                            "h": 90,
+                            "w": 410
+                        },
+                        {
+                            "name": "Remove Docker Container from quay.io",
+                            "x": -151.9810514394031,
+                            "y": 700,
+                            "h": 90,
+                            "w": 480
+                        },
+                        {
+                            "name": "IsReviewEnvironment",
+                            "x": -140,
+                            "y": 140,
+                            "h": 90,
+                            "w": 410
+                        },
+                        {
+                            "name": "c6d868d2a33a5352b3576499465a64",
+                            "x": 25.284645573998233,
+                            "y": 980,
+                            "h": 90,
+                            "w": 140
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "eb462bb0-4b5e-449e-83ed-855532c8bef5",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c6d868d2a33a5352b3576499465a64",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Pull Docker Image",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "quay.io\/rslangehennig0\/openliberty-system-microservice:${p:container-tag}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Pull Docker Image from quay.io",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Stop Docker Container",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "OpenLiberty-System-Microservice-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Docker Container from quay.io",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Remove Docker Container",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "OpenLiberty-System-Microservice-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Remove Docker Container from quay.io",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Run Docker Container",
+                            "pluginName": "Docker",
+                            "pluginId": "com.urbancode.air.plugin.docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "quay.io\/rslangehennig0\/openliberty-system-microservice:${p:container-tag}",
+                                "containerCommand": "",
+                                "container": "OpenLiberty-System-Microservice-${p:environment.name}",
+                                "commandOptions": "-d -p ${p:environment\/http-listening-port}:9080",
+                                "globalOptions": "${p?:resource\/docker.opts}",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Docker Container from quay.io",
+                            "children": []
+                        },
+                        {
+                            "propertyName": "${p:environment.name}",
+                            "type": "switch",
+                            "name": "IsReviewEnvironment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "export timestamp=`date \"+%s000\"`\necho $timestamp\n\ncurl -k --location --request POST \"${p:instana_url}\/api\/releases\" \\\n  --header \"Authorization: apiToken ${p:instana_apiToken}\" \\\n  --header \"Content-Type: application\/json\" \\\n  --data \"{\n\t\\\"name\\\": \\\"${p:pipeline_name}\\\",\n\t\\\"start\\\": $timestamp\n}\"",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Send Instana a Release Marker",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy-Container-to-OpenShift",
+                "description": "This process deploys the container to an OCP Kube Cluster",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17c9edf5-349b-f4da-8020-6400748427ea",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Replace Tokens",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Apply Service YAML",
+                            "from": "OpenShift Apply Deployment YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display OpenShift Details",
+                            "from": "Replace Tokens",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "from": "Create Route for Liberty Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Apply Deployment YAML",
+                            "from": "OpenShift Login and Display OpenShift Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Route for Liberty Container",
+                            "from": "OpenShift Apply Service YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "x": -5,
+                            "y": 1040,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "OpenShift Apply Deployment YAML",
+                            "x": -185,
+                            "y": 590,
+                            "h": 100,
+                            "w": 510
+                        },
+                        {
+                            "name": "Replace Tokens",
+                            "x": -110,
+                            "y": 290,
+                            "h": 100,
+                            "w": 360
+                        },
+                        {
+                            "name": "OpenShift Apply Service YAML",
+                            "x": -160,
+                            "y": 740,
+                            "h": 100,
+                            "w": 460
+                        },
+                        {
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "x": -250,
+                            "y": 440,
+                            "h": 100,
+                            "w": 640
+                        },
+                        {
+                            "name": "Create Route for Liberty Container",
+                            "x": -180,
+                            "y": 890,
+                            "h": 100,
+                            "w": 500
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -125,
+                            "y": 140,
+                            "h": 100,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "384525b8-f9ce-4abc-9435-f4d491e19c80",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 79,
+                            "commandName": "Replace Tokens",
+                            "pluginName": "File Utils",
+                            "pluginId": "com.urbancode.air.plugin.FileUtils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "includes": "**\/liberty-deployment.yaml",
+                                "excludes": "",
+                                "envPropValues": "${p:environment\/allProperties}",
+                                "propertyPrefix": "",
+                                "explicitTokens": "@BUILDTAG@->${p:version.name}",
+                                "startDelimiter": "@",
+                                "endDelimiter": "@",
+                                "propFile": "replace_tokens.properties",
+                                "dir": "",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Replace Tokens",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-deployment.yaml\noc apply --namespace=rlange -f liberty-deployment.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Apply Deployment YAML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-service.yaml\noc apply --namespace=rlange -f liberty-service.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Apply Service YAML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/sh\nexport KUBECONFIG=.\/kubeconfig\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-route.yaml\noc apply --namespace=rlange -f liberty-route.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Route for Liberty Container",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy-Container-to-OpenShift-using-Operator",
+                "description": "This process deploys the container to an OCP Kube Cluster",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c93da8-af8e-c121-bdae-800685b37cf1\/processes\/17d2f9a7-0d76-7fb0-2996-34d9df12399a",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Create yaml file",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Apply Deployment YAML",
+                            "from": "OpenShift Login and Display OpenShift Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "from": "Display Running Pods",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Display Running Pods",
+                            "from": "OpenShift Apply Deployment YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display OpenShift Details",
+                            "from": "Create yaml file",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "OpenShift Apply Deployment YAML",
+                            "x": -130,
+                            "y": 530,
+                            "h": 80,
+                            "w": 380
+                        },
+                        {
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "x": -5,
+                            "y": 790,
+                            "h": 90,
+                            "w": 130
+                        },
+                        {
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "x": -175,
+                            "y": 400,
+                            "h": 80,
+                            "w": 470
+                        },
+                        {
+                            "name": "Display Running Pods",
+                            "x": -80,
+                            "y": 660,
+                            "h": 80,
+                            "w": 280
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -90,
+                            "y": 140,
+                            "h": 80,
+                            "w": 300
+                        },
+                        {
+                            "name": "Create yaml file",
+                            "x": -50,
+                            "y": 270,
+                            "h": 80,
+                            "w": 220
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "5fa6e700-1096-4ade-aed8-7d279e1a15c6",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\ndocker login quay.io -u \"rslangehennig0\" -p \"S\/8YMG1bPu2ozRPe75sOMM8LdD6leVOoxBSsyqA6HhmOO2x0R7s1ZTI\/GPX14oix\"\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-deployment.yaml\noc apply --namespace=rlange -f deploy-operator.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Apply Deployment YAML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "touch deploy-operator.yaml\necho \"apiVersion: openliberty.io\/v1beta1\nkind: OpenLibertyApplication\nmetadata:\n  name: openliberty-system-microservice\nspec:\n  applicationImage: quay.io\/rslangehennig0\/openliberty-system-microservice:${p:container-tag}\n  service:\n    type: ClusterIP\n    port: 9080\n  expose: true\" >> deploy-operator.yaml\n  \n  cat deploy-operator.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create yaml file",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Running Pods",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [
+            {
+                "id": "175e1dee-d04b-e903-9508-4c204064e025",
+                "name": "Docker",
+                "color": "#AB1A86",
+                "description": "",
+                "objectType": "Component"
+            },
+            {
+                "id": "173bb5eb-b246-9df2-727c-d178ed51592c",
+                "name": "WebSphere Liberty",
+                "color": "#7F1C7D",
+                "description": "",
+                "objectType": "Component"
+            }
+        ]
+    }],
+    "environments": [
+        {
+            "name": "REVIEW",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "app-url",
+                        "value": "http:\/\/openliberty-review.ibmdevops.com:9081\/dev\/",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "instana_url",
+                        "value": "https:\/\/blue1-gitlab1.instana.io",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "instana_url_more_infrastructure",
+                        "value": "https:\/\/ibmdevsandbox-instanaibm.instana.io\/",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "instana_apiToken",
+                        "value": "0BqcMNzlQGKJnasmuiyvBg",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "pipeline_name",
+                        "value": "OpenLiberty-SysMicro-REVIEW",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "http-listening-port",
+                        "value": "9081",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/GitLab\/OpenLiberty-System-Microservice",
+                "tree": {
+                    "name": "REVIEW",
+                    "path": "\/GitLab\/OpenLiberty-System-Microservice\/REVIEW",
+                    "description": "",
+                    "parentName": "OpenLiberty-System-Microservice",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/GitLab\/OpenLiberty-System-Microservice",
+                "tree": {
+                    "name": "REVIEW",
+                    "path": "\/GitLab\/OpenLiberty-System-Microservice\/REVIEW",
+                    "description": "",
+                    "parentName": "OpenLiberty-System-Microservice",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "gitlab-ucd-agent-QA",
+                        "path": "\/GitLab\/OpenLiberty-System-Microservice\/REVIEW\/gitlab-ucd-agent-QA",
+                        "description": "",
+                        "parentName": "REVIEW",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "gitlab-ucd-agent-QA",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                            "teamLabel": "GitLab"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "OpenLiberty-System-Microservice-WAR-Container",
+                            "path": "\/GitLab\/OpenLiberty-System-Microservice\/REVIEW\/gitlab-ucd-agent-QA\/OpenLiberty-System-Microservice-WAR-Container",
+                            "description": "",
+                            "parentName": "gitlab-ucd-agent-QA",
+                            "inheritTeam": true,
+                            "roleName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "roleProperties": {
+                                "name": "OpenLiberty-System-Microservice-WAR-Container",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                "teamLabel": "GitLab"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "OpenLiberty-System-Microservice-WAR-Container"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QUALITY-ASSURANCE",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "http-listening-port",
+                        "value": "9082",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "app-url",
+                        "value": "http:\/\/openliberty-prod.ibmdevops.com:9082\/dev\/",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/GitLab\/OpenLiberty-System-Microservice",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/GitLab\/OpenLiberty-System-Microservice\/QA",
+                    "description": "",
+                    "parentName": "OpenLiberty-System-Microservice",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/GitLab\/OpenLiberty-System-Microservice",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/GitLab\/OpenLiberty-System-Microservice\/QA",
+                    "description": "",
+                    "parentName": "OpenLiberty-System-Microservice",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "gitlab-ucd-agent-QA",
+                        "path": "\/GitLab\/OpenLiberty-System-Microservice\/QA\/gitlab-ucd-agent-QA",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "gitlab-ucd-agent-QA",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                            "teamLabel": "GitLab"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "OpenLiberty-System-Microservice-WAR-Container",
+                            "path": "\/GitLab\/OpenLiberty-System-Microservice\/QA\/gitlab-ucd-agent-QA\/OpenLiberty-System-Microservice-WAR-Container",
+                            "description": "",
+                            "parentName": "gitlab-ucd-agent-QA",
+                            "inheritTeam": true,
+                            "roleName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "roleProperties": {
+                                "name": "OpenLiberty-System-Microservice-WAR-Container",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [{
+                                "resourceTypeId": "20000000000000000000000000000104",
+                                "resourceTypeName": "Resource",
+                                "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                "teamLabel": "GitLab"
+                            }],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "OpenLiberty-System-Microservice-WAR-Container"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "INTEGRATION-OpenShift",
+            "description": "",
+            "color": "#AB1A86",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": [{
+                    "name": "oc-auth-token",
+                    "value": "sha256~79pmDlOLelQLflyuJ8-Z0XKnUTpQoivn1M7GVDZPC-Q",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+                "tree": {
+                    "name": "OpenLiberty-System-Microservice-WAR-Container",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/OpenLiberty-System-Microservice-WAR-Container",
+                    "description": "",
+                    "parentName": "virtualserver02",
+                    "inheritTeam": true,
+                    "roleName": "OpenLiberty-System-Microservice-WAR-Container",
+                    "roleProperties": {
+                        "name": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": []
+                    },
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+                "tree": {
+                    "name": "OpenLiberty-System-Microservice-WAR-Container",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/OpenLiberty-System-Microservice-WAR-Container",
+                    "description": "",
+                    "parentName": "virtualserver02",
+                    "inheritTeam": true,
+                    "roleName": "OpenLiberty-System-Microservice-WAR-Container",
+                    "roleProperties": {
+                        "name": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": []
+                    },
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": []
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "OpenLiberty-System-Microservice-WAR-Container"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-Container-using-OpenShift",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "87e08508a214e7d87be09d1a87c82f",
+                        "from": "1f4d44dfc4be60150113a62e4c132b",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "1f4d44dfc4be60150113a62e4c132b",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "87e08508a214e7d87be09d1a87c82f",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "1f4d44dfc4be60150113a62e4c132b",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 470
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "60f6fb2e-20cd-4109-bd83-c75f2235d080",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "87e08508a214e7d87be09d1a87c82f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "1f4d44dfc4be60150113a62e4c132b",
+                        "children": [{
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "dbb14966-c85f-4476-b5ed-280ba6d3e327",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container-to-OpenShift",
+                                "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-System-Microservice-WAR-Container\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Check-OCP-Install-Status",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "8cf0ef95b49919815d924a3fbfaf71",
+                        "from": "eb164375aa4b242f3fc23c348d8777",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "eb164375aa4b242f3fc23c348d8777",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "eb164375aa4b242f3fc23c348d8777",
+                        "x": -195,
+                        "y": 230,
+                        "h": 80,
+                        "w": 500
+                    },
+                    {
+                        "name": "8cf0ef95b49919815d924a3fbfaf71",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "82762fe5-3a3c-4390-8385-1882f0f7103e",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "8cf0ef95b49919815d924a3fbfaf71",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "eb164375aa4b242f3fc23c348d8777",
+                        "children": [{
+                            "componentProcessName": "Check OpenShfit Cluster Status",
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"OpenLiberty-System-Microservice-WAR-Container\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Cleanup-Deployment-in-OpenShift",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "3bef9f412d21f7d1a11f7d58cd72aa",
+                        "from": "0e891d914b1ecef335cb3ec73784f3",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "0e891d914b1ecef335cb3ec73784f3",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "0e891d914b1ecef335cb3ec73784f3",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 470
+                    },
+                    {
+                        "name": "3bef9f412d21f7d1a11f7d58cd72aa",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "949f2c7d-6fcb-46fb-bdeb-f28b00532dda",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "3bef9f412d21f7d1a11f7d58cd72aa",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "0e891d914b1ecef335cb3ec73784f3",
+                        "children": [{
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "900d93a4-9cd0-4e5f-a161-e157718bdd21",
+                            "children": [{
+                                "componentProcessName": "Cleanup-LibertyContainer",
+                                "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-System-Microservice-WAR-Container\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-Container-using-Docker",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "2f7ca7466285227545da70f1d44256",
+                        "from": "25b5af9c809f8c1164e2c0c04e02cb",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "25b5af9c809f8c1164e2c0c04e02cb",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "25b5af9c809f8c1164e2c0c04e02cb",
+                        "x": -190,
+                        "y": 230,
+                        "h": 80,
+                        "w": 470
+                    },
+                    {
+                        "name": "2f7ca7466285227545da70f1d44256",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "635e4678db0969c95a8e0c961babe6",
+                        "x": -190,
+                        "y": 540,
+                        "h": 70,
+                        "w": 470
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "b2541d19-3abf-4ab4-9a2d-f7a09daabb7b",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "2f7ca7466285227545da70f1d44256",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "635e4678db0969c95a8e0c961babe6",
+                        "children": [{
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "8c9746ca-c2d7-43e6-92b4-01769ae579a7",
+                            "children": [{
+                                "componentProcessName": "Deploy Container from Quay.io",
+                                "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-System-Microservice-WAR-Container\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "25b5af9c809f8c1164e2c0c04e02cb",
+                        "children": [{
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "251e79af-4cb8-4ced-95cd-5426ec78a0f5",
+                            "children": [{
+                                "componentProcessName": "Deploy Container from GitLab Registry",
+                                "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Deploy OpenLiberty-System-Microservice-WAR-Container",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "container-tag",
+                "label": "Container Tag",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "required": true,
+                "description": "",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-Container-using-OCP-Operator",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "4a0f7101b6859c5b91d0dc9976747c",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "01bc2a8a7078dcbae42f6e0aa4a5d8",
+                        "from": "4a0f7101b6859c5b91d0dc9976747c",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "4a0f7101b6859c5b91d0dc9976747c",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 470
+                    },
+                    {
+                        "name": "01bc2a8a7078dcbae42f6e0aa4a5d8",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "8b1f79a2-85c9-4d74-9b9e-bb888efd43e7",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "01bc2a8a7078dcbae42f6e0aa4a5d8",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "4a0f7101b6859c5b91d0dc9976747c",
+                        "children": [{
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "0beab8d1-e0e5-4ea6-ace9-bfd97d9b0f09",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container-to-OpenShift-using-Operator",
+                                "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-System-Microservice-WAR-Container\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "container-tag",
+                "label": "Container Tag",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "required": true,
+                "description": "",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        },
+        {
+            "name": "Cleanup-Deployment-in-OpenShift-using-Operator",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "3bef9f412d21f7d1a11f7d58cd72aa",
+                        "from": "997082b6b17ede87e48b3d3fc4e09a",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "997082b6b17ede87e48b3d3fc4e09a",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "997082b6b17ede87e48b3d3fc4e09a",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 470
+                    },
+                    {
+                        "name": "3bef9f412d21f7d1a11f7d58cd72aa",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "bb7a7602-675e-4e80-80cb-bfa3b6d10e51",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "3bef9f412d21f7d1a11f7d58cd72aa",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "997082b6b17ede87e48b3d3fc4e09a",
+                        "children": [{
+                            "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "ba358cdf-fc4a-4bc4-a24c-e3c51ed4b49f",
+                            "children": [{
+                                "componentProcessName": "Cleanup-LibertyContainer-using-Operator",
+                                "componentName": "OpenLiberty-System-Microservice-WAR-Container",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-System-Microservice-WAR-Container\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "container-tag",
+                "label": "Container Tag",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "value": "main",
+                "required": true,
+                "description": "",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "1738e96c-fbe4-ffb0-ede5-b11faa040915",
+            "name": "OpenShift",
+            "color": "#D9182D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "16e67201-c763-1af1-9317-b24ecea8a8fa",
+            "name": "WebSphere Liberty",
+            "color": "#7F1C7D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "1797c080-1244-7a03-23f1-fb1f96a56ffb",
+            "name": "GitLab",
+            "color": "#DD731C",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": []
+}

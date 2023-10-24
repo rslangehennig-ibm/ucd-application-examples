@@ -1,0 +1,3065 @@
+{
+    "name": "ATM",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "MVS-Example",
+        "description": "",
+        "created": 1599084123923,
+        "componentType": "ZOS",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "INCREMENTAL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "componentTemplate": {
+            "securityResourceId": "16dbb818-b65f-2cbf-66fe-7087a8272eed",
+            "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9",
+            "name": "MVSCOMPONENT",
+            "description": "Template component which stores and deploys z\/OS data set artifacts",
+            "ignoreQualifiers": 0,
+            "componentType": "ZOS",
+            "sourceConfigPluginName": "",
+            "tags": [],
+            "active": true,
+            "importConfigurationStrategy": "default",
+            "envPropDefs": [
+                {
+                    "name": "deploy.env.pds.mapping",
+                    "label": "deploy.env.pds.mapping",
+                    "pattern": "",
+                    "type": "TEXTAREA",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "Specify the PDS packaged, and where to deploy them in the mapping table. Each line is a mapping rule with the format of From PDS,To PDS. * can be used in From PDS to match any characters. When multiple rules have the same From PDS, only the first one is used. The value can be overrode by property with higher order of precedence, for example, Agent property or Resource property.",
+                    "placeholder": ""
+                },
+                {
+                    "name": "deploy.env.hfs.targetdir",
+                    "label": "deploy.env.hfs.targetdir",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "Specify a target directory to deploy HFS files",
+                    "placeholder": ""
+                },
+                {
+                    "name": "jes.host",
+                    "label": "jes.host",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "localhost",
+                    "required": false,
+                    "description": "Hostname of Job server. Use localhost unless you have a specific requirement to submit job to another z\/OS. ",
+                    "placeholder": ""
+                },
+                {
+                    "name": "jes.user",
+                    "label": "jes.user",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "Userid to logon to JES subsystem.",
+                    "placeholder": ""
+                },
+                {
+                    "name": "jes.password",
+                    "label": "jes.password",
+                    "pattern": "",
+                    "type": "SECURE",
+                    "isHidden": false,
+                    "value": "pbe{2WctTK9p6VRHXWtsj1XJaTHoJSKSnW0c}",
+                    "required": false,
+                    "description": "Password to logon to JES subsystem.",
+                    "placeholder": ""
+                },
+                {
+                    "name": "jes.monitor.port",
+                    "label": "jes.monitor.port",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "6715",
+                    "required": false,
+                    "description": "JES job monitor port (1-65535). Default is 6715.",
+                    "placeholder": ""
+                }
+            ],
+            "resPropDefs": [],
+            "propDefs": [
+                {
+                    "name": "ucd.repository.host",
+                    "label": "ucd.repository.host",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "Hostname of the FTP server where you get version artifacts. Required to use FTP Artifacts step. ",
+                    "placeholder": ""
+                },
+                {
+                    "name": "ucd.repository.location",
+                    "label": "ucd.repository.location",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "The location of the repository where the z\/OS deploy toolkit stores artifacts. Required to use Copy Artifacts or FTP Artifacts steps. ",
+                    "placeholder": ""
+                },
+                {
+                    "name": "ucd.repository.user",
+                    "label": "ucd.repository.user",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "FTP username. Required to use FTP Artifacts step. ",
+                    "placeholder": ""
+                },
+                {
+                    "name": "ucd.repository.password",
+                    "label": "ucd.repository.password",
+                    "pattern": "",
+                    "type": "SECURE",
+                    "isHidden": false,
+                    "value": "pbe{RG7\/bCNn+ls2dTFZmmgUTbZ0oVt9YsJo}",
+                    "required": false,
+                    "description": "FTP password. Required to use FTP Artifacts step. ",
+                    "placeholder": ""
+                }
+            ],
+            "properties": [],
+            "processes": [
+                {
+                    "name": "Deploy",
+                    "description": "Deploy data sets. Version artifacts are fetched from code station located in the same z\/OS.",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-beab-a9ce-1cd4-6c5cf42ccc87",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Deploy Data Sets",
+                                "from": "Copy Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "8328a7e245b2d6f356e73791755c2a",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Copy Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "8328a7e245b2d6f356e73791755c2a",
+                                "x": 0,
+                                "y": 420,
+                                "h": 50,
+                                "w": 90
+                            },
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -55,
+                                "y": 260,
+                                "h": 60,
+                                "w": 210
+                            },
+                            {
+                                "name": "Copy Artifacts",
+                                "x": -45,
+                                "y": 124,
+                                "h": 60,
+                                "w": 180
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "1c199c5d-23f5-43f7-afc9-b151476fc093",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "8328a7e245b2d6f356e73791755c2a",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Copy Artifacts",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "basePath": "${p:ucd.repository.location}",
+                                    "versionName": "${p:version.name}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "repositoryType": "${p?:version\/ucd.repository.type}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Copy Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy - get artifacts from CodeStation",
+                    "description": "Deploy data sets. Version artifacts are fetched from UrbanCode Deploy server CodeStation. ",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-bf31-41e3-31ef-4c7cef9408be",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Deploy Data Sets",
+                                "from": "Download Artifacts for zOS",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "8328a7e245b2d6f356e73791755c2a",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts for zOS",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -65,
+                                "y": 250,
+                                "h": 60,
+                                "w": 210
+                            },
+                            {
+                                "name": "8328a7e245b2d6f356e73791755c2a",
+                                "x": -5,
+                                "y": 390,
+                                "h": 50,
+                                "w": 90
+                            },
+                            {
+                                "name": "Download Artifacts for zOS",
+                                "x": -90,
+                                "y": 120,
+                                "h": 60,
+                                "w": 260
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "4c0c59d1-e747-4257-9fdc-8aa0d4a6e915",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "8328a7e245b2d6f356e73791755c2a",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 32,
+                                "commandName": "Download Artifacts for zOS",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "versionId": "${p:version.id}",
+                                    "versionName": "${p:version.name}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "repositoryType": "${p?:version\/ucd.repository.type}",
+                                    "resourceId": "${p:resource.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts for zOS",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy - get artifacts using FTP",
+                    "description": "Deploy data sets. Version artifacts are fetched from code station using FTP",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-bf93-53cc-2826-e84f4a1dd166",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "cb186e01e1acada63dfc6eef9222cd",
+                                "from": "Deploy Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy Data Sets",
+                                "from": "FTP Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "FTP Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "cb186e01e1acada63dfc6eef9222cd",
+                                "x": 5,
+                                "y": 430,
+                                "h": 50,
+                                "w": 90
+                            },
+                            {
+                                "name": "FTP Artifacts",
+                                "x": -50,
+                                "y": 122,
+                                "h": 60,
+                                "w": 170
+                            },
+                            {
+                                "name": "Deploy Data Sets",
+                                "x": -50,
+                                "y": 271,
+                                "h": 60,
+                                "w": 210
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "a3360cd9-6df6-4ca0-b655-d9d1578c8e04",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "cb186e01e1acada63dfc6eef9222cd",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": true,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "FTP Artifacts",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "protocol": "FTP",
+                                    "hostName": "${p:ucd.repository.host}",
+                                    "port": "",
+                                    "userid": "${p:ucd.repository.user}",
+                                    "password": "${p:ucd.repository.password}",
+                                    "basePath": "${p:ucd.repository.location}",
+                                    "versionName": "${p:version.name}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "repositoryType": "${p?:version\/ucd.repository.type}",
+                                    "usePassticket": "true",
+                                    "applID": "FTPAPPL",
+                                    "irrracfJarFile": "\/usr\/include\/java_classes\/IRRRacf.jar",
+                                    "irrracfLibraryPath": "\/usr\/lib",
+                                    "useKeybaseAuth": "false",
+                                    "keyfile": "${p?:ucd.repository.keyfile}",
+                                    "passphrase": "${p?:ucd.repository.passphrase}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "FTP Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Deploy Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "pdsMapping": "${p?:deploy.env.pds.mapping}",
+                                    "incrementalMode": "FULL",
+                                    "containerFilter": "",
+                                    "deleteCurrentContents": "false",
+                                    "checkAccess": "true",
+                                    "doBackup": "true",
+                                    "allowCreateDataset": "TRUE",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "allowCreateDirectory": "TRUE",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "versionMerge": "${p?:version\/ucd.version.ismerged}",
+                                    "versionName": "${p:version.name}",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentId": "${p:component.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Remove all versions",
+                    "description": "Remove all versions in an environment including the backup created during version deployment. Use this process when you want to start next round of development with a clean environment.  Audit history is available even if versions have been removed from the environment.  ",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-bff9-d8eb-77db-6687e62a43b0",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "7edd88f82ceb313ee19d35d0c10ed3",
+                                "from": "Remove All Versions",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Remove All Versions",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Remove All Versions",
+                                "x": -70,
+                                "y": 118,
+                                "h": 60,
+                                "w": 220
+                            },
+                            {
+                                "name": "7edd88f82ceb313ee19d35d0c10ed3",
+                                "x": -5,
+                                "y": 250,
+                                "h": 50,
+                                "w": 90
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "a9c9c141-bb2e-477e-b5d0-2446ede1b224",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "7edd88f82ceb313ee19d35d0c10ed3",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Remove All Versions",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "applicationName": "${p:application.name}",
+                                    "environmentName": "${p:environment.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentName": "${p:component.name}",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Remove All Versions",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Remove redundant versions",
+                    "description": "Remove redundant versions in an environment. Redundant versions are these versions which are replaced completely by later deployed versions. ",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-c056-1ef0-302f-2980d144920d",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Remove Redundant Versions",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "41a9e39d9c9865d8001456cd9d7b54",
+                                "from": "Remove Redundant Versions",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "41a9e39d9c9865d8001456cd9d7b54",
+                                "x": -5,
+                                "y": 370,
+                                "h": 50,
+                                "w": 90
+                            },
+                            {
+                                "name": "Remove Redundant Versions",
+                                "x": -95,
+                                "y": 166,
+                                "h": 60,
+                                "w": 270
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "faa17f56-f874-40d4-84a0-007a8ae3c40f",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "41a9e39d9c9865d8001456cd9d7b54",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Remove Redundant Versions",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "isDryRun": "false",
+                                    "applicationName": "${p:application.name}",
+                                    "environmentName": "${p:environment.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentName": "${p:component.name}",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Remove Redundant Versions",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Remove redundant versions with manual verification",
+                    "description": "Remove redundant versions in an environment. Redundant versions are these versions which are replaced completely by later deployed versions. ",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-c0b3-0973-0a3d-df2ed00bb226",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Review Versions To Be Removed",
+                                "from": "Remove Redundant Versions Dry Run",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Remove Redundant Versions",
+                                "from": "Review Versions To Be Removed",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Remove Redundant Versions Dry Run",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "0fbc34b5ab1760dad9dfef44d80cc6",
+                                "from": "Remove Redundant Versions",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "cb6d6cf1f7153da91b1bc30d718ea3",
+                                "x": 326.5,
+                                "y": 192,
+                                "h": 50,
+                                "w": 360
+                            },
+                            {
+                                "name": "Remove Redundant Versions Dry Run",
+                                "x": -99.5,
+                                "y": 107,
+                                "h": 60,
+                                "w": 290
+                            },
+                            {
+                                "name": "Remove Redundant Versions",
+                                "x": -99.5,
+                                "y": 344,
+                                "h": 60,
+                                "w": 270
+                            },
+                            {
+                                "name": "0fbc34b5ab1760dad9dfef44d80cc6",
+                                "x": 0,
+                                "y": 445,
+                                "h": 50,
+                                "w": 90
+                            },
+                            {
+                                "name": "Review Versions To Be Removed",
+                                "x": -85,
+                                "y": 230,
+                                "h": 60,
+                                "w": 260
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "7e1d2b9c-7fbb-4d62-910a-84fb9200c0b8",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "0fbc34b5ab1760dad9dfef44d80cc6",
+                                "children": []
+                            },
+                            {
+                                "templateName": "ApprovalCreated",
+                                "roleRestrictionData": {},
+                                "propDefs": [],
+                                "type": "componentManualTask",
+                                "name": "Review Versions To Be Removed",
+                                "children": []
+                            },
+                            {
+                                "name": "cb6d6cf1f7153da91b1bc30d718ea3",
+                                "text": "The versions will be removed after the work item is approved. ",
+                                "type": "note",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Remove Redundant Versions",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "isDryRun": "true",
+                                    "applicationName": "${p:application.name}",
+                                    "environmentName": "${p:environment.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentName": "${p:component.name}",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Remove Redundant Versions Dry Run",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Remove Redundant Versions",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "isDryRun": "false",
+                                    "applicationName": "${p:application.name}",
+                                    "environmentName": "${p:environment.name}",
+                                    "resourceId": "${p:resource.id}",
+                                    "componentName": "${p:component.name}",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Remove Redundant Versions",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Sample JCL submission process",
+                    "description": "This process demonstrates usage of the JCL submission steps. ",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-c11a-9e17-b8c8-84367b1b68f1",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Submit  and Wait for Completion",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "151c344677e54a10e4d6014864c9df",
+                                "from": "Wait For Job",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "151c344677e54a10e4d6014864c9df",
+                                "from": "Submit  and Wait for Completion",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Do something else",
+                                "from": "SubmitJobStep",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "SubmitJobStep",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Wait For Job",
+                                "from": "Do something else",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "151c344677e54a10e4d6014864c9df",
+                                "from": "Submit Multiple Jobs",
+                                "type": "FAILURE",
+                                "value": ""
+                            },
+                            {
+                                "to": "Submit Multiple Jobs",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Wait For Job",
+                                "x": 301.5,
+                                "y": 340,
+                                "h": 60,
+                                "w": 180
+                            },
+                            {
+                                "name": "53d6bbdcb73471b37d38502e7af703",
+                                "x": 50.5,
+                                "y": 149,
+                                "h": 56,
+                                "w": 190
+                            },
+                            {
+                                "name": "SubmitJobStep",
+                                "x": 300.5,
+                                "y": 119,
+                                "h": 60,
+                                "w": 180
+                            },
+                            {
+                                "name": "Do something else",
+                                "x": 261.5,
+                                "y": 220,
+                                "h": 60,
+                                "w": 260
+                            },
+                            {
+                                "name": "Submit Multiple Jobs",
+                                "x": -55,
+                                "y": 220,
+                                "h": 60,
+                                "w": 190
+                            },
+                            {
+                                "name": "Submit  and Wait for Completion",
+                                "x": -369.5,
+                                "y": 220,
+                                "h": 60,
+                                "w": 250
+                            },
+                            {
+                                "name": "151c344677e54a10e4d6014864c9df",
+                                "x": -5,
+                                "y": 520,
+                                "h": 50,
+                                "w": 90
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "fbbf6a36-be12-47b1-8c3c-b03999113bcc",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "151c344677e54a10e4d6014864c9df",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Submit Job",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "mvsFilename": "",
+                                    "ussFilename": "",
+                                    "jclString": "\/\/TESTJCL  JOB  ,NOTIFY=&SYSUID\n\/\/TIME     EXEC PGM=IKJEFT1A   \n\/\/SYSPRINT DD   SYSOUT=*       \n\/\/SYSTSPRT DD   SYSOUT=*       \n\/\/SYSTSIN  DD   *              \n  TIME                         \n\/* ",
+                                    "jobCard": "${p?:deploy.env.jobstatement}",
+                                    "explicitTokens": "",
+                                    "explicitTokensForeachJob": "",
+                                    "waitForJob": "true",
+                                    "stopOnFail": "true",
+                                    "timeout": "60",
+                                    "showOutput": "ALL",
+                                    "cutOff": "1000",
+                                    "maxRC": "4",
+                                    "hostname": "${p:jes.host}",
+                                    "port": "${p:jes.monitor.port}",
+                                    "userid": "${p:jes.user}",
+                                    "password": "${p:jes.password}",
+                                    "usePassticket": "true",
+                                    "irrracfJarFile": "\/usr\/include\/java_classes\/IRRRacf.jar",
+                                    "irrracfLibraryPath": "\/usr\/lib"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Submit  and Wait for Completion",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Submit Job",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "mvsFilename": "",
+                                    "ussFilename": "",
+                                    "jclString": "\/\/TESTJCL  JOB  ,NOTIFY=&SYSUID\n\/\/TIME     EXEC PGM=IKJEFT1A   \n\/\/SYSPRINT DD   SYSOUT=*       \n\/\/SYSTSPRT DD   SYSOUT=*       \n\/\/SYSTSIN  DD   *              \n  TIME                         \n\/*                             ",
+                                    "jobCard": "${p?:deploy.env.jobstatement}",
+                                    "explicitTokens": "",
+                                    "explicitTokensForeachJob": "",
+                                    "waitForJob": "false",
+                                    "stopOnFail": "true",
+                                    "timeout": "60",
+                                    "showOutput": "ALL",
+                                    "cutOff": "1000",
+                                    "maxRC": "4",
+                                    "hostname": "${p:jes.host}",
+                                    "port": "${p:jes.monitor.port}",
+                                    "userid": "${p:jes.user}",
+                                    "password": "${p:jes.password}",
+                                    "usePassticket": "true",
+                                    "irrracfJarFile": "\/usr\/include\/java_classes\/IRRRacf.jar",
+                                    "irrracfLibraryPath": "\/usr\/lib"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "SubmitJobStep",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Wait For Job",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "jobId": "${p:SubmitJobStep\/JobId}",
+                                    "timeout": "60",
+                                    "showOutput": "ALL",
+                                    "cutOff": "1000",
+                                    "maxRC": "4",
+                                    "hostname": "${p:jes.host}",
+                                    "port": "${p:jes.monitor.port}",
+                                    "userid": "${p:jes.user}",
+                                    "password": "${p:jes.password}",
+                                    "usePassticket": "true",
+                                    "irrracfJarFile": "\/usr\/include\/java_classes\/IRRRacf.jar",
+                                    "irrracfLibraryPath": "\/usr\/lib"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Wait For Job",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Run TSO or ISPF Command",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "serviceType": "TSO",
+                                    "tsoCommand": "TIME",
+                                    "stopOnFail": "true",
+                                    "reuseSession": "false",
+                                    "showLog": "false",
+                                    "ispProf": "",
+                                    "ispfGatewayPath": "\/usr\/lpp\/ispf\/bin"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Do something else",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Submit Job",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "mvsFilename": "",
+                                    "ussFilename": "",
+                                    "jclString": "\/\/JOBNAME  JOB  ,<JOB PARAMETER>  \n\/\/TIME     EXEC PGM=IKJEFT1A      \n\/\/SYSPRINT DD   SYSOUT=*          \n\/\/SYSTSPRT DD   SYSOUT=*          \n\/\/SYSTSIN  DD   *                 \n  LISTDS '#DATASET#'           \n\/*                                \n",
+                                    "jobCard": "${p?:deploy.env.jobstatement}",
+                                    "explicitTokens": "JOBNAME->CHKDS\n<JOB PARAMETER>->NOTIFY=&SYSUID\n",
+                                    "explicitTokensForeachJob": "#DATASET#->USER.PROCLIB\n\/\/\n#DATASET#->SYS1.PROCLIB\n\/\/\n#DATASET#->NOEXIST\n",
+                                    "waitForJob": "true",
+                                    "stopOnFail": "true",
+                                    "timeout": "60",
+                                    "showOutput": "ALL",
+                                    "cutOff": "1000",
+                                    "maxRC": "4",
+                                    "hostname": "${p:jes.host}",
+                                    "port": "${p:jes.monitor.port}",
+                                    "userid": "${p:jes.user}",
+                                    "password": "${p:jes.password}",
+                                    "usePassticket": "true",
+                                    "irrracfJarFile": "\/usr\/include\/java_classes\/IRRRacf.jar",
+                                    "irrracfLibraryPath": "\/usr\/lib"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Submit Multiple Jobs",
+                                "children": []
+                            },
+                            {
+                                "name": "53d6bbdcb73471b37d38502e7af703",
+                                "text": "Check existence of 3 data sets",
+                                "type": "note",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Uninstall",
+                    "description": "Uninstall a version and restore the backup data sets",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "REMOVE",
+                    "status": "Active",
+                    "active": true,
+                    "path": "componentTemplates\/16dbb818-b68c-2781-3b92-e28418faa9e9\/processes\/16dbb818-c170-97c2-8ae4-c7f6aa3eb6f9",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Rollback Data Sets",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "22f91f0dc4e35ac3094f81a5c5281e",
+                                "from": "Rollback Data Sets",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Rollback Data Sets",
+                                "x": -60,
+                                "y": 187,
+                                "h": 60,
+                                "w": 210
+                            },
+                            {
+                                "name": "22f91f0dc4e35ac3094f81a5c5281e",
+                                "x": 0,
+                                "y": 420,
+                                "h": 50,
+                                "w": 90
+                            }
+                        ],
+                        "layoutMode": "unknown",
+                        "type": "graph",
+                        "name": "8129629e-fdd3-49c8-9e91-9898f92ef06e",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "22f91f0dc4e35ac3094f81a5c5281e",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 53,
+                                "commandName": "Rollback Data Sets",
+                                "pluginName": "zOS Utility",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "checkAccess": "true",
+                                    "delBackUpFiles": "false",
+                                    "preventRiskyRollback": "true",
+                                    "dryRunForRisky": "false",
+                                    "hfsTargetDir": "${p?:deploy.env.hfs.targetdir}",
+                                    "deployBasePath": "${BUZ_DEPLOY_BASE}",
+                                    "tempDsnPrefix": "${p?:BUZ_TMP_DSN_PREFIX}",
+                                    "environmentId": "${p:environment.id}",
+                                    "versionId": "${p:version.id}",
+                                    "componentId": "${p:component.id}",
+                                    "versionName": "${p:version.name}",
+                                    "versionType": "${p:version.type}",
+                                    "componentName": "${p:component.name}",
+                                    "resourceId": "${p:resource.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Rollback Data Sets",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "genericProcesses": [],
+            "teamMappings": []
+        },
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "custom",
+                "properties": []
+            },
+            {
+                "name": "template",
+                "properties": [
+                    {
+                        "name": "ucd.repository.host",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "ucd.repository.location",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "ucd.repository.user",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "ucd.repository.password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|NZgixm4cmOpoCVHCfmUMMg==|fRg\/4iDGDigLR\/C1kciYJQ==}",
+                        "description": "",
+                        "secure": true
+                    }
+                ]
+            }
+        ]},
+        "processes": [],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [{
+            "id": "172f1e7f-c7d5-dbbe-0376-8246a9b3e84f",
+            "name": "MVS-COMPONENT",
+            "color": "#DD731C",
+            "description": "MVS Component",
+            "objectType": "Component"
+        }]
+    }],
+    "environments": [
+        {
+            "name": "DevPlex--Devl",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "environmentTemplate": "DevPlex--Devl",
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": [
+                    {
+                        "name": "env-prop-1",
+                        "value": "randy",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "env-prop-2",
+                        "value": "mark",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "baseResources": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "DevPlex--Devl",
+                    "path": "\/ATM-2\/DevPlex--Devl",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "DevPlex--Devl",
+                    "path": "\/ATM-2\/DevPlex--Devl",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "DevPlex--Devl",
+                        "path": "\/ATM-2\/DevPlex--Devl\/DevPlex--Devl",
+                        "parentName": "DevPlex--Devl",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Agent Prototype",
+                                "path": "\/ATM-2\/DevPlex--Devl\/DevPlex--Devl\/Agent Prototype",
+                                "parentName": "DevPlex--Devl",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [{
+                                    "name": "MVS-COMPONENT",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "MVS-COMPONENT",
+                                        "description": "MVS Component",
+                                        "color": "#DD731C"
+                                    },
+                                    "path": "\/ATM-2\/DevPlex--Devl\/DevPlex--Devl\/Agent Prototype\/MVS-COMPONENT",
+                                    "parentName": "Agent Prototype",
+                                    "inheritTeam": false,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            },
+                            {
+                                "name": "bmo.DANIEL-CAPPON-s-Account.cloud",
+                                "path": "\/ATM-2\/DevPlex--Devl\/DevPlex--Devl\/bmo.DANIEL-CAPPON-s-Account.cloud",
+                                "parentName": "DevPlex--Devl",
+                                "inheritTeam": true,
+                                "type": "agent",
+                                "typeName": "bmo.DANIEL-CAPPON-s-Account.cloud",
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [
+                    {
+                        "name": "deploy.env.pds.mapping",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "deploy.env.hfs.targetdir",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.host",
+                        "value": "localhost",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.user",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|Vidy6ZdNdyjyURw7Nq3Bfw==|V\/6AruxqgtNg1sCDSxEKrQ==}",
+                        "description": "",
+                        "secure": true
+                    },
+                    {
+                        "name": "jes.monitor.port",
+                        "value": "6715",
+                        "description": "",
+                        "secure": false
+                    }
+                ],
+                "componentName": "MVS-Example"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "DevPlex--Model Office 1",
+            "description": "",
+            "color": "#DD731C",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "environmentTemplate": "DevPlex--Model Office",
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "DevPlex--Model Office 1",
+                    "path": "\/ATM-2\/DevPlex--Model Office 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "DevPlex--Model Office 1",
+                    "path": "\/ATM-2\/DevPlex--Model Office 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "DevPlex--Model Office",
+                        "path": "\/ATM-2\/DevPlex--Model Office 1\/DevPlex--Model Office",
+                        "parentName": "DevPlex--Model Office 1",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Agent Prototype",
+                            "path": "\/ATM-2\/DevPlex--Model Office 1\/DevPlex--Model Office\/Agent Prototype",
+                            "parentName": "DevPlex--Model Office",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "MVS-COMPONENT",
+                                "componentTag": {
+                                    "objectType": "Component",
+                                    "name": "MVS-COMPONENT",
+                                    "description": "MVS Component",
+                                    "color": "#DD731C"
+                                },
+                                "path": "\/ATM-2\/DevPlex--Model Office 1\/DevPlex--Model Office\/Agent Prototype\/MVS-COMPONENT",
+                                "parentName": "Agent Prototype",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [
+                    {
+                        "name": "deploy.env.pds.mapping",
+                        "secure": false
+                    },
+                    {
+                        "name": "deploy.env.hfs.targetdir",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.host",
+                        "value": "localhost",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.user",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|82ClrDDbAnbariHm4gisbw==|nhsFUQuKsNM6nbAJCKA9jA==}",
+                        "secure": true
+                    },
+                    {
+                        "name": "jes.monitor.port",
+                        "value": "6715",
+                        "secure": false
+                    }
+                ],
+                "componentName": "MVS-Example"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "DevPlex--Test 1",
+            "description": "",
+            "color": "#AB1A86",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "environmentTemplate": "DevPlex--Test",
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "DevPlex--Test 1",
+                    "path": "\/ATM-2\/DevPlex--Test 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "DevPlex--Test 1",
+                    "path": "\/ATM-2\/DevPlex--Test 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "DevPlex--Test",
+                        "path": "\/ATM-2\/DevPlex--Test 1\/DevPlex--Test",
+                        "parentName": "DevPlex--Test 1",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Agent Prototype",
+                            "path": "\/ATM-2\/DevPlex--Test 1\/DevPlex--Test\/Agent Prototype",
+                            "parentName": "DevPlex--Test",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "MVS-COMPONENT",
+                                "componentTag": {
+                                    "objectType": "Component",
+                                    "name": "MVS-COMPONENT",
+                                    "description": "MVS Component",
+                                    "color": "#DD731C"
+                                },
+                                "path": "\/ATM-2\/DevPlex--Test 1\/DevPlex--Test\/Agent Prototype\/MVS-COMPONENT",
+                                "parentName": "Agent Prototype",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [
+                    {
+                        "name": "deploy.env.pds.mapping",
+                        "secure": false
+                    },
+                    {
+                        "name": "deploy.env.hfs.targetdir",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.host",
+                        "value": "localhost",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.user",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|9Z4a4PVgkgeo6pHtmyJiig==|ql6QPfc\/OT5Ak2eM7NF9NQ==}",
+                        "secure": true
+                    },
+                    {
+                        "name": "jes.monitor.port",
+                        "value": "6715",
+                        "secure": false
+                    }
+                ],
+                "componentName": "MVS-Example"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "ProdPlex--Fix 1",
+            "description": "",
+            "color": "#007670",
+            "requireApprovals": true,
+            "noSelfApprovals": true,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "environmentTemplate": "ProdPlex--Fix",
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "approvalProcess": {"rootActivity": {
+                "edges": [
+                    {
+                        "to": "939b4cea06123848915e8deba5d38c",
+                        "from": "f52534d1ca11fcfa29022effb88d0f",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "f52534d1ca11fcfa29022effb88d0f",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "939b4cea06123848915e8deba5d38c",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "f52534d1ca11fcfa29022effb88d0f",
+                        "x": -65,
+                        "y": 230,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "2f072a38-84af-4f78-8a6b-9159877e89db",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "939b4cea06123848915e8deba5d38c",
+                        "children": []
+                    },
+                    {
+                        "roleRestrictionData": {
+                            "contextType": "ENVIRONMENT",
+                            "roleRestrictions": [{"roleName": "APPROVER"}]
+                        },
+                        "propDefs": [],
+                        "templateName": "ApprovalCreated",
+                        "commentRequired": true,
+                        "commentPrompt": "",
+                        "role": {},
+                        "type": "environmentApprovalTask",
+                        "name": "f52534d1ca11fcfa29022effb88d0f",
+                        "children": []
+                    }
+                ]
+            }},
+            "baseResources": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "ProdPlex--Fix 1",
+                    "path": "\/ATM-2\/ProdPlex--Fix 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "ProdPlex--Fix 1",
+                    "path": "\/ATM-2\/ProdPlex--Fix 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "ProdPlex--Fix",
+                        "path": "\/ATM-2\/ProdPlex--Fix 1\/ProdPlex--Fix",
+                        "parentName": "ProdPlex--Fix 1",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Agent Prototype",
+                            "path": "\/ATM-2\/ProdPlex--Fix 1\/ProdPlex--Fix\/Agent Prototype",
+                            "parentName": "ProdPlex--Fix",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "MVS-COMPONENT",
+                                "componentTag": {
+                                    "objectType": "Component",
+                                    "name": "MVS-COMPONENT",
+                                    "description": "MVS Component",
+                                    "color": "#DD731C"
+                                },
+                                "path": "\/ATM-2\/ProdPlex--Fix 1\/ProdPlex--Fix\/Agent Prototype\/MVS-COMPONENT",
+                                "parentName": "Agent Prototype",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [
+                    {
+                        "name": "deploy.env.pds.mapping",
+                        "secure": false
+                    },
+                    {
+                        "name": "deploy.env.hfs.targetdir",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.host",
+                        "value": "localhost",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.user",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|PvG2kwpELgxapMaLWBFF1w==|aKdnXWPMa9zOGvH4GvU3+w==}",
+                        "secure": true
+                    },
+                    {
+                        "name": "jes.monitor.port",
+                        "value": "6715",
+                        "secure": false
+                    }
+                ],
+                "componentName": "MVS-Example"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "ProdPlex-Prod 1",
+            "description": "",
+            "color": "#FFCF01",
+            "requireApprovals": true,
+            "noSelfApprovals": true,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "environmentTemplate": "ProdPlex-Prod",
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "approvalProcess": {"rootActivity": {
+                "edges": [
+                    {
+                        "to": "bfc7fa5225887e5868500221d228f1",
+                        "from": "23017cd4ad3a641aa57f530cf1f646",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "23017cd4ad3a641aa57f530cf1f646",
+                        "from": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "bfc7fa5225887e5868500221d228f1",
+                        "x": -5,
+                        "y": 480,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                        "x": -60,
+                        "y": 180,
+                        "h": 70,
+                        "w": 230
+                    },
+                    {
+                        "name": "23017cd4ad3a641aa57f530cf1f646",
+                        "x": -65,
+                        "y": 330,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "002daca8-2bb3-4da5-b10a-e843ee80720f",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "bfc7fa5225887e5868500221d228f1",
+                        "children": []
+                    },
+                    {
+                        "roleRestrictionData": {
+                            "contextType": "APPLICATION",
+                            "roleRestrictions": [{"roleName": "DEVELOPER"}]
+                        },
+                        "propDefs": [],
+                        "templateName": "ApprovalCreated",
+                        "commentRequired": false,
+                        "commentPrompt": "",
+                        "role": {},
+                        "type": "applicationApprovalTask",
+                        "name": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                        "children": []
+                    },
+                    {
+                        "roleRestrictionData": {
+                            "contextType": "ENVIRONMENT",
+                            "roleRestrictions": [{"roleName": "APPROVER"}]
+                        },
+                        "propDefs": [],
+                        "templateName": "ApprovalCreated",
+                        "commentRequired": true,
+                        "commentPrompt": "",
+                        "role": {},
+                        "type": "environmentApprovalTask",
+                        "name": "23017cd4ad3a641aa57f530cf1f646",
+                        "children": []
+                    }
+                ]
+            }},
+            "baseResources": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "ProdPlex-Prod 1",
+                    "path": "\/ATM-2\/ProdPlex-Prod 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/ATM-2",
+                "tree": {
+                    "name": "ProdPlex-Prod 1",
+                    "path": "\/ATM-2\/ProdPlex-Prod 1",
+                    "parentName": "ATM-2",
+                    "inheritTeam": false,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "ProdPlex--Prod",
+                        "path": "\/ATM-2\/ProdPlex-Prod 1\/ProdPlex--Prod",
+                        "parentName": "ProdPlex-Prod 1",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Agent Prototype",
+                            "path": "\/ATM-2\/ProdPlex-Prod 1\/ProdPlex--Prod\/Agent Prototype",
+                            "parentName": "ProdPlex--Prod",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "MVS-COMPONENT",
+                                "componentTag": {
+                                    "objectType": "Component",
+                                    "name": "MVS-COMPONENT",
+                                    "description": "MVS Component",
+                                    "color": "#DD731C"
+                                },
+                                "path": "\/ATM-2\/ProdPlex-Prod 1\/ProdPlex--Prod\/Agent Prototype\/MVS-COMPONENT",
+                                "parentName": "Agent Prototype",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [
+                    {
+                        "name": "deploy.env.pds.mapping",
+                        "secure": false
+                    },
+                    {
+                        "name": "deploy.env.hfs.targetdir",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.host",
+                        "value": "localhost",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.user",
+                        "secure": false
+                    },
+                    {
+                        "name": "jes.password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|D9ZFqskrz20UUfLJBYjNOQ==|jVhEvNJDysRtnGloxcK\/nw==}",
+                        "secure": true
+                    },
+                    {
+                        "name": "jes.monitor.port",
+                        "value": "6715",
+                        "secure": false
+                    }
+                ],
+                "componentName": "MVS-Example"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "1709ce7d-3a5e-634f-5271-f4690aa5c033",
+        "name": "Mainframe",
+        "color": "#DD731C",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "applicationTemplate": {
+        "name": "MVS-APPLICATION-TEMPLATE",
+        "description": "MVS APP TEMPLATE",
+        "applicationProcessList": [
+            {
+                "name": "MVS-DB2-IMS-PROCESS",
+                "description": "MVS-DB2-IMS-PROCESS",
+                "inventoryManagementType": "AUTOMATIC",
+                "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "39d53a7605a08ff4d6d0684a3961f3",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "55bdb7e9e62a8221005ff50852783a",
+                            "from": "39d53a7605a08ff4d6d0684a3961f3",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "55bdb7e9e62a8221005ff50852783a",
+                            "x": -5,
+                            "y": 460,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "39d53a7605a08ff4d6d0684a3961f3",
+                            "x": -110,
+                            "y": 230,
+                            "h": 70,
+                            "w": 370
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "cc1e60e0-073b-4565-8a50-8b295f720d82",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "55bdb7e9e62a8221005ff50852783a",
+                            "children": []
+                        },
+                        {
+                            "name": "39d53a7605a08ff4d6d0684a3961f3",
+                            "componentTag": {
+                                "objectType": "Component",
+                                "name": "MVS-COMPONENT",
+                                "description": "MVS Component",
+                                "color": "#DD731C"
+                            },
+                            "properties": [
+                                {
+                                    "name": "activity.componentProcess.name",
+                                    "value": "deploy-MVS-IMS-DB2-PROCESS"
+                                },
+                                {
+                                    "name": "maxCompIteration",
+                                    "value": "100"
+                                },
+                                {
+                                    "name": "maxIteration",
+                                    "value": "-1"
+                                },
+                                {
+                                    "name": "isIgnoreChildWarnings",
+                                    "value": "false"
+                                },
+                                {
+                                    "name": "runOnlyOnFirst",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "failFast",
+                                    "value": "false"
+                                }
+                            ],
+                            "type": "multiComponentEnvironmentIterator",
+                            "children": [{
+                                "properties": [{
+                                    "name": "isIgnoreChildWarnings",
+                                    "value": "false"
+                                }],
+                                "type": "componentEnvironmentIterator",
+                                "name": "3245468748ececde7c0aca4f37ec61",
+                                "children": [{
+                                    "status": "Active",
+                                    "type": "inventoryVersionDiff",
+                                    "name": "ab033553-a6ae-490d-8b0a-b649e312eadf",
+                                    "children": [{
+                                        "componentProcessName": "deploy-MVS-IMS-DB2-PROCESS",
+                                        "allowFailure": false,
+                                        "properties": {
+                                            "activity.componentProcess.name": "deploy-MVS-IMS-DB2-PROCESS",
+                                            "isIgnoreChildWarnings": "false"
+                                        },
+                                        "draftProperties": {"activity.componentProcess.name": "deploy-MVS-IMS-DB2-PROCESS"},
+                                        "type": "componentProcess",
+                                        "name": "MVS-DB2-IMS-PROCESS",
+                                        "children": []
+                                    }]
+                                }]
+                            }]
+                        }
+                    ]
+                },
+                "propDefs": [],
+                "versionPresets": []
+            },
+            {
+                "name": "MVS-IMS-APPLICATION-PROCESS",
+                "description": "MVS IMS Application Process",
+                "inventoryManagementType": "AUTOMATIC",
+                "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "3e01061f614d5f1f783cba0f954fbf",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "b116f2a606a8b6d2cc004c91d121e9",
+                            "from": "3e01061f614d5f1f783cba0f954fbf",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "b116f2a606a8b6d2cc004c91d121e9",
+                            "x": -5,
+                            "y": 460,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "3e01061f614d5f1f783cba0f954fbf",
+                            "x": -110,
+                            "y": 230,
+                            "h": 70,
+                            "w": 340
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "85af0303-343e-4d40-8a83-e986a6ba42a4",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "b116f2a606a8b6d2cc004c91d121e9",
+                            "children": []
+                        },
+                        {
+                            "name": "3e01061f614d5f1f783cba0f954fbf",
+                            "componentTag": {
+                                "objectType": "Component",
+                                "name": "MVS-COMPONENT",
+                                "description": "MVS Component",
+                                "color": "#DD731C"
+                            },
+                            "properties": [
+                                {
+                                    "name": "activity.componentProcess.name",
+                                    "value": "deploy-MVS-IMS-PROCESS"
+                                },
+                                {
+                                    "name": "maxCompIteration",
+                                    "value": "100"
+                                },
+                                {
+                                    "name": "maxIteration",
+                                    "value": "-1"
+                                },
+                                {
+                                    "name": "isIgnoreChildWarnings",
+                                    "value": "false"
+                                },
+                                {
+                                    "name": "runOnlyOnFirst",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "failFast",
+                                    "value": "false"
+                                }
+                            ],
+                            "type": "multiComponentEnvironmentIterator",
+                            "children": [{
+                                "properties": [{
+                                    "name": "isIgnoreChildWarnings",
+                                    "value": "false"
+                                }],
+                                "type": "componentEnvironmentIterator",
+                                "name": "2dbebcbdd3f9a16ffcbca4d5205a71",
+                                "children": [{
+                                    "status": "Active",
+                                    "type": "inventoryVersionDiff",
+                                    "name": "87f77641-98b5-4ef0-900a-e710b501ed96",
+                                    "children": [{
+                                        "componentProcessName": "deploy-MVS-IMS-PROCESS",
+                                        "allowFailure": false,
+                                        "properties": {
+                                            "activity.componentProcess.name": "deploy-MVS-IMS-PROCESS",
+                                            "isIgnoreChildWarnings": "false"
+                                        },
+                                        "draftProperties": {"activity.componentProcess.name": "deploy-MVS-IMS-PROCESS"},
+                                        "type": "componentProcess",
+                                        "name": "DEPLOY-MVS-IMS-APPLICATION",
+                                        "children": []
+                                    }]
+                                }]
+                            }]
+                        }
+                    ]
+                },
+                "propDefs": [],
+                "versionPresets": []
+            }
+        ],
+        "genericProcesses": [],
+        "tags": [],
+        "tagRequirements": [{
+            "type": "EQUALS",
+            "number": 1,
+            "tag": {
+                "objectType": "Component",
+                "name": "MVS-COMPONENT",
+                "description": "MVS Component",
+                "color": "#DD731C"
+            }
+        }],
+        "enforceCompleteSnapshots": false,
+        "environmentTemplates": [
+            {
+                "name": "DevPlex--Devl",
+                "description": "DPLEX-DEVL ENV",
+                "color": "#00B2EF",
+                "requireApproval": false,
+                "noSelfApprovals": false,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": true,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "propDefs": [
+                    {
+                        "name": "env-prop-1",
+                        "label": "env-prop-1",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "abc",
+                        "required": false,
+                        "description": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "env-prop-2",
+                        "label": "env-prop-2",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "def",
+                        "required": false,
+                        "description": "",
+                        "placeholder": ""
+                    }
+                ],
+                "resourceTemplate": {
+                    "name": "DPLEX DEVL RESOURCE TEMPLATE",
+                    "resources": {
+                        "name": "DPLEX DEVL RESOURCE TEMPLATE",
+                        "path": "\/DPLEX DEVL RESOURCE TEMPLATE",
+                        "parentName": "",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "DevPlex--Devl",
+                            "path": "\/DPLEX DEVL RESOURCE TEMPLATE\/DevPlex--Devl",
+                            "description": "",
+                            "parentName": "DPLEX DEVL RESOURCE TEMPLATE",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/DPLEX DEVL RESOURCE TEMPLATE\/DevPlex--Devl\/Agent Prototype",
+                                "description": "",
+                                "parentName": "DevPlex--Devl",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [{
+                                    "name": "MVS-COMPONENT",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "MVS-COMPONENT",
+                                        "description": "MVS Component",
+                                        "color": "#DD731C"
+                                    },
+                                    "path": "\/DPLEX DEVL RESOURCE TEMPLATE\/DevPlex--Devl\/Agent Prototype\/MVS-COMPONENT",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "inheritTeam": false,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": "DPLEX DEVL RESOURCE TEMPLATE"
+                },
+                "exemptProcesses": []
+            },
+            {
+                "name": "DevPlex--Model Office",
+                "description": "DevPlex--Model Office",
+                "color": "#DD731C",
+                "requireApproval": false,
+                "noSelfApprovals": false,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": true,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "propDefs": [],
+                "resourceTemplate": {
+                    "name": "DPLEX MODEL OFFICE RESOURCE TEMPLATE",
+                    "resources": {
+                        "name": "DPLEX MODEL OFFICE RESOURCE TEMPLATE",
+                        "path": "\/DPLEX MODEL OFFICE RESOURCE TEMPLATE",
+                        "parentName": "",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "DevPlex--Model Office",
+                            "path": "\/DPLEX MODEL OFFICE RESOURCE TEMPLATE\/DevPlex--Model Office",
+                            "description": "",
+                            "parentName": "DPLEX MODEL OFFICE RESOURCE TEMPLATE",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/DPLEX MODEL OFFICE RESOURCE TEMPLATE\/DevPlex--Model Office\/Agent Prototype",
+                                "description": "",
+                                "parentName": "DevPlex--Model Office",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [{
+                                    "name": "MVS-COMPONENT",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "MVS-COMPONENT",
+                                        "description": "MVS Component",
+                                        "color": "#DD731C"
+                                    },
+                                    "path": "\/DPLEX MODEL OFFICE RESOURCE TEMPLATE\/DevPlex--Model Office\/Agent Prototype\/MVS-COMPONENT",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "inheritTeam": false,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": "DPLEX MODEL OFFICE RESOURCE TEMPLATE"
+                },
+                "exemptProcesses": []
+            },
+            {
+                "name": "DevPlex--Test",
+                "description": "DevPlex--Test",
+                "color": "#AB1A86",
+                "requireApproval": false,
+                "noSelfApprovals": false,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": true,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "propDefs": [],
+                "resourceTemplate": {
+                    "name": "DPLEX TEST RESOURCE TEMPLATE",
+                    "resources": {
+                        "name": "DPLEX TEST RESOURCE TEMPLATE",
+                        "path": "\/DPLEX TEST RESOURCE TEMPLATE",
+                        "parentName": "",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "DevPlex--Test",
+                            "path": "\/DPLEX TEST RESOURCE TEMPLATE\/DevPlex--Test",
+                            "description": "DevPlex--Test",
+                            "parentName": "DPLEX TEST RESOURCE TEMPLATE",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/DPLEX TEST RESOURCE TEMPLATE\/DevPlex--Test\/Agent Prototype",
+                                "description": "",
+                                "parentName": "DevPlex--Test",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [{
+                                    "name": "MVS-COMPONENT",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "MVS-COMPONENT",
+                                        "description": "MVS Component",
+                                        "color": "#DD731C"
+                                    },
+                                    "path": "\/DPLEX TEST RESOURCE TEMPLATE\/DevPlex--Test\/Agent Prototype\/MVS-COMPONENT",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "inheritTeam": false,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": "DPLEX TEST RESOURCE TEMPLATE"
+                },
+                "exemptProcesses": []
+            },
+            {
+                "name": "ProdPlex--Fix",
+                "description": "ProdPlex--Fix",
+                "color": "#007670",
+                "requireApproval": true,
+                "noSelfApprovals": true,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": true,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "approvalProcess": {"rootActivity": {
+                    "edges": [
+                        {
+                            "to": "939b4cea06123848915e8deba5d38c",
+                            "from": "f52534d1ca11fcfa29022effb88d0f",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "f52534d1ca11fcfa29022effb88d0f",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "939b4cea06123848915e8deba5d38c",
+                            "x": -5,
+                            "y": 430,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "f52534d1ca11fcfa29022effb88d0f",
+                            "x": -65,
+                            "y": 230,
+                            "h": 70,
+                            "w": 240
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "2f072a38-84af-4f78-8a6b-9159877e89db",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "939b4cea06123848915e8deba5d38c",
+                            "children": []
+                        },
+                        {
+                            "roleRestrictionData": {
+                                "contextType": "ENVIRONMENT",
+                                "roleRestrictions": [{"roleName": "APPROVER"}]
+                            },
+                            "propDefs": [],
+                            "templateName": "ApprovalCreated",
+                            "commentRequired": true,
+                            "commentPrompt": "",
+                            "role": {},
+                            "type": "environmentApprovalTask",
+                            "name": "f52534d1ca11fcfa29022effb88d0f",
+                            "children": []
+                        }
+                    ]
+                }},
+                "propDefs": [],
+                "resourceTemplate": {
+                    "name": "PPLEX FIX RESOURCE TEMPLATE",
+                    "resources": {
+                        "name": "PPLEX FIX RESOURCE TEMPLATE",
+                        "path": "\/PPLEX FIX RESOURCE TEMPLATE",
+                        "parentName": "",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "ProdPlex--Fix",
+                            "path": "\/PPLEX FIX RESOURCE TEMPLATE\/ProdPlex--Fix",
+                            "description": "ProdPlex--Fix",
+                            "parentName": "PPLEX FIX RESOURCE TEMPLATE",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/PPLEX FIX RESOURCE TEMPLATE\/ProdPlex--Fix\/Agent Prototype",
+                                "description": "",
+                                "parentName": "ProdPlex--Fix",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [{
+                                    "name": "MVS-COMPONENT",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "MVS-COMPONENT",
+                                        "description": "MVS Component",
+                                        "color": "#DD731C"
+                                    },
+                                    "path": "\/PPLEX FIX RESOURCE TEMPLATE\/ProdPlex--Fix\/Agent Prototype\/MVS-COMPONENT",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "inheritTeam": false,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": "PPLEX FIX RESOURCE TEMPLATE"
+                },
+                "exemptProcesses": []
+            },
+            {
+                "name": "ProdPlex-Prod",
+                "description": "ProdPlex-Prod",
+                "color": "#FFCF01",
+                "requireApproval": true,
+                "noSelfApprovals": true,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": true,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "approvalProcess": {"rootActivity": {
+                    "edges": [
+                        {
+                            "to": "bfc7fa5225887e5868500221d228f1",
+                            "from": "23017cd4ad3a641aa57f530cf1f646",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "23017cd4ad3a641aa57f530cf1f646",
+                            "from": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "bfc7fa5225887e5868500221d228f1",
+                            "x": -5,
+                            "y": 480,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                            "x": -60,
+                            "y": 180,
+                            "h": 70,
+                            "w": 230
+                        },
+                        {
+                            "name": "23017cd4ad3a641aa57f530cf1f646",
+                            "x": -65,
+                            "y": 330,
+                            "h": 70,
+                            "w": 240
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "002daca8-2bb3-4da5-b10a-e843ee80720f",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "bfc7fa5225887e5868500221d228f1",
+                            "children": []
+                        },
+                        {
+                            "roleRestrictionData": {
+                                "contextType": "APPLICATION",
+                                "roleRestrictions": [{"roleName": "DEVELOPER"}]
+                            },
+                            "propDefs": [],
+                            "templateName": "ApprovalCreated",
+                            "commentRequired": false,
+                            "commentPrompt": "",
+                            "role": {},
+                            "type": "applicationApprovalTask",
+                            "name": "e67bbb18ad8fd94bbdb8d3eaf1081a",
+                            "children": []
+                        },
+                        {
+                            "roleRestrictionData": {
+                                "contextType": "ENVIRONMENT",
+                                "roleRestrictions": [{"roleName": "APPROVER"}]
+                            },
+                            "propDefs": [],
+                            "templateName": "ApprovalCreated",
+                            "commentRequired": true,
+                            "commentPrompt": "",
+                            "role": {},
+                            "type": "environmentApprovalTask",
+                            "name": "23017cd4ad3a641aa57f530cf1f646",
+                            "children": []
+                        }
+                    ]
+                }},
+                "propDefs": [],
+                "resourceTemplate": {
+                    "name": "PPLEX PROD RESOURCE TEMPLATE",
+                    "resources": {
+                        "name": "PPLEX PROD RESOURCE TEMPLATE",
+                        "path": "\/PPLEX PROD RESOURCE TEMPLATE",
+                        "parentName": "",
+                        "inheritTeam": false,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "ProdPlex--Prod",
+                            "path": "\/PPLEX PROD RESOURCE TEMPLATE\/ProdPlex--Prod",
+                            "description": "",
+                            "parentName": "PPLEX PROD RESOURCE TEMPLATE",
+                            "inheritTeam": false,
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/PPLEX PROD RESOURCE TEMPLATE\/ProdPlex--Prod\/Agent Prototype",
+                                "description": "",
+                                "parentName": "ProdPlex--Prod",
+                                "inheritTeam": false,
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": [{
+                                    "name": "MVS-COMPONENT",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "MVS-COMPONENT",
+                                        "description": "MVS Component",
+                                        "color": "#DD731C"
+                                    },
+                                    "path": "\/PPLEX PROD RESOURCE TEMPLATE\/ProdPlex--Prod\/Agent Prototype\/MVS-COMPONENT",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "inheritTeam": false,
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": "PPLEX PROD RESOURCE TEMPLATE"
+                },
+                "exemptProcesses": []
+            }
+        ],
+        "propDefs": []
+    }
+}

@@ -1,0 +1,708 @@
+{
+    "name": "Sum-App",
+    "description": "An example WebSphere Liberty application",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "Sum-App-SmokeTest",
+            "description": "",
+            "created": 1619667173705,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run SmokeTest",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1791bafc-15f3-64ec-2797-e6910cddfa3f\/processes\/1791bafc-16d1-6762-9829-08fe2bc7812c",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "c453f6e5f3d618150a78a87c751a47",
+                            "from": "Perform HTTP GET Request",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Perform HTTP GET Request",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Perform HTTP GET Request",
+                            "x": -85,
+                            "y": 230,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "c453f6e5f3d618150a78a87c751a47",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "476fb405-01bd-420a-8798-b00591359810",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c453f6e5f3d618150a78a87c751a47",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#curl --write-out '%{http_code}' --silent --output \/dev\/null http:\/\/guu.ocp.ibm.edu:9080\ncurl --write-out 'Response=%{http_code}' http:\/\/guu.ocp.ibm.edu:9080\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Perform HTTP GET Request",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "Sum-App-WAR",
+            "description": "",
+            "created": 1619667141006,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": [{
+                        "name": "LIBERTY_HOME",
+                        "value": "\/opt\/IBM\/liberty",
+                        "description": "",
+                        "secure": false
+                    }]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy-WAR",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/1791baf4-1a45-75b1-c166-7920275b38a9\/processes\/1791baf4-1b58-b378-3d38-9ddebd051c88",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "20ffb51aeb5c15031b97d61f6347e9",
+                            "from": "Start Server",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start Server",
+                            "from": "Install or Update Applications with Dropins",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install or Update Applications with Dropins",
+                            "from": "Stop Server",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create File",
+                            "from": "Stop Server",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start Server",
+                            "from": "Create File",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Server",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "20ffb51aeb5c15031b97d61f6347e9",
+                            "x": -6.49862825788756,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Start Server",
+                            "x": -56.49862825788756,
+                            "y": 490,
+                            "h": 70,
+                            "w": 220
+                        },
+                        {
+                            "name": "Stop Server",
+                            "x": -51.042524005486996,
+                            "y": 250,
+                            "h": 70,
+                            "w": 210
+                        },
+                        {
+                            "name": "Create File",
+                            "x": -219.585048010974,
+                            "y": 370,
+                            "h": 70,
+                            "w": 210
+                        },
+                        {
+                            "name": "Install or Update Applications with Dropins",
+                            "x": 20.414951989026008,
+                            "y": 370,
+                            "h": 70,
+                            "w": 400
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 130,
+                            "h": 70,
+                            "w": 260
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "ee5fa568-dda3-46fd-bf64-a589e3c1eadb",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "20ffb51aeb5c15031b97d61f6347e9",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Stop Server",
+                            "pluginName": "WebSphere Liberty",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "server": "defaultServer",
+                                "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                "wlpUserDir": "",
+                                "serverHost": "",
+                                "controllerHostName": "",
+                                "controllerPort": "",
+                                "adminUser": "",
+                                "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyghqo|NZ8d+hP3Tj+wraT9VQuCww==|t+RpNbgEhlh0niHLkRasQA==}",
+                                "trustStorePath": "",
+                                "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyghqo|WKdi5orOrEmNEJ0zjv1Mdg==|86SE+MSTg29tIkeXJNcnLg==}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Server",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "${p:LIBERTY_HOME}\/wlp\/usr\/servers\/defaultServer",
+                            "pluginVersion": 79,
+                            "commandName": "Create File",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "file": "server.xml",
+                                "contents": "<server description=\"new server\">\n    <!-- Enable features -->\n    <featureManager>\n        <feature>webProfile-8.0<\/feature>\n        <feature>localConnector-1.0<\/feature>\n        <feature>javaMail-1.6<\/feature>\n    <\/featureManager>\n    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host=\"*\" -->\n    <httpEndpoint host=\"*\" httpPort=\"9080\" httpsPort=\"9444\" id=\"defaultHttpEndpoint\"\/>\n    <!-- Automatically expand WAR files and EAR files -->\n    <applicationManager autoExpand=\"true\"\/>\n    <applicationMonitor updateTrigger=\"mbean\"\/>\n    <!-- <webApplication contextRoot=\"sumapp\" id=\"sum-app\" location=\"sumapp.war\" name=\"sum-app\"\/> -->\n<\/server>",
+                                "overwrite": "true",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create File",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Start Server",
+                            "pluginName": "WebSphere Liberty",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "server": "defaultServer",
+                                "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                "wlpUserDir": "",
+                                "serverHost": "",
+                                "controllerHostName": "",
+                                "controllerPort": "",
+                                "adminUser": "",
+                                "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyghqo|58UgrFGbm6T2SJm3vusrJg==|iBNtEML2YVCECJYzKzFhSQ==}",
+                                "trustStorePath": "",
+                                "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyghqo|PAUQsdXA39FlRMxr70s45Q==|iy8malP4VIfiZ5zZQPsDVQ==}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start Server",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 21,
+                            "commandName": "Install or Update Applications with Dropins",
+                            "pluginName": "WebSphere Liberty",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "source": "sumapp.war",
+                                "server": "defaultServer",
+                                "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                "wlpUserDir": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install or Update Applications with Dropins",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [{
+        "name": "DEV",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": [{
+            "name": "LIBERTY_HOME",
+            "value": "\/opt\/IBM\/liberty",
+            "description": "",
+            "secure": false
+        }]},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/Sum-App",
+            "tree": {
+                "name": "DEV",
+                "path": "\/Sum-App\/DEV",
+                "description": "",
+                "parentName": "Sum-App",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/Sum-App",
+            "tree": {
+                "name": "DEV",
+                "path": "\/Sum-App\/DEV",
+                "description": "",
+                "parentName": "Sum-App",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "ucd.local",
+                    "path": "\/Sum-App\/DEV\/ucd.local",
+                    "description": "",
+                    "parentName": "DEV",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "ucd.local",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "Sum-App-SmokeTest",
+                            "path": "\/Sum-App\/DEV\/ucd.local\/Sum-App-SmokeTest",
+                            "description": "",
+                            "parentName": "ucd.local",
+                            "inheritTeam": true,
+                            "roleName": "Sum-App-SmokeTest",
+                            "roleProperties": {
+                                "name": "Sum-App-SmokeTest",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        },
+                        {
+                            "name": "Sum-App-WAR",
+                            "path": "\/Sum-App\/DEV\/ucd.local\/Sum-App-WAR",
+                            "description": "",
+                            "parentName": "ucd.local",
+                            "inheritTeam": true,
+                            "roleName": "Sum-App-WAR",
+                            "roleProperties": {
+                                "name": "Sum-App-WAR",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }
+                    ]
+                }]
+            }
+        }],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "Sum-App-SmokeTest"
+            },
+            {
+                "properties": [],
+                "componentName": "Sum-App-WAR"
+            }
+        ],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [{
+        "name": "Deploy",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "2da1f0a6c9a82b0686fc02b72caf50",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "c21305da6ac45834e243ec00a42b94",
+                    "from": "2da1f0a6c9a82b0686fc02b72caf50",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "03edcf83de19ceb152deb1a29000b0",
+                    "from": "c21305da6ac45834e243ec00a42b94",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "2da1f0a6c9a82b0686fc02b72caf50",
+                    "x": -70,
+                    "y": 180,
+                    "h": 70,
+                    "w": 250
+                },
+                {
+                    "name": "03edcf83de19ceb152deb1a29000b0",
+                    "x": -5,
+                    "y": 520,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "c21305da6ac45834e243ec00a42b94",
+                    "x": -105,
+                    "y": 350,
+                    "h": 80,
+                    "w": 320
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "7e85fd9e-282d-49eb-aa33-04190d0a096d",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "03edcf83de19ceb152deb1a29000b0",
+                    "children": []
+                },
+                {
+                    "componentName": "Sum-App-WAR",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "2da1f0a6c9a82b0686fc02b72caf50",
+                    "children": [{
+                        "componentName": "Sum-App-WAR",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "dbb00b26-9389-415b-8041-38cd05f605da",
+                        "children": [{
+                            "componentProcessName": "Deploy-WAR",
+                            "componentName": "Sum-App-WAR",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"Sum-App-WAR\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "Sum-App-SmokeTest",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "c21305da6ac45834e243ec00a42b94",
+                    "children": [{
+                        "componentProcessName": "Run SmokeTest",
+                        "componentName": "Sum-App-SmokeTest",
+                        "allowFailure": false,
+                        "properties": {"isIgnoreChildWarnings": "false"},
+                        "draftProperties": {"isIgnoreChildWarnings": "false"},
+                        "type": "componentProcess",
+                        "name": "Run \"Sum-App-SmokeTest\"",
+                        "children": []
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": []
+}

@@ -1,0 +1,1095 @@
+{
+    "name": "MagiCALC",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "MagiCALC-API",
+            "description": "",
+            "created": 1621283540129,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy Container",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/1797c078-cbb0-eb5e-2a15-5ee43d17c53f\/processes\/1797c078-cc68-f03e-db62-7636144a6659",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Remove Docker Container",
+                            "from": "Stop Docker Container",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Pull Docker Image",
+                            "from": "Docker Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "c6d868d2a33a5352b3576499465a64",
+                            "from": "Run Docker Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Docker Container",
+                            "from": "Pull Docker Image",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run Docker Container",
+                            "from": "Remove Docker Container",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Docker Login",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "c6d868d2a33a5352b3576499465a64",
+                            "x": -5,
+                            "y": 790,
+                            "h": 90,
+                            "w": 130
+                        },
+                        {
+                            "name": "Stop Docker Container",
+                            "x": -110,
+                            "y": 400,
+                            "h": 80,
+                            "w": 340
+                        },
+                        {
+                            "name": "Pull Docker Image",
+                            "x": -90,
+                            "y": 270,
+                            "h": 80,
+                            "w": 300
+                        },
+                        {
+                            "name": "Docker Login",
+                            "x": -70,
+                            "y": 140,
+                            "h": 80,
+                            "w": 260
+                        },
+                        {
+                            "name": "Remove Docker Container",
+                            "x": -125,
+                            "y": 530,
+                            "h": 80,
+                            "w": 370
+                        },
+                        {
+                            "name": "Run Docker Container",
+                            "x": -105,
+                            "y": 660,
+                            "h": 80,
+                            "w": 330
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "87ffd2c0-771c-4e68-bd15-e1969b5befd1",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c6d868d2a33a5352b3576499465a64",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Pull Docker Image",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "registry.gitlab.com\/gitlab-com\/alliances\/ibm-red-hat\/sandbox\/urbancode-deploy-example\/backend:${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Pull Docker Image",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Docker Login",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "registry": "registry.gitlab.com",
+                                "dockerRegistryUserName": "ucd_deploy",
+                                "dockerRegistryUserPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|iBvEkxlysYEe3gmRQxz5LQ==|daEtjLjerc4FkvFKOr\/XX6c+IFAbZ\/yfAX4Ub9EUjEw=}",
+                                "dockerRegistryUserEmail": "",
+                                "globalOptions": "",
+                                "envVars": "",
+                                "awsCli": "",
+                                "region": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Docker Login",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Run Docker Container",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "registry.gitlab.com\/gitlab-com\/alliances\/ibm-red-hat\/sandbox\/urbancode-deploy-example\/backend:${p:environment.name}",
+                                "containerCommand": "",
+                                "container": "MagiCALC-API-${p:environment.name}",
+                                "commandOptions": "-d -p ${p:environment\/API_PORT}:3000",
+                                "globalOptions": "${p?:resource\/docker.opts}",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Docker Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Stop Docker Container",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "MagiCALC-API-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Docker Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Remove Docker Container",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "MagiCALC-API-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Remove Docker Container",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000101",
+                "resourceTypeName": "Component",
+                "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                "teamLabel": "GitLab"
+            }],
+            "tags": []
+        },
+        {
+            "name": "MagiCALC-UI",
+            "description": "",
+            "created": 1621283540205,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy Container",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/1797c078-d29b-5d29-bad1-92553526463f\/processes\/1797c078-d34b-6a99-78cb-8e61a4824bdf",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Docker Login",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Docker Container",
+                            "from": "Pull Docker Image",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run Docker Container",
+                            "from": "Remove Docker Container",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Pull Docker Image",
+                            "from": "Docker Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Remove Docker Container",
+                            "from": "Stop Docker Container",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "c6d868d2a33a5352b3576499465a64",
+                            "from": "Run Docker Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Pull Docker Image",
+                            "x": -90,
+                            "y": 270,
+                            "h": 80,
+                            "w": 300
+                        },
+                        {
+                            "name": "Stop Docker Container",
+                            "x": -110,
+                            "y": 400,
+                            "h": 80,
+                            "w": 340
+                        },
+                        {
+                            "name": "c6d868d2a33a5352b3576499465a64",
+                            "x": -5,
+                            "y": 790,
+                            "h": 90,
+                            "w": 130
+                        },
+                        {
+                            "name": "Remove Docker Container",
+                            "x": -125,
+                            "y": 530,
+                            "h": 80,
+                            "w": 370
+                        },
+                        {
+                            "name": "Run Docker Container",
+                            "x": -105,
+                            "y": 660,
+                            "h": 80,
+                            "w": 330
+                        },
+                        {
+                            "name": "Docker Login",
+                            "x": -70,
+                            "y": 140,
+                            "h": 80,
+                            "w": 260
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "ba270727-92b1-4e1f-a27c-e914eb274716",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c6d868d2a33a5352b3576499465a64",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Pull Docker Image",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "registry.gitlab.com\/gitlab-com\/alliances\/ibm-red-hat\/sandbox\/urbancode-deploy-example\/frontend:${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Pull Docker Image",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Docker Login",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "registry": "registry.gitlab.com",
+                                "dockerRegistryUserName": "ucd_deploy",
+                                "dockerRegistryUserPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|K1nuQlCVboPis7xV916zNQ==|6qvhcpv3NlX46UQEEF5RbHjc8njGhjiHLNolh31fAGU=}",
+                                "dockerRegistryUserEmail": "",
+                                "globalOptions": "",
+                                "envVars": "",
+                                "awsCli": "",
+                                "region": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Docker Login",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Run Docker Container",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "image": "registry.gitlab.com\/gitlab-com\/alliances\/ibm-red-hat\/sandbox\/urbancode-deploy-example\/frontend:${p:environment.name}",
+                                "containerCommand": "",
+                                "container": "MagiCALC-UI-${p:environment.name}",
+                                "commandOptions": "-d -p ${p:environment\/UI_PORT}:8282",
+                                "globalOptions": "${p?:resource\/docker.opts}",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Docker Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Stop Docker Container",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "MagiCALC-UI-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Docker Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Remove Docker Container",
+                            "pluginName": "Docker",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "container": "MagiCALC-UI-${p:environment.name}",
+                                "commandOptions": "",
+                                "globalOptions": "",
+                                "envVars": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Remove Docker Container",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000101",
+                "resourceTypeName": "Component",
+                "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                "teamLabel": "GitLab"
+            }],
+            "tags": []
+        }
+    ],
+    "environments": [
+        {
+            "name": "REVIEW",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "UI_PORT",
+                    "value": "8282",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "API_PORT",
+                    "value": "8383",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/GitLab\/MagiCALC",
+                "tree": {
+                    "name": "REVIEW",
+                    "path": "\/GitLab\/MagiCALC\/REVIEW",
+                    "description": "",
+                    "parentName": "MagiCALC",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/GitLab\/MagiCALC",
+                "tree": {
+                    "name": "REVIEW",
+                    "path": "\/GitLab\/MagiCALC\/REVIEW",
+                    "description": "",
+                    "parentName": "MagiCALC",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "gitlab-ucd-agent-QA",
+                        "path": "\/GitLab\/MagiCALC\/REVIEW\/gitlab-ucd-agent-QA",
+                        "description": "",
+                        "parentName": "REVIEW",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "gitlab-ucd-agent-QA",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                            "teamLabel": "GitLab"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "MagiCALC-API",
+                                "path": "\/GitLab\/MagiCALC\/REVIEW\/gitlab-ucd-agent-QA\/MagiCALC-API",
+                                "description": "",
+                                "parentName": "gitlab-ucd-agent-QA",
+                                "inheritTeam": true,
+                                "roleName": "MagiCALC-API",
+                                "roleProperties": {
+                                    "name": "MagiCALC-API",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                    "teamLabel": "GitLab"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "MagiCALC-UI",
+                                "path": "\/GitLab\/MagiCALC\/REVIEW\/gitlab-ucd-agent-QA\/MagiCALC-UI",
+                                "description": "",
+                                "parentName": "gitlab-ucd-agent-QA",
+                                "inheritTeam": true,
+                                "roleName": "MagiCALC-UI",
+                                "roleProperties": {
+                                    "name": "MagiCALC-UI",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                    "teamLabel": "GitLab"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "MagiCALC-API"
+                },
+                {
+                    "properties": [],
+                    "componentName": "MagiCALC-UI"
+                }
+            ],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                "teamLabel": "GitLab",
+                "resourceRoleId": "17792929-70a9-a142-45c2-a7694b024134",
+                "resourceRoleLabel": "Development"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PRODUCTION",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "UI_PORT",
+                    "value": "9292",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "API_PORT",
+                    "value": "9393",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/GitLab\/MagiCALC",
+                "tree": {
+                    "name": "PRODUCTION",
+                    "path": "\/GitLab\/MagiCALC\/PRODUCTION",
+                    "description": "",
+                    "parentName": "MagiCALC",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/GitLab\/MagiCALC",
+                "tree": {
+                    "name": "PRODUCTION",
+                    "path": "\/GitLab\/MagiCALC\/PRODUCTION",
+                    "description": "",
+                    "parentName": "MagiCALC",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [{
+                        "resourceTypeId": "20000000000000000000000000000104",
+                        "resourceTypeName": "Resource",
+                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                        "teamLabel": "GitLab"
+                    }],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "gitlab-ucd-agent-QA",
+                        "path": "\/GitLab\/MagiCALC\/PRODUCTION\/gitlab-ucd-agent-QA",
+                        "description": "",
+                        "parentName": "PRODUCTION",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "gitlab-ucd-agent-QA",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [{
+                            "resourceTypeId": "20000000000000000000000000000104",
+                            "resourceTypeName": "Resource",
+                            "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                            "teamLabel": "GitLab"
+                        }],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "MagiCALC-API",
+                                "path": "\/GitLab\/MagiCALC\/PRODUCTION\/gitlab-ucd-agent-QA\/MagiCALC-API",
+                                "description": "",
+                                "parentName": "gitlab-ucd-agent-QA",
+                                "inheritTeam": true,
+                                "roleName": "MagiCALC-API",
+                                "roleProperties": {
+                                    "name": "MagiCALC-API",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                    "teamLabel": "GitLab"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "MagiCALC-UI",
+                                "path": "\/GitLab\/MagiCALC\/PRODUCTION\/gitlab-ucd-agent-QA\/MagiCALC-UI",
+                                "description": "",
+                                "parentName": "gitlab-ucd-agent-QA",
+                                "inheritTeam": true,
+                                "roleName": "MagiCALC-UI",
+                                "roleProperties": {
+                                    "name": "MagiCALC-UI",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [{
+                                    "resourceTypeId": "20000000000000000000000000000104",
+                                    "resourceTypeName": "Resource",
+                                    "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                    "teamLabel": "GitLab"
+                                }],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "MagiCALC-API"
+                },
+                {
+                    "properties": [],
+                    "componentName": "MagiCALC-UI"
+                }
+            ],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                "teamLabel": "GitLab",
+                "resourceRoleId": "170aba0c-69d7-1509-b8cd-bb304ce2e791",
+                "resourceRoleLabel": "Production"
+            }],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "a1f42106f82a948f225c4d8f99f53e",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "749c86cff812c201dc9337910c493e",
+                    "from": "adc9ea1d0a5c87ee89509ef78301ac",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "adc9ea1d0a5c87ee89509ef78301ac",
+                    "from": "a1f42106f82a948f225c4d8f99f53e",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "a1f42106f82a948f225c4d8f99f53e",
+                    "x": -80,
+                    "y": 180,
+                    "h": 80,
+                    "w": 270
+                },
+                {
+                    "name": "adc9ea1d0a5c87ee89509ef78301ac",
+                    "x": -80,
+                    "y": 360,
+                    "h": 70,
+                    "w": 270
+                },
+                {
+                    "name": "749c86cff812c201dc9337910c493e",
+                    "x": -5,
+                    "y": 530,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "a287fcbc-d0be-4cac-8731-ddd74886c280",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "749c86cff812c201dc9337910c493e",
+                    "children": []
+                },
+                {
+                    "componentName": "MagiCALC-UI",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "adc9ea1d0a5c87ee89509ef78301ac",
+                    "children": [{
+                        "componentName": "MagiCALC-UI",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "c6a5e2d8-25f7-495a-a1f7-895a84184be2",
+                        "children": [{
+                            "componentProcessName": "Deploy Container",
+                            "componentName": "MagiCALC-UI",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"MagiCALC-UI\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "MagiCALC-API",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "a1f42106f82a948f225c4d8f99f53e",
+                    "children": [{
+                        "componentName": "MagiCALC-API",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "894d175f-b83b-4484-982f-e02f91d43514",
+                        "children": [{
+                            "componentProcessName": "Deploy Container",
+                            "componentName": "MagiCALC-API",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"MagicCALC-API\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [{
+        "resourceTypeId": "20000000000000000000000000000100",
+        "resourceTypeName": "Application",
+        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+        "teamLabel": "GitLab"
+    }],
+    "tags": [
+        {
+            "id": "1797dcd1-08b5-962b-f394-b74bec3f9603",
+            "name": "Docker",
+            "color": "#00B2EF",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "1797c080-1244-7a03-23f1-fb1f96a56ffb",
+            "name": "GitLab",
+            "color": "#DD731C",
+            "description": "",
+            "objectType": "Application"
+        }
+    ]
+}

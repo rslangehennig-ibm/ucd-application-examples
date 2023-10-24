@@ -1,0 +1,1081 @@
+{
+    "name": "Kube-Example-IKS",
+    "description": "An example Kubernetes deployment on IBM Kube Service",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "Kube-Example-IKS-YAML",
+        "description": "",
+        "created": 1614741637334,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": [
+                    {
+                        "name": "docker-hub-url",
+                        "value": "https:\/\/hub.docker.com\/r\/ibmicpcoc\/kubetoy\/tags?page=1&ordering=last_updated",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "github-url",
+                        "value": "https:\/\/github.com\/IBM-ICP-CoC\/KubeToy",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "FileSystemVersionedComponentProperties",
+                "properties": [
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "includes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "excludes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "basePath",
+                        "value": "\/downloads\/kube-statestreet",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            }
+        ]},
+        "processes": [{
+            "name": "Deploy-Container",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/177f61a0-8e7c-a1f4-ec50-686ac4dfe7ef\/processes\/177f61b2-98ae-bd3b-0dc3-7fce1ea3c3c6",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Wait for 45 Seconds",
+                        "from": "Get Nodes and Pods",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Deploy KubeToy with YML",
+                        "from": "Wait for 45 Seconds",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Get Nodes and Pods",
+                        "from": "Delete Resources",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Check Deployment (Get Pods)",
+                        "from": "Deploy KubeToy with YML",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "eff63fa00561398d05376b83ced89e",
+                        "from": "Check Deployment (Get Pods)",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Replace Tokens",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Delete Resources",
+                        "from": "Login to IBM IKS",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Login to IBM IKS",
+                        "from": "Replace Tokens",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "Deploy KubeToy with YML",
+                        "x": -150,
+                        "y": 1110,
+                        "h": 110,
+                        "w": 450
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -145,
+                        "y": 150,
+                        "h": 110,
+                        "w": 440
+                    },
+                    {
+                        "name": "Get Nodes and Pods",
+                        "x": -115,
+                        "y": 790,
+                        "h": 110,
+                        "w": 380
+                    },
+                    {
+                        "name": "Wait for 45 Seconds",
+                        "x": -110,
+                        "y": 950,
+                        "h": 110,
+                        "w": 370
+                    },
+                    {
+                        "name": "Delete Resources",
+                        "x": -140,
+                        "y": 630,
+                        "h": 110,
+                        "w": 430
+                    },
+                    {
+                        "name": "eff63fa00561398d05376b83ced89e",
+                        "x": -5,
+                        "y": 1430,
+                        "h": 100,
+                        "w": 160
+                    },
+                    {
+                        "name": "Check Deployment (Get Pods)",
+                        "x": -180,
+                        "y": 1270,
+                        "h": 110,
+                        "w": 510
+                    },
+                    {
+                        "name": "Replace Tokens",
+                        "x": -125,
+                        "y": 310,
+                        "h": 110,
+                        "w": 400
+                    },
+                    {
+                        "name": "Login to IBM IKS",
+                        "x": -85,
+                        "y": 470,
+                        "h": 110,
+                        "w": 320
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "ad8fb149-7ec8-4e20-a95f-82f8aa1f144b",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "eff63fa00561398d05376b83ced89e",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 32,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "versionId": "${p:version.id}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "charset": "",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 75,
+                        "commandName": "Replace Tokens",
+                        "pluginName": "File Utils",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "includes": "**\/*",
+                            "excludes": "",
+                            "envPropValues": "${p:environment\/allProperties}",
+                            "propertyPrefix": "",
+                            "explicitTokens": "@VERSION@->${p:version.name}",
+                            "startDelimiter": "@",
+                            "endDelimiter": "@",
+                            "propFile": "replace_tokens.properties",
+                            "dir": "",
+                            "customEncoding": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Replace Tokens",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "# ibmcloud login --apikey ${API_KEY} -r ${env.REGION} -g ${env.RESOURCE_GROUP}\n\nibmcloud login --apikey ${p:environment\/API_KEY} -r ${p:environment\/REGION} -g ${p:environment\/RESOURCE_GROUP}\nibmcloud ks cluster config --cluster c0ug54ad06uklq725eeg",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Login to IBM IKS",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "kubectl get nodes\nkubectl get pods",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Get Nodes and Pods",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 24,
+                        "commandName": "Apply Resources",
+                        "pluginName": "Kubernetes",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "url": "",
+                            "username": "",
+                            "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|ydODOIBQXQkiZ06F0V9InQ==|wP7fIHluM0PG3cjrQotrRw==}",
+                            "namespace": "",
+                            "path": "",
+                            "globals": "",
+                            "flags": "",
+                            "filename": "kubetoy-al-in-one-no-route.yaml"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy KubeToy with YML",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "kubectl get pods",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Check Deployment (Get Pods)",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 24,
+                        "commandName": "Delete Resources",
+                        "pluginName": "Kubernetes",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "url": "",
+                            "username": "",
+                            "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|JazEYrRDWhEFiwIzho2I4A==|vCzEkBCNzpqnBZb5Lnk\/Iw==}",
+                            "namespace": "",
+                            "path": "",
+                            "globals": "",
+                            "flags": "",
+                            "type": "filename",
+                            "resources": "kubetoy-al-in-one-no-route.yaml"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Delete Resources",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 2,
+                        "commandName": "Wait",
+                        "pluginName": "General Utilities",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {"duration": "45"},
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Wait for 45 Seconds",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [
+            {
+                "id": "178d132e-fb30-a65d-7a15-3c92923533d4",
+                "name": "IBM",
+                "color": "#00648D",
+                "description": "",
+                "objectType": "Component"
+            },
+            {
+                "id": "178d1327-dd62-bae4-3913-7bc61886ea46",
+                "name": "Kubernetes",
+                "color": "#F051A1",
+                "description": "",
+                "objectType": "Component"
+            }
+        ]
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "API_KEY",
+                    "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|7g37xXWs+T9ZcX4jk7B2RQ==|05GA0M2Q2IS0wjbAz0wj97InitAmEZ0IAmaPdNrCI5Qx82QlAsCoJdXn\/vp3E6xH}",
+                    "description": "",
+                    "secure": true
+                },
+                {
+                    "name": "REGION",
+                    "value": "us-south",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "RESOURCE_GROUP",
+                    "value": "default",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/DEV",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/DEV",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Kube-Example-AKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Kube-Example-AKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-Example-AKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-Example-AKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Kube-Example-IKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Kube-Example-IKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-Example-IKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-Example-IKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Kube-HelloWorld-Example-AKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Kube-HelloWorld-Example-AKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-HelloWorld-Example-AKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-HelloWorld-Example-AKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Online-Botanical-API-Container",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Online-Botanical-API-Container",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Online-Botanical-API-Container",
+                                "roleProperties": {
+                                    "name": "Online-Botanical-API-Container",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Kube-Example-IKS-YAML"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FFCF01",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "API_KEY",
+                    "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|T1dkYBwUgu4ms9mBsASuow==|puZ3myVDwUFN3Z0vspkZakgCc0PsiFRdI9020VBPlkXXvVnw3npiIh22XU7zWwS4}",
+                    "description": "",
+                    "secure": true
+                },
+                {
+                    "name": "REGION",
+                    "value": "us-south",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "RESOURCE_GROUP",
+                    "value": "default",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/QA",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/QA",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Kubernetes\/Kube-Example-IKS\/QA\/virtualserver02",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Kube-Example-IKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/QA\/virtualserver02\/Kube-Example-IKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-Example-IKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-Example-IKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Online-Botanical-API-Container",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/QA\/virtualserver02\/Online-Botanical-API-Container",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Online-Botanical-API-Container",
+                                "roleProperties": {
+                                    "name": "Online-Botanical-API-Container",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Kube-Example-IKS-YAML"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "API_KEY",
+                    "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|7dIZKl2Mwzf+Htvl1FYOVA==|1XrqgafOl6kfr4BwhH10qKSnhrSzzooFw2hAwKZprbx7QQOljlOJsmY9uQucATYf}",
+                    "description": "",
+                    "secure": true
+                },
+                {
+                    "name": "REGION",
+                    "value": "us-south",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "RESOURCE_GROUP",
+                    "value": "default",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/PROD",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/PROD",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Kubernetes\/Kube-Example-IKS\/PROD\/virtualserver02",
+                        "description": "",
+                        "parentName": "PROD",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Kube-Example-IKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/PROD\/virtualserver02\/Kube-Example-IKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-Example-IKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-Example-IKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Online-Botanical-API-Container",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/PROD\/virtualserver02\/Online-Botanical-API-Container",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Online-Botanical-API-Container",
+                                "roleProperties": {
+                                    "name": "Online-Botanical-API-Container",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Kube-Example-IKS-YAML"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-Container",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "f3a50eac9d85c6f31c188817c83563",
+                    "from": "0ef20be8b0e29188b622be8275031e",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "0ef20be8b0e29188b622be8275031e",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "f3a50eac9d85c6f31c188817c83563",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "0ef20be8b0e29188b622be8275031e",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 310
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "9b0e89ae-0812-4042-8dcf-bdd2073c5fe7",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "f3a50eac9d85c6f31c188817c83563",
+                    "children": []
+                },
+                {
+                    "componentName": "Kube-Example-IKS-YAML",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "0ef20be8b0e29188b622be8275031e",
+                    "children": [{
+                        "componentName": "Kube-Example-IKS-YAML",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "50dfa8c0-87a3-466e-8ff9-5107009a5714",
+                        "children": [{
+                            "componentProcessName": "Deploy-Container",
+                            "componentName": "Kube-Example-IKS-YAML",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"Kube-Example-IKS-YAML\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "17060757-228e-f9a1-57e2-5a6465c389e0",
+            "name": "Kubernetes",
+            "color": "#F389AF",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "178d128e-0367-2cd5-39a8-7ec3fa248237",
+            "name": "IBM",
+            "color": "#00648D",
+            "description": "",
+            "objectType": "Application"
+        }
+    ]
+}

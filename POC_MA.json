@@ -1,0 +1,332 @@
+{
+    "name": "POC_MA",
+    "description": "zOS Use cases",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "POC_JCL_UC1",
+        "description": "Use Case #1:  Urbancode Deploy would initiate an Endevor deployment. Prerequisite: A non deployment process will be used to run a job that will initiate the deployment of a specific Endevor package. The Endevor Package Id, will be an input variable.",
+        "created": 1583259711467,
+        "componentType": "ZOS",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "INCREMENTAL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": []
+            }
+        ]},
+        "processes": [{
+            "name": "Submit JCL",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": false,
+            "status": "",
+            "active": true,
+            "path": "components\/170a1a1f-80bf-a63a-c341-dafda240ac53\/processes\/170a1a1f-8162-a015-2148-ac2459dcbe3b",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "2f26be3fa890d45e745f97f07d3084",
+                        "from": "Submit JCL from PDS",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Submit JCL from PDS",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "2f26be3fa890d45e745f97f07d3084",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Submit JCL from PDS",
+                        "x": -65,
+                        "y": 230,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "manual",
+                "type": "graph",
+                "name": "5201b0de-59c1-441b-8a06-f0960a1f84b4",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "2f26be3fa890d45e745f97f07d3084",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": true,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 45,
+                        "commandName": "Submit Job",
+                        "pluginName": "zOS Utility",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "mvsFilename": "IBMUSER.POT.JCL(POCUSE1)",
+                            "ussFilename": "",
+                            "jclString": "",
+                            "jobCard": "${p?:deploy.env.jobstatement}",
+                            "explicitTokens": "@token1@->REGI",
+                            "explicitTokensForeachJob": "",
+                            "waitForJob": "true",
+                            "stopOnFail": "true",
+                            "timeout": "60",
+                            "showOutput": "ALL",
+                            "cutOff": "1000",
+                            "maxRC": "4",
+                            "hostname": "${p:jes.host}",
+                            "port": "${p:jes.monitor.port}",
+                            "userid": "${p:jes.user}",
+                            "password": "${p?:jes.password}",
+                            "usePassticket": "false",
+                            "irrracfJarFile": "\/usr\/include\/java_classes\/IRRRacf.jar",
+                            "irrracfLibraryPath": "\/usr\/lib"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Submit JCL from PDS",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "DEV_V6",
+            "color": "#FFCF01",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "jes.host",
+                    "value": "localhost",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "jes.monitor.port",
+                    "value": "6715",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "jes.password",
+                    "value": "SYS1",
+                    "description": "admin",
+                    "secure": false
+                },
+                {
+                    "name": "jes.user",
+                    "value": "IBMUSER",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "POC_JCL_UC1"
+            }],
+            "versionGate": {},
+            "teamMappings": []
+        },
+        {
+            "name": "DEV_V7",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "jes.host",
+                    "value": "localhost",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "jes.monitor.port",
+                    "value": "6715",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "jes.password",
+                    "value": "SYS1",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "jes.user",
+                    "value": "IBMUSER",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "POC_JCL_UC1"
+            }],
+            "versionGate": {},
+            "teamMappings": []
+        }
+    ],
+    "processes": [{
+        "name": "USE_CASE_1",
+        "description": "Use Case #1:  Urbancode Deploy would initiate an Endevor deployment. Prerequisite: A non deployment process will be used to run a job that will initiate the deployment of a specific Endevor package. The Endevor Package Id, will be an input variable.",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "ca114932ad2ea42f736bf6354809a3",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "94b0ed16e66210d5ffcf851fe9aa30",
+                    "from": "ca114932ad2ea42f736bf6354809a3",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "94b0ed16e66210d5ffcf851fe9aa30",
+                    "x": -5,
+                    "y": 420,
+                    "h": 90,
+                    "w": 130
+                },
+                {
+                    "name": "ca114932ad2ea42f736bf6354809a3",
+                    "x": -40.92105263157896,
+                    "y": 206.8421052631579,
+                    "h": 100,
+                    "w": 340
+                }
+            ],
+            "layoutMode": "manual",
+            "type": "graph",
+            "name": "6d5c4b8a-51b2-4e87-a08f-1aa7c3dc8e90",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "94b0ed16e66210d5ffcf851fe9aa30",
+                    "children": []
+                },
+                {
+                    "componentName": "POC_JCL_UC1",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "ca114932ad2ea42f736bf6354809a3",
+                    "children": [{
+                        "componentProcessName": "Submit JCL",
+                        "componentName": "POC_JCL_UC1",
+                        "allowFailure": false,
+                        "properties": {},
+                        "draftProperties": {},
+                        "type": "componentProcess",
+                        "name": "Component: \"POC_JCL_UC1\"",
+                        "children": []
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "1709ce7d-3a5e-634f-5271-f4690aa5c033",
+        "name": "Mainframe",
+        "color": "#DD731C",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

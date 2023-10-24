@@ -1,0 +1,165 @@
+{
+    "securityResourceId": "1811b5b5-82ac-b242-1b75-d81967e81322",
+    "path": "componentTemplates\/1811b5b5-82df-5898-49ba-a3c22ed56112",
+    "name": "BLS-Aspera-File-Move-Template",
+    "description": "",
+    "ignoreQualifiers": 0,
+    "componentType": "STANDARD",
+    "sourceConfigPluginName": "",
+    "tags": [{
+        "id": "1811c056-38b5-1471-991c-65ff445880dc",
+        "name": "Aspera",
+        "color": "#17AF4A",
+        "description": "",
+        "objectType": "Component"
+    }],
+    "active": true,
+    "envPropDefs": [
+        {
+            "name": "pair-prefix",
+            "label": "pair-prefix",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The prefix used for the named pair for async transfer",
+            "placeholder": ""
+        },
+        {
+            "name": "source-directory",
+            "label": "source-directory",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The fully qualified path to the source directory from which Aspera will copy files from",
+            "placeholder": ""
+        },
+        {
+            "name": "user-name",
+            "label": "user-name",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The user to authenticate with for Aspera transfer",
+            "placeholder": ""
+        },
+        {
+            "name": "user-password",
+            "label": "user-password",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The password for the user you are using for file transfer",
+            "placeholder": ""
+        }
+    ],
+    "resPropDefs": [
+        {
+            "name": "host",
+            "label": "Target Host",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The host that you are pushing files to using Aspera",
+            "placeholder": ""
+        },
+        {
+            "name": "named-pair",
+            "label": "named-pair",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The default named-pair string value",
+            "placeholder": ""
+        }
+    ],
+    "propDefs": [],
+    "properties": [],
+    "processes": [{
+        "name": "Move-Files-using-Async",
+        "description": "",
+        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+        "takesVersion": false,
+        "status": "",
+        "active": true,
+        "path": "componentTemplates\/1811b5b5-82df-5898-49ba-a3c22ed56112\/processes\/1811c066-c2e5-3887-df91-3fb95bb2543e",
+        "deleted": false,
+        "propDefs": [],
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "304c4c3e75b2d511234789274653cc",
+                    "from": "Aspera File Move",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "Aspera File Move",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "Aspera File Move",
+                    "x": -45,
+                    "y": 230,
+                    "h": 70,
+                    "w": 210
+                },
+                {
+                    "name": "304c4c3e75b2d511234789274653cc",
+                    "x": -5,
+                    "y": 450,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "31b0cc75-5b4d-4104-85af-8fca178d99b4",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "304c4c3e75b2d511234789274653cc",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 9,
+                    "commandName": "Shell",
+                    "pluginName": "Shell",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "directoryOffset": ".",
+                        "shellInterpreter": "",
+                        "scriptBody": "async -N ${p:environment\/pair-prefix}-${p:resource\/named-pair} -l 1G -d ${p:environment\/source-directory} -r ${p:environment\/user-name}@${p:resource\/host}:\/ -K push -w ${p:environment\/user-password}",
+                        "runAsDaemon": "false",
+                        "outputFile": ""
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Aspera File Move",
+                    "children": []
+                }
+            ]
+        }
+    }],
+    "genericProcesses": [],
+    "teamMappings": []
+}

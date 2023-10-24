@@ -1,0 +1,856 @@
+{
+    "name": "MuleSoft",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "MuleSoft-API",
+            "description": "",
+            "created": 1615347595572,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/mulesoft",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [{
+                "name": "Deploy-API",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/1781a383-9459-2277-420e-8660563bb63c\/processes\/1781a386-2d2e-8ea8-977d-f2dd07cfa32b",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Run MuleSoft Script",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "41b960970242305b8cee0e65eae56c",
+                            "from": "Run MuleSoft Script",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Run MuleSoft Script",
+                            "x": -55,
+                            "y": 350,
+                            "h": 70,
+                            "w": 220
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 180,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "41b960970242305b8cee0e65eae56c",
+                            "x": -5,
+                            "y": 520,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "95bb3338-a54d-424a-9d3d-d7f66b0314e1",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "41b960970242305b8cee0e65eae56c",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 32,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo jira-ticket is ${p:jira-ticket}\necho api-name is ${p:api-name}\n\necho ---------------\nhostname\npwd\nuname -a",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run MuleSoft Script",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "RegionsBank-PostProcessing",
+            "description": "",
+            "created": 1590156870320,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [{
+                "name": "Test_PostProcessing",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1723cbc4-2c02-4139-0ab1-d2d17dfe58bc\/processes\/1723cbc8-cb2b-c635-3b13-2bb49a7ddf12",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Simulate-Regions-Output-FAIL",
+                            "from": "Simulate-Regions-Output-PASS",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Records",
+                            "from": "Check Change Request State",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Simulate-Regions-Output-PASS",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "ce7dfe38daddfb6d578d5121ed5bbb",
+                            "from": "Simulate-Regions-Output-FAIL",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Simulate-Regions-Output-PASS",
+                            "x": -95,
+                            "y": 155,
+                            "h": 70,
+                            "w": 300
+                        },
+                        {
+                            "name": "Check Records",
+                            "x": 260,
+                            "y": 145,
+                            "h": 70,
+                            "w": 240
+                        },
+                        {
+                            "name": "Check Change Request State",
+                            "x": 215,
+                            "y": 0,
+                            "h": 70,
+                            "w": 330
+                        },
+                        {
+                            "name": "ce7dfe38daddfb6d578d5121ed5bbb",
+                            "x": -5,
+                            "y": 445,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Simulate-Regions-Output-FAIL",
+                            "x": -90,
+                            "y": 300,
+                            "h": 70,
+                            "w": 290
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "346b109b-fb94-44fa-abc3-1163b20d974f",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "ce7dfe38daddfb6d578d5121ed5bbb",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "postProcessingScript": {
+                                "id": "1723cc92-5015-2b14-516a-44ce13b34d87",
+                                "name": "REGIONS-Example",
+                                "description": "",
+                                "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nproperties.put('FoundFailure', 'False');\n\nscanner.register(\"command output:\", function(lineNumber, line) {\n    beginCheck = 1;\n});\n\nscanner.register(\"Failed Execution\", function(lineNumber, line) {\n    if (beginCheck == 1) {\n       properties.put('FoundFailure', 'True');\n       properties.put('Status', 'Failure');\n    }\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}\n",
+                                "securityResourceId": "1837bad5-d4cc-388c-4e09-2ec5b442a9af",
+                                "teamMappings": [
+                                    {
+                                        "resourceTypeId": "20000000000000000000000000000203",
+                                        "resourceTypeName": "Post Processing Script",
+                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                        "teamLabel": "WebSphere Team"
+                                    },
+                                    {
+                                        "resourceTypeId": "20000000000000000000000000000203",
+                                        "resourceTypeName": "Post Processing Script",
+                                        "teamId": "1722e798-0a1f-f9cb-313c-1aa78795aafc",
+                                        "teamLabel": "MuleSoft"
+                                    },
+                                    {
+                                        "resourceTypeId": "20000000000000000000000000000203",
+                                        "resourceTypeName": "Post Processing Script",
+                                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                        "teamLabel": "GitLab"
+                                    }
+                                ]
+                            },
+                            "postProcessingScriptName": "REGIONS-Example",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "cat \/opt\/RegionsBank-PASS.txt",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Simulate-Regions-Output-PASS",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "postProcessingScript": {
+                                "id": "1723cc92-5015-2b14-516a-44ce13b34d87",
+                                "name": "REGIONS-Example",
+                                "description": "",
+                                "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nproperties.put('FoundFailure', 'False');\n\nscanner.register(\"command output:\", function(lineNumber, line) {\n    beginCheck = 1;\n});\n\nscanner.register(\"Failed Execution\", function(lineNumber, line) {\n    if (beginCheck == 1) {\n       properties.put('FoundFailure', 'True');\n       properties.put('Status', 'Failure');\n    }\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}\n",
+                                "securityResourceId": "1837bad5-d4cc-388c-4e09-2ec5b442a9af",
+                                "teamMappings": [
+                                    {
+                                        "resourceTypeId": "20000000000000000000000000000203",
+                                        "resourceTypeName": "Post Processing Script",
+                                        "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                                        "teamLabel": "WebSphere Team"
+                                    },
+                                    {
+                                        "resourceTypeId": "20000000000000000000000000000203",
+                                        "resourceTypeName": "Post Processing Script",
+                                        "teamId": "1722e798-0a1f-f9cb-313c-1aa78795aafc",
+                                        "teamLabel": "MuleSoft"
+                                    },
+                                    {
+                                        "resourceTypeId": "20000000000000000000000000000203",
+                                        "resourceTypeName": "Post Processing Script",
+                                        "teamId": "1797ce02-cf7d-6428-f3fa-0ca1e4c6e17d",
+                                        "teamLabel": "GitLab"
+                                    }
+                                ]
+                            },
+                            "postProcessingScriptName": "REGIONS-Example",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "cat \/opt\/RegionsBank-FAIL.txt",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Simulate-Regions-Output-FAIL",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Check Records",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev78322.service-now.com\/",
+                                "table": "change_request",
+                                "id": "INC0010001",
+                                "fields": "number=INC0010001",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|MkHT7AFbt+s9Bh0Ak4AWmg==|i8MKNSGi9BbNnzuU2qXnkw==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|yhLM1bRU5tlcCDszRhajRA==|tzeVx\/rvlUf4UD2eFSxFEw==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Records",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Check Change Request State",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev78322.service-now.com\/",
+                                "changeRequestId": "INC0010001",
+                                "status": "1",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|chaYGI4axScP\/lRSlW\/GuA==|gfWUKLK6onPAmVP1qmoz1w==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|iw3nAQGLMnJKKz\/boNYwzg==|rgRdOd0e1gx4g0JJdCuWow==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Change Request State",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [{
+        "name": "DEV",
+        "description": "",
+        "color": "#DD731C",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": []
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/MuleSoft",
+            "tree": {
+                "name": "DEV",
+                "path": "\/MuleSoft\/DEV",
+                "description": "",
+                "parentName": "MuleSoft",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/MuleSoft",
+            "tree": {
+                "name": "DEV",
+                "path": "\/MuleSoft\/DEV",
+                "description": "",
+                "parentName": "MuleSoft",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "virtualserver02",
+                    "path": "\/MuleSoft\/DEV\/virtualserver02",
+                    "description": "",
+                    "parentName": "DEV",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "virtualserver02",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "MuleSoft-API",
+                            "path": "\/MuleSoft\/DEV\/virtualserver02\/MuleSoft-API",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "MuleSoft-API",
+                            "roleProperties": {
+                                "name": "MuleSoft-API",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        },
+                        {
+                            "name": "RegionsBank-PostProcessing",
+                            "path": "\/MuleSoft\/DEV\/virtualserver02\/RegionsBank-PostProcessing",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "RegionsBank-PostProcessing",
+                            "roleProperties": {
+                                "name": "RegionsBank-PostProcessing",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }
+                    ]
+                }]
+            }
+        }],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "MuleSoft-API"
+            },
+            {
+                "properties": [],
+                "componentName": "RegionsBank-PostProcessing"
+            }
+        ],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [
+        {
+            "name": "Simulate-RegionsBank-PostProcessing",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "a8bf2280cee7eaa4bf72398fa3bfcd",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "4949d09813603bf90b8ec828702e72",
+                        "from": "a8bf2280cee7eaa4bf72398fa3bfcd",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "a8bf2280cee7eaa4bf72398fa3bfcd",
+                        "x": -130,
+                        "y": 230,
+                        "h": 80,
+                        "w": 370
+                    },
+                    {
+                        "name": "4949d09813603bf90b8ec828702e72",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "1eb49454-67fe-4127-afeb-fc81129cd2af",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "4949d09813603bf90b8ec828702e72",
+                        "children": []
+                    },
+                    {
+                        "componentName": "RegionsBank-PostProcessing",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a8bf2280cee7eaa4bf72398fa3bfcd",
+                        "children": [{
+                            "componentProcessName": "Test_PostProcessing",
+                            "componentName": "RegionsBank-PostProcessing",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"RegionsBank-PostProcessing\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-API",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "61ae21e0c78dd7d40810fd45057c3e",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "544879cc329adb17396f095530b68b",
+                        "from": "61ae21e0c78dd7d40810fd45057c3e",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "61ae21e0c78dd7d40810fd45057c3e",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 240
+                    },
+                    {
+                        "name": "544879cc329adb17396f095530b68b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "5f74f9c8-0375-4fc4-9bbb-45699505c276",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "544879cc329adb17396f095530b68b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MuleSoft-API",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "61ae21e0c78dd7d40810fd45057c3e",
+                        "children": [{
+                            "componentName": "MuleSoft-API",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "17ad99dd-77db-4f48-b5e2-23c1b075ca7a",
+                            "children": [{
+                                "componentProcessName": "Deploy-API",
+                                "componentName": "MuleSoft-API",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"MuleSoft-API\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [
+                {
+                    "name": "jira-ticket",
+                    "label": "jira-ticket",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": true,
+                    "description": "",
+                    "placeholder": ""
+                },
+                {
+                    "name": "api-name",
+                    "label": "api-name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": true,
+                    "description": "",
+                    "placeholder": ""
+                }
+            ],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [{
+        "resourceTypeId": "20000000000000000000000000000100",
+        "resourceTypeName": "Application",
+        "teamId": "1722e798-0a1f-f9cb-313c-1aa78795aafc",
+        "teamLabel": "MuleSoft"
+    }],
+    "tags": [],
+    "webhooks": []
+}

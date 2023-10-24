@@ -1,0 +1,294 @@
+{
+    "name": "BLS-SubFolder_1",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "BLS-SubFolder_1",
+        "description": "",
+        "created": 1654021123482,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [{
+            "name": "Test Move 1",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": false,
+            "status": "",
+            "active": true,
+            "path": "components\/1811b576-db93-7cb0-126b-18eae9a50135\/processes\/1811b576-dc48-02a1-3437-f725587f2c07",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "304c4c3e75b2d511234789274653cc",
+                        "from": "Aspera file move",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Aspera file move",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "304c4c3e75b2d511234789274653cc",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Aspera file move",
+                        "x": -45,
+                        "y": 230,
+                        "h": 70,
+                        "w": 200
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "5bc48d79-6ed7-4024-ac23-e08267bdf504",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "304c4c3e75b2d511234789274653cc",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "pluginId": "com.urbancode.air.plugin.Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "async -N ${p:environment\/pair-prefix}-${p:resource\/named-pair} -l 1G -d ${p:environment\/source-directory} -r ${p:environment\/user-name}@${p:resource\/host}:\/ -K push -w ${p:environment\/user-password}",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Aspera file move",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [{
+            "id": "1811c056-38b5-1471-991c-65ff445880dc",
+            "name": "Aspera",
+            "color": "#17AF4A",
+            "description": "",
+            "objectType": "Component"
+        }]
+    }],
+    "environments": [{
+        "name": "R1",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": [
+                {
+                    "name": "source-directory",
+                    "value": "e:\\aspera_doc_root\\news.release",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "user-name",
+                    "value": "dews_svc",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "user-password",
+                    "value": "password",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "pair-prefix",
+                    "value": "subfolder_1",
+                    "description": "",
+                    "secure": false
+                }
+            ]
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [],
+        "baseResourcesFull": [],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "BLS-SubFolder_1"
+        }],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [{
+        "name": "Deploy to Pool 80",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "1469ed46d57c920b34577b73ae319c",
+                    "from": "ef04a56681650c7be425284665f42a",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "ef04a56681650c7be425284665f42a",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "ef04a56681650c7be425284665f42a",
+                    "x": -80,
+                    "y": 230,
+                    "h": 80,
+                    "w": 330
+                },
+                {
+                    "name": "1469ed46d57c920b34577b73ae319c",
+                    "x": -5,
+                    "y": 450,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "7edec771-ed62-4cf5-b3d3-4c3f30095a6b",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "1469ed46d57c920b34577b73ae319c",
+                    "children": []
+                },
+                {
+                    "componentName": "BLS-SubFolder_1",
+                    "tag": {
+                        "objectType": "Resource",
+                        "name": "Pool .80",
+                        "description": "",
+                        "color": "#007670"
+                    },
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "ef04a56681650c7be425284665f42a",
+                    "children": [{
+                        "componentProcessName": "Test Move 1",
+                        "componentName": "BLS-SubFolder_1",
+                        "allowFailure": false,
+                        "properties": {
+                            "isIgnoreChildWarnings": "false"
+                        },
+                        "draftProperties": {
+                            "isIgnoreChildWarnings": "false"
+                        },
+                        "type": "componentProcess",
+                        "name": "Move Sub Folder Contents to Pool 80",
+                        "children": []
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "18086f45-1f3d-fa24-18d2-df4a1e42ee24",
+        "name": "Aspera",
+        "color": "#17AF4A",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}

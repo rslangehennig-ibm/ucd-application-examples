@@ -1,0 +1,473 @@
+{
+    "name": "Aplicacion-Deploy-Grupo-Ejecucion",
+    "description": "Despliegue de Nodo de Integracion (Grupo de Ejecucion)",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "Creacion-Nodo-Integracion",
+        "description": "Componente que crea nodo de integracion",
+        "created": 1614314499952,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": true,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "FileSystemVersionedComponentProperties",
+                "properties": [
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "value": ".txt",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "includes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "excludes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "basePath",
+                        "value": "\/product\/repo-ucd\/",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "custom",
+                "properties": []
+            },
+            {
+                "name": "template",
+                "properties": []
+            }
+        ]},
+        "processes": [
+            {
+                "name": "Crea-Nodo",
+                "description": "Creacion de Nodo",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/177dca46-f933-e0ac-1c7e-6964ee35d5d7\/processes\/177dca46-fa88-bce3-f913-815a7f720064",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Crear grupo de ejecución",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "926a139d984b33c80d4da98c53a3d8",
+                            "from": "Crear grupo de ejecución",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "926a139d984b33c80d4da98c53a3d8",
+                            "x": -10,
+                            "y": 450,
+                            "h": 80,
+                            "w": 140
+                        },
+                        {
+                            "name": "Crear grupo de ejecución",
+                            "x": -90,
+                            "y": 230,
+                            "h": 70,
+                            "w": 300
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "34cafb70-892b-4930-bf48-f5380780b283",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "926a139d984b33c80d4da98c53a3d8",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 47,
+                            "commandName": "Create Execution Group",
+                            "pluginName": "WebSphere Message Broker - CMP",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "executionGroup": "AFISRVDES35",
+                                "brokerHost": "",
+                                "port": "",
+                                "useSSL": "true",
+                                "integrationNodeName": "AFIIBDES00",
+                                "channel": "${p?:resource\/iib.channel}",
+                                "queueManager": "AFIQMDES00",
+                                "username": "iiburbancode",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|fmb2X90cEkJfDlKOQV5dMQ==|6L5mBRCYD4iM9AKIncI1DA==}",
+                                "debugFile": "",
+                                "version": "10.0.0.15",
+                                "jarPath": "${p?:resource\/iib.jarPath}",
+                                "mqsiprofile": "${p?:resource\/iib.mqsiprofile}",
+                                "env": "${p?:resource\/iib.environment}",
+                                "timeout": "120000",
+                                "shell": "\/bin\/sh"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Crear grupo de ejecución",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "prc_copiar_archivo",
+                "description": "Proceso del componente de copiar archivo",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/177dca46-f933-e0ac-1c7e-6964ee35d5d7\/processes\/177dca46-faef-647f-042f-cf2338ff051d",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "868692922520af4fbc7def9002eefd",
+                            "from": "Copiar directorio",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Descargar artefactos",
+                            "from": "Suprimir archivos y directorios",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Suprimir archivos y directorios",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Copiar directorio",
+                            "from": "Descargar artefactos",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Copiar directorio",
+                            "x": -110,
+                            "y": 495,
+                            "h": 90,
+                            "w": 370
+                        },
+                        {
+                            "name": "Suprimir archivos y directorios",
+                            "x": -190,
+                            "y": 165,
+                            "h": 90,
+                            "w": 530
+                        },
+                        {
+                            "name": "Descargar artefactos",
+                            "x": -135,
+                            "y": 330,
+                            "h": 90,
+                            "w": 420
+                        },
+                        {
+                            "name": "868692922520af4fbc7def9002eefd",
+                            "x": -15,
+                            "y": 660,
+                            "h": 90,
+                            "w": 180
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "151aa28d-6ed1-4ede-b7a8-dedcbf286246",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "868692922520af4fbc7def9002eefd",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/product\/UrbanCode\/repo-ucd\/",
+                            "pluginVersion": 75,
+                            "commandName": "Delete Files and Directories",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "baseDir": "${p:parametro-version}",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "followSymlinks": "false",
+                                "caseSensitive": "true"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Suprimir archivos y directorios",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/product\/repo-ucd",
+                            "pluginVersion": 32,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": "${p:parametro-version}",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "true",
+                                "fullVerification": "false",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Descargar artefactos",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/product\/UrbanCode\/repo-ucd\/${p:parametro-version}",
+                            "pluginVersion": 75,
+                            "commandName": "Copy Directory",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "sourceDir": ".",
+                                "destDirList": "\/product\/UrbanCode\/repo-ucd\/${p:parametro-version}",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "mapperRules": "",
+                                "force": "false",
+                                "flatten": "false",
+                                "preserveLastModified": "false",
+                                "failOnError": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Copiar directorio",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [{
+        "name": "Env-Bus-Dev1",
+        "description": "Ambiente de desarrollo",
+        "color": "#17AF4A",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": []},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [],
+        "baseResourcesFull": [],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "Creacion-Nodo-Integracion"
+        }],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [{
+        "name": "Proceso Grupo de Integracion",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "bb588b27cdfd7f80f517d04f1832f6",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "b9276f5bc1c7fb40205688b9fccb1c",
+                    "from": "bb588b27cdfd7f80f517d04f1832f6",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "bb588b27cdfd7f80f517d04f1832f6",
+                    "x": -55,
+                    "y": 230,
+                    "h": 70,
+                    "w": 330
+                },
+                {
+                    "name": "b9276f5bc1c7fb40205688b9fccb1c",
+                    "x": -10,
+                    "y": 430,
+                    "h": 80,
+                    "w": 140
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "8f414466-23fe-4cc9-9324-705ab8ad031a",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "b9276f5bc1c7fb40205688b9fccb1c",
+                    "children": []
+                },
+                {
+                    "componentName": "Creacion-Nodo-Integracion",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "bb588b27cdfd7f80f517d04f1832f6",
+                    "children": [{
+                        "componentName": "Creacion-Nodo-Integracion",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "45276f54-e7c0-495c-afe7-b981a41a144f",
+                        "children": [{
+                            "componentProcessName": "Crea-Nodo",
+                            "componentName": "Creacion-Nodo-Integracion",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Instalar: \"Creacion-Nodo-Integracion\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "177dae2c-2388-d06c-9edb-7d681f6345d1",
+        "name": "IIB",
+        "color": "#17AF4A",
+        "description": "IBM Integration Bus",
+        "objectType": "Application"
+    }]
+}

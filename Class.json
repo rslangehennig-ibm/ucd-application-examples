@@ -1,0 +1,732 @@
+{
+    "name": "Class",
+    "description": "Used by Financial Release in UCR",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "Class-iSeries-App",
+        "description": "",
+        "created": 1610745117585,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/downloads\/omf-class",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [{
+            "name": "Deploy",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/17707e3f-ba2e-c729-2557-28bd512973e7\/processes\/17707e41-6621-dabf-be51-d0d7744a3e29",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "6eb452f5ed1522b470baa0f9e130f5",
+                        "from": "Sleep 20",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Deploy-iSeries-LPAR",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Sleep 20",
+                        "from": "Deploy-iSeries-LPAR",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "6eb452f5ed1522b470baa0f9e130f5",
+                        "x": -5,
+                        "y": 590,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Deploy-iSeries-LPAR",
+                        "x": -60,
+                        "y": 300,
+                        "h": 70,
+                        "w": 230
+                    },
+                    {
+                        "name": "Sleep 20",
+                        "x": -25,
+                        "y": 445,
+                        "h": 70,
+                        "w": 160
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 155,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "Send Email to ATT Team",
+                        "x": -75,
+                        "y": 680,
+                        "h": 70,
+                        "w": 250
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "f13a7c2c-bd6f-4621-8b61-e1d33fef9e34",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "6eb452f5ed1522b470baa0f9e130f5",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 37,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "pluginId": "com.urbancode.plugin.VFS",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "handleIncrementalVersions": "false",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "charset": "",
+                            "versionId": "${p:version.id}",
+                            "versionType": "${p:version.type}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "envId": "${p:environment.id}",
+                            "maxMemory": "1G",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "pluginId": "com.urbancode.air.plugin.Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "echo \"deploy fake iseries app to an lpar\"",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy-iSeries-LPAR",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 1,
+                        "commandName": "Send Email",
+                        "pluginName": "Send Email",
+                        "pluginId": "com.urbancode.air.plugin.SendEmail",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "toList": "${p:environment\/email-distribution}",
+                            "subject": "DEPLOY SUCCESSFUL",
+                            "message": "My body of email goes here"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Send Email to ATT Team",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "pluginId": "com.urbancode.air.plugin.Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "sleep 20",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Sleep 20",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [{
+                    "name": "email-distribution",
+                    "value": "rlange@ibm.com, jose@ibm.com",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Financial-Apps-UCR\/Class",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Financial-Apps-UCR\/Class\/DEV",
+                    "description": "",
+                    "parentName": "Class",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Financial-Apps-UCR\/Class",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Financial-Apps-UCR\/Class\/DEV",
+                    "description": "",
+                    "parentName": "Class",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Financial-Apps-UCR\/Class\/DEV\/virtualserver02",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Class-iSeries-App",
+                            "path": "\/Financial-Apps-UCR\/Class\/DEV\/virtualserver02\/Class-iSeries-App",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "Class-iSeries-App",
+                            "roleProperties": {
+                                "name": "Class-iSeries-App",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Class-iSeries-App"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FFCF01",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": [{
+                    "name": "email-distribution",
+                    "value": "nina@us.ibm.com, jose@mx.ibm.com",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Financial-Apps-UCR\/Class",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Financial-Apps-UCR\/Class\/QA",
+                    "description": "",
+                    "parentName": "Class",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Financial-Apps-UCR\/Class",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Financial-Apps-UCR\/Class\/QA",
+                    "description": "",
+                    "parentName": "Class",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Financial-Apps-UCR\/Class\/QA\/virtualserver02",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Class-iSeries-App",
+                            "path": "\/Financial-Apps-UCR\/Class\/QA\/virtualserver02\/Class-iSeries-App",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "Class-iSeries-App",
+                            "roleProperties": {
+                                "name": "Class-iSeries-App",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Class-iSeries-App"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Financial-Apps-UCR\/Class",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/Financial-Apps-UCR\/Class\/PROD",
+                    "description": "",
+                    "parentName": "Class",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Financial-Apps-UCR\/Class",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/Financial-Apps-UCR\/Class\/PROD",
+                    "description": "",
+                    "parentName": "Class",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Financial-Apps-UCR\/Class\/PROD\/virtualserver02",
+                        "description": "",
+                        "parentName": "PROD",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "Class-iSeries-App",
+                            "path": "\/Financial-Apps-UCR\/Class\/PROD\/virtualserver02\/Class-iSeries-App",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "Class-iSeries-App",
+                            "roleProperties": {
+                                "name": "Class-iSeries-App",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "Class-iSeries-App"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-Class",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "79862415b2f0096da8b8bba25887d7",
+                    "from": "dc5f3ec684db33a0e13918b2e688a8",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "dc5f3ec684db33a0e13918b2e688a8",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "79862415b2f0096da8b8bba25887d7",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "dc5f3ec684db33a0e13918b2e688a8",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 260
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "2ec5efbc-e2d3-41a6-a616-11a9773dc39a",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "79862415b2f0096da8b8bba25887d7",
+                    "children": []
+                },
+                {
+                    "componentName": "Class-iSeries-App",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "dc5f3ec684db33a0e13918b2e688a8",
+                    "children": [{
+                        "componentName": "Class-iSeries-App",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "269c1969-bc51-4e8d-b605-4d17f73d6c1e",
+                        "children": [{
+                            "componentProcessName": "Deploy",
+                            "componentName": "Class-iSeries-App",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"Class-iSeries-App\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "17e8ddb8-6c69-5335-ac5e-d938a7e122c2",
+        "name": "UCR",
+        "color": "#009AD6",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}

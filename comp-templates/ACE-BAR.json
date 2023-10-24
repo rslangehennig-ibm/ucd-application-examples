@@ -1,0 +1,240 @@
+{
+    "securityResourceId": "18610618-30f3-813d-7799-4a5d0b065f26",
+    "path": "componentTemplates\/18610618-3127-7412-5630-d802ee0be5af",
+    "name": "ACE-BAR",
+    "description": "A template for ACE-based broker archive file deployments",
+    "ignoreQualifiers": 0,
+    "componentType": "STANDARD",
+    "sourceConfigPluginName": "",
+    "tags": [],
+    "active": true,
+    "envPropDefs": [
+        {
+            "name": "ace-install-directory",
+            "label": "ACE Install Directory",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The installation directory for the ACE software",
+            "placeholder": ""
+        },
+        {
+            "name": "ace-ip-address",
+            "label": "ACE IP Address",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "value": "localhost",
+            "required": true,
+            "description": "The IP Address for the ACE instance",
+            "placeholder": ""
+        },
+        {
+            "name": "ace-port",
+            "label": "ACE Port",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "value": "4414",
+            "required": true,
+            "description": "The port that ACE is listening on",
+            "placeholder": ""
+        },
+        {
+            "name": "ace-user",
+            "label": "ACE User",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "value": "aceuser",
+            "required": true,
+            "description": "The user for the ACE software",
+            "placeholder": ""
+        },
+        {
+            "name": "integration-node-name",
+            "label": "Integration Node Name",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The Integration Node Name",
+            "placeholder": ""
+        },
+        {
+            "name": "integration-server-name",
+            "label": "Integration Server Name",
+            "pattern": "",
+            "type": "TEXT",
+            "isHidden": false,
+            "required": true,
+            "description": "The Integration Server Name",
+            "placeholder": ""
+        }
+    ],
+    "resPropDefs": [],
+    "propDefs": [{
+        "name": "bar-name",
+        "label": "BAR File Name",
+        "pattern": "",
+        "type": "TEXT",
+        "isHidden": false,
+        "required": true,
+        "description": "The name of the bar to deploy",
+        "placeholder": ""
+    }],
+    "properties": [],
+    "processes": [{
+        "name": "Deploy-BAR-on-Linux-ACE12",
+        "description": "",
+        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+        "takesVersion": true,
+        "inventoryActionType": "ADD",
+        "status": "Active",
+        "configActionType": "ADD",
+        "active": true,
+        "path": "componentTemplates\/18610618-3127-7412-5630-d802ee0be5af\/processes\/18610620-d85c-ab02-eb33-a3554bcb1500",
+        "deleted": false,
+        "propDefs": [],
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "3532730630b08835394559855ecac6",
+                    "from": "Deploy",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "Download Artifacts",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "Deploy",
+                    "from": "Download Artifacts",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "3532730630b08835394559855ecac6",
+                    "x": -5,
+                    "y": 550,
+                    "h": 90,
+                    "w": 130
+                },
+                {
+                    "name": "Download Artifacts",
+                    "x": -90,
+                    "y": 190,
+                    "h": 80,
+                    "w": 300
+                },
+                {
+                    "name": "Deploy",
+                    "x": -45,
+                    "y": 370,
+                    "h": 80,
+                    "w": 210
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "9f7b6535-9a68-46dc-bb1e-b0b16de0224d",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "3532730630b08835394559855ecac6",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 44,
+                    "commandName": "Download Artifacts",
+                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                    "pluginId": "com.urbancode.plugin.VFS",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "directoryOffset": ".",
+                        "artifactSetBaseDir": "",
+                        "fileIncludePatterns": "**\/*",
+                        "fileExcludePatterns": "",
+                        "syncMode": "FULL",
+                        "handleIncrementalVersions": "false",
+                        "fullVerification": "true",
+                        "setFileExecuteBits": "false",
+                        "verifyFileIntegrity": "false",
+                        "charset": "",
+                        "versionId": "${p:version.id}",
+                        "versionType": "${p:version.type}",
+                        "serverUrl": "${p:server.url}",
+                        "compId": "${p:component.id}",
+                        "resId": "${p:resource.id}",
+                        "envId": "${p:environment.id}",
+                        "maxMemory": "1G",
+                        "label": ""
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Download Artifacts",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": true,
+                    "impersonationUsername": "aceuser",
+                    "impersonationGroup": "",
+                    "showHidden": false,
+                    "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|+N4BfRPJcIMLwRiUl1UJkg==|\/30cdk\/52QMDxvo\/UyuVIA==}",
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 11,
+                    "commandName": "Deploy",
+                    "pluginName": "IBM ACE",
+                    "pluginId": "com.urbancode.air.plugin.ibmace",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "installDir": "${p:environment\/ace-install-directory}",
+                        "useSSL": "false",
+                        "UserId": "${p:environment\/ace-user}",
+                        "Password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|xI+HTgkS7g\/4DyXvpxCxjg==|ECcmfwo0joP5C8oe2cXaCoxQ04wA2nTWpbg7G9XSZts=}",
+                        "integrationNodeName": "${p:environment\/integration-node-name}",
+                        "integrationNodeFileName": "",
+                        "ipAddress": "${p:environment\/ace-ip-address}",
+                        "port": "${p:environment\/ace-port}",
+                        "BARFile": "${p:resource\/work.dir}\/CP4I-ACEIVT-BAR\/${p:component\/bar-name}",
+                        "deployedObjects": "",
+                        "integrationServerName": "${p:environment\/integration-server-name}",
+                        "clear": "false",
+                        "traceFileName": "${p?:resource\/ace.traceFileName}",
+                        "timeoutValue": "${p?:resource\/ace.timeoutValue}"
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Deploy",
+                    "children": []
+                }
+            ]
+        }
+    }],
+    "genericProcesses": [],
+    "teamMappings": []
+}

@@ -1,0 +1,2109 @@
+{
+    "name": "DB-Liquibase-Example",
+    "description": "Example database migration orchestration",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "Liquibase-Installation",
+            "description": "",
+            "created": 1580229900351,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "basePath",
+                            "value": "\/home\/ubuntu\/liquibase-install",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Install Liquibase",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/16fed0ab-84ff-6483-7b3d-2dac82979351\/processes\/16fed155-8f64-3693-f2e8-64041cd8b900",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Prepare for Java Installation on Ubuntu",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install JDK on Ubuntu using APT",
+                            "from": "Prepare for Java Installation on Ubuntu",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Copy Install for Liquibase",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Display Java Version",
+                            "from": "Install JDK on Ubuntu using APT",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Display Liquibase Version",
+                            "from": "Install the MySQL JDBC Driver required for Liquibase",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "3aa819ef8df6a166e8c0c6091e3ba1",
+                            "from": "Install Template for liquibase.properties File",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Extract Contents for Installation",
+                            "from": "Copy Install for Liquibase",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "a659a5963084475d37ba10529df5b7",
+                            "from": "Display Liquibase Version",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install the MySQL JDBC Driver required for Liquibase",
+                            "from": "3aa819ef8df6a166e8c0c6091e3ba1",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install Template for liquibase.properties File",
+                            "from": "Extract Contents for Installation",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "3aa819ef8df6a166e8c0c6091e3ba1",
+                            "from": "Display Java Version",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Extract Contents for Installation",
+                            "x": -443.0864197530864,
+                            "y": 470,
+                            "h": 110,
+                            "w": 540
+                        },
+                        {
+                            "name": "Display Liquibase Version",
+                            "x": -42.64963094902055,
+                            "y": 1070,
+                            "h": 110,
+                            "w": 470
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -155,
+                            "y": 150,
+                            "h": 110,
+                            "w": 460
+                        },
+                        {
+                            "name": "Copy Install for Liquibase",
+                            "x": -448.0864197530864,
+                            "y": 310,
+                            "h": 110,
+                            "w": 460
+                        },
+                        {
+                            "name": "5d546a50735b046183bc322fd1d2c6",
+                            "x": 1009.4135802469136,
+                            "y": 379.99999999999994,
+                            "h": 110,
+                            "w": 610
+                        },
+                        {
+                            "name": "Install JDK on Ubuntu using APT",
+                            "x": 149.41358024691363,
+                            "y": 470,
+                            "h": 110,
+                            "w": 560
+                        },
+                        {
+                            "name": "Install the MySQL JDBC Driver required for Liquibase",
+                            "x": -236.061094553992,
+                            "y": 910,
+                            "h": 110,
+                            "w": 860
+                        },
+                        {
+                            "name": "Install Template for liquibase.properties File",
+                            "x": -448.0864197530864,
+                            "y": 630,
+                            "h": 110,
+                            "w": 710
+                        },
+                        {
+                            "name": "a659a5963084475d37ba10529df5b7",
+                            "x": 107.35036905097945,
+                            "y": 1230,
+                            "h": 100,
+                            "w": 170
+                        },
+                        {
+                            "name": "3aa819ef8df6a166e8c0c6091e3ba1",
+                            "x": 117.11597823606519,
+                            "y": 790,
+                            "h": 70,
+                            "w": 160
+                        },
+                        {
+                            "name": "Display Java Version",
+                            "x": 291.9135802469136,
+                            "y": 630,
+                            "h": 110,
+                            "w": 400
+                        },
+                        {
+                            "name": "Prepare for Java Installation on Ubuntu",
+                            "x": 41.913580246913625,
+                            "y": 310,
+                            "h": 110,
+                            "w": 650
+                        },
+                        {
+                            "name": "98a888f27c89b65ef278be9c09164d",
+                            "x": 769.4135802469136,
+                            "y": 95,
+                            "h": 220,
+                            "w": 540
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "9f07179c-6c1a-4f34-8118-cb8356e808bd",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "a659a5963084475d37ba10529df5b7",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo mkdir \/opt\/liquibase\nsudo cp liquibase-3.8.5.tar \/opt\/liquibase\nsudo ls -al \/opt\/liquibase",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Copy Install for Liquibase",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt update",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Prepare for Java Installation on Ubuntu",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt -y install default-jdk",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install JDK on Ubuntu using APT",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "java -version",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Java Version",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "\/opt\/liquibase\/liquibase --version",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Liquibase Version",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/home\/ubuntu",
+                            "pluginVersion": 13,
+                            "commandName": "Install Template",
+                            "pluginName": "UrbanCode Deploy Configuration Management",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "${p:server.url}\/",
+                                "requestId": "${p:request.id}",
+                                "name": "liquibase.properties",
+                                "envPropValues": "${p:environment\/allProperties}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install Template for liquibase.properties File",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/opt\/liquibase",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo tar xvf liquibase-3.8.5.tar",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Extract Contents for Installation",
+                            "children": []
+                        },
+                        {
+                            "name": "98a888f27c89b65ef278be9c09164d",
+                            "text": "After install, run these mysql commands:\n\nCREATE USER 'randy'@'localhost' IDENTIFIED BY 'randy';\n\nGRANT ALL PRIVILEGES ON *.* TO 'randy'@'localhost';\n\nCREATE DATABASE RANDY_TEST;",
+                            "type": "note",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo dpkg -i mysql-connector-java_8.0.19-1ubuntu18.04_all.deb",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install the MySQL JDBC Driver required for Liquibase",
+                            "children": []
+                        },
+                        {
+                            "name": "5d546a50735b046183bc322fd1d2c6",
+                            "text": "Ask Steve B how to create resource properties needed for Liquibase plugin",
+                            "type": "note",
+                            "children": []
+                        },
+                        {
+                            "type": "join",
+                            "name": "3aa819ef8df6a166e8c0c6091e3ba1",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [{
+                "name": "liquibase.properties",
+                "data": "changeLogFile=\/home\/ubuntu\/dbchangelog.xml\ndriver=com.mysql.jdbc.Driver\nurl: jdbc:mysql:\/\/localhost:3306\/RANDY_TEST\nusername: randy\npassword: randy\nclasspath: \/usr\/share\/java\/mysql-connector-java-8.0.19.jar\n#liquibaseProLicenseKey: ABwwGgQUPQ9eshPTeQCO5NxLjtJzEjpgytoCAgQAuENi2P8tIFWKvMrywGfEiL4EplQtcq8iBC\/0i6zoyOdf0X4wn8djvxlcaEiTy\/Q7abk6OIJO+O6rj2WT+eABdLoVLCFefphHNLOQACrGqk5yDdVU507mYzRySY1cEDRP1gBYqmwfDvaON0Ms\/Gw1zcRkukQ5Z4wdd8qKd4P71IP2dFxfTE36zllIA9git2jKIccTl3Gxo1kNlNC7ygkND4IarLVUjY83R\/lqKuuJIOCOKTPV7ndh4IgnyOf++cCZ8faoDNLyDGtdBBGTX\/yH\/JwwWBZ9xdtE0ffes5H9yGL+h8rhZITa6umRXjxD\/EUUTSTcSQrtFDFVEAI+0B5txNWci7ETFx6rXdUwQSXPFb8\/Qv5qyPuLmd0AXrJC0AKAStmdKtPO5Lb40f8rh6nSf6+xK6l+a3WYk\/\/vccQeGh8Kyw\/wQjNrQ13sJT\/SGxsL7R2LO+p3AXz1k6Qt3YYJ1uE7dMk7Sb3kZZv2YdbNBraeYx17H3pVfVbiE4RQZqiSMv6bspDMjOxFKbTJVTCUKV1wCXsjMqw9NyOqXihV03jCr5byHSTgmkGi\/s3a2dVmIv4AFVdUeN30seGffFRR6v+bc\/i8S84JowqDYQwmzw5+uUSa3H1J44ENWP+iffRuNqvndGRlyHTZGA7J4zFLAg==",
+                "path": "components\/16fed0ab-84ff-6483-7b3d-2dac82979351\/configTemplates\/liquibase.properties"
+            }],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "Liquibase-MySQL",
+            "description": "",
+            "created": 1580233384129,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "basePath",
+                            "value": "\/home\/ubuntu\/liquibase-examples",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy Database Updates",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/16fed3fe-0d13-ceb8-6af0-60d8ff46271a\/processes\/16fed401-fc46-d45c-e819-bfb83730c318",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "GenerateDBDoc",
+                            "from": "Validate",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Update",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "86c85b2664c48bd81cc640d0acaa22",
+                            "from": "GenerateDBDoc",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Validate",
+                            "from": "Update",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 130,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Update",
+                            "x": -35,
+                            "y": 250,
+                            "h": 70,
+                            "w": 180
+                        },
+                        {
+                            "name": "GenerateDBDoc",
+                            "x": -65,
+                            "y": 490,
+                            "h": 70,
+                            "w": 240
+                        },
+                        {
+                            "name": "Validate",
+                            "x": -35,
+                            "y": 370,
+                            "h": 70,
+                            "w": 180
+                        },
+                        {
+                            "name": "86c85b2664c48bd81cc640d0acaa22",
+                            "x": -5,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "95df3f9d-5a06-41de-bb13-953513486465",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "86c85b2664c48bd81cc640d0acaa22",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/home\/ubuntu",
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "true",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 2,
+                            "commandName": "Update",
+                            "pluginName": "Liquibase",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "command": "${p:resource\/liquibase.command}",
+                                "driver": "${p:resource\/liquibase.jdbcDriver}",
+                                "driverClasspath": "${p:resource\/liquibase.jdbcDriverClasspath}",
+                                "jdbcURL": "${p:resource\/liquibase.jdbcURL}",
+                                "username": "${p:resource\/liquibase.dbUser}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|B5o75hT\/fpRNIRWCCQLoig==|2Vy1CbQLqV\/qzKkMX4XVAcMiBN78jCj7aTYlMeBED8ah1\/WRtyX\/GkZSx9hcc4O\/}",
+                                "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml",
+                                "updateCount": "",
+                                "preview": "true"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Update",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 2,
+                            "commandName": "Validate",
+                            "pluginName": "Liquibase",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "command": "${p:resource\/liquibase.command}",
+                                "driver": "${p:resource\/liquibase.jdbcDriver}",
+                                "driverClasspath": "${p:resource\/liquibase.jdbcDriverClasspath}",
+                                "jdbcURL": "${p:resource\/liquibase.jdbcURL}",
+                                "username": "${p:resource\/liquibase.dbUser}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|hCe+ip0Vrj4nXDqMBFAj\/g==|a+Fd9Pt8qUCCwJIUYbkHwT2oGjTFjliPbhoYDEmyjloNEVYm5eYgMSP4E7B8k7Cl}",
+                                "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Validate",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 2,
+                            "commandName": "GenerateDBDoc",
+                            "pluginName": "Liquibase",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "command": "${p:resource\/liquibase.command}",
+                                "driver": "${p:resource\/liquibase.jdbcDriver}",
+                                "driverClasspath": "${p:resource\/liquibase.jdbcDriverClasspath}",
+                                "jdbcURL": "${p:resource\/liquibase.jdbcURL}",
+                                "username": "${p:resource\/liquibase.dbUser}",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|Y\/Dtr28zYjFhYP3Yw6YofQ==|RFc0wQ60h0EMDDVGzAjlGa\/JR4oxpiX+MMoYg0Ymtls9OE5oIiAUZMXzOW5WLfbl}",
+                                "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml",
+                                "docOutDir": "\/home\/ubuntu\/doc"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "GenerateDBDoc",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "MySQL Server",
+            "description": "This component contains the process to install MySQL Server",
+            "created": 1570812489530,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "deploy",
+                    "description": "Install mysql",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb86-f4a9-521d-6381-e851cdb6312d\/processes\/16dbbb87-758b-8f34-d7c9-aa9ab7658790",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Install lsb-core",
+                                "from": "Unzip",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "4ca7b4637565245c76c45aca105bb8",
+                                "from": "Restart MySQL Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install MySQL",
+                                "from": "Run Package Manager Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Package Manager Update",
+                                "from": "Install lsb-core",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Unzip",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Restart MySQL Server",
+                                "from": "Install MySQL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -185,
+                                "y": 160,
+                                "h": 130,
+                                "w": 530
+                            },
+                            {
+                                "name": "Restart MySQL Server",
+                                "x": -160,
+                                "y": 1060,
+                                "h": 130,
+                                "w": 480
+                            },
+                            {
+                                "name": "4ca7b4637565245c76c45aca105bb8",
+                                "x": -10,
+                                "y": 1240,
+                                "h": 110,
+                                "w": 180
+                            },
+                            {
+                                "name": "Run Package Manager Update",
+                                "x": -230,
+                                "y": 700,
+                                "h": 130,
+                                "w": 620
+                            },
+                            {
+                                "name": "Install MySQL",
+                                "x": -85,
+                                "y": 880,
+                                "h": 130,
+                                "w": 330
+                            },
+                            {
+                                "name": "Install lsb-core",
+                                "x": -90,
+                                "y": 520,
+                                "h": 130,
+                                "w": 340
+                            },
+                            {
+                                "name": "Unzip",
+                                "x": -75,
+                                "y": 340,
+                                "h": 130,
+                                "w": 310
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "719ad9c6-3c3e-4ac3-b32a-f88d7660e5e8",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "4ca7b4637565245c76c45aca105bb8",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "OS=$(lsb_release -si)\nif [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\necho \"Installing MySQL for ${OS}\"\nchmod u+x \"$PWD\"\/${OS}_percona.sh\nif [ \"${OS}\" == \"Ubuntu\" ] ; then\n    $CMD \"$PWD\"\/${OS}_percona.sh\nelse\n    $CMD \"$PWD\"\/${OS}_percona.sh\nfi",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install MySQL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "root",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|3IRC3GWN0Z+RowehHe42Fw==|fwi4fhqBG2i\/V+7XfLTAJ09QJNPytiLf3hldPobYhHBm1TiI6amy6SyBqUPEoPYfMceLzqlMZPc8hyLCIjnNu7A2LP2ZRpWok8zvDcjlqPRYjqqy6MPfAjgqOmPp+1v5}",
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "OS=$(lsb_release -si)\nif [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\necho \"Found Operating System: $OS\"\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\t$CMD yum clean all\n\t\t;;\n\tCentOS)\n\t\t$CMD yum clean all\n\t\t;;\n\tUbuntu)\n\t\t$CMD apt-get update -y;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n        exit 1;\n\t\t;;\nesac",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Package Manager Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\nif [ -f \/etc\/my.cnf ] ; then\n    sed -i \"s\/127.0.0.1\/0.0.0.0\/g\" \/etc\/my.cnf\nfi\n$CMD service mysql restart",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Restart MySQL Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\nif command -v dpkg; then\n    $CMD apt-get -y update\n    $CMD apt-get -y install lsb-core\nelse\n    $CMD yum -y update\n    $CMD yum -y install redhat-lsb-core\nfi",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install lsb-core",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Unzip",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "zip": "MySQL+Server_5.6_artifacts.zip",
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "overwrite": "false",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Unzip",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "deploy mysql 5.7",
+                    "description": "Install mysql using the package manager",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb86-f4a9-521d-6381-e851cdb6312d\/processes\/16dbbf3f-6e04-b8ec-6937-b43fb00b41da",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Install MySQL",
+                                "from": "Run Package Manager Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Finish",
+                                "from": "Restart MySQL Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Configuration File",
+                                "from": "Install MySQL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Restart MySQL Server",
+                                "from": "Replace Configuration File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Package Manager Update",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -70,
+                                "y": 110,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Install MySQL",
+                                "x": -35,
+                                "y": 330,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Finish",
+                                "x": -5,
+                                "y": 690,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Replace Configuration File",
+                                "x": -70,
+                                "y": 450,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Run Package Manager Update",
+                                "x": -70,
+                                "y": 220,
+                                "h": 70,
+                                "w": 290
+                            },
+                            {
+                                "name": "Restart MySQL Server",
+                                "x": -60,
+                                "y": 560,
+                                "h": 70,
+                                "w": 240
+                            }
+                        ],
+                        "layoutMode": "manual",
+                        "type": "graph",
+                        "name": "53807735-761c-462b-9fbb-a1461313aa10",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "Finish",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if command -v lsb_release; then \n  OS=$(lsb_release -si)\nelse \n  OS=\"CentOS\"\nfi\n\n\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\techo \"Installing MySQL for RHEL\"\n\t\tyum -y install mysql-server\n                service mysqld start\n\t\t;;\n\tCentOS)\n                echo \"Installing MySQL for CentOS\"\n\t\tyum -y install mysql-server\n                service mysqld start\n\t\t;;\n\tUbuntu)\n                echo \"Installing MySQL for Ubuntu\"\n\t\texport DEBIAN_FRONTEND=noninteractive\n\t\tsudo -E apt-get -q -y install mysql-server-5.7;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n                exit 1;\n\t\t;;\nesac\n\nmysqladmin -u root password passw0rd;",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install MySQL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if command -v lsb_release; then \n  OS=$(lsb_release -si)\nelse \n  OS=\"CentOS\"\nfi\necho \"Found Operating System: $OS\"\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\tyum clean all\n\t\t;;\n\tCentOS)\n\t\tyum clean all\n\t\t;;\n\tUbuntu)\n\t\tapt-get update -y;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n                exit 1;\n\t\t;;\nesac",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Package Manager Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "service mysql restart;",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Restart MySQL Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Copy Directory",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "sourceDir": ".",
+                                    "destDirList": "\/etc\/mysql\/",
+                                    "includes": "my.cnf",
+                                    "excludes": "",
+                                    "mapperRules": "",
+                                    "force": "",
+                                    "flatten": "",
+                                    "preserveLastModified": "",
+                                    "failOnError": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Configuration File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV-edab97e21293",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Cloud\/Liquibase",
+                "tree": {
+                    "name": "Base Resource for environment DEV-edab97e21293",
+                    "path": "\/Cloud\/Liquibase\/Base Resource for environment DEV-edab97e21293",
+                    "description": "Generated",
+                    "parentName": "Liquibase",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Cloud\/Liquibase",
+                "tree": {
+                    "name": "Base Resource for environment DEV-edab97e21293",
+                    "path": "\/Cloud\/Liquibase\/Base Resource for environment DEV-edab97e21293",
+                    "description": "Generated",
+                    "parentName": "Liquibase",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "dev-dbserver-liquibase.edab97e21293",
+                        "path": "\/Cloud\/Liquibase\/Base Resource for environment DEV-edab97e21293\/dev-dbserver-liquibase.edab97e21293",
+                        "description": "Agent to manage the rsl_webserver server",
+                        "parentName": "Base Resource for environment DEV-edab97e21293",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "dev-dbserver-liquibase.edab97e21293",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Liquibase-Installation",
+                                "path": "\/Cloud\/Liquibase\/Base Resource for environment DEV-edab97e21293\/dev-dbserver-liquibase.edab97e21293\/Liquibase-Installation",
+                                "description": "Liquibase-Installation Component",
+                                "parentName": "dev-dbserver-liquibase.edab97e21293",
+                                "inheritTeam": true,
+                                "roleName": "Liquibase-Installation",
+                                "roleProperties": {
+                                    "name": "Liquibase-Installation",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "MySQL Server",
+                                "path": "\/Cloud\/Liquibase\/Base Resource for environment DEV-edab97e21293\/dev-dbserver-liquibase.edab97e21293\/MySQL Server",
+                                "description": "MySQL Server Component",
+                                "parentName": "dev-dbserver-liquibase.edab97e21293",
+                                "inheritTeam": true,
+                                "roleName": "MySQL Server",
+                                "roleProperties": {
+                                    "name": "MySQL Server",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-Installation"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-MySQL"
+                },
+                {
+                    "properties": [],
+                    "componentName": "MySQL Server"
+                }
+            ],
+            "teamMappings": []
+        },
+        {
+            "name": "QA-00ce2602dbeb",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-Installation"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-MySQL"
+                },
+                {
+                    "properties": [],
+                    "componentName": "MySQL Server"
+                }
+            ],
+            "teamMappings": []
+        },
+        {
+            "name": "UAT-9556754e1725",
+            "color": "#008ABF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Cloud\/NullResource",
+                "tree": {
+                    "name": "Base Resource for environment UAT-9556754e1725",
+                    "path": "\/Cloud\/NullResource\/Base Resource for environment UAT-9556754e1725",
+                    "description": "Generated",
+                    "parentName": "NullResource",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Cloud\/NullResource",
+                "tree": {
+                    "name": "Base Resource for environment UAT-9556754e1725",
+                    "path": "\/Cloud\/NullResource\/Base Resource for environment UAT-9556754e1725",
+                    "description": "Generated",
+                    "parentName": "NullResource",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "ssa-uat.9556754e1725",
+                        "path": "\/Cloud\/NullResource\/Base Resource for environment UAT-9556754e1725\/ssa-uat.9556754e1725",
+                        "description": "Agent to manage the Existing-AWS-Instance server",
+                        "parentName": "Base Resource for environment UAT-9556754e1725",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "ssa-uat.9556754e1725",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Liquibase-Installation",
+                                "path": "\/Cloud\/NullResource\/Base Resource for environment UAT-9556754e1725\/ssa-uat.9556754e1725\/Liquibase-Installation",
+                                "description": "Liquibase-Installation Component",
+                                "parentName": "ssa-uat.9556754e1725",
+                                "inheritTeam": true,
+                                "roleName": "Liquibase-Installation",
+                                "roleProperties": {
+                                    "name": "Liquibase-Installation",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "MySQL Server",
+                                "path": "\/Cloud\/NullResource\/Base Resource for environment UAT-9556754e1725\/ssa-uat.9556754e1725\/MySQL Server",
+                                "description": "MySQL Server Component",
+                                "parentName": "ssa-uat.9556754e1725",
+                                "inheritTeam": true,
+                                "roleName": "MySQL Server",
+                                "roleProperties": {
+                                    "name": "MySQL Server",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-Installation"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-MySQL"
+                },
+                {
+                    "properties": [],
+                    "componentName": "MySQL Server"
+                }
+            ],
+            "teamMappings": []
+        },
+        {
+            "name": "UAT-87de55f365b2",
+            "color": "#008ABF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 4,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Cloud\/Liquibase",
+                "tree": {
+                    "name": "Base Resource for environment UAT-87de55f365b2",
+                    "path": "\/Cloud\/Liquibase\/Base Resource for environment UAT-87de55f365b2",
+                    "description": "Generated",
+                    "parentName": "Liquibase",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Cloud\/Liquibase",
+                "tree": {
+                    "name": "Base Resource for environment UAT-87de55f365b2",
+                    "path": "\/Cloud\/Liquibase\/Base Resource for environment UAT-87de55f365b2",
+                    "description": "Generated",
+                    "parentName": "Liquibase",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "dev-dbserver-liquibase.87de55f365b2",
+                        "path": "\/Cloud\/Liquibase\/Base Resource for environment UAT-87de55f365b2\/dev-dbserver-liquibase.87de55f365b2",
+                        "description": "Agent to manage the rsl_webserver server",
+                        "parentName": "Base Resource for environment UAT-87de55f365b2",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "dev-dbserver-liquibase.87de55f365b2",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Liquibase-Installation",
+                                "path": "\/Cloud\/Liquibase\/Base Resource for environment UAT-87de55f365b2\/dev-dbserver-liquibase.87de55f365b2\/Liquibase-Installation",
+                                "description": "Liquibase-Installation Component",
+                                "parentName": "dev-dbserver-liquibase.87de55f365b2",
+                                "inheritTeam": true,
+                                "roleName": "Liquibase-Installation",
+                                "roleProperties": {
+                                    "name": "Liquibase-Installation",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "MySQL Server",
+                                "path": "\/Cloud\/Liquibase\/Base Resource for environment UAT-87de55f365b2\/dev-dbserver-liquibase.87de55f365b2\/MySQL Server",
+                                "description": "MySQL Server Component",
+                                "parentName": "dev-dbserver-liquibase.87de55f365b2",
+                                "inheritTeam": true,
+                                "roleName": "MySQL Server",
+                                "roleProperties": {
+                                    "name": "MySQL Server",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-Installation"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Liquibase-MySQL"
+                },
+                {
+                    "properties": [],
+                    "componentName": "MySQL Server"
+                }
+            ],
+            "teamMappings": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Install MySQL and Liquibase",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "7f5f4e9d1547bc3cd786a5ac2df9df",
+                        "from": "47230c9b80942754e7a8c3a3acf706",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "47230c9b80942754e7a8c3a3acf706",
+                        "from": "bd9fc00a2d60d8987a1a79b534f5a3",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "bd9fc00a2d60d8987a1a79b534f5a3",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "7f5f4e9d1547bc3cd786a5ac2df9df",
+                        "x": -5,
+                        "y": 520,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "bd9fc00a2d60d8987a1a79b534f5a3",
+                        "x": -75,
+                        "y": 180,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "47230c9b80942754e7a8c3a3acf706",
+                        "x": -85,
+                        "y": 350,
+                        "h": 70,
+                        "w": 280
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "85c19538-f5f8-4e78-91cf-9e85dee0b26b",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "7f5f4e9d1547bc3cd786a5ac2df9df",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MySQL Server",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "bd9fc00a2d60d8987a1a79b534f5a3",
+                        "children": [{
+                            "componentName": "MySQL Server",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "f2d88e06-810d-4604-94c0-8a4c674b9bfb",
+                            "children": [{
+                                "componentProcessName": "deploy mysql 5.7",
+                                "componentName": "MySQL Server",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"MySQL Server\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "Liquibase-Installation",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "47230c9b80942754e7a8c3a3acf706",
+                        "children": [{
+                            "componentName": "Liquibase-Installation",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "d9ac03cf-9a23-427a-9270-fd53cf8fcee8",
+                            "children": [{
+                                "componentProcessName": "Install Liquibase",
+                                "componentName": "Liquibase-Installation",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"Liquibase-Installation\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy Database Updates",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "21bcacb4773ae40a7baf0e7cc4831a",
+                        "from": "d62f53be56a6839ce37639d22c36e1",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "d62f53be56a6839ce37639d22c36e1",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "d62f53be56a6839ce37639d22c36e1",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 320
+                    },
+                    {
+                        "name": "21bcacb4773ae40a7baf0e7cc4831a",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "54c4324a-4956-4e8a-8769-4aea0cb8c549",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "21bcacb4773ae40a7baf0e7cc4831a",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Liquibase-MySQL",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "d62f53be56a6839ce37639d22c36e1",
+                        "children": [{
+                            "componentName": "Liquibase-MySQL",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "afd1da91-f124-485d-8237-be2685b321fb",
+                            "children": [{
+                                "componentProcessName": "Deploy Database Updates",
+                                "componentName": "Liquibase-MySQL",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"Liquibase-MySQL\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "16ff2e19-32ee-d1e2-5ff2-a5db3d636a89",
+        "name": "Database",
+        "color": "#008A52",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

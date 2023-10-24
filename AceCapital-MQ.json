@@ -1,0 +1,1825 @@
+{
+    "name": "AceCapital-MQ",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "MQ-SelfService",
+        "description": "An example component that can be used for MQ self-service scenarios",
+        "created": 1681960789567,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [
+            {
+                "name": "Create Queue",
+                "description": "An example MQ process that will create a new Queue for a specified Queue Manager",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/1879ecd2-49bf-0d00-2963-06d5fd377d81",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Define Queue using Property Value",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Set Permissions For Queue",
+                            "from": "Define Queue using Property Value",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "ce5afc7e8b1d78004e71e787553953",
+                            "from": "Set Permissions For Queue",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Set Permissions For Queue",
+                            "x": -100,
+                            "y": 350,
+                            "h": 70,
+                            "w": 310
+                        },
+                        {
+                            "name": "ce5afc7e8b1d78004e71e787553953",
+                            "x": -5,
+                            "y": 520,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Define Queue using Property Value",
+                            "x": -105,
+                            "y": 180,
+                            "h": 70,
+                            "w": 320
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "421f09dc-a6d1-4a25-a5b1-e6b262e132f9",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "ce5afc7e8b1d78004e71e787553953",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Set Permissions For Queue",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "${p:queue-mgr-name}",
+                                "objectName": "${p:queue-name}",
+                                "principals": "mquser",
+                                "groups": "",
+                                "authorities": "+all",
+                                "commandDir": "\/opt\/mqm\/bin"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Set Permissions For Queue",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|g3jluX9N9fRD5l0MhOmcxA==|ajQxCIGVhHKEnTSFOEuIdg==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Define Queue",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "${p:queue-mgr-name}",
+                                "queueName": "${p:queue-name}",
+                                "description": "",
+                                "get": "NONE",
+                                "maxdepth": "",
+                                "maxmsgl": "",
+                                "msgdlvsq": "NONE",
+                                "put": "NONE",
+                                "replace": "NONE",
+                                "share": "NONE",
+                                "trigger": "NONE",
+                                "usage": "NONE",
+                                "additionalArgs": "",
+                                "scriptFile": "${p:request.id}",
+                                "deleteOnExecute": "true",
+                                "isBatch": "false",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "localQueueManagerName": "",
+                                "waitTime": "30"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Define Queue using Property Value",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Create Queue Manager",
+                "description": "An example MQ process to create a Queue Manager",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/1879cad8-ad68-896c-caf0-5ceb9b3ba75b",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Start Queue Manager using Property",
+                            "from": "Create Queue Manager using Property",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start Queue Manager",
+                            "from": "Create Queue Manager",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "56c2d959c48a74153d690aea9e773d",
+                            "from": "Start Queue Manager using Property",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Queue Manager using Property",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Start Queue Manager",
+                            "x": 240,
+                            "y": 145,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "Create Queue Manager",
+                            "x": 235,
+                            "y": 0,
+                            "h": 70,
+                            "w": 290
+                        },
+                        {
+                            "name": "Create Queue Manager using Property",
+                            "x": -115,
+                            "y": 155,
+                            "h": 70,
+                            "w": 340
+                        },
+                        {
+                            "name": "56c2d959c48a74153d690aea9e773d",
+                            "x": -5,
+                            "y": 445,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Start Queue Manager using Property",
+                            "x": -110,
+                            "y": 300,
+                            "h": 70,
+                            "w": 330
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "5aab8c70-87ec-4f6a-949f-3245266220a7",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "56c2d959c48a74153d690aea9e773d",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Create Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueName": "ORGA.APPZ.REQUEST.QM1",
+                                "queueText": "",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Queue Manager",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Start Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "ORGA.APPZ.REQUEST.QM1",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start Queue Manager",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|2++u9E52kuvSklu64oTGHQ==|+lxvt3krMs\/GGaCUei9O5w==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Create Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueName": "${p:queue-mgr-name}",
+                                "queueText": "",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Queue Manager using Property",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|mlcXjVwhI+bEkPzs7+b4WQ==|MbyL8dENeBDKKpGSOHsl0g==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Start Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "${p:queue-mgr-name}",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start Queue Manager using Property",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Create Queue Manager and Queue",
+                "description": "An example MQ process to create a Queue Manager and Queue",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/1879ed11-f3ab-3378-1b6e-6cff6d2e7101",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Start Queue Manager",
+                            "from": "Create Queue Manager",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "56c2d959c48a74153d690aea9e773d",
+                            "from": "Set Permissions For Queue",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Set Permissions For Queue",
+                            "from": "Define Queue",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Queue Manager",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Define Queue",
+                            "from": "Start Queue Manager",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Set Permissions For Queue",
+                            "x": -100,
+                            "y": 490,
+                            "h": 70,
+                            "w": 310
+                        },
+                        {
+                            "name": "56c2d959c48a74153d690aea9e773d",
+                            "x": -5,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Define Queue",
+                            "x": -60,
+                            "y": 370,
+                            "h": 70,
+                            "w": 230
+                        },
+                        {
+                            "name": "Create Queue Manager",
+                            "x": -90,
+                            "y": 130,
+                            "h": 70,
+                            "w": 290
+                        },
+                        {
+                            "name": "Start Queue Manager",
+                            "x": -85,
+                            "y": 250,
+                            "h": 70,
+                            "w": 280
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "3558180d-22e5-42e1-aa5b-2194be50a5e2",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "56c2d959c48a74153d690aea9e773d",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 12,
+                            "commandName": "Create Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueName": "ORGA.APPZ.REQUEST.QM1",
+                                "queueText": "",
+                                "commandDir": "${p:resource\/WebSphereMQ.commandPath}",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Queue Manager",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 12,
+                            "commandName": "Start Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "ORGA.APPZ.REQUEST.QM1",
+                                "commandDir": "${p:resource\/WebSphereMQ.commandPath}",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start Queue Manager",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 12,
+                            "commandName": "Define Queue",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "ORGA.APPZ.REQUEST.QM1",
+                                "queueName": "ORGA.APPZ.REQUEST.Q1",
+                                "description": "",
+                                "get": "NONE",
+                                "maxdepth": "",
+                                "maxmsgl": "",
+                                "msgdlvsq": "NONE",
+                                "put": "NONE",
+                                "replace": "NONE",
+                                "share": "NONE",
+                                "trigger": "NONE",
+                                "usage": "NONE",
+                                "additionalArgs": "",
+                                "scriptFile": "${p:request.id}",
+                                "deleteOnExecute": "true",
+                                "isBatch": "false",
+                                "commandDir": "${p:resource\/WebSphereMQ.commandPath}",
+                                "localQueueManagerName": "",
+                                "waitTime": "30"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Define Queue",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 12,
+                            "commandName": "Set Permissions For Queue",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "ORGA.APPZ.REQUEST.QM1",
+                                "objectName": "ORGA.APPZ.REQUEST.Q1",
+                                "principals": "",
+                                "groups": "",
+                                "authorities": "",
+                                "commandDir": "${p:resource\/WebSphereMQ.commandPath}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Set Permissions For Queue",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Delete Queue",
+                "description": "An example MQ process to delete a Queue for a specified Queue Manager",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/1882f0a0-2516-531d-c312-ab81a8cea91b",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "2a04f3acfc24311c37e0c8c874d2d2",
+                            "from": "Delete Queue using Properties",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Delete Queue using Properties",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Delete Queue using Properties",
+                            "x": -90,
+                            "y": 230,
+                            "h": 70,
+                            "w": 290
+                        },
+                        {
+                            "name": "2a04f3acfc24311c37e0c8c874d2d2",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "7deb448c-ffb3-456a-8935-c250695a762b",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "2a04f3acfc24311c37e0c8c874d2d2",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Delete Queue",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "${p:queue-mgr-name}",
+                                "queueName": "${p:queue-name}",
+                                "scriptFile": "${p:request.id}",
+                                "deleteOnExecute": "true",
+                                "isBatch": "false",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "localQueueManagerName": "",
+                                "waitTime": "30"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Delete Queue using Properties",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Delete Queue Manager",
+                "description": "An example MQ process to delete a Queue Manager",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/1882f14c-5cb6-ad51-2428-7262f7901b38",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Stop Queue Manager",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Delete Queue Manager",
+                            "from": "Stop Queue Manager",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "7c3dab884ee5cfb566adb36b91dc9b",
+                            "from": "Delete Queue Manager",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Delete Queue Manager",
+                            "x": -120,
+                            "y": 350,
+                            "h": 70,
+                            "w": 290
+                        },
+                        {
+                            "name": "7c3dab884ee5cfb566adb36b91dc9b",
+                            "x": -5,
+                            "y": 520,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Stop Queue Manager",
+                            "x": -80,
+                            "y": 180,
+                            "h": 70,
+                            "w": 270
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "9ee7c4bb-3639-417d-9f57-f95919421468",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "7c3dab884ee5cfb566adb36b91dc9b",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|jZArHTHdjym5x8x3LRNkXQ==|bHi\/R0kKfYSxAIKUvccLVg==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Delete Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueName": "${p:queue-mgr-name}",
+                                "commandDir": "\/opt\/mqm\/bin"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Delete Queue Manager",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|honEBvQyywuw0TbGm8P4aA==|BbqI7USJuz4MzkuC9GpKcg==}",
+                            "impersonationUseSudo": false,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Stop Queue Manager",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "${p:queue-mgr-name}",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "arguments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Queue Manager",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Get a List of Queues",
+                "description": "This will get a listing of Queues defined for a given Queue Manager",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/18834245-a514-22f7-2d55-9d0525f66d80",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "f6bfcceec73ea4385de2fda9c4131a",
+                            "from": "List the Queues",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "List the Queues",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "List the Queues",
+                            "x": -60,
+                            "y": 230,
+                            "h": 70,
+                            "w": 230
+                        },
+                        {
+                            "name": "f6bfcceec73ea4385de2fda9c4131a",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "List the Queues for a given Queue Manager",
+                            "x": -60,
+                            "y": 540,
+                            "h": 70,
+                            "w": 370
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "641d2e9b-73e4-48f3-a9c9-c5b6653d297e",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "f6bfcceec73ea4385de2fda9c4131a",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 15,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "need to su to mqm user\n\nrunmqsc <name of queue manager> dis q(*)",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "List the Queues for a given Queue Manager",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": true,
+                            "impersonationUsername": "mqm",
+                            "impersonationGroup": "",
+                            "showHidden": false,
+                            "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|DMNH1rXrMnAff6Yem2EcKA==|tBgqdGgBaqwxshpMKJ0vxA==}",
+                            "impersonationUseSudo": true,
+                            "workingDir": "\/var\/mqm",
+                            "pluginVersion": 12,
+                            "commandName": "Run MQ Script",
+                            "pluginName": "WebSphereMQ",
+                            "pluginId": "com.urbancode.air.plugin.WebSphereMQ",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "queueManagerName": "${p:queue-mgr-name}",
+                                "scriptData": "dis queue(ORGA.*)",
+                                "commandDir": "\/opt\/mqm\/bin",
+                                "arguments": "",
+                                "localQueueManagerName": "",
+                                "waitTime": "30"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "List the Queues",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Get a List of Queues Managers",
+                "description": "This will get a listing of Queues Managers defined",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/1879cace-6404-7342-0807-515f369537d4\/processes\/1883445a-dbf8-e5e9-5dd3-48582c165061",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "List the Queue Managers",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "f6bfcceec73ea4385de2fda9c4131a",
+                            "from": "List the Queue Managers",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "List the Queue Managers",
+                            "x": -130,
+                            "y": 230,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "f6bfcceec73ea4385de2fda9c4131a",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "3b02e70b-ade6-4e3a-b052-738a7036093e",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "f6bfcceec73ea4385de2fda9c4131a",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 15,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "cd \/var\/mqm\/qmgrs\npwd\nls -al",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "List the Queue Managers",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [{
+            "id": "1879ecf6-bfcf-01cf-03b7-303d1de5c4c6",
+            "name": "MQ",
+            "color": "#003F69",
+            "description": "",
+            "objectType": "Component"
+        }]
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Integrations\/MQ",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/MQ\/DEV",
+                    "description": "",
+                    "parentName": "MQ",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Integrations\/MQ",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/MQ\/DEV",
+                    "description": "",
+                    "parentName": "MQ",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                        "path": "\/CloudPak-for-Integrations\/MQ\/DEV\/jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "MQ-SelfService",
+                            "path": "\/CloudPak-for-Integrations\/MQ\/DEV\/jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud\/MQ-SelfService",
+                            "description": "",
+                            "parentName": "jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                            "inheritTeam": true,
+                            "roleName": "MQ-SelfService",
+                            "roleProperties": {
+                                "name": "MQ-SelfService",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "MQ-SelfService"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "MQ-SelfService"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Create Queue Manager",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "ff49594ec87e30cb59335fb3086783",
+                        "from": "7e754b408d11904463cdec0c2597ee",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "7e754b408d11904463cdec0c2597ee",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "7e754b408d11904463cdec0c2597ee",
+                        "x": -95,
+                        "y": 230,
+                        "h": 80,
+                        "w": 300
+                    },
+                    {
+                        "name": "ff49594ec87e30cb59335fb3086783",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "e589ae65-ea25-4bca-8927-9eb3cb3b9e0b",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "ff49594ec87e30cb59335fb3086783",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MQ-SelfService",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "7e754b408d11904463cdec0c2597ee",
+                        "children": [{
+                            "componentProcessName": "Create Queue Manager",
+                            "componentName": "MQ-SelfService",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Create a MQ Queue Manager",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "queue-mgr-name",
+                "label": "queue-mgr-name",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "value": "ORGA.APPZ.REQUEST.QM1",
+                "required": true,
+                "description": "The name of a Queue Manager that you want to create",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        },
+        {
+            "name": "Delete Queue",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "cc2106035abd9ad6cf3717cec42e8b",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "15a1e1bf7bf31424abe5125226741b",
+                        "from": "cc2106035abd9ad6cf3717cec42e8b",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "15a1e1bf7bf31424abe5125226741b",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "cc2106035abd9ad6cf3717cec42e8b",
+                        "x": -90,
+                        "y": 230,
+                        "h": 80,
+                        "w": 290
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "627634ac-17cc-4274-8398-e25ba40275ed",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "15a1e1bf7bf31424abe5125226741b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MQ-SelfService",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "cc2106035abd9ad6cf3717cec42e8b",
+                        "children": [{
+                            "componentProcessName": "Delete Queue",
+                            "componentName": "MQ-SelfService",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Delete Queue",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [
+                {
+                    "name": "queue-name",
+                    "label": "queue-name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "ORGA.APPZ.REQUEST.Q1",
+                    "required": true,
+                    "description": "",
+                    "placeholder": ""
+                },
+                {
+                    "name": "queue-mgr-name",
+                    "label": "queue-mgr-name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "ORGA.APPZ.REQUEST.QM1",
+                    "required": true,
+                    "description": "",
+                    "placeholder": ""
+                }
+            ],
+            "versionPresets": []
+        },
+        {
+            "name": "Delete Queue Manager",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "cc234da327f05082da8bfa0aa64ddd",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "0ebedd4fd1674e0cf6606bcef44d9d",
+                        "from": "cc234da327f05082da8bfa0aa64ddd",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "0ebedd4fd1674e0cf6606bcef44d9d",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "cc234da327f05082da8bfa0aa64ddd",
+                        "x": -95,
+                        "y": 230,
+                        "h": 80,
+                        "w": 300
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "a06d7d56-cdde-4d52-90a3-53c73c8cf496",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "0ebedd4fd1674e0cf6606bcef44d9d",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MQ-SelfService",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "cc234da327f05082da8bfa0aa64ddd",
+                        "children": [{
+                            "componentProcessName": "Delete Queue Manager",
+                            "componentName": "MQ-SelfService",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Delete Queue Manager",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "queue-mgr-name",
+                "label": "queue-mgr-name",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "value": "ORGA.APPZ.REQUEST.QM2",
+                "required": true,
+                "description": "",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        },
+        {
+            "name": "Create Queue",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "fbd12749dd3f7a2f9a5b279fa7edcf",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "5ce221628dbaed1d0e2b224cbbfb14",
+                        "from": "fbd12749dd3f7a2f9a5b279fa7edcf",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "5ce221628dbaed1d0e2b224cbbfb14",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "fbd12749dd3f7a2f9a5b279fa7edcf",
+                        "x": -90,
+                        "y": 230,
+                        "h": 80,
+                        "w": 290
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "92033ee1-4957-4f7f-907c-c34373cd755a",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "5ce221628dbaed1d0e2b224cbbfb14",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MQ-SelfService",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "fbd12749dd3f7a2f9a5b279fa7edcf",
+                        "children": [{
+                            "componentProcessName": "Create Queue",
+                            "componentName": "MQ-SelfService",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"MQ-SelfService\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [
+                {
+                    "name": "queue-name",
+                    "label": "Queue Name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "ORGA.APPZ.REQUEST.Q1",
+                    "required": true,
+                    "description": "Name of the new MQ queue to be created",
+                    "placeholder": ""
+                },
+                {
+                    "name": "queue-mgr-name",
+                    "label": "Existing Queue Manager Name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "ORGA.APPZ.REQUEST.QM1",
+                    "required": true,
+                    "description": "Name of the existing MQ Queue Manager to add the new Queue towards",
+                    "placeholder": ""
+                },
+                {
+                    "name": "authorities",
+                    "label": "Authorities",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "+all",
+                    "required": true,
+                    "description": "Authorities option (+all, +put, +get, etc.)",
+                    "placeholder": ""
+                },
+                {
+                    "name": "principals",
+                    "label": "Principal",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "value": "mquser",
+                    "required": true,
+                    "description": "The principal user for the new queue",
+                    "placeholder": ""
+                }
+            ],
+            "versionPresets": []
+        },
+        {
+            "name": "List the Queues for a Queue Manager",
+            "description": "This will get a list of all the MQ Queues for a Queue Manager",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "9700e42fd2bccf7963920a70d9abb3",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "05de5f1971b1fd31040d9078d8cfb0",
+                        "from": "9700e42fd2bccf7963920a70d9abb3",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "05de5f1971b1fd31040d9078d8cfb0",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "9700e42fd2bccf7963920a70d9abb3",
+                        "x": -90,
+                        "y": 230,
+                        "h": 80,
+                        "w": 290
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "c577803d-da63-4e63-b41c-38a7d694f5cd",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "05de5f1971b1fd31040d9078d8cfb0",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MQ-SelfService",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "9700e42fd2bccf7963920a70d9abb3",
+                        "children": [{
+                            "componentProcessName": "Get a List of Queues",
+                            "componentName": "MQ-SelfService",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Get a List of Queues",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "queue-mgr-name",
+                "label": "Queue Manager",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "value": "ORGA.APPZ.REQUEST.QM1",
+                "required": true,
+                "description": "The name of the MQ Queue Manager",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        },
+        {
+            "name": "List the Queue Managers",
+            "description": "This will provide a list of the queue managers created",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "0c5fb071237e3aa42e0a1e9a9f865c",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "fa231013dcd7a3bdd758f94e360afb",
+                        "from": "0c5fb071237e3aa42e0a1e9a9f865c",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "0c5fb071237e3aa42e0a1e9a9f865c",
+                        "x": -120,
+                        "y": 230,
+                        "h": 80,
+                        "w": 350
+                    },
+                    {
+                        "name": "fa231013dcd7a3bdd758f94e360afb",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "3f426b18-ef71-4d15-ba75-6ada454ee41c",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "fa231013dcd7a3bdd758f94e360afb",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MQ-SelfService",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "0c5fb071237e3aa42e0a1e9a9f865c",
+                        "children": [{
+                            "componentProcessName": "Get a List of Queues Managers",
+                            "componentName": "MQ-SelfService",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"MQ-SelfService\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "18517179-3416-0f03-5a1c-ce10a318da0a",
+        "name": "MQ",
+        "color": "#003F69",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}

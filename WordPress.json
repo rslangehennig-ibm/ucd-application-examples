@@ -1,0 +1,2964 @@
+{
+    "name": "WordPress",
+    "description": "An example docker container deployment",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "Docker-Compose-Installation",
+            "description": "",
+            "created": 1576270598432,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Install Docker Compose on Ubuntu 18.04",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/16f010c9-12f0-1be1-0903-5555697699a0\/processes\/16f010cb-c4a3-7d1d-fecd-e1c9a0a39f82",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Docker Compose",
+                            "from": "apt-get update",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Display Version of Docker Compose to Test",
+                            "from": "Add Execute Permission to Docker Compose Binary",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "apt-get update",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Add Execute Permission to Docker Compose Binary",
+                            "from": "Download Docker Compose",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "c66198e9e0e19a21dc5c6ee5e00070",
+                            "from": "Display Version of Docker Compose to Test",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Download Docker Compose",
+                            "x": -80,
+                            "y": 250,
+                            "h": 70,
+                            "w": 270
+                        },
+                        {
+                            "name": "Display Version of Docker Compose to Test",
+                            "x": -25,
+                            "y": 490,
+                            "h": 70,
+                            "w": 370
+                        },
+                        {
+                            "name": "apt-get update",
+                            "x": -40,
+                            "y": 130,
+                            "h": 70,
+                            "w": 190
+                        },
+                        {
+                            "name": "Add Execute Permission to Docker Compose Binary",
+                            "x": -155,
+                            "y": 370,
+                            "h": 70,
+                            "w": 420
+                        },
+                        {
+                            "name": "c66198e9e0e19a21dc5c6ee5e00070",
+                            "x": -5,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "dd0b85bf-96d5-47ff-a59d-35e57a0565cf",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c66198e9e0e19a21dc5c6ee5e00070",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt-get update",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "apt-get update",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo curl -L \"https:\/\/github.com\/docker\/compose\/releases\/download\/1.24.0\/docker-compose-$(uname -s)-$(uname -m)\" -o \/usr\/local\/bin\/docker-compose",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Docker Compose",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo chmod +x \/usr\/local\/bin\/docker-compose",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Add Execute Permission to Docker Compose Binary",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo \/usr\/local\/bin\/docker-compose -version",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Version of Docker Compose to Test",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "16f01dcb-4b6c-8fee-de70-3a6a1489e143",
+                "name": "Docker-Compose",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Docker-Installation",
+            "description": "",
+            "created": 1576270089757,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Install Docker on Ubuntu",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/16f0104c-e2d5-6860-1749-cc23708755d9\/processes\/16f01050-86c6-62d2-be03-f2c4b7cb3319",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "86bfeabb5117b03655fc6520e60609",
+                            "from": "Run Hello World Container to Validate Installation",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run Hello World Container to Validate Installation",
+                            "from": "Install Docker CE",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install Docker CE",
+                            "from": "Update APT-GET Once More",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Update apt-get",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Curl GPG",
+                            "from": "Install curl and other dependencies",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install curl and other dependencies",
+                            "from": "Update apt-get",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Update APT-GET Once More",
+                            "from": "Add APT Repository",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Add APT Repository",
+                            "from": "Curl GPG",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Install Docker CE",
+                            "x": -90,
+                            "y": 950,
+                            "h": 110,
+                            "w": 330
+                        },
+                        {
+                            "name": "Update apt-get",
+                            "x": -75,
+                            "y": 150,
+                            "h": 110,
+                            "w": 300
+                        },
+                        {
+                            "name": "Curl GPG",
+                            "x": -45,
+                            "y": 470,
+                            "h": 110,
+                            "w": 240
+                        },
+                        {
+                            "name": "Update APT-GET Once More",
+                            "x": -170,
+                            "y": 790,
+                            "h": 110,
+                            "w": 490
+                        },
+                        {
+                            "name": "Run Hello World Container to Validate Installation",
+                            "x": -45,
+                            "y": 1110,
+                            "h": 110,
+                            "w": 750
+                        },
+                        {
+                            "name": "Add APT Repository",
+                            "x": -110,
+                            "y": 630,
+                            "h": 110,
+                            "w": 370
+                        },
+                        {
+                            "name": "Install curl and other dependencies",
+                            "x": -205,
+                            "y": 310,
+                            "h": 110,
+                            "w": 560
+                        },
+                        {
+                            "name": "86bfeabb5117b03655fc6520e60609",
+                            "x": -5,
+                            "y": 1270,
+                            "h": 100,
+                            "w": 160
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "5695c3b0-56e8-4e50-a862-519bbde80da0",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "86bfeabb5117b03655fc6520e60609",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt-get -y install apt-transport-https \\\n    ca-certificates \\\n    curl \\\n    software-properties-common",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install curl and other dependencies",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt-get update",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Update apt-get",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "curl -fsSL https:\/\/download.docker.com\/linux\/ubuntu\/gpg | sudo apt-key add -",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Curl GPG",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo add-apt-repository \\\n   \"deb [arch=amd64] https:\/\/download.docker.com\/linux\/ubuntu \\\n   $(lsb_release -cs) \\\n   stable\"",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Add APT Repository",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt-get update",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Update APT-GET Once More",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo apt-get -y install docker-ce",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install Docker CE",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo docker run hello-world",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Hello World Container to Validate Installation",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "175e1dee-d04b-e903-9508-4c204064e025",
+                "name": "Docker",
+                "color": "#AB1A86",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Liquibase-MySQL",
+            "description": "",
+            "created": 1580233384129,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/opt\/liquibase-example",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Deploy Database Updates",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16fed3fe-0d13-ceb8-6af0-60d8ff46271a\/processes\/16fed401-fc46-d45c-e819-bfb83730c318",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "View Database Document Generated",
+                                "from": "GenerateDBDoc",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "86c85b2664c48bd81cc640d0acaa22",
+                                "from": "View Database Document Generated",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "GenerateDBDoc",
+                                "from": "Validate",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Validate",
+                                "from": "Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Update",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "GenerateDBDoc",
+                                "x": -90,
+                                "y": 560,
+                                "h": 90,
+                                "w": 310
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -110,
+                                "y": 140,
+                                "h": 90,
+                                "w": 350
+                            },
+                            {
+                                "name": "View Database Document Generated",
+                                "x": -165,
+                                "y": 700,
+                                "h": 90,
+                                "w": 460
+                            },
+                            {
+                                "name": "Update",
+                                "x": -45,
+                                "y": 280,
+                                "h": 90,
+                                "w": 220
+                            },
+                            {
+                                "name": "86c85b2664c48bd81cc640d0acaa22",
+                                "x": -5,
+                                "y": 840,
+                                "h": 90,
+                                "w": 140
+                            },
+                            {
+                                "name": "Validate",
+                                "x": -50,
+                                "y": 420,
+                                "h": 90,
+                                "w": 230
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "db89cc3c-eb34-47be-a587-de2ba64b6a96",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "86c85b2664c48bd81cc640d0acaa22",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/home\/ubuntu",
+                                "pluginVersion": 37,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 2,
+                                "commandName": "Update",
+                                "pluginName": "Liquibase",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "command": "\/opt\/liquibase\/liquibase",
+                                    "driver": "com.mysql.jdbc.Driver",
+                                    "driverClasspath": "\/usr\/share\/java\/mysql-connector-java-8.0.19.jar",
+                                    "jdbcURL": "jdbc:mysql:\/\/localhost:3306\/RANDY_TEST",
+                                    "username": "root",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|MytGMfz95fQWir1wI\/\/K9A==|h5h+C2I0A9Uui2hNQojjGQ==}",
+                                    "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml",
+                                    "updateCount": "",
+                                    "preview": "true"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 2,
+                                "commandName": "Validate",
+                                "pluginName": "Liquibase",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "command": "\/opt\/liquibase\/liquibase",
+                                    "driver": "com.mysql.jdbc.Driver",
+                                    "driverClasspath": "\/usr\/share\/java\/mysql-connector-java-8.0.19.jar",
+                                    "jdbcURL": "jdbc:mysql:\/\/localhost:3306\/RANDY_TEST",
+                                    "username": "root",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|D+P8LjDyaeYKIzZy21hnpw==|8JWxLjdcjsV5mfc5C5d6cA==}",
+                                    "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Validate",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 2,
+                                "commandName": "GenerateDBDoc",
+                                "pluginName": "Liquibase",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "command": "\/opt\/liquibase\/liquibase",
+                                    "driver": "com.mysql.jdbc.Driver",
+                                    "driverClasspath": "\/usr\/share\/java\/mysql-connector-java-8.0.19.jar",
+                                    "jdbcURL": "jdbc:mysql:\/\/localhost:3306\/RANDY_TEST",
+                                    "username": "root",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|h4EKda94wy+QZHjQlFoWdw==|w9i+Ggu0gDuP+rB3uVA4lw==}",
+                                    "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml",
+                                    "docOutDir": "\/home\/ubuntu\/doc"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "GenerateDBDoc",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "cd \/home\/ubuntu\/doc\ncat overview-summary.html\ncat authors.html\nls -al\n",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "View Database Document Generated",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy Database Updates (copy)",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16fed3fe-0d13-ceb8-6af0-60d8ff46271a\/processes\/177fe0be-a1c6-f937-ae8c-d31e9768aae0",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "GenerateDBDoc",
+                                "from": "Validate",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Update",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "86c85b2664c48bd81cc640d0acaa22",
+                                "from": "GenerateDBDoc",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Validate",
+                                "from": "Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 130,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Update",
+                                "x": -35,
+                                "y": 250,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "GenerateDBDoc",
+                                "x": -65,
+                                "y": 490,
+                                "h": 70,
+                                "w": 240
+                            },
+                            {
+                                "name": "Validate",
+                                "x": -35,
+                                "y": 370,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "86c85b2664c48bd81cc640d0acaa22",
+                                "x": -5,
+                                "y": 610,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "95df3f9d-5a06-41de-bb13-953513486465",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "86c85b2664c48bd81cc640d0acaa22",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/home\/ubuntu",
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 2,
+                                "commandName": "Update",
+                                "pluginName": "Liquibase",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "command": "${p:resource\/liquibase.command}",
+                                    "driver": "${p:resource\/liquibase.jdbcDriver}",
+                                    "driverClasspath": "${p:resource\/liquibase.jdbcDriverClasspath}",
+                                    "jdbcURL": "${p:resource\/liquibase.jdbcURL}",
+                                    "username": "${p:resource\/liquibase.dbUser}",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|U7p5sc72gf0HFETOwWa4vA==|MKzNBx71M9E8oVgRTUR5auGCxnQuZk0O5jBj1TvF\/E3snz+Xi7jcn\/Zhs599gLQT}",
+                                    "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml",
+                                    "updateCount": "",
+                                    "preview": "true"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 2,
+                                "commandName": "Validate",
+                                "pluginName": "Liquibase",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "command": "${p:resource\/liquibase.command}",
+                                    "driver": "${p:resource\/liquibase.jdbcDriver}",
+                                    "driverClasspath": "${p:resource\/liquibase.jdbcDriverClasspath}",
+                                    "jdbcURL": "${p:resource\/liquibase.jdbcURL}",
+                                    "username": "${p:resource\/liquibase.dbUser}",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|9MIKSDep59fOFtV54+dz3A==|vH\/FsAVuHmiXhc9U9+JFAyhh7\/Jts04wFzqURSZBrYYvMWZQ3cKe12493PVAfYrs}",
+                                    "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Validate",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 2,
+                                "commandName": "GenerateDBDoc",
+                                "pluginName": "Liquibase",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "command": "${p:resource\/liquibase.command}",
+                                    "driver": "${p:resource\/liquibase.jdbcDriver}",
+                                    "driverClasspath": "${p:resource\/liquibase.jdbcDriverClasspath}",
+                                    "jdbcURL": "${p:resource\/liquibase.jdbcURL}",
+                                    "username": "${p:resource\/liquibase.dbUser}",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|O8+pJOMY3g4YzVnp2lwX5w==|+uRGdWoRbOaBAtAtjqssWQq9WHBC6EsE++LCX+X6pRoImagJsSqmNtieoeLXsxE6}",
+                                    "changeLogFile": "\/home\/ubuntu\/dbchangelog.xml",
+                                    "docOutDir": "\/home\/ubuntu\/doc"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "GenerateDBDoc",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "173bb5e0-95ca-a79b-7cd0-ba8826850c4f",
+                "name": "Database",
+                "color": "#008A52",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "MySQL Server",
+            "description": "This component contains the process to install MySQL Server",
+            "created": 1570812489530,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "deploy",
+                    "description": "Install mysql",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb86-f4a9-521d-6381-e851cdb6312d\/processes\/16dbbb87-758b-8f34-d7c9-aa9ab7658790",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Install lsb-core",
+                                "from": "Unzip",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "4ca7b4637565245c76c45aca105bb8",
+                                "from": "Restart MySQL Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install MySQL",
+                                "from": "Run Package Manager Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Package Manager Update",
+                                "from": "Install lsb-core",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Unzip",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Restart MySQL Server",
+                                "from": "Install MySQL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -185,
+                                "y": 160,
+                                "h": 130,
+                                "w": 530
+                            },
+                            {
+                                "name": "Restart MySQL Server",
+                                "x": -160,
+                                "y": 1060,
+                                "h": 130,
+                                "w": 480
+                            },
+                            {
+                                "name": "4ca7b4637565245c76c45aca105bb8",
+                                "x": -10,
+                                "y": 1240,
+                                "h": 110,
+                                "w": 180
+                            },
+                            {
+                                "name": "Run Package Manager Update",
+                                "x": -230,
+                                "y": 700,
+                                "h": 130,
+                                "w": 620
+                            },
+                            {
+                                "name": "Install MySQL",
+                                "x": -85,
+                                "y": 880,
+                                "h": 130,
+                                "w": 330
+                            },
+                            {
+                                "name": "Install lsb-core",
+                                "x": -90,
+                                "y": 520,
+                                "h": 130,
+                                "w": 340
+                            },
+                            {
+                                "name": "Unzip",
+                                "x": -75,
+                                "y": 340,
+                                "h": 130,
+                                "w": 310
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "719ad9c6-3c3e-4ac3-b32a-f88d7660e5e8",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "4ca7b4637565245c76c45aca105bb8",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "OS=$(lsb_release -si)\nif [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\necho \"Installing MySQL for ${OS}\"\nchmod u+x \"$PWD\"\/${OS}_percona.sh\nif [ \"${OS}\" == \"Ubuntu\" ] ; then\n    $CMD \"$PWD\"\/${OS}_percona.sh\nelse\n    $CMD \"$PWD\"\/${OS}_percona.sh\nfi",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install MySQL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "root",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|3IRC3GWN0Z+RowehHe42Fw==|fwi4fhqBG2i\/V+7XfLTAJ09QJNPytiLf3hldPobYhHBm1TiI6amy6SyBqUPEoPYfMceLzqlMZPc8hyLCIjnNu7A2LP2ZRpWok8zvDcjlqPRYjqqy6MPfAjgqOmPp+1v5}",
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "OS=$(lsb_release -si)\nif [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\necho \"Found Operating System: $OS\"\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\t$CMD yum clean all\n\t\t;;\n\tCentOS)\n\t\t$CMD yum clean all\n\t\t;;\n\tUbuntu)\n\t\t$CMD apt-get update -y;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n        exit 1;\n\t\t;;\nesac",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Package Manager Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\nif [ -f \/etc\/my.cnf ] ; then\n    sed -i \"s\/127.0.0.1\/0.0.0.0\/g\" \/etc\/my.cnf\nfi\n$CMD service mysql restart",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Restart MySQL Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\nif command -v dpkg; then\n    $CMD apt-get -y update\n    $CMD apt-get -y install lsb-core\nelse\n    $CMD yum -y update\n    $CMD yum -y install redhat-lsb-core\nfi",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install lsb-core",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Unzip",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "zip": "MySQL+Server_5.6_artifacts.zip",
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "overwrite": "false",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Unzip",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "deploy mysql 5.7",
+                    "description": "Install mysql using the package manager",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb86-f4a9-521d-6381-e851cdb6312d\/processes\/16dbbf3f-6e04-b8ec-6937-b43fb00b41da",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Install MySQL",
+                                "from": "Run Package Manager Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Finish",
+                                "from": "Restart MySQL Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Configuration File",
+                                "from": "Install MySQL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Restart MySQL Server",
+                                "from": "Replace Configuration File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Package Manager Update",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -70,
+                                "y": 110,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Install MySQL",
+                                "x": -35,
+                                "y": 330,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Finish",
+                                "x": -5,
+                                "y": 690,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Replace Configuration File",
+                                "x": -70,
+                                "y": 450,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Run Package Manager Update",
+                                "x": -70,
+                                "y": 220,
+                                "h": 70,
+                                "w": 290
+                            },
+                            {
+                                "name": "Restart MySQL Server",
+                                "x": -60,
+                                "y": 560,
+                                "h": 70,
+                                "w": 240
+                            }
+                        ],
+                        "layoutMode": "manual",
+                        "type": "graph",
+                        "name": "53807735-761c-462b-9fbb-a1461313aa10",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "Finish",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if command -v lsb_release; then \n  OS=$(lsb_release -si)\nelse \n  OS=\"CentOS\"\nfi\n\n\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\techo \"Installing MySQL for RHEL\"\n\t\tyum -y install mysql-server\n                service mysqld start\n\t\t;;\n\tCentOS)\n                echo \"Installing MySQL for CentOS\"\n\t\tyum -y install mysql-server\n                service mysqld start\n\t\t;;\n\tUbuntu)\n                echo \"Installing MySQL for Ubuntu\"\n\t\texport DEBIAN_FRONTEND=noninteractive\n\t\tsudo -E apt-get -q -y install mysql-server-5.7;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n                exit 1;\n\t\t;;\nesac\n\nmysqladmin -u root password passw0rd;",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install MySQL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if command -v lsb_release; then \n  OS=$(lsb_release -si)\nelse \n  OS=\"CentOS\"\nfi\necho \"Found Operating System: $OS\"\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\tyum clean all\n\t\t;;\n\tCentOS)\n\t\tyum clean all\n\t\t;;\n\tUbuntu)\n\t\tapt-get update -y;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n                exit 1;\n\t\t;;\nesac",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Package Manager Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "service mysql restart;",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Restart MySQL Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Copy Directory",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "sourceDir": ".",
+                                    "destDirList": "\/etc\/mysql\/",
+                                    "includes": "my.cnf",
+                                    "excludes": "",
+                                    "mapperRules": "",
+                                    "force": "",
+                                    "flatten": "",
+                                    "preserveLastModified": "",
+                                    "failOnError": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Configuration File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "173bb5e0-95ca-a79b-7cd0-ba8826850c4f",
+                "name": "Database",
+                "color": "#008A52",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "WordPress-Container",
+            "description": "",
+            "created": 1576271172336,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/tmp\/WordPress",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Deploy WordPress",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16f01155-3000-03a8-69f6-f91f010df4c0\/processes\/16f01167-a620-611f-7d5f-4fe1a6732f56",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "3ce8f1e9bca9e3ecd4638128350491",
+                                "from": "Start WordPress Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create a Folder for Docker Compose App",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start WordPress Container",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "from": "Create a Folder for Docker Compose App",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 300,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Create a Folder for Docker Compose App",
+                                "x": -125,
+                                "y": 155,
+                                "h": 70,
+                                "w": 360
+                            },
+                            {
+                                "name": "3ce8f1e9bca9e3ecd4638128350491",
+                                "x": -5,
+                                "y": 590,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Start WordPress Container",
+                                "x": -80,
+                                "y": 445,
+                                "h": 70,
+                                "w": 270
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "2214cd53-7dfd-4824-b96d-f6a9de24f4db",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "3ce8f1e9bca9e3ecd4638128350491",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo mkdir \/opt\/wordpress\nsudo chmod 777 \/opt\/wordpress",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create a Folder for Docker Compose App",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/wordpress",
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/wordpress",
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo docker-compose up -d",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start WordPress Container",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy WordPress using Plugin",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16f01155-3000-03a8-69f6-f91f010df4c0\/processes\/16f01dd5-3970-2269-b396-ac26f26d8125",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Start WordPress Container",
+                                "from": "Download Artifacts",
+                                "type": "FAILURE",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "from": "Create a Folder for Docker Compose App",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "3ce8f1e9bca9e3ecd4638128350491",
+                                "from": "Start WordPress Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create a Folder for Docker Compose App",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Launch WordPress Docker Compose Application",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "3ce8f1e9bca9e3ecd4638128350491",
+                                "from": "Launch WordPress Docker Compose Application",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -76.06995884773659,
+                                "y": 250,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Start WordPress Container",
+                                "x": -264.6399176954732,
+                                "y": 370,
+                                "h": 70,
+                                "w": 270
+                            },
+                            {
+                                "name": "3ce8f1e9bca9e3ecd4638128350491",
+                                "x": -7.139917695473173,
+                                "y": 490,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Create a Folder for Docker Compose App",
+                                "x": -125,
+                                "y": 130,
+                                "h": 70,
+                                "w": 360
+                            },
+                            {
+                                "name": "Launch WordPress Docker Compose Application",
+                                "x": 35.36008230452683,
+                                "y": 370,
+                                "h": 70,
+                                "w": 400
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "5da12851-63f5-4355-b7e2-58b3c233c1a9",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "3ce8f1e9bca9e3ecd4638128350491",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo mkdir \/opt\/wordpress\nsudo chmod 777 \/opt\/wordpress",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create a Folder for Docker Compose App",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/wordpress",
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/wordpress",
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo docker-compose up -d",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start WordPress Container",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "\/opt\/wordpress",
+                                "pluginVersion": 24,
+                                "commandName": "Launch Docker Compose Application",
+                                "pluginName": "Docker Compose",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "composeFiles": "",
+                                    "composeProjectName": "",
+                                    "composeOptions": "",
+                                    "scriptPaths": "",
+                                    "stackName": "${p?:application.name}",
+                                    "serverUrl": "${p:server.url}",
+                                    "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|arFUMFyd8\/Mb5OYlG+pRww==|8Nse2JqawEVXwFO\/2HkmOg==}",
+                                    "resource": "${p:resource.id}",
+                                    "application": "${p:application.id}",
+                                    "version": "${p:version.name}",
+                                    "component": "${p:component.id}",
+                                    "snapshot": "${p?:snapshot.id}",
+                                    "environment": "${p:environment.id}",
+                                    "componentProcessRequest": "${p:request.id}",
+                                    "applicationProcessRequest": "${p:parentRequest.id}",
+                                    "envPropValues": "${p?:envPropValues}",
+                                    "commandPath": "docker-compose",
+                                    "saveScript": "false"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Launch WordPress Docker Compose Application",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Smoke Test Application",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/16f01155-3000-03a8-69f6-f91f010df4c0\/processes\/16f01d0c-0130-77ea-5117-d1db458c14d8",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Smoke Test WordPress URL",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Display Output from HTTP GET Request",
+                                "from": "Smoke Test WordPress URL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "04cc0704ef48c352181f4c8bfa8438",
+                                "from": "Display Output from HTTP GET Request",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "04cc0704ef48c352181f4c8bfa8438",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Smoke Test WordPress URL",
+                                "x": -85,
+                                "y": 180,
+                                "h": 70,
+                                "w": 280
+                            },
+                            {
+                                "name": "Display Output from HTTP GET Request",
+                                "x": -25,
+                                "y": 350,
+                                "h": 70,
+                                "w": 350
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "9403fbed-35a4-4379-9120-0b844f71c2e5",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "04cc0704ef48c352181f4c8bfa8438",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 15,
+                                "commandName": "Send HTTP Call",
+                                "pluginName": "Web Utilities",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "url": "${p:environment\/wordpress-url}",
+                                    "method": "GET",
+                                    "headers": "",
+                                    "data": "",
+                                    "contentType": "*\/*",
+                                    "acceptType": "*\/*",
+                                    "untrustedSSL": "false",
+                                    "username": "",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|sWIOYb04v\/7wMIXxvyL77g==|X1Ngl2+KkbKvPPqjRcYl7A==}",
+                                    "outFile": "wordpress-output.txt"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Smoke Test WordPress URL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "cat *.txt",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Display Output from HTTP GET Request",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [{
+        "name": "DEV-958e0671bbd5",
+        "description": "",
+        "color": "#17AF4A",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": []},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/Cloud\/WordPress",
+            "tree": {
+                "name": "Base Resource for environment DEV-958e0671bbd5",
+                "path": "\/Cloud\/WordPress\/Base Resource for environment DEV-958e0671bbd5",
+                "description": "Generated",
+                "parentName": "WordPress",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/Cloud\/WordPress",
+            "tree": {
+                "name": "Base Resource for environment DEV-958e0671bbd5",
+                "path": "\/Cloud\/WordPress\/Base Resource for environment DEV-958e0671bbd5",
+                "description": "Generated",
+                "parentName": "WordPress",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "dev-webserver.958e0671bbd5",
+                    "path": "\/Cloud\/WordPress\/Base Resource for environment DEV-958e0671bbd5\/dev-webserver.958e0671bbd5",
+                    "description": "Agent to manage the rsl_webserver server",
+                    "parentName": "Base Resource for environment DEV-958e0671bbd5",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "dev-webserver.958e0671bbd5",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "Docker-Compose-Installation",
+                            "path": "\/Cloud\/WordPress\/Base Resource for environment DEV-958e0671bbd5\/dev-webserver.958e0671bbd5\/Docker-Compose-Installation",
+                            "description": "Docker-Compose-Installation Component",
+                            "parentName": "dev-webserver.958e0671bbd5",
+                            "inheritTeam": true,
+                            "roleName": "Docker-Compose-Installation",
+                            "roleProperties": {
+                                "name": "Docker-Compose-Installation",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        },
+                        {
+                            "name": "Docker-Installation",
+                            "path": "\/Cloud\/WordPress\/Base Resource for environment DEV-958e0671bbd5\/dev-webserver.958e0671bbd5\/Docker-Installation",
+                            "description": "Docker-Installation Component",
+                            "parentName": "dev-webserver.958e0671bbd5",
+                            "inheritTeam": true,
+                            "roleName": "Docker-Installation",
+                            "roleProperties": {
+                                "name": "Docker-Installation",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        },
+                        {
+                            "name": "WordPress-Container",
+                            "path": "\/Cloud\/WordPress\/Base Resource for environment DEV-958e0671bbd5\/dev-webserver.958e0671bbd5\/WordPress-Container",
+                            "description": "WordPress-Container Component",
+                            "parentName": "dev-webserver.958e0671bbd5",
+                            "inheritTeam": true,
+                            "roleName": "WordPress-Container",
+                            "roleProperties": {
+                                "name": "WordPress-Container",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }
+                    ]
+                }]
+            }
+        }],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "Docker-Compose-Installation"
+            },
+            {
+                "properties": [],
+                "componentName": "Docker-Installation"
+            },
+            {
+                "properties": [],
+                "componentName": "Liquibase-MySQL"
+            },
+            {
+                "properties": [],
+                "componentName": "MySQL Server"
+            },
+            {
+                "properties": [],
+                "componentName": "WordPress-Container"
+            }
+        ],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [
+        {
+            "name": "Deploy-WordPress",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "41c77d2dec6e9711ad37d793a838ad",
+                        "from": "37d999b444a4a4411de93b10f992a2",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "787d32140ca3c45ac617f2e601061d",
+                        "from": "41c77d2dec6e9711ad37d793a838ad",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "37d999b444a4a4411de93b10f992a2",
+                        "from": "b21b79539a87622101cbe3b2520359",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "b21b79539a87622101cbe3b2520359",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "41c77d2dec6e9711ad37d793a838ad",
+                        "x": -50,
+                        "y": 445,
+                        "h": 70,
+                        "w": 290
+                    },
+                    {
+                        "name": "787d32140ca3c45ac617f2e601061d",
+                        "x": -5,
+                        "y": 570,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "b21b79539a87622101cbe3b2520359",
+                        "x": -100,
+                        "y": 155,
+                        "h": 80,
+                        "w": 310
+                    },
+                    {
+                        "name": "37d999b444a4a4411de93b10f992a2",
+                        "x": -150,
+                        "y": 300,
+                        "h": 80,
+                        "w": 410
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "b904cc5b-ce18-42ab-be77-4c5876b770b8",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "787d32140ca3c45ac617f2e601061d",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Docker-Installation",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "b21b79539a87622101cbe3b2520359",
+                        "children": [{
+                            "componentProcessName": "Install Docker on Ubuntu",
+                            "componentName": "Docker-Installation",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"Docker-Installation\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Docker-Compose-Installation",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "37d999b444a4a4411de93b10f992a2",
+                        "children": [{
+                            "componentProcessName": "Install Docker Compose on Ubuntu 18.04",
+                            "componentName": "Docker-Compose-Installation",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"Docker-Compose-Installation\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "WordPress-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "41c77d2dec6e9711ad37d793a838ad",
+                        "children": [{
+                            "componentName": "WordPress-Container",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "e22ac482-81ec-4f29-82a9-ef2292632ccf",
+                            "children": [{
+                                "componentProcessName": "Deploy WordPress",
+                                "componentName": "WordPress-Container",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"WordPress-Container\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Invoke SmokeTest",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "df06cb3c682e3c3caae7c0406f23df",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "6e8275149f05a5116e597153cb1951",
+                        "from": "df06cb3c682e3c3caae7c0406f23df",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "df06cb3c682e3c3caae7c0406f23df",
+                        "x": -105,
+                        "y": 230,
+                        "h": 80,
+                        "w": 320
+                    },
+                    {
+                        "name": "6e8275149f05a5116e597153cb1951",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "5d10efd0-2569-4dfb-b17a-56bd219d448c",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "6e8275149f05a5116e597153cb1951",
+                        "children": []
+                    },
+                    {
+                        "componentName": "WordPress-Container",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "df06cb3c682e3c3caae7c0406f23df",
+                        "children": [{
+                            "componentProcessName": "Smoke Test Application",
+                            "componentName": "WordPress-Container",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Component: \"WordPress-Container\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Install MySQL",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "6d98fe11870fea9123f87d3be1c92b",
+                        "from": "fdc11b5c2c93201d134f2b21210daa",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "fdc11b5c2c93201d134f2b21210daa",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "6d98fe11870fea9123f87d3be1c92b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "fdc11b5c2c93201d134f2b21210daa",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 260
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "a3ea29ed-5e2e-4fad-9338-cd8acd30e2d1",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "6d98fe11870fea9123f87d3be1c92b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "MySQL Server",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "fdc11b5c2c93201d134f2b21210daa",
+                        "children": [{
+                            "componentName": "MySQL Server",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "1038ac3d-a4c5-4890-a30c-33c6da1282b4",
+                            "children": [{
+                                "componentProcessName": "deploy mysql 5.7",
+                                "componentName": "MySQL Server",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"MySQL Server\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-Database-Liquibase",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "a80c3c4b1a49da85d07beb17ab4250",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "e4a191c4aa659675a788e16ea1e3ba",
+                        "from": "a80c3c4b1a49da85d07beb17ab4250",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "e4a191c4aa659675a788e16ea1e3ba",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "a80c3c4b1a49da85d07beb17ab4250",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 320
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "8bae16e1-081a-44e3-ba1f-6a017d4dbaa2",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "e4a191c4aa659675a788e16ea1e3ba",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Liquibase-MySQL",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a80c3c4b1a49da85d07beb17ab4250",
+                        "children": [{
+                            "componentName": "Liquibase-MySQL",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "16da5757-2ace-405d-b1a5-23c8af30a9c4",
+                            "children": [{
+                                "componentProcessName": "Deploy Database Updates",
+                                "componentName": "Liquibase-MySQL",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"Liquibase-MySQL\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "16f01568-af7d-c5fc-089c-d07b2b74c7c3",
+        "name": "Docker Compose",
+        "color": "#00B2EF",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

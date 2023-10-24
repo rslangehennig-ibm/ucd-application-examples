@@ -1,0 +1,2815 @@
+{
+    "name": "APIC-Collection-of-APIs",
+    "description": "This is an example application that is used to publish a number of APIs using API Connect",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "APIC-API-ms01",
+            "description": "",
+            "created": 1691776454857,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "189e0b0e-a609-7bd6-430c-b6d7fca84a51",
+                "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d",
+                "name": "APIC Product Template",
+                "description": "An example APIC Product template which allows you to publish or draft a product to APIC",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [{
+                    "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                    "name": "API Connect",
+                    "color": "#00B2EF",
+                    "description": "",
+                    "objectType": "Component"
+                }],
+                "active": true,
+                "envPropDefs": [
+                    {
+                        "name": "apic.catalog",
+                        "label": "Catalog Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "test",
+                        "required": true,
+                        "description": "The catalog to publish to for this environment",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.organization",
+                        "label": "APIC Organization",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "devops-org",
+                        "required": true,
+                        "description": "The organization used for a set of catalogs.  Often DEV and TEST uses the same organization where PROD uses a different organization",
+                        "placeholder": ""
+                    }
+                ],
+                "resPropDefs": [],
+                "propDefs": [
+                    {
+                        "name": "apic.server",
+                        "label": "APIC Management Server",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "apim-demo-mgmt-platform-api-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud",
+                        "required": true,
+                        "description": "The API Connect Management Server",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.username",
+                        "label": "APIC Username",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "rlange",
+                        "required": true,
+                        "description": "The username to authenticate with to API Connect",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.password",
+                        "label": "APIC User Password",
+                        "pattern": "",
+                        "type": "SECURE",
+                        "isHidden": false,
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|nwSBm3Uxptvb9SalHD\/n3g==|C9tjhuCN+hXjEiRZXV2xZR4rTOaqFab1cb3KqO9UTPdAQ6s\/f0CFW01vFmveqsgj}",
+                        "required": true,
+                        "description": "The APIC user password",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.realm",
+                        "label": "APIC Realm",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "provider\/default-idp-2",
+                        "required": true,
+                        "description": "The API Connect Realm ",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.path",
+                        "label": "APIC Toolkit Path",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "\/downloads\/api-connect\/apic",
+                        "required": true,
+                        "description": "The path to API Connect Toolkit",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "product-yaml-name",
+                        "label": "product-yaml-name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "ms01-prod_1.0.0.yaml",
+                        "required": true,
+                        "description": "The filename for the product YAML",
+                        "placeholder": ""
+                    }
+                ],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Draft-Product",
+                        "description": "This process will publish the APIs and Products in Draft Mode.  This will make the APIs in that Product visible on the Developer Portal for use by application developers.",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d\/processes\/189e0b20-a9b3-a519-304f-c4085571728a",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Publish Product and API in Draft Mode",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "7656c40a13cbd9dfea72c821e95f42",
+                                    "from": "Publish Product and API in Draft Mode",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -75,
+                                    "y": 155,
+                                    "h": 70,
+                                    "w": 260
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 300,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "7656c40a13cbd9dfea72c821e95f42",
+                                    "x": -5,
+                                    "y": 590,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Publish Product and API in Draft Mode",
+                                    "x": -115,
+                                    "y": 445,
+                                    "h": 70,
+                                    "w": 340
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "8b499c6d-28e9-4ade-b767-330a306a9245",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "7656c40a13cbd9dfea72c821e95f42",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 44,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 13,
+                                    "commandName": "Shell",
+                                    "pluginName": "Shell",
+                                    "pluginId": "com.urbancode.air.plugin.Shell",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "shellInterpreter": "",
+                                        "scriptBody": "pwd && ls -al\necho 'apic.path is ${p:apic.path}'\n\n#\n# Publish Product and API in Draft Mode so developers can access APIs in Developer Portal\n#\n${p:apic.path} draft-products:create --server ${p:apic.server} --org ${p:apic.organization} jgraceivt-product_1.0.1.yaml\necho $?\necho \"APIs have been published to Drafts\"",
+                                        "runAsDaemon": "false",
+                                        "outputFile": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Publish Product and API in Draft Mode",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Login",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "username": "${p:apic.username}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|s+8IfmjRZLB6EO9UUAbzXw==|NaDRaXrgMwkI1KBcZoDvwlDDC2sY3A3eixven+lOmY8=}",
+                                        "realm": "${p?:apic.realm}",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Publish-Product",
+                        "description": "This process will publish the Product and API to a target Catalog ",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "inventoryActionType": "ADD",
+                        "status": "Active",
+                        "configActionType": "ADD",
+                        "active": true,
+                        "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d\/processes\/189e0b20-af1b-baf0-cd2e-028bae8cc096",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "from": "Replace Tokens",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Publish API Product Definitions",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "7c2f87e96239e4445a382c5974de2e",
+                                    "from": "Publish API Product Definitions",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Replace Tokens",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Publish API Product Definitions",
+                                    "x": -110,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 330
+                                },
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -75,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 260
+                                },
+                                {
+                                    "name": "7c2f87e96239e4445a382c5974de2e",
+                                    "x": -5,
+                                    "y": 610,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Replace Tokens",
+                                    "x": -65,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 240
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 170
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "f816dfe8-288b-46ac-9d56-3d1eee4457c5",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "7c2f87e96239e4445a382c5974de2e",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 46,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Login",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "username": "${p:apic.username}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|FN6gpFScZpAsumaunSWZ3A==|7YAEpfxyYJp6txZQMbxcQQqXA7HSLk0fliFgRPDRCEk=}",
+                                        "realm": "${p?:apic.realm}",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Publish API Product Definitions",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "organization": "${p:environment\/apic.organization}",
+                                        "catalog": "${p:environment\/apic.catalog}",
+                                        "definition": "${p:resource\/work.dir}\/${p:component.name}\/${p:component\/product-yaml-name}",
+                                        "stage": "false",
+                                        "space": "",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Publish API Product Definitions",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 94,
+                                    "commandName": "Replace Tokens",
+                                    "pluginName": "File Utils",
+                                    "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "includes": "**\/*",
+                                        "excludes": "",
+                                        "envPropValues": "${p:environment\/allProperties}",
+                                        "propertyPrefix": "",
+                                        "explicitTokens": "TARGET_URL->${p:environment\/env-api-target-url}\nAPI_GATEWAY_URL->${p:environment\/env-api-gateway-server-url}",
+                                        "startDelimiter": "@",
+                                        "endDelimiter": "@",
+                                        "propFile": "replace_tokens.properties",
+                                        "dir": "",
+                                        "customEncoding": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Replace Tokens",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "sourceConfigPluginName": "Git",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "GitComponentProperties",
+                        "properties": [
+                            {
+                                "name": "branch",
+                                "value": "main",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "username",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|WWtbaCjN0tP\/y3WW1yqTRA==|GO9WPFGWqJzUnnRWiI8qvA==}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "watchTags",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "recursive",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "trustAllCerts",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "sparse",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "sparsePaths",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "value": "**\/*",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "value": "README.md\n.git\/hooks\/*\n.git\/hooks\n.git\/info\/*\n.git\/info\n.git\/logs\/*\n.git\/logs\n.git\/objects\/*\n.git\/objects\n.git\/refs\/*\n.git\/refs\n.git\/*\n.git",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "gitPath",
+                                "value": "git",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "repoUrl",
+                                "value": "https:\/\/github.com\/rslangehennig\/ms01.git",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": [
+                            {
+                                "name": "apic.server",
+                                "value": "apim-demo-mgmt-platform-api-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.username",
+                                "value": "rlange",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|f0I6RfP0ts6465vtUdZBaw==|1FxM+e1PxXPoiycluGXP7xUnRM5XUyQm\/BEfS2QHPD9ieZ6PULZ9MO2dH8UCxqno}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "apic.realm",
+                                "value": "provider\/default-idp-2",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.path",
+                                "value": "\/downloads\/api-connect\/apic",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "product-yaml-name",
+                                "value": "ms01-prod_1.0.0.yaml",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                "name": "API Connect",
+                "color": "#00B2EF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "APIC-API-ms02",
+            "description": "",
+            "created": 1691777213451,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "189e0b0e-a609-7bd6-430c-b6d7fca84a51",
+                "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d",
+                "name": "APIC Product Template",
+                "description": "An example APIC Product template which allows you to publish or draft a product to APIC",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [{
+                    "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                    "name": "API Connect",
+                    "color": "#00B2EF",
+                    "description": "",
+                    "objectType": "Component"
+                }],
+                "active": true,
+                "envPropDefs": [
+                    {
+                        "name": "apic.catalog",
+                        "label": "Catalog Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "test",
+                        "required": true,
+                        "description": "The catalog to publish to for this environment",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.organization",
+                        "label": "APIC Organization",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "devops-org",
+                        "required": true,
+                        "description": "The organization used for a set of catalogs.  Often DEV and TEST uses the same organization where PROD uses a different organization",
+                        "placeholder": ""
+                    }
+                ],
+                "resPropDefs": [],
+                "propDefs": [
+                    {
+                        "name": "apic.server",
+                        "label": "APIC Management Server",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "apim-demo-mgmt-platform-api-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud",
+                        "required": true,
+                        "description": "The API Connect Management Server",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.username",
+                        "label": "APIC Username",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "rlange",
+                        "required": true,
+                        "description": "The username to authenticate with to API Connect",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.password",
+                        "label": "APIC User Password",
+                        "pattern": "",
+                        "type": "SECURE",
+                        "isHidden": false,
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|nwSBm3Uxptvb9SalHD\/n3g==|C9tjhuCN+hXjEiRZXV2xZR4rTOaqFab1cb3KqO9UTPdAQ6s\/f0CFW01vFmveqsgj}",
+                        "required": true,
+                        "description": "The APIC user password",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.realm",
+                        "label": "APIC Realm",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "provider\/default-idp-2",
+                        "required": true,
+                        "description": "The API Connect Realm ",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.path",
+                        "label": "APIC Toolkit Path",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "\/downloads\/api-connect\/apic",
+                        "required": true,
+                        "description": "The path to API Connect Toolkit",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "product-yaml-name",
+                        "label": "product-yaml-name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "ms01-prod_1.0.0.yaml",
+                        "required": true,
+                        "description": "The filename for the product YAML",
+                        "placeholder": ""
+                    }
+                ],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Draft-Product",
+                        "description": "This process will publish the APIs and Products in Draft Mode.  This will make the APIs in that Product visible on the Developer Portal for use by application developers.",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d\/processes\/189e0b20-a9b3-a519-304f-c4085571728a",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Publish Product and API in Draft Mode",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "7656c40a13cbd9dfea72c821e95f42",
+                                    "from": "Publish Product and API in Draft Mode",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -75,
+                                    "y": 155,
+                                    "h": 70,
+                                    "w": 260
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 300,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "7656c40a13cbd9dfea72c821e95f42",
+                                    "x": -5,
+                                    "y": 590,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Publish Product and API in Draft Mode",
+                                    "x": -115,
+                                    "y": 445,
+                                    "h": 70,
+                                    "w": 340
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "8b499c6d-28e9-4ade-b767-330a306a9245",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "7656c40a13cbd9dfea72c821e95f42",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 44,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 13,
+                                    "commandName": "Shell",
+                                    "pluginName": "Shell",
+                                    "pluginId": "com.urbancode.air.plugin.Shell",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "shellInterpreter": "",
+                                        "scriptBody": "pwd && ls -al\necho 'apic.path is ${p:apic.path}'\n\n#\n# Publish Product and API in Draft Mode so developers can access APIs in Developer Portal\n#\n${p:apic.path} draft-products:create --server ${p:apic.server} --org ${p:apic.organization} jgraceivt-product_1.0.1.yaml\necho $?\necho \"APIs have been published to Drafts\"",
+                                        "runAsDaemon": "false",
+                                        "outputFile": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Publish Product and API in Draft Mode",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Login",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "username": "${p:apic.username}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|sLrlSD9CsovGiPXwtBoqCw==|cWkHsSCM9fr4FflHlO5zBWjKeQX6xRzAf2EGd5uq6J0=}",
+                                        "realm": "${p?:apic.realm}",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Publish-Product",
+                        "description": "This process will publish the Product and API to a target Catalog ",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "inventoryActionType": "ADD",
+                        "status": "Active",
+                        "configActionType": "ADD",
+                        "active": true,
+                        "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d\/processes\/189e0b20-af1b-baf0-cd2e-028bae8cc096",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "from": "Replace Tokens",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Publish API Product Definitions",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "7c2f87e96239e4445a382c5974de2e",
+                                    "from": "Publish API Product Definitions",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Replace Tokens",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Publish API Product Definitions",
+                                    "x": -110,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 330
+                                },
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -75,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 260
+                                },
+                                {
+                                    "name": "7c2f87e96239e4445a382c5974de2e",
+                                    "x": -5,
+                                    "y": 610,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Replace Tokens",
+                                    "x": -65,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 240
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 170
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "f816dfe8-288b-46ac-9d56-3d1eee4457c5",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "7c2f87e96239e4445a382c5974de2e",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 46,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Login",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "username": "${p:apic.username}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|RZP1TiKLjKVmDpQGUXZTtg==|VaHMBNwDufkx0u9M6DF\/HLwV\/HuklkF+sC7gkRDn8PI=}",
+                                        "realm": "${p?:apic.realm}",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Publish API Product Definitions",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "organization": "${p:environment\/apic.organization}",
+                                        "catalog": "${p:environment\/apic.catalog}",
+                                        "definition": "${p:resource\/work.dir}\/${p:component.name}\/${p:component\/product-yaml-name}",
+                                        "stage": "false",
+                                        "space": "",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Publish API Product Definitions",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 94,
+                                    "commandName": "Replace Tokens",
+                                    "pluginName": "File Utils",
+                                    "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "includes": "**\/*",
+                                        "excludes": "",
+                                        "envPropValues": "${p:environment\/allProperties}",
+                                        "propertyPrefix": "",
+                                        "explicitTokens": "TARGET_URL->${p:environment\/env-api-target-url}\nAPI_GATEWAY_URL->${p:environment\/env-api-gateway-server-url}",
+                                        "startDelimiter": "@",
+                                        "endDelimiter": "@",
+                                        "propFile": "replace_tokens.properties",
+                                        "dir": "",
+                                        "customEncoding": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Replace Tokens",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "sourceConfigPluginName": "Git",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "GitComponentProperties",
+                        "properties": [
+                            {
+                                "name": "branch",
+                                "value": "main",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "username",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|ocp5FvmgnYzPC0vMOKndzQ==|nwnEnxs7sI6vorj8AceDnw==}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "watchTags",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "recursive",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "trustAllCerts",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "sparse",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "sparsePaths",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "value": "**\/*",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "value": "README.md\n.git\/*\n.git",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "gitPath",
+                                "value": "git",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "repoUrl",
+                                "value": "https:\/\/github.com\/rslangehennig\/ms02.git",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": [
+                            {
+                                "name": "apic.server",
+                                "value": "apim-demo-mgmt-platform-api-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.username",
+                                "value": "rlange",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|1+AoiS+EsaZDURpB8d9IHA==|OORYFUnqUwVQKtxdAs+MXA5k0K\/cudVJ7ZFWNCmI2FcGNDIPZqfBj+lYtNBiKrxM}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "apic.realm",
+                                "value": "provider\/default-idp-2",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.path",
+                                "value": "\/downloads\/api-connect\/apic",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "product-yaml-name",
+                                "value": "ms02-prod_1.0.0.yaml",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                "name": "API Connect",
+                "color": "#00B2EF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "APIC-API-ms03",
+            "description": "",
+            "created": 1691777268741,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "189e0b0e-a609-7bd6-430c-b6d7fca84a51",
+                "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d",
+                "name": "APIC Product Template",
+                "description": "An example APIC Product template which allows you to publish or draft a product to APIC",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [{
+                    "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                    "name": "API Connect",
+                    "color": "#00B2EF",
+                    "description": "",
+                    "objectType": "Component"
+                }],
+                "active": true,
+                "envPropDefs": [
+                    {
+                        "name": "apic.catalog",
+                        "label": "Catalog Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "test",
+                        "required": true,
+                        "description": "The catalog to publish to for this environment",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.organization",
+                        "label": "APIC Organization",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "devops-org",
+                        "required": true,
+                        "description": "The organization used for a set of catalogs.  Often DEV and TEST uses the same organization where PROD uses a different organization",
+                        "placeholder": ""
+                    }
+                ],
+                "resPropDefs": [],
+                "propDefs": [
+                    {
+                        "name": "apic.server",
+                        "label": "APIC Management Server",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "apim-demo-mgmt-platform-api-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud",
+                        "required": true,
+                        "description": "The API Connect Management Server",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.username",
+                        "label": "APIC Username",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "rlange",
+                        "required": true,
+                        "description": "The username to authenticate with to API Connect",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.password",
+                        "label": "APIC User Password",
+                        "pattern": "",
+                        "type": "SECURE",
+                        "isHidden": false,
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|nwSBm3Uxptvb9SalHD\/n3g==|C9tjhuCN+hXjEiRZXV2xZR4rTOaqFab1cb3KqO9UTPdAQ6s\/f0CFW01vFmveqsgj}",
+                        "required": true,
+                        "description": "The APIC user password",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.realm",
+                        "label": "APIC Realm",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "provider\/default-idp-2",
+                        "required": true,
+                        "description": "The API Connect Realm ",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "apic.path",
+                        "label": "APIC Toolkit Path",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "\/downloads\/api-connect\/apic",
+                        "required": true,
+                        "description": "The path to API Connect Toolkit",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "product-yaml-name",
+                        "label": "product-yaml-name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "ms01-prod_1.0.0.yaml",
+                        "required": true,
+                        "description": "The filename for the product YAML",
+                        "placeholder": ""
+                    }
+                ],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Draft-Product",
+                        "description": "This process will publish the APIs and Products in Draft Mode.  This will make the APIs in that Product visible on the Developer Portal for use by application developers.",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d\/processes\/189e0b20-a9b3-a519-304f-c4085571728a",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Publish Product and API in Draft Mode",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "7656c40a13cbd9dfea72c821e95f42",
+                                    "from": "Publish Product and API in Draft Mode",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -75,
+                                    "y": 155,
+                                    "h": 70,
+                                    "w": 260
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 300,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "7656c40a13cbd9dfea72c821e95f42",
+                                    "x": -5,
+                                    "y": 590,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Publish Product and API in Draft Mode",
+                                    "x": -115,
+                                    "y": 445,
+                                    "h": 70,
+                                    "w": 340
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "8b499c6d-28e9-4ade-b767-330a306a9245",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "7656c40a13cbd9dfea72c821e95f42",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 44,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 13,
+                                    "commandName": "Shell",
+                                    "pluginName": "Shell",
+                                    "pluginId": "com.urbancode.air.plugin.Shell",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "shellInterpreter": "",
+                                        "scriptBody": "pwd && ls -al\necho 'apic.path is ${p:apic.path}'\n\n#\n# Publish Product and API in Draft Mode so developers can access APIs in Developer Portal\n#\n${p:apic.path} draft-products:create --server ${p:apic.server} --org ${p:apic.organization} jgraceivt-product_1.0.1.yaml\necho $?\necho \"APIs have been published to Drafts\"",
+                                        "runAsDaemon": "false",
+                                        "outputFile": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Publish Product and API in Draft Mode",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Login",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "username": "${p:apic.username}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|pzxI4XW1BKekMSVKmSv1ug==|LGEDy1xLirkiOEYIgWqNJzy45ZeRsdIS3Gih\/4b8KEY=}",
+                                        "realm": "${p?:apic.realm}",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Publish-Product",
+                        "description": "This process will publish the Product and API to a target Catalog ",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "inventoryActionType": "ADD",
+                        "status": "Active",
+                        "configActionType": "ADD",
+                        "active": true,
+                        "path": "componentTemplates\/189e0b0e-a628-9b8c-d0bd-847b5eec459d\/processes\/189e0b20-af1b-baf0-cd2e-028bae8cc096",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "from": "Replace Tokens",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Publish API Product Definitions",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "7c2f87e96239e4445a382c5974de2e",
+                                    "from": "Publish API Product Definitions",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Replace Tokens",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Publish API Product Definitions",
+                                    "x": -110,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 330
+                                },
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -75,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 260
+                                },
+                                {
+                                    "name": "7c2f87e96239e4445a382c5974de2e",
+                                    "x": -5,
+                                    "y": 610,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Replace Tokens",
+                                    "x": -65,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 240
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 170
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "f816dfe8-288b-46ac-9d56-3d1eee4457c5",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "7c2f87e96239e4445a382c5974de2e",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 46,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Login",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "username": "${p:apic.username}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|FWvqb9zzeKtqT0xG8B9cNw==|GoVQHf5SzvqBXYVwTBdPlx23NQNg\/cDUE4dSKXZyz6E=}",
+                                        "realm": "${p?:apic.realm}",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 7,
+                                    "commandName": "Publish API Product Definitions",
+                                    "pluginName": "IBM API Connect",
+                                    "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:component\/apic.server}",
+                                        "organization": "${p:environment\/apic.organization}",
+                                        "catalog": "${p:environment\/apic.catalog}",
+                                        "definition": "${p:resource\/work.dir}\/${p:component.name}\/${p:component\/product-yaml-name}",
+                                        "stage": "false",
+                                        "space": "",
+                                        "apicPath": "${p?:component\/apic.path}",
+                                        "loggerLevel": "INFO"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Publish API Product Definitions",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 94,
+                                    "commandName": "Replace Tokens",
+                                    "pluginName": "File Utils",
+                                    "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "includes": "**\/*",
+                                        "excludes": "",
+                                        "envPropValues": "${p:environment\/allProperties}",
+                                        "propertyPrefix": "",
+                                        "explicitTokens": "TARGET_URL->${p:environment\/env-api-target-url}\nAPI_GATEWAY_URL->${p:environment\/env-api-gateway-server-url}",
+                                        "startDelimiter": "@",
+                                        "endDelimiter": "@",
+                                        "propFile": "replace_tokens.properties",
+                                        "dir": "",
+                                        "customEncoding": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Replace Tokens",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "sourceConfigPluginName": "Git",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    {
+                        "name": "template",
+                        "properties": [
+                            {
+                                "name": "apic.server",
+                                "value": "apim-demo-mgmt-platform-api-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.username",
+                                "value": "rlange",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|2X3k2t3Lo0Oc+\/0Be9cEug==|Re8u5VRkt8TBZlJEnY1RuYn\/t4QFouDsp4xVtEBmvufW5VnO1OAvyM4X62xJ31Dk}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "apic.realm",
+                                "value": "provider\/default-idp-2",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.path",
+                                "value": "\/downloads\/api-connect\/apic",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "product-yaml-name",
+                                "value": "ms03-prod_1.0.0.yaml",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GitComponentProperties",
+                        "properties": [
+                            {
+                                "name": "branch",
+                                "value": "main",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "username",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|r8R8wXOjRXGiM2FtHvZQtw==|178N8k12mK\/JSFCw7i\/yRg==}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "watchTags",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "recursive",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "trustAllCerts",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "sparse",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "sparsePaths",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "value": "**\/*",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "value": "README.md\n.git\n.git\/*",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "gitPath",
+                                "value": "git",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "repoUrl",
+                                "value": "https:\/\/github.com\/rslangehennig\/ms03.git",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                "name": "API Connect",
+                "color": "#00B2EF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "apic-web-console",
+                        "value": "https:\/\/cpd-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud\/integration\/apis\/tools\/apim-demo\/manager",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "env-api-target-url",
+                        "value": "http:\/\/52.116.10.230:7080",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "env-api-gateway-server-url",
+                        "value": "https:\/\/apim-demo-gw-gateway-tools.jgr-ocp410-cp4120224-dcd557ed086a97d77c2297a53c025612-0000.us-south.containers.appdomain.cloud\/cp4i-demo-org\/sandbox\/jgraceivt\/v1",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Integrations\/API-Connect",
+                "tree": {
+                    "name": "Dev",
+                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev",
+                    "description": "",
+                    "parentName": "API-Connect",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Integrations\/API-Connect",
+                "tree": {
+                    "name": "Dev",
+                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev",
+                    "description": "",
+                    "parentName": "API-Connect",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "ace-example.DANIEL-CAPPON-s-Account.cloud",
+                            "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/ace-example.DANIEL-CAPPON-s-Account.cloud",
+                            "description": "",
+                            "parentName": "Dev",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "ace-example.DANIEL-CAPPON-s-Account.cloud",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "API-Contacts-WAR",
+                                "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/ace-example.DANIEL-CAPPON-s-Account.cloud\/API-Contacts-WAR",
+                                "description": "",
+                                "parentName": "ace-example.DANIEL-CAPPON-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "API-Contacts-WAR",
+                                "roleProperties": {
+                                    "name": "API-Contacts-WAR",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        },
+                        {
+                            "name": "virtualserver02",
+                            "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02",
+                            "description": "",
+                            "parentName": "Dev",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "virtualserver02",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [
+                                {
+                                    "name": "API-Contacts-RTAS",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/API-Contacts-RTAS",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "API-Contacts-RTAS",
+                                    "roleProperties": {
+                                        "name": "API-Contacts-RTAS",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "API-Contacts-YAML",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/API-Contacts-YAML",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "API-Contacts-YAML",
+                                    "roleProperties": {
+                                        "name": "API-Contacts-YAML",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "APIC-API-1",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/APIC-API-1",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "APIC-API-1",
+                                    "roleProperties": {
+                                        "name": "APIC-API-1",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "APIC-API-2",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/APIC-API-2",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "APIC-API-2",
+                                    "roleProperties": {
+                                        "name": "APIC-API-2",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "APIC-API-3",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/APIC-API-3",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "APIC-API-3",
+                                    "roleProperties": {
+                                        "name": "APIC-API-3",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "APIC-API-ms01",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/APIC-API-ms01",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "APIC-API-ms01",
+                                    "roleProperties": {
+                                        "name": "APIC-API-ms01",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "APIC-API-ms02",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/APIC-API-ms02",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "APIC-API-ms02",
+                                    "roleProperties": {
+                                        "name": "APIC-API-ms02",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "APIC-API-ms03",
+                                    "path": "\/CloudPak-for-Integrations\/API-Connect\/Dev\/virtualserver02\/APIC-API-ms03",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "APIC-API-ms03",
+                                    "roleProperties": {
+                                        "name": "APIC-API-ms03",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "description": "",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms01"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "description": "",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms02"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "description": "",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms03"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms01"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms02"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms03"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms01"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms02"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "apic.catalog",
+                            "value": "test",
+                            "secure": false
+                        },
+                        {
+                            "name": "apic.organization",
+                            "value": "devops-org",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "APIC-API-ms03"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Publish APIs",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "9075eb780130a7ca15313f7949a89e",
+                    "from": "fc05ee4508cb4593aaf392e72a4cc8",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "dfeb5dba8a79d673295cc8f61301b1",
+                    "from": "9075eb780130a7ca15313f7949a89e",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "55f92b4ce768402bd84c7e019b3ac6",
+                    "from": "dfeb5dba8a79d673295cc8f61301b1",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "fc05ee4508cb4593aaf392e72a4cc8",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "55f92b4ce768402bd84c7e019b3ac6",
+                    "x": -5,
+                    "y": 570,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "dfeb5dba8a79d673295cc8f61301b1",
+                    "x": -50,
+                    "y": 445,
+                    "h": 70,
+                    "w": 250
+                },
+                {
+                    "name": "9075eb780130a7ca15313f7949a89e",
+                    "x": -70,
+                    "y": 300,
+                    "h": 70,
+                    "w": 250
+                },
+                {
+                    "name": "fc05ee4508cb4593aaf392e72a4cc8",
+                    "x": -70,
+                    "y": 155,
+                    "h": 70,
+                    "w": 250
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "24c6a9d5-33de-4d07-bfa2-fbe8d4486f4f",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "55f92b4ce768402bd84c7e019b3ac6",
+                    "children": []
+                },
+                {
+                    "componentName": "APIC-API-ms01",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "fc05ee4508cb4593aaf392e72a4cc8",
+                    "children": [{
+                        "componentName": "APIC-API-ms01",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "75e0b44e-c9f8-48a0-9ce8-76864ea07120",
+                        "children": [{
+                            "componentProcessName": "Publish-Product",
+                            "componentName": "APIC-API-ms01",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"APIC-API-ms01\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "APIC-API-ms02",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "9075eb780130a7ca15313f7949a89e",
+                    "children": [{
+                        "componentName": "APIC-API-ms02",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "5753cd88-e0a1-441d-8db4-40f2b422c01d",
+                        "children": [{
+                            "componentProcessName": "Publish-Product",
+                            "componentName": "APIC-API-ms02",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"APIC-API-ms02\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "APIC-API-ms03",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "dfeb5dba8a79d673295cc8f61301b1",
+                    "children": [{
+                        "componentName": "APIC-API-ms03",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "75866dd7-76a0-4774-9936-ab8fdab8eb21",
+                        "children": [{
+                            "componentProcessName": "Publish-Product",
+                            "componentName": "APIC-API-ms03",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"APIC-API-ms03\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "175b4139-db94-01d4-7cb8-5a9c7e0a6164",
+        "name": "API Connect",
+        "color": "#00B2EF",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}

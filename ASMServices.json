@@ -1,0 +1,791 @@
+{
+    "name": "ASMServices",
+    "description": "This is an example from AT&T Mexico",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "ASMServices",
+        "description": "",
+        "created": 1665587658347,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [
+            {
+                "name": "Create-PROD-Snapshot",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/183ccc2b-e7b5-ec3c-e72f-83c0057c6116\/processes\/183ccc69-a310-e4bb-33cf-bc45fdd207ad",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Create Snapshot Of Environment - Prod",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "7ce9bbe4ef7e5380cdea3af587a55a",
+                            "from": "Create Snapshot Of Environment - Prod",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "7ce9bbe4ef7e5380cdea3af587a55a",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Create Snapshot Of Environment - Prod",
+                            "x": -120,
+                            "y": 230,
+                            "h": 70,
+                            "w": 350
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "30af36bf-4054-411b-b88b-5b08b403bbe5",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "7ce9bbe4ef7e5380cdea3af587a55a",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 84,
+                            "commandName": "Create Snapshot Of Environment",
+                            "pluginName": "UrbanCode Deploy Applications",
+                            "pluginId": "com.urbancode.air.plugin.uDeployApplication",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "application": "ASMServices",
+                                "environment": "Prod",
+                                "name": "insert-your-name-here-with-property",
+                                "description": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Snapshot Of Environment - Prod",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy-to-Mega",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/183ccc2b-e7b5-ec3c-e72f-83c0057c6116\/processes\/183ccce5-2596-c0fa-6cc6-b74a021623e9",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Run Application Process - Mega",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d49845ec6c86c26f7cbc3fd5f20c0b",
+                            "from": "Run Application Process - Mega",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "d49845ec6c86c26f7cbc3fd5f20c0b",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Run Application Process - Mega",
+                            "x": -90,
+                            "y": 230,
+                            "h": 70,
+                            "w": 290
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "6cdb3f0a-f358-45c4-b950-7376b2ea7317",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d49845ec6c86c26f7cbc3fd5f20c0b",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 84,
+                            "commandName": "Run Application Process",
+                            "pluginName": "UrbanCode Deploy Applications",
+                            "pluginId": "com.urbancode.air.plugin.uDeployApplication",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "application": "ASMServices",
+                                "process": "Deploy-to-Mega",
+                                "environment": "Mega",
+                                "snapshot": "use-property-value",
+                                "onlyChanged": "false",
+                                "componentVersions": "",
+                                "requestProperties": "",
+                                "waitForProcess": "true",
+                                "timeout": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Application Process - Mega",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy-to-Sperto",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/183ccc2b-e7b5-ec3c-e72f-83c0057c6116\/processes\/183cccb4-dbe8-4ed0-47c1-6f32ac41db2e",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Run Application Process for Sperto Environment",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "50a174c2be1e6270fcb0d263a5b8ed",
+                            "from": "Run Application Process for Sperto Environment",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Run Application Process for Sperto Environment",
+                            "x": -90,
+                            "y": 230,
+                            "h": 70,
+                            "w": 400
+                        },
+                        {
+                            "name": "50a174c2be1e6270fcb0d263a5b8ed",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "d7c879aa-73da-40a9-9392-864d04b46a21",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "50a174c2be1e6270fcb0d263a5b8ed",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 84,
+                            "commandName": "Run Application Process",
+                            "pluginName": "UrbanCode Deploy Applications",
+                            "pluginId": "com.urbancode.air.plugin.uDeployApplication",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "application": "ASMServices",
+                                "process": "Deploy to Sperto",
+                                "environment": "Sperto",
+                                "snapshot": "use-property-here",
+                                "onlyChanged": "false",
+                                "componentVersions": "",
+                                "requestProperties": "",
+                                "waitForProcess": "true",
+                                "timeout": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Application Process for Sperto Environment",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "Prod",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "ASMServices"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "Sperto",
+            "description": "",
+            "color": "#EEA10F",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "ASMServices"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "Mega",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "ASMServices"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy to Mega",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "d4747ead9a3aa783a212f736047fa2",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "27f15e55b3f648221412cb6320418a",
+                        "from": "d4747ead9a3aa783a212f736047fa2",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "27f15e55b3f648221412cb6320418a",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "d4747ead9a3aa783a212f736047fa2",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 260
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "ffed1d3e-b9f7-47e9-b464-8796d562abe8",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "27f15e55b3f648221412cb6320418a",
+                        "children": []
+                    },
+                    {
+                        "componentName": "ASMServices",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "d4747ead9a3aa783a212f736047fa2",
+                        "children": [{
+                            "componentName": "ASMServices",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "b4df697b-1938-43e0-a37c-ae295b4435b9",
+                            "children": [{
+                                "componentProcessName": "Deploy-to-Mega",
+                                "componentName": "ASMServices",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"ASMServices\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy to Sperto",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "b92116c6d6f3ec4a346fbedcf642bb",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "c31469294bf8d1d7836a71cca579c6",
+                        "from": "b92116c6d6f3ec4a346fbedcf642bb",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "b92116c6d6f3ec4a346fbedcf642bb",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "c31469294bf8d1d7836a71cca579c6",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "b680889e-ce57-4eca-a4ff-756a8e4853a3",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "c31469294bf8d1d7836a71cca579c6",
+                        "children": []
+                    },
+                    {
+                        "componentName": "ASMServices",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "b92116c6d6f3ec4a346fbedcf642bb",
+                        "children": [{
+                            "componentName": "ASMServices",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "17c0b170-eb62-411e-aa6e-1b0c77b7e13a",
+                            "children": [{
+                                "componentProcessName": "Deploy-to-Sperto",
+                                "componentName": "ASMServices",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"ASMServices\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Application ASMServices Prod",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "6f506986dc0201202f1fc18f7b8544",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "aab111dd46b8ed38df4e8a29e46870",
+                        "from": "6f506986dc0201202f1fc18f7b8544",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "18478f79820f014542429c5a4bfec5",
+                        "from": "63b26b93c79662ca8539c3fc4e9dc9",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "63b26b93c79662ca8539c3fc4e9dc9",
+                        "from": "aab111dd46b8ed38df4e8a29e46870",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "aab111dd46b8ed38df4e8a29e46870",
+                        "x": -120,
+                        "y": 300,
+                        "h": 70,
+                        "w": 350
+                    },
+                    {
+                        "name": "18478f79820f014542429c5a4bfec5",
+                        "x": -5,
+                        "y": 590,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "6f506986dc0201202f1fc18f7b8544",
+                        "x": -100,
+                        "y": 155,
+                        "h": 70,
+                        "w": 310
+                    },
+                    {
+                        "name": "63b26b93c79662ca8539c3fc4e9dc9",
+                        "x": -75,
+                        "y": 445,
+                        "h": 70,
+                        "w": 350
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "d1366917-1ed4-4abe-be16-2ffe2fca2c05",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "18478f79820f014542429c5a4bfec5",
+                        "children": []
+                    },
+                    {
+                        "componentName": "ASMServices",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "6f506986dc0201202f1fc18f7b8544",
+                        "children": [{
+                            "componentName": "ASMServices",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "235e5bd3-9d25-4514-bddc-4a21ae5b417c",
+                            "children": [{
+                                "componentProcessName": "Create-PROD-Snapshot",
+                                "componentName": "ASMServices",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"ASMServices\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "ASMServices",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "aab111dd46b8ed38df4e8a29e46870",
+                        "children": [{
+                            "componentName": "ASMServices",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "6d423c4f-146a-499e-b83f-ca297f33140d",
+                            "children": [{
+                                "componentProcessName": "Deploy-to-Sperto",
+                                "componentName": "ASMServices",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"ASMServices\" - Deploy to Sperto",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "ASMServices",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "63b26b93c79662ca8539c3fc4e9dc9",
+                        "children": [{
+                            "componentName": "ASMServices",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "090bf60f-3aa3-4caa-b907-de5be851aed3",
+                            "children": [{
+                                "componentProcessName": "Deploy-to-Mega",
+                                "componentName": "ASMServices",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"ASMServices\" - Deploy to Mega",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [],
+    "webhooks": []
+}

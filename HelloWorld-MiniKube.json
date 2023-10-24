@@ -1,0 +1,1260 @@
+{
+    "name": "HelloWorld-MiniKube",
+    "description": "Kubernetes example application",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "MiniKube-API-Container",
+            "description": "",
+            "created": 1582290777106,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "basePath",
+                            "value": "\/tmp\/HelloWorld",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy_API",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17067e13-422e-e8f1-bfdf-78f07191f333\/processes\/17067e1c-2a2d-67e7-7714-21f11316ac99",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Expose the container ports",
+                            "from": "Start API Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start minikube",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "4baf70da8120342091f581f88c5982",
+                            "from": "Get Service List from Minikube",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Get Service List from Minikube",
+                            "from": "Expose the container ports",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "4baf70da8120342091f581f88c5982",
+                            "from": "Kubectl get pods",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Status",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Status",
+                            "from": "Start minikube",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start API Container",
+                            "from": "Check Status",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Kubectl get pods",
+                            "from": "Expose the container ports",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Kubectl get pods",
+                            "x": 132.5,
+                            "y": 740,
+                            "h": 100,
+                            "w": 290
+                        },
+                        {
+                            "name": "4baf70da8120342091f581f88c5982",
+                            "x": 2.5,
+                            "y": 890,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "Expose the container ports",
+                            "x": -129.5987654320988,
+                            "y": 590,
+                            "h": 100,
+                            "w": 410
+                        },
+                        {
+                            "name": "Get Service List from Minikube",
+                            "x": -347.5,
+                            "y": 740,
+                            "h": 100,
+                            "w": 450
+                        },
+                        {
+                            "name": "Start API Container",
+                            "x": -87.09876543209879,
+                            "y": 440,
+                            "h": 100,
+                            "w": 320
+                        },
+                        {
+                            "name": "Check Status",
+                            "x": -54.59876543209879,
+                            "y": 290,
+                            "h": 100,
+                            "w": 250
+                        },
+                        {
+                            "name": "Start minikube",
+                            "x": 117.5,
+                            "y": 140,
+                            "h": 100,
+                            "w": 260
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -302.5,
+                            "y": 140,
+                            "h": 100,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "1c854b8e-d8e1-4cab-8cf5-dc575a94a43f",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "4baf70da8120342091f581f88c5982",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo minikube start --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus 1 --vm-driver=none",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start minikube",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "minikube status",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Status",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl run hello-minikube --image=gcr.io\/google_containers\/echoserver:1.4 --port=8080",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start API Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl expose deployment hello-minikube --type=NodePort",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Expose the container ports",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo kubectl get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Kubectl get pods",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo minikube service list",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Get Service List from Minikube",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "true",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "MiniKube-Installation",
+            "description": "",
+            "created": 1582126521529,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Deploy HelloWorld",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/1705e16d-cc95-17ad-9cb3-dbb8422cf23b\/processes\/1705ec5c-0535-f59b-cc19-de7df83644c1",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "4baf70da8120342091f581f88c5982",
+                                "from": "Get Service List from Minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Check Status",
+                                "from": "Start minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start minikube",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start HelloWold Container",
+                                "from": "Check Status",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Expose the container ports",
+                                "from": "Start HelloWold Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Get Service List from Minikube",
+                                "from": "Get Services",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "4baf70da8120342091f581f88c5982",
+                                "from": "Kubectl get pods",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Kubectl get pods",
+                                "from": "Get Services",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Get Services",
+                                "from": "Expose the container ports",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Check Status",
+                                "x": -33.450520833333314,
+                                "y": 250,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "Start minikube",
+                                "x": -40,
+                                "y": 130,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "4baf70da8120342091f581f88c5982",
+                                "x": 14.388020833333314,
+                                "y": 850,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Expose the container ports",
+                                "x": -65.71614583333331,
+                                "y": 490,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Get Service List from Minikube",
+                                "x": -208.11197916666669,
+                                "y": 730,
+                                "h": 70,
+                                "w": 290
+                            },
+                            {
+                                "name": "Start HelloWold Container",
+                                "x": -70.3515625,
+                                "y": 370,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Kubectl get pods",
+                                "x": 111.88802083333331,
+                                "y": 730,
+                                "h": 70,
+                                "w": 200
+                            },
+                            {
+                                "name": "Get Services",
+                                "x": -19.5703125,
+                                "y": 610,
+                                "h": 70,
+                                "w": 180
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "11d534cc-9371-4143-a175-06b63b59ef82",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "4baf70da8120342091f581f88c5982",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo minikube start --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus 1 --vm-driver=none",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start minikube",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "minikube status",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Check Status",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "kubectl run hello-minikube --image=gcr.io\/google_containers\/echoserver:1.4 --port=8080",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start HelloWold Container",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "kubectl expose deployment hello-minikube --type=NodePort",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Expose the container ports",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "kubectl get services",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Get Services",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo kubectl get pods",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Kubectl get pods",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo minikube service list",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Get Service List from Minikube",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Install MiniKube",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1705e16d-cc95-17ad-9cb3-dbb8422cf23b\/processes\/1705e171-9d44-14c2-8169-b807864ec4c6",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Apt-get Update",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Minikube",
+                                "from": "Install Docker",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "199ef7ec843c801627a86f0e206444",
+                                "from": "Helm Install",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Helm Install",
+                                "from": "Install Minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Check minikube Version",
+                                "from": "Install Minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Docker",
+                                "from": "Apt-get Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "199ef7ec843c801627a86f0e206444",
+                                "from": "Check minikube Version",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Move Kubectl to Bin Directory",
+                                "from": "Install Kubectl",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Minikube",
+                                "from": "Move Kubectl to Bin Directory",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Kubectl",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Move Kubectl to Bin Directory",
+                                "x": 20,
+                                "y": 250,
+                                "h": 70,
+                                "w": 280
+                            },
+                            {
+                                "name": "Install Kubectl",
+                                "x": 70,
+                                "y": 130,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Apt-get Update",
+                                "x": -150,
+                                "y": 130,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Check minikube Version",
+                                "x": -170,
+                                "y": 490,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "Install Docker",
+                                "x": -190,
+                                "y": 250,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "Install Minikube",
+                                "x": -42.5,
+                                "y": 370,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Helm Install",
+                                "x": 110,
+                                "y": 490,
+                                "h": 70,
+                                "w": 170
+                            },
+                            {
+                                "name": "199ef7ec843c801627a86f0e206444",
+                                "x": 15,
+                                "y": 610,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "d3d4cd55-7a59-43e2-ab9a-c40f8fa9bf20",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "199ef7ec843c801627a86f0e206444",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "curl -LO https:\/\/storage.googleapis.com\/kubernetes-release\/release\/`curl -s https:\/\/storage.googleapis.com\/kubernetes-release\/release\/stable.txt`\/bin\/linux\/amd64\/kubectl",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Kubectl",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "chmod +x .\/kubectl\nsudo mv .\/kubectl \/usr\/local\/bin\/kubectl",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Move Kubectl to Bin Directory",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo apt-get update",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Apt-get Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo apt-get install docker.io -y",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Docker",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "curl -Lo minikube https:\/\/storage.googleapis.com\/minikube\/releases\/latest\/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube \/usr\/local\/bin\/",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Minikube",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "minikube version",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Check minikube Version",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "curl -fsSL -o get_helm.sh https:\/\/raw.githubusercontent.com\/helm\/helm\/master\/scripts\/get-helm-3\nchmod 700 get_helm.sh\n.\/get_helm.sh",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Helm Install",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [],
+    "processes": [{
+        "name": "Deploy to Kubernetes",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "fab1a829252663d924887691d6c461",
+                    "from": "048e064bc27db2ae8ee03f43a47ab6",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "048e064bc27db2ae8ee03f43a47ab6",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "76192283ac90e16f0f7df11e7ca9dd",
+                    "from": "fab1a829252663d924887691d6c461",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "76192283ac90e16f0f7df11e7ca9dd",
+                    "x": -5,
+                    "y": 530,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "048e064bc27db2ae8ee03f43a47ab6",
+                    "x": -105,
+                    "y": 180,
+                    "h": 80,
+                    "w": 320
+                },
+                {
+                    "name": "fab1a829252663d924887691d6c461",
+                    "x": -120,
+                    "y": 360,
+                    "h": 70,
+                    "w": 350
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "05eb8f8f-a80b-400b-84d9-afcc8b743aed",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "76192283ac90e16f0f7df11e7ca9dd",
+                    "children": []
+                },
+                {
+                    "componentName": "MiniKube-Installation",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "048e064bc27db2ae8ee03f43a47ab6",
+                    "children": [{
+                        "componentProcessName": "Install MiniKube",
+                        "componentName": "MiniKube-Installation",
+                        "allowFailure": false,
+                        "properties": {},
+                        "draftProperties": {},
+                        "type": "componentProcess",
+                        "name": "Component: \"MiniKube-Installation\"",
+                        "children": []
+                    }]
+                },
+                {
+                    "componentName": "MiniKube-API-Container",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "fab1a829252663d924887691d6c461",
+                    "children": [{
+                        "componentName": "MiniKube-API-Container",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "f6f9ef8f-7dbb-4aeb-91b5-94e10885ba6d",
+                        "children": [{
+                            "componentProcessName": "Deploy_API",
+                            "componentName": "MiniKube-API-Container",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install: \"MiniKube-HelloWorld-Container\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "17060757-228e-f9a1-57e2-5a6465c389e0",
+        "name": "Kubernetes",
+        "color": "#F389AF",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

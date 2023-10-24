@@ -1,0 +1,1908 @@
+{
+    "name": "CP4I-ACEIVT",
+    "description": "An example application that uses ACE as the backend of the API and then API Connect to publish the API product",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "CP4I-ACEIVT-API",
+            "description": "The API Connect API definition that uses a sample OpenAPI spec that points to an ACE endpoint",
+            "created": 1675958297530,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/var\/IBM\/UCD-Imports\/cp4i-aceivt-api",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "custom",
+                        "properties": [
+                            {
+                                "name": "apic.server",
+                                "value": "apim-demo-mgmt-platform-api-tools.jgr-ocp410-cp4120224-dcd557ed086a97d77c2297a53c025612-0000.us-south.containers.appdomain.cloud",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.username",
+                                "value": "rlange",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|7exsr+Kt1V4uT\/7iKLlwVA==|0dqTYS1ifIXbFOaR9TjXChyZe9aGUkitClK7OLHDHnnY+s17XxFvaNPJC0haUk95}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "apic.path",
+                                "value": "\/downloads\/api-connect\/apic",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.realm",
+                                "value": "provider\/default-idp-2",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.catalog",
+                                "value": "test",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic.organization",
+                                "value": "devops-org",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "apic-url",
+                                "value": "https:\/\/cpd-tools.jgr-ocp410-cp4120224-dcd557ed086a97d77c2297a53c025612-0000.us-south.containers.appdomain.cloud\/integration\/apis\/tools\/apim-demo\/manager",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            "processes": [
+                {
+                    "name": "Draft-Product",
+                    "description": "This process will publish the APIs and Products in Draft Mode.  This will make the APIs in that Product visible on the Developer Portal for use by application developers.",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/18636e62-3c9a-d95e-41a0-eb725171051d\/processes\/1869ab7b-b1ea-7b45-e8a7-b38089e1c59e",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "7656c40a13cbd9dfea72c821e95f42",
+                                "from": "Publish Product and API in Draft Mode",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Publish Product and API in Draft Mode",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "7656c40a13cbd9dfea72c821e95f42",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 180,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Publish Product and API in Draft Mode",
+                                "x": -115,
+                                "y": 350,
+                                "h": 70,
+                                "w": 340
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "4ed45be1-146d-4514-b0e2-e830e62b602b",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "7656c40a13cbd9dfea72c821e95f42",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 44,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "pluginId": "com.urbancode.plugin.VFS",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 13,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "pwd && ls -al\necho 'apic.path is ${p:apic.path}'\n\n#\n# Publish Product and API in Draft Mode so developers can access APIs in Developer Portal\n#\n${p:apic.path} draft-products:create --server ${p:apic.server} --org ${p:apic.organization} jgraceivt-product_1.0.1.yaml\necho $?\necho \"APIs have been published to Drafts\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Publish Product and API in Draft Mode",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Publish-Product",
+                    "description": "This process will publish the Product and API to a target Catalog ",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/18636e62-3c9a-d95e-41a0-eb725171051d\/processes\/18636eee-63a3-cde9-bc65-323a5d69f58d",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Publish API Product Definitions",
+                                "from": "Login",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "7c2f87e96239e4445a382c5974de2e",
+                                "from": "Publish API Product Definitions",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Login",
+                                "from": "Replace Tokens",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "List files",
+                                "from": "Login",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "7c2f87e96239e4445a382c5974de2e",
+                                "from": "List files",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Tokens",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "List files",
+                                "x": 149.49484756956718,
+                                "y": 560,
+                                "h": 90,
+                                "w": 210
+                            },
+                            {
+                                "name": "Smoke Test API",
+                                "x": -340.5051524304328,
+                                "y": 800,
+                                "h": 90,
+                                "w": 320
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -110,
+                                "y": 140,
+                                "h": 90,
+                                "w": 350
+                            },
+                            {
+                                "name": "7c2f87e96239e4445a382c5974de2e",
+                                "x": 1.9948475695671846,
+                                "y": 700,
+                                "h": 90,
+                                "w": 140
+                            },
+                            {
+                                "name": "Login",
+                                "x": -35.28051637745614,
+                                "y": 420,
+                                "h": 90,
+                                "w": 210
+                            },
+                            {
+                                "name": "Publish API Product Definitions",
+                                "x": -340.5051524304328,
+                                "y": 560,
+                                "h": 90,
+                                "w": 460
+                            },
+                            {
+                                "name": "Replace Tokens",
+                                "x": -93.4268387924854,
+                                "y": 280,
+                                "h": 90,
+                                "w": 320
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "6d7ba248-825d-4a03-b27e-4ec545a1ce34",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "7c2f87e96239e4445a382c5974de2e",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 44,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "pluginId": "com.urbancode.plugin.VFS",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 7,
+                                "commandName": "Login",
+                                "pluginName": "IBM API Connect",
+                                "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "${p:component\/apic.server}",
+                                    "username": "${p:apic.username}",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|5XghVXuUqNwnJCxuCfu2mw==|p+t6KA5GtqUfsVGo6oEYnPRJcEooBuK7b2RpK3OArs0=}",
+                                    "realm": "${p?:apic.realm}",
+                                    "apicPath": "${p?:component\/apic.path}",
+                                    "loggerLevel": "INFO"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Login",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 7,
+                                "commandName": "Publish API Product Definitions",
+                                "pluginName": "IBM API Connect",
+                                "pluginId": "com.urbancode.air.plugin.apiconnect",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "${p:component\/apic.server}",
+                                    "organization": "${p:component\/apic.organization}",
+                                    "catalog": "${p:component\/apic.catalog}",
+                                    "definition": "${p:resource\/work.dir}\/${p:component.name}\/jgraceivt-product_1.0.1.yaml",
+                                    "stage": "false",
+                                    "space": "",
+                                    "apicPath": "${p?:component\/apic.path}",
+                                    "loggerLevel": "INFO"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Publish API Product Definitions",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Send HTTP Call",
+                                "pluginName": "Web Utilities",
+                                "pluginId": "com.urbancode.air.plugin.WebUtilities",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "url": "http:\/\/ace-paym-backend-http-ace.cp4i-mon01-5b7e0d81360e5972646d63308bd04bf7-0000.mon01.containers.appdomain.cloud:80\/paymentsapi\/v1\/payments",
+                                    "method": "GET",
+                                    "headers": "accept: application\/json\ncontent-type: application\/json",
+                                    "data": "{\n  \"metadata\": {\n    \"code\": \"TEST\"\n  },\n  \"payload\": {\n    \"id\": \"5383331948527616\",\n    \"fname\": \"Olga\",\n    \"lname\": \"Romiti\",\n    \"email\": \"tal@be.lc\",\n    \"phone\": \"(962) 740-8275\",\n    \"company\": \"nofesewitusoriwu\",\n    \"comments\": \"nagzo\"\n  }\n}",
+                                    "contentType": "*\/*",
+                                    "acceptType": "*\/*",
+                                    "untrustedSSL": "true",
+                                    "username": "",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|er33gKp09Csjq+EYjOhEdw==|pIfNiWIBI7Gn6LKtlInA6A==}",
+                                    "outFile": "",
+                                    "timeout": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Smoke Test API",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 13,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "pwd\nls -al\n\n#cat ${p:resource\/work.dir}\/${p:component.name}\/jgraceivt-product_1.0.0.yaml",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "List files",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 89,
+                                "commandName": "Replace Tokens",
+                                "pluginName": "File Utils",
+                                "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "envPropValues": "${p:environment\/allProperties}",
+                                    "propertyPrefix": "",
+                                    "explicitTokens": "TARGET_URL->${p:environment\/env-api-target-url}\nAPI_GATEWAY_URL->${p:environment\/env-api-gateway-server-url}",
+                                    "startDelimiter": "@",
+                                    "endDelimiter": "@",
+                                    "propFile": "replace_tokens.properties",
+                                    "dir": "",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Tokens",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "175e1dc7-bed0-1352-2450-93eab64f88bd",
+                "name": "API Connect",
+                "color": "#00B2EF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "CP4I-ACEIVT-BAR",
+            "description": "An example BAR that Joel Gomez provided",
+            "created": 1675312692899,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "18610618-30f3-813d-7799-4a5d0b065f26",
+                "path": "componentTemplates\/18610618-3127-7412-5630-d802ee0be5af",
+                "name": "ACE-BAR",
+                "description": "A template for ACE-based broker archive file deployments",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [],
+                "active": true,
+                "envPropDefs": [
+                    {
+                        "name": "ace-install-directory",
+                        "label": "ACE Install Directory",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The installation directory for the ACE software",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "ace-ip-address",
+                        "label": "ACE IP Address",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "localhost",
+                        "required": true,
+                        "description": "The IP Address for the ACE instance",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "ace-port",
+                        "label": "ACE Port",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "4414",
+                        "required": true,
+                        "description": "The port that ACE is listening on",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "ace-user",
+                        "label": "ACE User",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "aceuser",
+                        "required": true,
+                        "description": "The user for the ACE software",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "integration-node-name",
+                        "label": "Integration Node Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The Integration Node Name",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "integration-server-name",
+                        "label": "Integration Server Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The Integration Server Name",
+                        "placeholder": ""
+                    }
+                ],
+                "resPropDefs": [],
+                "propDefs": [{
+                    "name": "bar-name",
+                    "label": "BAR File Name",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": true,
+                    "description": "The name of the bar to deploy",
+                    "placeholder": ""
+                }],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Create Integration Server",
+                        "description": "This process will create a traditional ACE Integration Server",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": false,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/18610618-3127-7412-5630-d802ee0be5af\/processes\/1869ac20-34f7-bee9-5425-c6455f55c076",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "a3a38f0bad0c8fec6f18cdfd7f1059",
+                                    "from": "Create Integration Server",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Create Integration Server",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "a3a38f0bad0c8fec6f18cdfd7f1059",
+                                    "x": -5,
+                                    "y": 450,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Create Integration Server",
+                                    "x": -95,
+                                    "y": 230,
+                                    "h": 70,
+                                    "w": 300
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "223c7960-e434-4ec4-9292-1efa93bba90b",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "a3a38f0bad0c8fec6f18cdfd7f1059",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 11,
+                                    "commandName": "Create Integration Server",
+                                    "pluginName": "IBM ACE",
+                                    "pluginId": "com.urbancode.air.plugin.ibmace",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "integrationServerName": "${p:integration-server-name}",
+                                        "brokerHost": "${p:ace-ip-address}",
+                                        "useSSL": "false",
+                                        "UserId": "${p:ace-user}",
+                                        "Password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|SJdrGQzJWd4Q\/J5gQ1ee1Q==|rdkfqzCgl5OhBFH8cGGMpg==}",
+                                        "port": "${p:ace-port}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Create Integration Server",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Deploy-BAR-on-Linux-ACE12",
+                        "description": "",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "inventoryActionType": "ADD",
+                        "status": "Active",
+                        "configActionType": "ADD",
+                        "active": true,
+                        "path": "componentTemplates\/18610618-3127-7412-5630-d802ee0be5af\/processes\/18610620-d85c-ab02-eb33-a3554bcb1500",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "3532730630b08835394559855ecac6",
+                                    "from": "Deploy",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Download Artifacts",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Deploy",
+                                    "from": "Download Artifacts",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "3532730630b08835394559855ecac6",
+                                    "x": -5,
+                                    "y": 550,
+                                    "h": 90,
+                                    "w": 130
+                                },
+                                {
+                                    "name": "Download Artifacts",
+                                    "x": -90,
+                                    "y": 190,
+                                    "h": 80,
+                                    "w": 300
+                                },
+                                {
+                                    "name": "Deploy",
+                                    "x": -45,
+                                    "y": 370,
+                                    "h": 80,
+                                    "w": 210
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "9f7b6535-9a68-46dc-bb1e-b0b16de0224d",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "3532730630b08835394559855ecac6",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 44,
+                                    "commandName": "Download Artifacts",
+                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                    "pluginId": "com.urbancode.plugin.VFS",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "artifactSetBaseDir": "",
+                                        "fileIncludePatterns": "**\/*",
+                                        "fileExcludePatterns": "",
+                                        "syncMode": "FULL",
+                                        "handleIncrementalVersions": "false",
+                                        "fullVerification": "true",
+                                        "setFileExecuteBits": "false",
+                                        "verifyFileIntegrity": "false",
+                                        "charset": "",
+                                        "versionId": "${p:version.id}",
+                                        "versionType": "${p:version.type}",
+                                        "serverUrl": "${p:server.url}",
+                                        "compId": "${p:component.id}",
+                                        "resId": "${p:resource.id}",
+                                        "envId": "${p:environment.id}",
+                                        "maxMemory": "1G",
+                                        "label": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Download Artifacts",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": true,
+                                    "impersonationUsername": "aceuser",
+                                    "impersonationGroup": "",
+                                    "showHidden": false,
+                                    "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|+N4BfRPJcIMLwRiUl1UJkg==|\/30cdk\/52QMDxvo\/UyuVIA==}",
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 11,
+                                    "commandName": "Deploy",
+                                    "pluginName": "IBM ACE",
+                                    "pluginId": "com.urbancode.air.plugin.ibmace",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "installDir": "${p:environment\/ace-install-directory}",
+                                        "useSSL": "false",
+                                        "UserId": "${p:environment\/ace-user}",
+                                        "Password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|iT8W+5d66XywNsera\/72QQ==|cEThnwSntdHvBi3zvB3DubC16JSRkSlQQyLgknHidwE=}",
+                                        "integrationNodeName": "${p:environment\/integration-node-name}",
+                                        "integrationNodeFileName": "",
+                                        "ipAddress": "${p:environment\/ace-ip-address}",
+                                        "port": "${p:environment\/ace-port}",
+                                        "BARFile": "${p:resource\/work.dir}\/CP4I-ACEIVT-BAR\/${p:component\/bar-name}",
+                                        "deployedObjects": "",
+                                        "integrationServerName": "${p:environment\/integration-server-name}",
+                                        "clear": "false",
+                                        "traceFileName": "${p?:resource\/ace.traceFileName}",
+                                        "timeoutValue": "${p?:resource\/ace.timeoutValue}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Deploy",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/cp4i-aceivt",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": [{
+                            "name": "bar-name",
+                            "value": "jgr-cp4i-aceivt.bar",
+                            "description": "",
+                            "secure": false
+                        }]
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "177fdf84-c7f8-880f-0aec-0532a9d1afdc",
+                "name": "ACE",
+                "color": "#FDB813",
+                "description": "",
+                "objectType": "Component"
+            }]
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "ACE-12-URL-Joel-Gomez",
+                        "value": "http:\/\/52.116.10.230:4414\/servers\/JGRIS01",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "ace-web-console-url",
+                        "value": "http:\/\/52.116.10.230:4414\/",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "app-url",
+                        "value": "http:\/\/jgr-ace-12-srvr.joel-gomez-ramirez-s-account.cloud:7080\/ipps\/customer\/v1",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "apic-web-console",
+                        "value": "https:\/\/cpd-tools.jgr-ocp410-cp4120224-dcd557ed086a97d77c2297a53c025612-0000.us-south.containers.appdomain.cloud\/integration\/apis\/tools\/apim-demo\/manager",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "env-api-target-url",
+                        "value": "http:\/\/52.116.10.230:7080",
+                        "description": "The target url for the DEV environment",
+                        "secure": false
+                    },
+                    {
+                        "name": "env-api-gateway-server-url",
+                        "value": "https:\/\/apim-demo-gw-gateway-tools.jgr-ocp410-cp4120224-dcd557ed086a97d77c2297a53c025612-0000.us-south.containers.appdomain.c        loud\/cp4i-demo-org\/sandbox\/jgraceivt\/v1",
+                        "description": "The API Gateway url for the DEV environment",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Integrations\/ACE",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/ACE\/DEV",
+                    "description": "",
+                    "parentName": "ACE",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Integrations\/ACE",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/ACE\/DEV",
+                    "description": "",
+                    "parentName": "ACE",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                            "path": "\/CloudPak-for-Integrations\/ACE\/DEV\/jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "CP4I-ACEIVT-BAR",
+                                "path": "\/CloudPak-for-Integrations\/ACE\/DEV\/jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud\/CP4I-ACEIVT-BAR",
+                                "description": "",
+                                "parentName": "jgr-ace-12-srvr.JOEL-GOMEZ-RAMIREZ-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "CP4I-ACEIVT-BAR",
+                                "roleProperties": {
+                                    "name": "CP4I-ACEIVT-BAR",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        },
+                        {
+                            "name": "virtualserver02",
+                            "path": "\/CloudPak-for-Integrations\/ACE\/DEV\/virtualserver02",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "virtualserver02",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "CP4I-ACEIVT-API",
+                                "path": "\/CloudPak-for-Integrations\/ACE\/DEV\/virtualserver02\/CP4I-ACEIVT-API",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "CP4I-ACEIVT-API",
+                                "roleProperties": {
+                                    "name": "CP4I-ACEIVT-API",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        }
+                    ]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "CP4I-ACEIVT-API"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "ace-ip-address",
+                            "value": "localhost",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-port",
+                            "value": "4414",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-user",
+                            "value": "aceuser",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-install-directory",
+                            "value": "\/opt\/mqsi\/ace-12.0.7.0\/server",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "integration-node-name",
+                            "value": "JGRINODE",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "integration-server-name",
+                            "value": "UCD",
+                            "description": "",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "CP4I-ACEIVT-BAR"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "CP4I-ACEIVT-API"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "ace-ip-address",
+                            "value": "localhost",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-port",
+                            "value": "4414",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-user",
+                            "value": "aceuser",
+                            "description": "",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "CP4I-ACEIVT-BAR"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#7F1C7D",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "CP4I-ACEIVT-API"
+                },
+                {
+                    "properties": [
+                        {
+                            "name": "ace-ip-address",
+                            "value": "localhost",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-port",
+                            "value": "4414",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "ace-user",
+                            "value": "aceuser",
+                            "description": "",
+                            "secure": false
+                        }
+                    ],
+                    "componentName": "CP4I-ACEIVT-BAR"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-BAR",
+            "description": "Deploys an ACE broker archive to an Integration Server",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "cbb9a41b811bceafeb5d2561247e44",
+                        "from": "6cf052cb3d50b2b102a08e03c25c87",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "6cf052cb3d50b2b102a08e03c25c87",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "6cf052cb3d50b2b102a08e03c25c87",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 340
+                    },
+                    {
+                        "name": "cbb9a41b811bceafeb5d2561247e44",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "2450c996-8f62-43e8-8807-8558b48243e3",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "cbb9a41b811bceafeb5d2561247e44",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4I-ACEIVT-BAR",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "6cf052cb3d50b2b102a08e03c25c87",
+                        "children": [{
+                            "componentName": "CP4I-ACEIVT-BAR",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "23f12bbb-afeb-41d8-b6d2-d9d99a61fe06",
+                            "children": [{
+                                "componentProcessName": "Deploy-BAR-on-Linux-ACE12",
+                                "componentName": "CP4I-ACEIVT-BAR",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"CP4I-ACEIVT-BAR\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy Backend and Frontend API",
+            "description": "This process will deploy both the backend API to ACE and publish the API to a product in API Connect",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "5e874b4bc2dfd7352a759ee33f66b9",
+                        "from": "2376523e0fb7fdbcfcd9a1a3890af2",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "ff220b95437f7f3711ad1f3b9fd307",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "2376523e0fb7fdbcfcd9a1a3890af2",
+                        "from": "ff220b95437f7f3711ad1f3b9fd307",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "5e874b4bc2dfd7352a759ee33f66b9",
+                        "x": -5,
+                        "y": 500,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "2376523e0fb7fdbcfcd9a1a3890af2",
+                        "x": -50,
+                        "y": 350,
+                        "h": 80,
+                        "w": 260
+                    },
+                    {
+                        "name": "ff220b95437f7f3711ad1f3b9fd307",
+                        "x": -115,
+                        "y": 180,
+                        "h": 70,
+                        "w": 340
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "2dc487d3-8a2a-458f-8dca-f4d2f5d1f9f4",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "5e874b4bc2dfd7352a759ee33f66b9",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4I-ACEIVT-BAR",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "ff220b95437f7f3711ad1f3b9fd307",
+                        "children": [{
+                            "componentName": "CP4I-ACEIVT-BAR",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "8e5ac9a8-20e7-489e-bd2c-76d50d30c57e",
+                            "children": [{
+                                "componentProcessName": "Deploy-BAR-on-Linux-ACE12",
+                                "componentName": "CP4I-ACEIVT-BAR",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"CP4I-ACEIVT-BAR\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "CP4I-ACEIVT-API",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "2376523e0fb7fdbcfcd9a1a3890af2",
+                        "children": [{
+                            "componentName": "CP4I-ACEIVT-API",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "70a5a3d3-6500-4217-9090-75b252429c00",
+                            "children": [{
+                                "componentProcessName": "Publish-Product",
+                                "componentName": "CP4I-ACEIVT-API",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Publish Product to Catalog",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Draft-API-Product",
+            "description": "Publish a draft Product to make the APIs in that Product visible on the Developer Portal for use by application developers. ",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "eb54f78112bfa6acf65a433d299d77",
+                        "from": "36b9c32ec052705b024d3fbc6684b5",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "36b9c32ec052705b024d3fbc6684b5",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "36b9c32ec052705b024d3fbc6684b5",
+                        "x": -50,
+                        "y": 230,
+                        "h": 80,
+                        "w": 340
+                    },
+                    {
+                        "name": "eb54f78112bfa6acf65a433d299d77",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "829f41c0-d0a7-4e12-8407-1156f9981b7a",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "eb54f78112bfa6acf65a433d299d77",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4I-ACEIVT-API",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "36b9c32ec052705b024d3fbc6684b5",
+                        "children": [{
+                            "componentName": "CP4I-ACEIVT-API",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "f3c0a00c-06fa-48b8-836e-1ee1e480900d",
+                            "children": [{
+                                "componentProcessName": "Draft-Product",
+                                "componentName": "CP4I-ACEIVT-API",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Deploy Product and API in Draft Mode",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Publish-API-Product",
+            "description": "This will publish a Product and API to a target Catalog in API Connect",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "cd59c5decb8ee2ee9aa30f586e06a4",
+                        "from": "e08989e2ef17c85c996c75f9d96336",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "e08989e2ef17c85c996c75f9d96336",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "e08989e2ef17c85c996c75f9d96336",
+                        "x": -80,
+                        "y": 230,
+                        "h": 70,
+                        "w": 270
+                    },
+                    {
+                        "name": "cd59c5decb8ee2ee9aa30f586e06a4",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "6905ac8e-63ab-480f-ba00-3ca31589e9a5",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "cd59c5decb8ee2ee9aa30f586e06a4",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4I-ACEIVT-API",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "e08989e2ef17c85c996c75f9d96336",
+                        "children": [{
+                            "componentName": "CP4I-ACEIVT-API",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "8f7caa9a-9fb2-4cac-8c69-5eddfc38f45a",
+                            "children": [{
+                                "componentProcessName": "Publish-Product",
+                                "componentName": "CP4I-ACEIVT-API",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"CP4I-ACEIVT-API\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Create ACE Integration Server",
+            "description": "This will create a traditional ACE Integration Server",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "45214fbd355b2269fdd0b480861ac3",
+                        "from": "ecc41ecbb1200bb263197e852a146c",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "ecc41ecbb1200bb263197e852a146c",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "45214fbd355b2269fdd0b480861ac3",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "ecc41ecbb1200bb263197e852a146c",
+                        "x": -100,
+                        "y": 230,
+                        "h": 80,
+                        "w": 310
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "9e9cf7fe-87f1-4534-8486-da8201015884",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "45214fbd355b2269fdd0b480861ac3",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4I-ACEIVT-BAR",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "ecc41ecbb1200bb263197e852a146c",
+                        "children": [{
+                            "componentProcessName": "Create Integration Server",
+                            "componentName": "CP4I-ACEIVT-BAR",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Create ACE Integration Server",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [{
+                "name": "integration-server-name",
+                "label": "Integration Server Name",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "value": "UCD-2",
+                "required": true,
+                "description": "Provide a name for the new Integration Server",
+                "placeholder": ""
+            }],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "175b4139-db94-01d4-7cb8-5a9c7e0a6164",
+            "name": "API Connect",
+            "color": "#00B2EF",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "177f5050-29ab-498d-7911-d104ffa1d3b6",
+            "name": "ACE",
+            "color": "#FDB813",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": [
+        {
+            "url": "https:\/\/hooks.slack.com\/services\/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",
+            "environments": ["DEV"],
+            "webhookTemplate": {
+                "name": "Slack-Application Deployment Failure",
+                "description": "",
+                "body": "## BEGIN SECTION Body\n## PROPERTY Content-Type: application\/json\n#macro (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\",\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n#end\n#macro (showFailure $analysis $indent)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section and recurse down\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"plain_text\",\n            \"text\": \"$indent$fn.escapeJson($analysis.getTrace().getName())\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n        #set ($analysisChildren = $analysis.getChildren())\n        #if ($analysisChildren && $analysisChildren.size() > 0)\n            #set ($newindent = $indent+\"--\")\n            #foreach ($child in $analysisChildren)\n                #showFailure($child, $newindent)\n            #end\n        #end\n    #end\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Version*: $fn.escapeJson($version.getName())\"\n         #if ($version.getDescription() and !$version.getDescription().trim().isEmpty())\n         },{\n             \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## block 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n                \"type\": \"plain_text\",\n                \"text\": \"A process on $fn.escapeJson($application.getName()) failed\"\n            }\n        },\n        ## block 2\n        {\n            \"type\": \"context\",\n            \"elements\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Environment*: $fn.escapeJson($environment.getName())\"\n                },\n                #if ($snapshot)\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },\n                #end\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested On*: $fn.formatDate($request.getSubmittedDate())\"\n                }\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Duration in Milliseconds*: $request.getDurationInMillis()\"\n                }\n                #if ($request.getDescription())\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n                }\n                #end\n                #set ($warningCount = $workflowTrace.getWarningCount())\n                #if ($warningCount > 0)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Warning Count*: $warningCount\"\n                }\n                #end\n            ]\n        },\n        ## block 3\n        {\n            \"type\":\"section\",\n            \"text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request>\"\n            }\n        },\n        ## block 4\n        {\n            \"type\":\"divider\"\n        },\n        ## block 5\n        #set ($warnMessList = $workflowTrace.getChildWarningMessages())\n        #if ($warnMessList && $warnMessList.size() > 0)\n        {\n            \"type\": \"section\",\n            \"fields\": [{\n                \"type\": \"mrkdwn\",\n                \"text\": \"*Warnings*\"\n            #foreach ($mess in $warnMessList)\n                #if($velocityCount == 9)\n                    ## add link\n            },{\n                \"type\": \"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|See process request for more>\"\n                #elseif ($velocityCount > 9)\n                    ## ignore\n                #else\n            },{\n                \"type\": \"plain_text\",\n                \"text\": \"$fn.escapeJson($mess)\"\n                #end\n            #end\n            }]\n        },\n        #end\n        ## block 6\n        {\n            \"type\":\"divider\"\n        }\n        ## Show as many of the failure analysis and versions as we can.\n        ## If we run out of blocks(slack limits to 50), make the last block\n        ## a link to the process request\n        ## for brevity we don't show summary of other steps as we do in emails\n        ##block 7 - 50\n        #set ($blockCount = 7)\n        #set ($rootAnalyses = $failureAnalysis.getRootAnalyses())\n        #if ($rootAnalyses && $rootAnalyses.size() > 0)\n            ## block 7\n            ,{\n                \"type\": \"section\",\n                \"text\": {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Failures*\"\n                }\n            }\n            #set ($blockCount = $blockCount + 1)\n            #foreach ($failure in $rootAnalyses)\n                #showFailure ($failure \"\")\n            #end\n        #end\n        ##Show as many versions as we have space for\n        #if ($versions && $versions.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Versions*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n                    #showVersion ($version)\n                #end\n            #end\n        #end\n    ]\n}\n## END SECTION Body",
+                "type": "PROCESS_FAILURE"
+            }
+        },
+        {
+            "url": "https:\/\/hooks.slack.com\/services\/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",
+            "environments": ["DEV"],
+            "webhookTemplate": {
+                "name": "Slack-Application Deployment Success",
+                "description": "",
+                "body": "## BEGIN SECTION Body\n## PROPERTY Content-Type: application\/json\n#macro (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\",\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Version*: $version.getName()\"\n         #if ($version.getDescription() and !$version.getDescription().trim().isEmpty())\n         },{\n             \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## block 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n                \"type\": \"plain_text\",\n                \"text\": \"A process on $fn.escapeJson($application.getName()) completed successfully\"\n            }\n        },\n        ## block 2\n        {\n            \"type\": \"context\",\n            \"elements\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Environment*: $fn.escapeJson($environment.getName())\"\n                },\n                #if ($snapshot)\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },\n                #end\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested On*: $fn.formatDate($request.getSubmittedDate())\"\n                }\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Duration in Milliseconds*: $request.getDurationInMillis()\"\n                }\n                #if ($request.getDescription())\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n                }\n                #end\n                #set ($warningCount = $workflowTrace.getWarningCount())\n                #if ($warningCount > 0)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Warning Count*: $warningCount\"\n                }\n                #end\n            ]\n        },\n        ## block 3\n        {\n            \"type\":\"section\",\n            \"text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request>\"\n            }\n        },\n        ## block 4\n        {\n            \"type\":\"divider\"\n        },\n        ## block 5\n        #set ($warnMessList = $workflowTrace.getChildWarningMessages())\n        #if ($warnMessList && $warnMessList.size() > 0)\n        {\n            \"type\": \"section\",\n            \"fields\": [{\n                \"type\": \"mrkdwn\",\n                \"text\": \"*Warnings*\"\n            #foreach ($mess in $warnMessList)\n                #if($velocityCount == 9)\n                    ## add link\n            },{\n                \"type\": \"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|See process request for more>\"\n                #elseif ($velocityCount > 9)\n                    ## ignore\n                #else\n            },{\n                \"type\": \"plain_text\",\n                \"text\": \"$fn.escapeJson($mess)\"\n                #end\n            #end\n            }]\n        },\n        #end\n        ## block 6\n        {\n            \"type\":\"divider\"\n        }\n        ##block 7 - 50\n        #set ($blockCount = 7)\n        ## show as many versions as possible\n        ## in the email template we show step summaries as well.\n        ## this is omitted here due to slack limits on sections and\n        ## my personal believe version list is more valuable than a bunch\n        ## of successful steps\n        ##Show as many versions as we have space for\n        #if ($versions && $versions.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Versions*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n                    #showVersion ($version)\n                #end\n            #end\n        #end\n    ]\n}\n## END SECTION Body",
+                "type": "PROCESS_SUCCESS"
+            }
+        },
+        {
+            "url": "https:\/\/hooks.slack.com\/services\/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",
+            "environments": ["DEV"],
+            "webhookTemplate": {
+                "name": "Slack-Process Request Started",
+                "description": "",
+                "body": "## BEGIN SECTION Body\n## PROPERTY Content-Type: application\/json\n#macro (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\",\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Version*: $fn.escapeJson($version.getName())\"\n         #if ($version.getDescription() and !$version.getDescription().trim().isEmpty())\n         },{\n             \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n#macro (showChanges $compName)\n    #if ($blockCount == 50)\n        #addLimitReached()\n        #set ($blockCount = $blockCount + 1)\n    #elseif ($blockCount > 50)\n        ## do nothing\n    #else\n        ,{\n            \"type\":\"section\",\n            \"fields\": [\n                {\n                    \"type\":\"mrkdwn\",\n                    \"text\": \"*$fn.escapeJson($compName)*:\"\n                }\n                #set ($changes = $changesByComponent.get($compName))\n                #foreach ($change in $changes)\n                    #if ($velocityCount < 9)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"$fn.escapeJson($fn.getChangeTypeDisplayName($change)) $fn.escapeJson($fn.getChangeVersionDisplayName($change)) to <$fn.escapeJson($externalUrl)#resource\/$change.getResource().getId().toString()|$fn.escapeJson($change.getResource().getName())>\"\n                }\n                    #elseif ($velocityCount == 9)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n                }\n                    #end\n                #end\n            ]\n        }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## Block 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n                \"type\": \"plain_text\",\n                \"text\": \"An application process started.\"\n            }\n        },\n        ## Block 2\n        {\n            \"type\": \"context\",\n            \"elements\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n                },{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\n                },{\n                #if ($snapshot)\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },{\n                #end\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\n                },{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Request on*: $fn.formatDate($request.getSubmittedDate())\"\n                }\n                #if ($request.getDescription())\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n                }\n                #end\n            ]\n        },\n        ## Block 3\n        {\n            \"type\": \"section\",\n            \"text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n            }\n        }\n        #set ($blockCount = 4)\n        ##Show as many versions as we have space for\n        #if ($versions && $versions.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Versions*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n                    #showVersion ($version)\n                #end\n            #end\n        #end\n        ## show as many Components as possible\n        #if ($uniqueComponentNames && $uniqueComponentNames.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Pending Changes*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($compName in $uniqueComponentNames)\n                    #showChanges ($compName)\n                #end\n            #end\n        #end\n    ]\n}\n## END SECTION Body",
+                "type": "PROCESS_STARTED"
+            }
+        }
+    ]
+}

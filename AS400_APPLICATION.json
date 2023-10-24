@@ -1,0 +1,1238 @@
+{
+    "name": "AS400_APPLICATION",
+    "description": "Example application that leverages Arcad for iSeries deployment",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "UCD_ARCAD",
+        "description": "",
+        "created": 1580325550151,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "ARCAD-Source Plug-in",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": [
+                    {
+                        "name": "arcad-application",
+                        "value": "UCD",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-ccsid",
+                        "value": "037",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-envid",
+                        "value": "DEV",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-instance",
+                        "value": "AD",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-language",
+                        "value": "ENG",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-login",
+                        "value": "pgmm43",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-password",
+                        "value": "password",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad-server",
+                        "value": "as400dev",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_last_transaction_id",
+                        "value": "200108144623",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "ARCADComponentProperties",
+                "properties": [
+                    {
+                        "name": "arcad_component_application",
+                        "value": "${p:component\/arcad-application}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_ccsid",
+                        "value": "${p:component\/arcad-ccsid}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_environment",
+                        "value": "${p:component\/arcad-envid}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_instance",
+                        "value": "${p:component\/arcad-instance}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_langue",
+                        "value": "${p:component\/arcad-language}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_login",
+                        "value": "${p:component\/arcad-login}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_macrolibrary",
+                        "value": "*LIBL",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_macroname",
+                        "value": "AXEXPORT",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_macroparam",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_macrosubparam",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_pwd",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|YR61MnE07f780jCl4TEjyQ==|JVRCsavQCGyS6XlhmAvJqw==}",
+                        "description": "",
+                        "secure": true
+                    },
+                    {
+                        "name": "arcad_component_server",
+                        "value": "${p:component\/arcad-server}",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_targetlibrary",
+                        "value": "ARCAD_NET",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_tmpdir",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "arcad_component_tmpifs",
+                        "value": "\/ArcadIfsPrd\/tmp",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            }
+        ]},
+        "processes": [
+            {
+                "name": "deploy",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/16ff2be3-8695-9657-8167-a1b8406a2a9c\/processes\/16ff2be3-8abb-b6e9-94fd-0755e7185b15",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Generate Transaction ID",
+                            "from": "Upload Savefiles",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "e8ca0266ed296aee754340ebfe8d2e",
+                            "from": "Deploy",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Upload Savefiles",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Deploy",
+                            "from": "Generate Transaction ID",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Upload Savefiles",
+                            "x": -135,
+                            "y": 310,
+                            "h": 110,
+                            "w": 420
+                        },
+                        {
+                            "name": "e8ca0266ed296aee754340ebfe8d2e",
+                            "x": -10,
+                            "y": 790,
+                            "h": 100,
+                            "w": 170
+                        },
+                        {
+                            "name": "Deploy",
+                            "x": -65,
+                            "y": 630,
+                            "h": 110,
+                            "w": 280
+                        },
+                        {
+                            "name": "Generate Transaction ID",
+                            "x": -190,
+                            "y": 470,
+                            "h": 110,
+                            "w": 530
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -155,
+                            "y": 150,
+                            "h": 110,
+                            "w": 460
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "15f93d72-e814-4138-b49d-dfd661e1af0e",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "e8ca0266ed296aee754340ebfe8d2e",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 1,
+                            "commandName": "Upload Savefiles",
+                            "pluginName": "ARCAD-Automation Plug-in",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "ibmi_server": "${p:resource\/arcad-server}",
+                                "ibmi_login": "${p:resource\/arcad-login}",
+                                "ibmi_pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|JSw7BOrpZYdO8L6woa0tyQ==|YaXUcCrzBADXHUe7sGFQTg==}",
+                                "ibmi_secure": "${p:resource\/arcad-secure}",
+                                "ibmi_ifstemporary_directory": "temp",
+                                "ibmi_savflibrary": "tmparcad",
+                                "ibmi_localdirectory": ".",
+                                "arcad_localsavfile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Upload Savefiles",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 1,
+                            "commandName": "Generate Transaction ID",
+                            "pluginName": "ARCAD-Automation Plug-in",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {"arcad_format": ""},
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Generate Transaction ID",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": true,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 1,
+                            "commandName": "Deploy",
+                            "pluginName": "ARCAD-Automation Plug-in",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "arcad_server": "${p:environment\/arcad-server}",
+                                "arcad_login": "${p:environment\/arcad-login}",
+                                "arcad_pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|oKtARMOyjr54JYxYNKwfWA==|cZ898lUKOsLVO4N135fNRA==}",
+                                "arcad_secure": "false",
+                                "arcad_instance": "${p:environment\/arcad-instance}",
+                                "arcad_langue": "${p:environment\/arcad-language}",
+                                "arcad_ccsid": "${p:environment\/arcad-ccsid}",
+                                "arcad_application": "${p:component\/arcad-application}",
+                                "arcad_envid": "${p:environment\/arcad-envid}",
+                                "arcad_tid": "${p:Generate Transaction ID\/arcad_transfer_id}",
+                                "arcad_savflibrary": "${p:Upload Savefiles\/ibmi_savflibrary}",
+                                "arcad_macrolibrary": "*LIBL",
+                                "arcad_macroname": "AXDEPLOY",
+                                "arcad_macroparam": "",
+                                "arcad_istest": "false",
+                                "arcad_macrosubparam": "",
+                                "arcad_logerroronly": "false",
+                                "component_name": "${p:component.name}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Deploy",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "rollback",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "REMOVE",
+                "status": "Active",
+                "active": true,
+                "path": "components\/16ff2be3-8695-9657-8167-a1b8406a2a9c\/processes\/16ff2be3-8b14-594e-90ad-a56c77f9cd37",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "cf44f310b25aa7ce142d3f1813e470",
+                            "from": "Rollback",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Rollback",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "cf44f310b25aa7ce142d3f1813e470",
+                            "x": -5,
+                            "y": 490,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "Rollback",
+                            "x": -60,
+                            "y": 240,
+                            "h": 100,
+                            "w": 260
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "f2257ae4-9a55-4cf1-97a9-516853bb054d",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "cf44f310b25aa7ce142d3f1813e470",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 1,
+                            "commandName": "Rollback",
+                            "pluginName": "ARCAD-Automation Plug-in",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "arcad_server": "${p:environment\/arcad-server}",
+                                "arcad_login": "${p:environment\/arcad-login}",
+                                "arcad_pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|elNhqMTwZJpfJ0oPWXNjpw==|HvdxUdopI5acwzbgeXrGvg==}",
+                                "arcad_secure": "${p:environment\/arcad-secure}",
+                                "arcad_instance": "${p:environment\/arcad-instance}",
+                                "arcad_langue": "${p:environment\/arcad-language}",
+                                "arcad_ccsid": "${p:environment\/arcad-ccsid}",
+                                "arcad_tid": "${p:component\/arcad_last_transaction_id}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Rollback",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [{
+        "name": "DEV",
+        "color": "#006059",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": [
+            {
+                "name": "arcad-ccsid",
+                "value": "037",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "arcad-envid",
+                "value": "TST",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "arcad-instance",
+                "value": "AD",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "arcad-language",
+                "value": "ENG",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "arcad-login",
+                "value": "PGMM85",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "arcad-password",
+                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|dTaKMSSdG3+U97WZPdH5dQ==|TQTHOb9PZbdAMA6hJHzvXg==}",
+                "description": "",
+                "secure": true
+            },
+            {
+                "name": "arcad-secure",
+                "value": "false",
+                "description": "",
+                "secure": false
+            },
+            {
+                "name": "arcad-server",
+                "value": "AS400DEV",
+                "description": "",
+                "secure": false
+            }
+        ]},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [],
+        "baseResourcesFull": [],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "UCD_ARCAD"
+        }],
+        "versionGate": {},
+        "teamMappings": []
+    }],
+    "processes": [
+        {
+            "name": "rollback",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "35944765d31387245cb8e123b2edfc",
+                        "from": "eceda455054d27fb4f1ebbb7f08f4f",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "eceda455054d27fb4f1ebbb7f08f4f",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "35944765d31387245cb8e123b2edfc",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "eceda455054d27fb4f1ebbb7f08f4f",
+                        "x": -75,
+                        "y": 230,
+                        "h": 70,
+                        "w": 260
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "a47a968a-63d0-4f4c-8d34-8a9ec2a316e0",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "35944765d31387245cb8e123b2edfc",
+                        "children": []
+                    },
+                    {
+                        "componentName": "UCD_ARCAD",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "eceda455054d27fb4f1ebbb7f08f4f",
+                        "children": [{
+                            "componentName": "UCD_ARCAD",
+                            "component": {
+                                "name": "UCD_ARCAD",
+                                "description": "",
+                                "created": 1580325550151,
+                                "componentType": "STANDARD",
+                                "ignoreQualifiers": 0,
+                                "importAutomatically": false,
+                                "useVfs": true,
+                                "active": true,
+                                "deleted": false,
+                                "defaultVersionType": "FULL",
+                                "cleanupDaysToKeep": 0,
+                                "cleanupCountToKeep": 0,
+                                "sourceConfigPluginName": "ARCAD-Source Plug-in",
+                                "envPropDefs": [],
+                                "resPropDefs": [],
+                                "versionPropDefs": [],
+                                "propSheetGroup": {"propSheets": [
+                                    {
+                                        "name": "template",
+                                        "properties": []
+                                    },
+                                    {
+                                        "name": "custom",
+                                        "properties": [
+                                            {
+                                                "name": "arcad-application",
+                                                "value": "UCD",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-ccsid",
+                                                "value": "037",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-envid",
+                                                "value": "DEV",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-instance",
+                                                "value": "AD",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-language",
+                                                "value": "ENG",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-login",
+                                                "value": "pgmm43",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-password",
+                                                "value": "password",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad-server",
+                                                "value": "as400dev",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_last_transaction_id",
+                                                "value": "200108144623",
+                                                "description": "",
+                                                "secure": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ARCADComponentProperties",
+                                        "properties": [
+                                            {
+                                                "name": "arcad_component_application",
+                                                "value": "${p:component\/arcad-application}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_ccsid",
+                                                "value": "${p:component\/arcad-ccsid}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_environment",
+                                                "value": "${p:component\/arcad-envid}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_instance",
+                                                "value": "${p:component\/arcad-instance}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_langue",
+                                                "value": "${p:component\/arcad-language}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_login",
+                                                "value": "${p:component\/arcad-login}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_macrolibrary",
+                                                "value": "*LIBL",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_macroname",
+                                                "value": "AXEXPORT",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_macroparam",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_macrosubparam",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_pwd",
+                                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|h0Qya3cV5ywYPUyLfXbd+Q==|DR+ZKkMHR6h9M9yJI6kdyg==}",
+                                                "description": "",
+                                                "secure": true
+                                            },
+                                            {
+                                                "name": "arcad_component_server",
+                                                "value": "${p:component\/arcad-server}",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_targetlibrary",
+                                                "value": "ARCAD_NET",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_tmpdir",
+                                                "description": "",
+                                                "secure": false
+                                            },
+                                            {
+                                                "name": "arcad_component_tmpifs",
+                                                "value": "\/ArcadIfsPrd\/tmp",
+                                                "description": "",
+                                                "secure": false
+                                            }
+                                        ]
+                                    }
+                                ]},
+                                "processes": [
+                                    {
+                                        "name": "deploy",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "ADD",
+                                        "status": "Active",
+                                        "configActionType": "ADD",
+                                        "active": true,
+                                        "path": "components\/16ff2be3-8695-9657-8167-a1b8406a2a9c\/processes\/16ff2be3-8abb-b6e9-94fd-0755e7185b15",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "Generate Transaction ID",
+                                                    "from": "Upload Savefiles",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "e8ca0266ed296aee754340ebfe8d2e",
+                                                    "from": "Deploy",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Upload Savefiles",
+                                                    "from": "Download Artifacts",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Download Artifacts",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Deploy",
+                                                    "from": "Generate Transaction ID",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "Upload Savefiles",
+                                                    "x": -135,
+                                                    "y": 310,
+                                                    "h": 110,
+                                                    "w": 420
+                                                },
+                                                {
+                                                    "name": "e8ca0266ed296aee754340ebfe8d2e",
+                                                    "x": -10,
+                                                    "y": 790,
+                                                    "h": 100,
+                                                    "w": 170
+                                                },
+                                                {
+                                                    "name": "Deploy",
+                                                    "x": -65,
+                                                    "y": 630,
+                                                    "h": 110,
+                                                    "w": 280
+                                                },
+                                                {
+                                                    "name": "Generate Transaction ID",
+                                                    "x": -190,
+                                                    "y": 470,
+                                                    "h": 110,
+                                                    "w": 530
+                                                },
+                                                {
+                                                    "name": "Download Artifacts",
+                                                    "x": -155,
+                                                    "y": 150,
+                                                    "h": 110,
+                                                    "w": 460
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "15f93d72-e814-4138-b49d-dfd661e1af0e",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "e8ca0266ed296aee754340ebfe8d2e",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 31,
+                                                    "commandName": "Download Artifacts",
+                                                    "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "directoryOffset": ".",
+                                                        "artifactSetBaseDir": "",
+                                                        "fileIncludePatterns": "**\/*",
+                                                        "fileExcludePatterns": "",
+                                                        "syncMode": "FULL",
+                                                        "fullVerification": "true",
+                                                        "setFileExecuteBits": "false",
+                                                        "verifyFileIntegrity": "false",
+                                                        "versionId": "${p:version.id}",
+                                                        "serverUrl": "${p:server.url}",
+                                                        "compId": "${p:component.id}",
+                                                        "resId": "${p:resource.id}",
+                                                        "charset": "",
+                                                        "label": ""
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Download Artifacts",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 1,
+                                                    "commandName": "Upload Savefiles",
+                                                    "pluginName": "ARCAD-Automation Plug-in",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "ibmi_server": "${p:resource\/arcad-server}",
+                                                        "ibmi_login": "${p:resource\/arcad-login}",
+                                                        "ibmi_pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|3JtKnOq5T\/\/lA3RcyBqkug==|i+8WkarsbR6J3PUAVh21Yw==}",
+                                                        "ibmi_secure": "${p:resource\/arcad-secure}",
+                                                        "ibmi_ifstemporary_directory": "temp",
+                                                        "ibmi_savflibrary": "tmparcad",
+                                                        "ibmi_localdirectory": ".",
+                                                        "arcad_localsavfile": ""
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Upload Savefiles",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 1,
+                                                    "commandName": "Generate Transaction ID",
+                                                    "pluginName": "ARCAD-Automation Plug-in",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {"arcad_format": ""},
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Generate Transaction ID",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": true,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 1,
+                                                    "commandName": "Deploy",
+                                                    "pluginName": "ARCAD-Automation Plug-in",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "arcad_server": "${p:environment\/arcad-server}",
+                                                        "arcad_login": "${p:environment\/arcad-login}",
+                                                        "arcad_pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|zPJt2MMEJJV0TUVHH3419Q==|UxU1WcgdMa+7Exru6MRKRw==}",
+                                                        "arcad_secure": "false",
+                                                        "arcad_instance": "${p:environment\/arcad-instance}",
+                                                        "arcad_langue": "${p:environment\/arcad-language}",
+                                                        "arcad_ccsid": "${p:environment\/arcad-ccsid}",
+                                                        "arcad_application": "${p:component\/arcad-application}",
+                                                        "arcad_envid": "${p:environment\/arcad-envid}",
+                                                        "arcad_tid": "${p:Generate Transaction ID\/arcad_transfer_id}",
+                                                        "arcad_savflibrary": "${p:Upload Savefiles\/ibmi_savflibrary}",
+                                                        "arcad_macrolibrary": "*LIBL",
+                                                        "arcad_macroname": "AXDEPLOY",
+                                                        "arcad_macroparam": "",
+                                                        "arcad_istest": "false",
+                                                        "arcad_macrosubparam": "",
+                                                        "arcad_logerroronly": "false",
+                                                        "component_name": "${p:component.name}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Deploy",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "rollback",
+                                        "description": "",
+                                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                                        "takesVersion": true,
+                                        "inventoryActionType": "REMOVE",
+                                        "status": "Active",
+                                        "active": true,
+                                        "path": "components\/16ff2be3-8695-9657-8167-a1b8406a2a9c\/processes\/16ff2be3-8b14-594e-90ad-a56c77f9cd37",
+                                        "deleted": false,
+                                        "propDefs": [],
+                                        "rootActivity": {
+                                            "edges": [
+                                                {
+                                                    "to": "cf44f310b25aa7ce142d3f1813e470",
+                                                    "from": "Rollback",
+                                                    "type": "SUCCESS",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "to": "Rollback",
+                                                    "type": "ALWAYS",
+                                                    "value": ""
+                                                }
+                                            ],
+                                            "offsets": [
+                                                {
+                                                    "name": "cf44f310b25aa7ce142d3f1813e470",
+                                                    "x": -5,
+                                                    "y": 490,
+                                                    "h": 90,
+                                                    "w": 150
+                                                },
+                                                {
+                                                    "name": "Rollback",
+                                                    "x": -60,
+                                                    "y": 240,
+                                                    "h": 100,
+                                                    "w": 260
+                                                }
+                                            ],
+                                            "layoutMode": "auto",
+                                            "type": "graph",
+                                            "name": "f2257ae4-9a55-4cf1-97a9-516853bb054d",
+                                            "children": [
+                                                {
+                                                    "type": "finish",
+                                                    "name": "cf44f310b25aa7ce142d3f1813e470",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "allowFailure": false,
+                                                    "useImpersonation": false,
+                                                    "showHidden": false,
+                                                    "impersonationUseSudo": false,
+                                                    "pluginVersion": 1,
+                                                    "commandName": "Rollback",
+                                                    "pluginName": "ARCAD-Automation Plug-in",
+                                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                                    "properties": {
+                                                        "arcad_server": "${p:environment\/arcad-server}",
+                                                        "arcad_login": "${p:environment\/arcad-login}",
+                                                        "arcad_pwd": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|ouAQjh5yq\/+MHCJpTZK5xQ==|QxVMqhRH2xlnBbqSFR1C+w==}",
+                                                        "arcad_secure": "${p:environment\/arcad-secure}",
+                                                        "arcad_instance": "${p:environment\/arcad-instance}",
+                                                        "arcad_langue": "${p:environment\/arcad-language}",
+                                                        "arcad_ccsid": "${p:environment\/arcad-ccsid}",
+                                                        "arcad_tid": "${p:component\/arcad_last_transaction_id}"
+                                                    },
+                                                    "cachedAuthTokenRestriction": {
+                                                        "name": "System Default",
+                                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                                        "restrictions": [{
+                                                            "verb": "ALL",
+                                                            "url": "\/*"
+                                                        }]
+                                                    },
+                                                    "type": "plugin",
+                                                    "name": "Rollback",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "configTemplates": [],
+                                "genericProcesses": [],
+                                "teamMappings": [],
+                                "tags": []
+                            },
+                            "status": "Active",
+                            "selectionType": "ALL_EXISTING",
+                            "type": "uninstallAllVersionsIterator",
+                            "name": "9da9cab91efaa07f2eb22bc3df6068",
+                            "children": [{
+                                "componentProcessName": "rollback",
+                                "componentName": "UCD_ARCAD",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Uninstall: \"UCD_ARCAD\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "deploy",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "942e315d222cd8c9f373aded863be9",
+                        "from": "1a5337a8c7bcb21e0949854dba637d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "1a5337a8c7bcb21e0949854dba637d",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "1a5337a8c7bcb21e0949854dba637d",
+                        "x": -65,
+                        "y": 230,
+                        "h": 70,
+                        "w": 240
+                    },
+                    {
+                        "name": "942e315d222cd8c9f373aded863be9",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "416c39b9-be3f-4ec2-9044-ea2370abfa3a",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "942e315d222cd8c9f373aded863be9",
+                        "children": []
+                    },
+                    {
+                        "componentName": "UCD_ARCAD",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "1a5337a8c7bcb21e0949854dba637d",
+                        "children": [{
+                            "componentName": "UCD_ARCAD",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "abd4c11f-c44c-4343-95c3-fa864c603f85",
+                            "children": [{
+                                "componentProcessName": "deploy",
+                                "componentName": "UCD_ARCAD",
+                                "allowFailure": false,
+                                "properties": {},
+                                "draftProperties": {},
+                                "type": "componentProcess",
+                                "name": "Install: \"UCD_ARCAD\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "16ff2d62-c9db-3f02-58b0-ca2504011340",
+        "name": "iSeries",
+        "color": "#91922F",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

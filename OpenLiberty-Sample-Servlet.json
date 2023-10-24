@@ -1,0 +1,1224 @@
+{
+    "name": "OpenLiberty-Sample-Servlet",
+    "description": "The example uses Jenkins to build a container and then stores in quay.io for deploy with UCD",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "OpenLiberty-Container-SampleServlet",
+        "description": "",
+        "created": 1634154020352,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [
+            {
+                "name": "Check OpenShfit Cluster Status",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17c7b2b7-e11b-e3d8-cc2d-827f9cc3f13e\/processes\/17c7b2d1-1134-711f-d854-b7f7a0ce9caf",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Show Current Deployment Status (rlange)",
+                            "from": "Show Current Routes and Services in Cluster (rlange)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "8d663968ea0914860f714cbfd40371",
+                            "from": "Show Current Deployment Status (rlange)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Show Current Routes and Services in Cluster (rlange)",
+                            "from": "OpenShift Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Show Current Deployment Status (rlange)",
+                            "x": -125,
+                            "y": 445,
+                            "h": 70,
+                            "w": 360
+                        },
+                        {
+                            "name": "Show Current Routes and Services in Cluster (rlange)",
+                            "x": -160,
+                            "y": 300,
+                            "h": 70,
+                            "w": 430
+                        },
+                        {
+                            "name": "8d663968ea0914860f714cbfd40371",
+                            "x": -5,
+                            "y": 590,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "OpenShift Login",
+                            "x": -45,
+                            "y": 155,
+                            "h": 70,
+                            "w": 200
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "538d82df-6943-4e08-9ca5-712b77409430",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "8d663968ea0914860f714cbfd40371",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"\"\necho \"\"\necho \"Routes in this namespace are:\" \noc get routes\necho \"\"\necho \"\"\necho \"Services in this namespace are:\"\noc get services",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Current Routes and Services in Cluster (rlange)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc project rlange\necho \"I am user $(id)\"\necho \"My current OpenShfit project is $(oc project)\"\necho \"\"\necho \"\"\necho \"Pods running in this namespace\"\noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Show Current Deployment Status (rlange)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Cleanup-LibertyContainer",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c7b2b7-e11b-e3d8-cc2d-827f9cc3f13e\/processes\/17c7b2c1-dda5-a99a-45f8-0dc9f0c3e404",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Display Pods to Ensure they are Cleaning Up",
+                            "from": "OpenShift Delete Route",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display Details",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Delete Route",
+                            "from": "OpenShift Delete Liberty Service",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "e147fea7067a58330bf08d9ab3b689",
+                            "from": "Display Pods to Ensure they are Cleaning Up",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Delete Liberty Service",
+                            "from": "OpenShift Delete Liberty Deployment",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Delete Liberty Deployment",
+                            "from": "OpenShift Login and Display Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "OpenShift Delete Liberty Deployment",
+                            "x": -195,
+                            "y": 440,
+                            "h": 100,
+                            "w": 530
+                        },
+                        {
+                            "name": "OpenShift Delete Route",
+                            "x": -115,
+                            "y": 740,
+                            "h": 100,
+                            "w": 370
+                        },
+                        {
+                            "name": "e147fea7067a58330bf08d9ab3b689",
+                            "x": -5,
+                            "y": 1040,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "OpenShift Login and Display Details",
+                            "x": -185,
+                            "y": 290,
+                            "h": 100,
+                            "w": 510
+                        },
+                        {
+                            "name": "Display Pods to Ensure they are Cleaning Up",
+                            "x": -240,
+                            "y": 890,
+                            "h": 100,
+                            "w": 620
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -125,
+                            "y": 140,
+                            "h": 100,
+                            "w": 390
+                        },
+                        {
+                            "name": "OpenShift Delete Liberty Service",
+                            "x": -170,
+                            "y": 590,
+                            "h": 100,
+                            "w": 480
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "af57300f-b76d-4396-bfaa-8560eb028a87",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "e147fea7067a58330bf08d9ab3b689",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc delete route liberty-sample-route --namespace=rlange",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Route",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\nls -al\noc delete -f liberty-deployment.yaml --namespace=rlange\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Liberty Deployment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\nls -al\noc delete -f liberty-service.yaml --namespace=rlange",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Delete Liberty Service",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\necho \"I am user $(id)\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace\"\noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Pods to Ensure they are Cleaning Up",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Deploy-Container",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17c7b2b7-e11b-e3d8-cc2d-827f9cc3f13e\/processes\/17c7b2ea-8f35-9e3c-3007-8c14baea91a1",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Apply Service YAML",
+                            "from": "OpenShift Apply Deployment YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Apply Deployment YAML",
+                            "from": "OpenShift Login and Display OpenShift Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Replace Tokens",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display OpenShift Details",
+                            "from": "Replace Tokens",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Route for Liberty Container",
+                            "from": "OpenShift Apply Service YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "from": "Create Route for Liberty Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "x": -250,
+                            "y": 440,
+                            "h": 100,
+                            "w": 640
+                        },
+                        {
+                            "name": "Create Route for Liberty Container",
+                            "x": -180,
+                            "y": 890,
+                            "h": 100,
+                            "w": 500
+                        },
+                        {
+                            "name": "OpenShift Apply Deployment YAML",
+                            "x": -185,
+                            "y": 590,
+                            "h": 100,
+                            "w": 510
+                        },
+                        {
+                            "name": "Replace Tokens",
+                            "x": -110,
+                            "y": 290,
+                            "h": 100,
+                            "w": 360
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -125,
+                            "y": 140,
+                            "h": 100,
+                            "w": 390
+                        },
+                        {
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "x": -5,
+                            "y": 1040,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "OpenShift Apply Service YAML",
+                            "x": -160,
+                            "y": 740,
+                            "h": 100,
+                            "w": 460
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "46e96edf-0053-4b3d-9108-5c655c01da81",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 37,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 79,
+                            "commandName": "Replace Tokens",
+                            "pluginName": "File Utils",
+                            "pluginId": "com.urbancode.air.plugin.FileUtils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "includes": "**\/liberty-deployment.yaml",
+                                "excludes": "",
+                                "envPropValues": "${p:environment\/allProperties}",
+                                "propertyPrefix": "",
+                                "explicitTokens": "@BUILDTAG@->${p:version.name}",
+                                "startDelimiter": "@",
+                                "endDelimiter": "@",
+                                "propFile": "replace_tokens.properties",
+                                "dir": "",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Replace Tokens",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-deployment.yaml\noc apply --namespace=rlange -f liberty-deployment.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Apply Deployment YAML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-service.yaml\noc apply --namespace=rlange -f liberty-service.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Apply Service YAML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/sh\nexport KUBECONFIG=.\/kubeconfig\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-route.yaml\noc apply --namespace=rlange -f liberty-route.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Route for Liberty Container",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [
+            {
+                "id": "175e1dee-d04b-e903-9508-4c204064e025",
+                "name": "Docker",
+                "color": "#AB1A86",
+                "description": "",
+                "objectType": "Component"
+            },
+            {
+                "id": "173bb5eb-b246-9df2-727c-d178ed51592c",
+                "name": "WebSphere Liberty",
+                "color": "#7F1C7D",
+                "description": "",
+                "objectType": "Component"
+            }
+        ]
+    }],
+    "environments": [{
+        "name": "OpenShift-DEV",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": [{
+                "name": "oc-auth-token",
+                "value": "sha256~8qdTZKdnSDu0jPdokN9hzbUKy6X44-HFErEJfNypWdc",
+                "description": "",
+                "secure": false
+            }]
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+            "tree": {
+                "name": "OpenLiberty-Container-SampleServlet",
+                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/OpenLiberty-Container-SampleServlet",
+                "description": "",
+                "parentName": "virtualserver02",
+                "inheritTeam": true,
+                "roleName": "OpenLiberty-Container-SampleServlet",
+                "roleProperties": {
+                    "name": "OpenLiberty-Container-SampleServlet",
+                    "properties": []
+                },
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+            "tree": {
+                "name": "OpenLiberty-Container-SampleServlet",
+                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/OpenLiberty-Container-SampleServlet",
+                "description": "",
+                "parentName": "virtualserver02",
+                "inheritTeam": true,
+                "roleName": "OpenLiberty-Container-SampleServlet",
+                "roleProperties": {
+                    "name": "OpenLiberty-Container-SampleServlet",
+                    "properties": []
+                },
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": []
+            }
+        }],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "OpenLiberty-Container-SampleServlet"
+        }],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [
+        {
+            "name": "Deploy-Container",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "8ae73cd761574b1d47691f01959600",
+                        "from": "13240facd166071e8af41c6f28eb03",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "13240facd166071e8af41c6f28eb03",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "13240facd166071e8af41c6f28eb03",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 390
+                    },
+                    {
+                        "name": "8ae73cd761574b1d47691f01959600",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "57e4159c-f64e-4240-80c1-9ef7c289c7ae",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "8ae73cd761574b1d47691f01959600",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-Container-SampleServlet",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "13240facd166071e8af41c6f28eb03",
+                        "children": [{
+                            "componentName": "OpenLiberty-Container-SampleServlet",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "c4c732f1-3c12-4416-b4aa-c4c7933993b7",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container",
+                                "componentName": "OpenLiberty-Container-SampleServlet",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-Container-SampleServlet\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Cleanup-Deployment",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "62a8fadc63a86c6cf9b4960081836b",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "af5299fa6b454bc95e992de006709b",
+                        "from": "62a8fadc63a86c6cf9b4960081836b",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "af5299fa6b454bc95e992de006709b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "62a8fadc63a86c6cf9b4960081836b",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 390
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "4cc8a413-144f-46ae-bf29-7a2a14545a78",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "af5299fa6b454bc95e992de006709b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-Container-SampleServlet",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "62a8fadc63a86c6cf9b4960081836b",
+                        "children": [{
+                            "componentName": "OpenLiberty-Container-SampleServlet",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "ed6a7aa9-f75d-4b6e-b6ea-3ba77dfb1633",
+                            "children": [{
+                                "componentProcessName": "Cleanup-LibertyContainer",
+                                "componentName": "OpenLiberty-Container-SampleServlet",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-Container-SampleServlet\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Check-Current-Deployments",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "93a78957376939545391f31991a20a",
+                        "from": "7fdc8badec7538d153010e4e9ea824",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "7fdc8badec7538d153010e4e9ea824",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "93a78957376939545391f31991a20a",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "7fdc8badec7538d153010e4e9ea824",
+                        "x": -160,
+                        "y": 230,
+                        "h": 80,
+                        "w": 430
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "fe34ea60-fd94-450e-8db7-5cd2370f50ec",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "93a78957376939545391f31991a20a",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-Container-SampleServlet",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "7fdc8badec7538d153010e4e9ea824",
+                        "children": [{
+                            "componentProcessName": "Check OpenShfit Cluster Status",
+                            "componentName": "OpenLiberty-Container-SampleServlet",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"OpenLiberty-Container-SampleServlet\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "1738e96c-fbe4-ffb0-ede5-b11faa040915",
+            "name": "OpenShift",
+            "color": "#D9182D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "16e67201-c763-1af1-9317-b24ecea8a8fa",
+            "name": "WebSphere Liberty",
+            "color": "#7F1C7D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "1797c080-1244-7a03-23f1-fb1f96a56ffb",
+            "name": "GitLab",
+            "color": "#DD731C",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": []
+}

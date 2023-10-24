@@ -1,0 +1,473 @@
+{
+    "name": "JBoss-HelloWorld",
+    "description": "An example application that is built using GitLab and deployed to OpenShift",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "JBoss-HelloWorld-Container",
+        "description": "The container that is built by GitLab and then deployed to OpenShift",
+        "created": 1662134421208,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": [{
+                        "name": "namespace",
+                        "value": "rlange",
+                        "description": "",
+                        "secure": false
+                    }]
+                }
+            ]
+        },
+        "processes": [{
+            "name": "Deploy-Container-to-OpenShift",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/182feee8-6e9b-4780-1587-32d12f5e5a9a\/processes\/182feef1-ca07-6ee6-0cc6-f1fba924c4c1",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Deploy Application to OpenShift",
+                        "from": "Replace Tokens",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "9c76229cb7b5d808ca369b9680272b",
+                        "from": "Deploy Application to OpenShift",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Replace Tokens",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "Deploy Application to OpenShift",
+                        "x": -95,
+                        "y": 445,
+                        "h": 70,
+                        "w": 300
+                    },
+                    {
+                        "name": "9c76229cb7b5d808ca369b9680272b",
+                        "x": -5,
+                        "y": 590,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 155,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "Replace Tokens",
+                        "x": -65,
+                        "y": 300,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "6b0ce3da-e2f1-4da1-b6ef-abff04210a68",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "9c76229cb7b5d808ca369b9680272b",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 37,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "pluginId": "com.urbancode.plugin.VFS",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "handleIncrementalVersions": "false",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "charset": "",
+                            "versionId": "${p:version.id}",
+                            "versionType": "${p:version.type}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "envId": "${p:environment.id}",
+                            "maxMemory": "1G",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 79,
+                        "commandName": "Replace Tokens",
+                        "pluginName": "File Utils",
+                        "pluginId": "com.urbancode.air.plugin.FileUtils",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "includes": "**\/*",
+                            "excludes": "",
+                            "envPropValues": "${p:component\/allProperties},${p:allProperties}",
+                            "propertyPrefix": "",
+                            "explicitTokens": "",
+                            "startDelimiter": "@@",
+                            "endDelimiter": "@@",
+                            "propFile": "replace_tokens.properties",
+                            "dir": "",
+                            "customEncoding": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Replace Tokens",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "pluginId": "com.urbancode.air.plugin.Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "${p:environment\/ocpLoginCmd}\noc apply -f all-in-one.yaml",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy Application to OpenShift",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [
+            {
+                "id": "183015ec-e6d1-f2a6-e706-4ec7f6b56acb",
+                "name": "JBoss",
+                "color": "#00648D",
+                "description": "",
+                "objectType": "Component"
+            },
+            {
+                "id": "173bb5e6-3bab-0c05-3902-c7dc3e48b0ca",
+                "name": "OpenShift",
+                "color": "#D9182D",
+                "description": "",
+                "objectType": "Component"
+            },
+            {
+                "id": "178d1327-dd62-bae4-3913-7bc61886ea46",
+                "name": "Kubernetes",
+                "color": "#F051A1",
+                "description": "",
+                "objectType": "Component"
+            }
+        ]
+    }],
+    "environments": [{
+        "name": "OpenShift-DEV",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": [
+                {
+                    "name": "ocpToken",
+                    "value": "sha256~axbhA1MuipSTQaecyM6bxw0iDPl9beGV75HEImoBzE0",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "ocpURL",
+                    "value": "https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "ocpLoginCmd",
+                    "value": "oc login --token=${p:ocpToken} --server=${p:ocpURL}",
+                    "description": "",
+                    "secure": false
+                }
+            ]
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+            "tree": {
+                "name": "JBoss-HelloWorld-Container",
+                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/JBoss-HelloWorld-Container",
+                "description": "",
+                "parentName": "virtualserver02",
+                "inheritTeam": true,
+                "roleName": "JBoss-HelloWorld-Container",
+                "roleProperties": {
+                    "name": "JBoss-HelloWorld-Container",
+                    "properties": []
+                },
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+            "tree": {
+                "name": "JBoss-HelloWorld-Container",
+                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/JBoss-HelloWorld-Container",
+                "description": "",
+                "parentName": "virtualserver02",
+                "inheritTeam": true,
+                "roleName": "JBoss-HelloWorld-Container",
+                "roleProperties": {
+                    "name": "JBoss-HelloWorld-Container",
+                    "properties": []
+                },
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": []
+            }
+        }],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "JBoss-HelloWorld-Container"
+        }],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [{
+        "name": "Deploy-to-OCP",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "a3802beae860bcba6484f186e91925",
+                    "from": "e21821fd797cf39b3b5e131ef19dbf",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "e21821fd797cf39b3b5e131ef19dbf",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "a3802beae860bcba6484f186e91925",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "e21821fd797cf39b3b5e131ef19dbf",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 350
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "fc5bf542-b596-4764-be59-09af9d194c4e",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "a3802beae860bcba6484f186e91925",
+                    "children": []
+                },
+                {
+                    "componentName": "JBoss-HelloWorld-Container",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "e21821fd797cf39b3b5e131ef19dbf",
+                    "children": [{
+                        "componentName": "JBoss-HelloWorld-Container",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "8013514c-db2f-4c91-832b-e501f24c9e4f",
+                        "children": [{
+                            "componentProcessName": "Deploy-Container-to-OpenShift",
+                            "componentName": "JBoss-HelloWorld-Container",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"JBoss-HelloWorld-Container\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "1738e96c-fbe4-ffb0-ede5-b11faa040915",
+            "name": "OpenShift",
+            "color": "#D9182D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "17060757-228e-f9a1-57e2-5a6465c389e0",
+            "name": "Kubernetes",
+            "color": "#F389AF",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "1797c080-1244-7a03-23f1-fb1f96a56ffb",
+            "name": "GitLab",
+            "color": "#DD731C",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": []
+}

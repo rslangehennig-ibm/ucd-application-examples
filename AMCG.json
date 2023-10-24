@@ -1,0 +1,619 @@
+{
+    "name": "AMCG",
+    "description": "Use by Financial Release in UCR",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "AMCG-CICS",
+        "description": "",
+        "created": 1610745018841,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "FileSystemVersionedComponentProperties",
+                "properties": [
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "includes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "excludes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "basePath",
+                        "value": "\/downloads\/omf",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": []
+            }
+        ]},
+        "processes": [{
+            "name": "Deploy",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/17707e27-9e98-c523-907c-e5add4afadd0\/processes\/17707e29-ecc2-351a-acbf-7d113569c52f",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "87d2a5a6fdb2900add508dd6c0119d",
+                        "from": "Run-CICS-Deployment",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Run-CICS-Deployment",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 180,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "87d2a5a6fdb2900add508dd6c0119d",
+                        "x": -5,
+                        "y": 520,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Run-CICS-Deployment",
+                        "x": -25,
+                        "y": 350,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "e8ded6e2-6a9c-4b4a-ad26-dc14db5efc87",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "87d2a5a6fdb2900add508dd6c0119d",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 32,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "versionId": "${p:version.id}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "charset": "",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "echo \"deploying this fake mainframe app\"",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Run-CICS-Deployment",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Financial-Apps-UCR\/AMCG",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Financial-Apps-UCR\/AMCG\/DEV",
+                    "description": "",
+                    "parentName": "AMCG",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Financial-Apps-UCR\/AMCG",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Financial-Apps-UCR\/AMCG\/DEV",
+                    "description": "",
+                    "parentName": "AMCG",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Financial-Apps-UCR\/AMCG\/DEV\/virtualserver02",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "AMCG-CICS",
+                            "path": "\/Financial-Apps-UCR\/AMCG\/DEV\/virtualserver02\/AMCG-CICS",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "AMCG-CICS",
+                            "roleProperties": {
+                                "name": "AMCG-CICS",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "AMCG-CICS"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FFCF01",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Financial-Apps-UCR\/AMCG",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Financial-Apps-UCR\/AMCG\/QA",
+                    "description": "",
+                    "parentName": "AMCG",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Financial-Apps-UCR\/AMCG",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/Financial-Apps-UCR\/AMCG\/QA",
+                    "description": "",
+                    "parentName": "AMCG",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Financial-Apps-UCR\/AMCG\/QA\/virtualserver02",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "AMCG-CICS",
+                            "path": "\/Financial-Apps-UCR\/AMCG\/QA\/virtualserver02\/AMCG-CICS",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "AMCG-CICS",
+                            "roleProperties": {
+                                "name": "AMCG-CICS",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "AMCG-CICS"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Financial-Apps-UCR\/AMCG",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/Financial-Apps-UCR\/AMCG\/PROD",
+                    "description": "",
+                    "parentName": "AMCG",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Financial-Apps-UCR\/AMCG",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/Financial-Apps-UCR\/AMCG\/PROD",
+                    "description": "",
+                    "parentName": "AMCG",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Financial-Apps-UCR\/AMCG\/PROD\/virtualserver02",
+                        "description": "",
+                        "parentName": "PROD",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "AMCG-CICS",
+                            "path": "\/Financial-Apps-UCR\/AMCG\/PROD\/virtualserver02\/AMCG-CICS",
+                            "description": "",
+                            "parentName": "virtualserver02",
+                            "inheritTeam": true,
+                            "roleName": "AMCG-CICS",
+                            "roleProperties": {
+                                "name": "AMCG-CICS",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "AMCG-CICS"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-AMCG",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "cb02c9e8925926a03d53d9c176ce7f",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "039ecea9d042f300f2adc1ade23a12",
+                    "from": "cb02c9e8925926a03d53d9c176ce7f",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "cb02c9e8925926a03d53d9c176ce7f",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 230
+                },
+                {
+                    "name": "039ecea9d042f300f2adc1ade23a12",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "e0b0f035-a259-4f51-8800-7e0725f7167b",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "039ecea9d042f300f2adc1ade23a12",
+                    "children": []
+                },
+                {
+                    "componentName": "AMCG-CICS",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "cb02c9e8925926a03d53d9c176ce7f",
+                    "children": [{
+                        "componentName": "AMCG-CICS",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "f2997ab0-56be-43a9-953b-9f3b8a5c4c9c",
+                        "children": [{
+                            "componentProcessName": "Deploy",
+                            "componentName": "AMCG-CICS",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"AMCG-CICS\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "1709ce7d-3a5e-634f-5271-f4690aa5c033",
+        "name": "Mainframe",
+        "color": "#DD731C",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

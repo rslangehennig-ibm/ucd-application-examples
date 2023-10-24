@@ -1,0 +1,406 @@
+{
+    "name": "AppConnect-DevOps",
+    "description": "This is an example that deploys APIC BAR files (Carl Cabou)",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "App-Connect-BAR",
+        "description": "",
+        "created": 1660941642647,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [{
+            "name": "Deploy Bar",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/182b7d62-bb81-6aef-403d-dd4415ff0f46\/processes\/182b7d62-bc3c-8c91-55fd-94118fa9566d",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Deploy",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "652d86f61e3ca6d0ba92bd57f0a285",
+                        "from": "Deploy",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "Deploy",
+                        "x": -25,
+                        "y": 350,
+                        "h": 70,
+                        "w": 160
+                    },
+                    {
+                        "name": "652d86f61e3ca6d0ba92bd57f0a285",
+                        "x": -5,
+                        "y": 520,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 180,
+                        "h": 70,
+                        "w": 260
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "b948d757-1a12-4409-a088-e6c10881d3e5",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "652d86f61e3ca6d0ba92bd57f0a285",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "pluginId": "com.urbancode.air.plugin.Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "dir\nC:\\Windows\\System32\\cmd.exe \/T:0B \/K \"cd \/D C:\\IBM\\ACE12050\\ & ACE.cmd & ibmint deploy --input-bar-file C:\\IBM\\UCD\\agent\\var\\work\\App-Connect-BAR\\HTTPInputApplication.bar --output-host localhost --output-port ${p:environment\/api-port} & exit\"",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 37,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "pluginId": "com.urbancode.plugin.VFS",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "handleIncrementalVersions": "false",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "charset": "",
+                            "versionId": "${p:version.id}",
+                            "versionType": "${p:version.type}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "envId": "${p:environment.id}",
+                            "maxMemory": "1G",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "TEST",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [{
+                    "name": "api-port",
+                    "value": "7600",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "App-Connect-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "color": "#DD731C",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": [{
+                    "name": "api-port",
+                    "value": "7601",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "App-Connect-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": [{
+                    "name": "api-port",
+                    "value": "7602",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "App-Connect-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-BAR",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "42666084b57363eded37c8b15d9d8d",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "d6a9e837b4d4e421aeabb32047443e",
+                    "from": "42666084b57363eded37c8b15d9d8d",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "42666084b57363eded37c8b15d9d8d",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 270
+                },
+                {
+                    "name": "d6a9e837b4d4e421aeabb32047443e",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "1d59b0bc-db2d-4f73-a030-d68b750c89e7",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "d6a9e837b4d4e421aeabb32047443e",
+                    "children": []
+                },
+                {
+                    "componentName": "App-Connect-BAR",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "42666084b57363eded37c8b15d9d8d",
+                    "children": [{
+                        "componentName": "App-Connect-BAR",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "20445bb2-d15c-494f-8ded-34c3b522ea31",
+                        "children": [{
+                            "componentProcessName": "Deploy Bar",
+                            "componentName": "App-Connect-BAR",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Install: \"App Connect BAR\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "175b4139-db94-01d4-7cb8-5a9c7e0a6164",
+            "name": "API Connect",
+            "color": "#00B2EF",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "177f5050-29ab-498d-7911-d104ffa1d3b6",
+            "name": "ACE",
+            "color": "#FDB813",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": []
+}

@@ -1,0 +1,2713 @@
+{
+    "name": "Sock-Shop",
+    "description": "A Docker Compose example application with integration with GitLab",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "Sock-APITest",
+            "description": "",
+            "created": 1602009499503,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run-APITest",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/174ff350-7802-5cbb-f934-7fee8abc11f2\/processes\/174ff46b-f9d7-4c3d-079d-5d8971afd633",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "c906b2d05655695e17744b47b0e99b",
+                            "from": "a5a1e34066f09e9ffd1cb4c3bb43e3",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "c906b2d05655695e17744b47b0e99b",
+                            "from": "Run RIT Test",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run RIT Test",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "a5a1e34066f09e9ffd1cb4c3bb43e3",
+                            "from": "Run RIT Test",
+                            "type": "FAILURE",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "a5a1e34066f09e9ffd1cb4c3bb43e3",
+                            "x": 16.851851851851848,
+                            "y": 300,
+                            "h": 50,
+                            "w": 210
+                        },
+                        {
+                            "name": "c906b2d05655695e17744b47b0e99b",
+                            "x": -5.648148148148152,
+                            "y": 425,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Run RIT Test",
+                            "x": -50,
+                            "y": 155,
+                            "h": 70,
+                            "w": 210
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "e923dc34-0b11-4fc4-a732-0a87cf8dc4ff",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c906b2d05655695e17744b47b0e99b",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 4,
+                            "commandName": "Run RIT Test",
+                            "pluginName": "IBM Rational Integration Tester",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "installDir": "C:\\Program Files\\IBM\\RationalIntegrationTester",
+                                "environment": "DEV",
+                                "projectDir": "C:\\Workspaces\\RITProjects\\UCD-Test",
+                                "ritProject": "UCD-Test",
+                                "testResources": "SmokeTests",
+                                "noResultsPublishers": "false",
+                                "resultsPublishers": "",
+                                "resultsServerLogging": "absolute",
+                                "inputPropertyFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run RIT Test",
+                            "children": []
+                        },
+                        {
+                            "status": "FAILURE",
+                            "type": "setStatus",
+                            "name": "a5a1e34066f09e9ffd1cb4c3bb43e3",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "16f01dcb-4b6c-8fee-de70-3a6a1489e143",
+                "name": "Docker-Compose",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Sock-Catalogue",
+            "description": "",
+            "created": 1602009895077,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "174ff399-6e6a-6f03-2f78-eec0624967fc",
+                "path": "componentTemplates\/174ff399-6e9a-ca8c-eb66-d243fdff598f",
+                "name": "Docker-Compose-Template",
+                "description": "Template used by SockShop application demo",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [],
+                "active": true,
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [],
+                "properties": [],
+                "processes": [{
+                    "name": "Deploy_Container",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/174ff399-6e9a-ca8c-eb66-d243fdff598f\/processes\/174ff39c-dca2-5d35-4da7-42ee95d72e3a",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Verify-Container-is-Running",
+                                "from": "Deploy-Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy-Container",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "3146f5084cb9cd1227781308136774",
+                                "from": "Verify-Container-is-Running",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Deploy-Container",
+                                "x": -50,
+                                "y": 180,
+                                "h": 70,
+                                "w": 210
+                            },
+                            {
+                                "name": "Verify-Container-is-Running",
+                                "x": -25,
+                                "y": 350,
+                                "h": 70,
+                                "w": 270
+                            },
+                            {
+                                "name": "3146f5084cb9cd1227781308136774",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "397e6067-e3fb-480f-9ff9-99de1e4b9d4e",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "3146f5084cb9cd1227781308136774",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"deploy container\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy-Container",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"verify container is running\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Verify-Container-is-Running",
+                                "children": []
+                            }
+                        ]
+                    }
+                }],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "16f01dcb-4b6c-8fee-de70-3a6a1489e143",
+                "name": "Docker-Compose",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Sock-DockerCompose",
+            "description": "",
+            "created": 1601585588992,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "Git",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "GitComponentProperties",
+                    "properties": [
+                        {
+                            "name": "branch",
+                            "value": "main",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "username",
+                            "value": "rslangehennig1",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "password",
+                            "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|CEX74bl2QnPC3bUnu6wvXA==|QEgzy8bKuZTTRCNSM2wJSA==}",
+                            "description": "",
+                            "secure": true
+                        },
+                        {
+                            "name": "watchTags",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "recursive",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "trustAllCerts",
+                            "value": "true",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "value": "**\/*",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "value": ".git\/*\nREADME.md",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "gitPath",
+                            "value": "git",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "repoUrl",
+                            "value": "https:\/\/gitlab.com\/rslangehennig1\/sockshop.git",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy_Container",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/174e5f0a-b113-c43b-a2b1-3f089ae3e143\/processes\/174e73b7-1cc8-b572-9936-adff87caa0d3",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "ed63a36542102e147d5cb9e2728025",
+                            "from": "Launch Docker Compose Application",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Stop Sock-Shop Container",
+                            "from": "Replace Tokens",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Replace Tokens",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Copy new docker-compose.yml to deploy directory",
+                            "from": "Stop Sock-Shop Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Launch Docker Compose Application",
+                            "from": "Copy new docker-compose.yml to deploy directory",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 130,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Stop Sock-Shop Container",
+                            "x": -85,
+                            "y": 370,
+                            "h": 70,
+                            "w": 280
+                        },
+                        {
+                            "name": "Copy new docker-compose.yml to deploy directory",
+                            "x": -150,
+                            "y": 490,
+                            "h": 70,
+                            "w": 410
+                        },
+                        {
+                            "name": "Replace Tokens",
+                            "x": -65,
+                            "y": 250,
+                            "h": 70,
+                            "w": 240
+                        },
+                        {
+                            "name": "Launch Docker Compose Application",
+                            "x": -130,
+                            "y": 610,
+                            "h": 70,
+                            "w": 370
+                        },
+                        {
+                            "name": "ed63a36542102e147d5cb9e2728025",
+                            "x": -5,
+                            "y": 730,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "8464846e-0aa7-4e22-9ef7-0a49edaa90a2",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "ed63a36542102e147d5cb9e2728025",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 32,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "${p:environment\/sock-shop-directory}",
+                            "pluginVersion": 24,
+                            "commandName": "Run Docker Compose",
+                            "pluginName": "Docker Compose",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "composeFiles": "",
+                                "composeProjectName": "",
+                                "composeOptions": "",
+                                "command": "down",
+                                "optsAndServs": "",
+                                "scriptPaths": "",
+                                "commandPath": "docker-compose",
+                                "saveScript": "false",
+                                "envPropValues": "${p?:envPropValues}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Sock-Shop Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "${p:resource\/work.dir}\/${p:component.name}\/deploy\/docker-compose",
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "ls -al\npwd\n\ncp docker-compose.yml ${p:environment\/sock-shop-directory}",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Copy new docker-compose.yml to deploy directory",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "${p:environment\/sock-shop-directory}",
+                            "pluginVersion": 24,
+                            "commandName": "Launch Docker Compose Application",
+                            "pluginName": "Docker Compose",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "composeFiles": "",
+                                "composeProjectName": "",
+                                "composeOptions": "",
+                                "scriptPaths": "",
+                                "stackName": "${p?:application.name}",
+                                "serverUrl": "${p:server.url}",
+                                "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|TL+6aXak8i5Xu9a2OE1nqw==|GyzP2FIkSpq1Evhgxu3Ghw==}",
+                                "resource": "${p:resource.id}",
+                                "application": "${p:application.id}",
+                                "version": "${p:version.name}",
+                                "component": "${p:component.id}",
+                                "snapshot": "${p?:snapshot.id}",
+                                "environment": "${p:environment.id}",
+                                "componentProcessRequest": "${p:request.id}",
+                                "applicationProcessRequest": "${p:parentRequest.id}",
+                                "envPropValues": "${p?:envPropValues}",
+                                "commandPath": "docker-compose",
+                                "saveScript": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Launch Docker Compose Application",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 75,
+                            "commandName": "Replace Tokens",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "includes": "**\/deploy\/docker-compose\/docker-compose.yml",
+                                "excludes": "",
+                                "envPropValues": "${p:environment\/allProperties}",
+                                "propertyPrefix": "",
+                                "explicitTokens": "mysql-db",
+                                "startDelimiter": "@",
+                                "endDelimiter": "@",
+                                "propFile": "replace_tokens.properties",
+                                "dir": "",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Replace Tokens",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "16f01dcb-4b6c-8fee-de70-3a6a1489e143",
+                "name": "Docker-Compose",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Sock-FunctionalTest",
+            "description": "",
+            "created": 1602009482499,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run-Functional-Tests",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/174ff34c-512f-2cb7-a93c-74c55aee47c8\/processes\/174ff455-a228-4a1b-2b49-f93afea941c9",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "3087e32445922d3f8233f5f14e79e2",
+                            "from": "Stop Scenario",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start Scenario",
+                            "from": "Check Environment",
+                            "type": "VALUE",
+                            "value": "SIT\nDEV\n"
+                        },
+                        {
+                            "to": "Stop Scenario",
+                            "from": "Unzip RFT Log",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Unzip RFT Log",
+                            "from": "Run an IBM Rational Functional Tester - Web UI test",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run an IBM Rational Functional Tester - Web UI test",
+                            "from": "Start Scenario",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Unzip RFT Log",
+                            "from": "9d052fcf756293dac25b3aa13ed34d",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "9d052fcf756293dac25b3aa13ed34d",
+                            "from": "Run an IBM Rational Functional Tester - Web UI test",
+                            "type": "FAILURE",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Environment",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run an IBM Rational Functional Tester - Web UI test",
+                            "from": "Check Environment",
+                            "type": "VALUE",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Run an IBM Rational Functional Tester - Web UI test",
+                            "x": -313.51851851851853,
+                            "y": 420,
+                            "h": 90,
+                            "w": 770
+                        },
+                        {
+                            "name": "3087e32445922d3f8233f5f14e79e2",
+                            "x": 1.2494284407865166,
+                            "y": 950,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "Unzip RFT Log",
+                            "x": -59.88454503886601,
+                            "y": 670,
+                            "h": 90,
+                            "w": 270
+                        },
+                        {
+                            "name": "Check Environment",
+                            "x": -165,
+                            "y": 140,
+                            "h": 90,
+                            "w": 470
+                        },
+                        {
+                            "name": "9d052fcf756293dac25b3aa13ed34d",
+                            "x": 11.481481481481467,
+                            "y": 560,
+                            "h": 60,
+                            "w": 310
+                        },
+                        {
+                            "name": "Stop Scenario",
+                            "x": -88.75057155921348,
+                            "y": 810,
+                            "h": 90,
+                            "w": 330
+                        },
+                        {
+                            "name": "Start Scenario",
+                            "x": 86.48148148148152,
+                            "y": 290,
+                            "h": 90,
+                            "w": 330
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "7b07f075-f4e0-4fdd-b2dc-c4c89a0d40ae",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "3087e32445922d3f8233f5f14e79e2",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "postProcessingScript": {
+                                "id": "1750a062-64d5-9079-4fcf-ea959e1e415f",
+                                "name": "WebTest",
+                                "description": "",
+                                "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nvar testFailed = 0;\nproperties.put('TestResult', 'PASS');\n\nscanner.register(\"Running test\", function(lineNumber, line) {\n    beginCheck = 1;\n});\n\nscanner.register(\"Test Result = FAIL\", function(lineNumber, line) {\n    if (beginCheck == 1) {\n       properties.put('TestResult', 'FAIL');\n       testFailed = 1;\n       properties.put('Status', 'Failure');\n    }\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}\n\nproperties.put('Test Log URL', 'http:\/\/169.48.27.115:8000\/SmokeTest.html');"
+                            },
+                            "pluginVersion": 7,
+                            "commandName": "Run an IBM Rational Functional Tester - Web UI test",
+                            "pluginName": "IBM Rational Functional Tester - Web UI",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "workspace": "C:\\Workspaces\\RFT",
+                                "project": "WebUI",
+                                "suite": "Compound Tests\\SmokeTest",
+                                "imsharedloc": "",
+                                "varfile": "",
+                                "configfile": "",
+                                "results": "",
+                                "overwrite": "true",
+                                "quiet": "false",
+                                "users": "1",
+                                "vmargs": "",
+                                "protocolinput": "",
+                                "swapdatasets": "",
+                                "exportlog": "c:\\logs\\RFT",
+                                "exportstats": "",
+                                "exportstatreportlist": "",
+                                "usercomments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run an IBM Rational Functional Tester - Web UI test",
+                            "children": []
+                        },
+                        {
+                            "propertyName": "${p:environment.name}",
+                            "type": "switch",
+                            "name": "Check Environment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "workingDir": "c:\\Logs",
+                            "postProcessingScript": {
+                                "id": "1750a062-64d5-9079-4fcf-ea959e1e415f",
+                                "name": "WebTest",
+                                "description": "",
+                                "body": "var exit = properties.get('exitCode');\nvar beginCheck = 0;\nvar testFailed = 0;\nproperties.put('TestResult', 'PASS');\n\nscanner.register(\"Running test\", function(lineNumber, line) {\n    beginCheck = 1;\n});\n\nscanner.register(\"Test Result = FAIL\", function(lineNumber, line) {\n    if (beginCheck == 1) {\n       properties.put('TestResult', 'FAIL');\n       testFailed = 1;\n       properties.put('Status', 'Failure');\n    }\n});\n \nif (exit == 0) {\n   properties.put('Status', 'Success');\n   scanner.scan();\n}\n\nelse {\n   properties.put('Status', 'Failure');\n}\n\nproperties.put('Test Log URL', 'http:\/\/169.48.27.115:8000\/SmokeTest.html');"
+                            },
+                            "pluginVersion": 75,
+                            "commandName": "Unzip",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "dir": "c:\\Logs\\HTML\\htdocs",
+                                "zip": "RFT.moeb.zip",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "overwrite": "true",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Unzip RFT Log",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 3,
+                            "commandName": "Start Scenario",
+                            "pluginName": "IBM Rational Test Virtualization Server",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverURL": "https:\/\/169.48.27.115:5443\/RTCP",
+                                "domain": "default",
+                                "environment": "DEV",
+                                "scenarioname": "SmokeTest",
+                                "username": "root",
+                                "owner": "",
+                                "stopStubs": "NONE",
+                                "force": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start Scenario",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 3,
+                            "commandName": "Stop Scenario",
+                            "pluginName": "IBM Rational Test Virtualization Server",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverURL": "https:\/\/169.48.27.115:5443\/RTCP",
+                                "domain": "default",
+                                "environment": "DEV",
+                                "scenarioname": "SmokeTest",
+                                "username": "root",
+                                "owner": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Stop Scenario",
+                            "children": []
+                        },
+                        {
+                            "status": "FAILURE",
+                            "type": "setStatus",
+                            "name": "9d052fcf756293dac25b3aa13ed34d",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "Sock-Payment",
+            "description": "",
+            "created": 1602009937052,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "174ff399-6e6a-6f03-2f78-eec0624967fc",
+                "path": "componentTemplates\/174ff399-6e9a-ca8c-eb66-d243fdff598f",
+                "name": "Docker-Compose-Template",
+                "description": "Template used by SockShop application demo",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [],
+                "active": true,
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [],
+                "properties": [],
+                "processes": [{
+                    "name": "Deploy_Container",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/174ff399-6e9a-ca8c-eb66-d243fdff598f\/processes\/174ff39c-dca2-5d35-4da7-42ee95d72e3a",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Verify-Container-is-Running",
+                                "from": "Deploy-Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy-Container",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "3146f5084cb9cd1227781308136774",
+                                "from": "Verify-Container-is-Running",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Deploy-Container",
+                                "x": -50,
+                                "y": 180,
+                                "h": 70,
+                                "w": 210
+                            },
+                            {
+                                "name": "Verify-Container-is-Running",
+                                "x": -25,
+                                "y": 350,
+                                "h": 70,
+                                "w": 270
+                            },
+                            {
+                                "name": "3146f5084cb9cd1227781308136774",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "397e6067-e3fb-480f-9ff9-99de1e4b9d4e",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "3146f5084cb9cd1227781308136774",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"deploy container\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy-Container",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"verify container is running\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Verify-Container-is-Running",
+                                "children": []
+                            }
+                        ]
+                    }
+                }],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "16f01dcb-4b6c-8fee-de70-3a6a1489e143",
+                "name": "Docker-Compose",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Sock-Performance Tests",
+            "description": "",
+            "created": 1602865149817,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Run-Performance Tests",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17532353-78a2-cc3b-6913-cc094cf34952\/processes\/17532366-7caa-e77d-fdd1-4dcd820df5c4",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Run an IBM Rational Performance Tester test",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "3087e32445922d3f8233f5f14e79e2",
+                            "from": "Run an IBM Rational Performance Tester test",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "3087e32445922d3f8233f5f14e79e2",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Run an IBM Rational Performance Tester test",
+                            "x": -150,
+                            "y": 230,
+                            "h": 70,
+                            "w": 410
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "a0a089fa-bd71-42b9-8b19-64fa393348bd",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "3087e32445922d3f8233f5f14e79e2",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 4,
+                            "commandName": "Run an IBM Rational Performance Tester test",
+                            "pluginName": "IBM Rational Performance Tester",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "workspace": "C:\\Workspaces\\RFT",
+                                "project": "SockShop",
+                                "suite": "SmokeTest",
+                                "imsharedloc": "",
+                                "varfile": "",
+                                "configfile": "",
+                                "results": "",
+                                "overwrite": "true",
+                                "quiet": "false",
+                                "users": "",
+                                "vmargs": "",
+                                "swapdatasets": "",
+                                "exportlog": "c:\\tmp",
+                                "exportstats": "",
+                                "exportstatreportlist": "",
+                                "usercomments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run an IBM Rational Performance Tester test",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "Sock-Shipping",
+            "description": "",
+            "created": 1602009916301,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "174ff399-6e6a-6f03-2f78-eec0624967fc",
+                "path": "componentTemplates\/174ff399-6e9a-ca8c-eb66-d243fdff598f",
+                "name": "Docker-Compose-Template",
+                "description": "Template used by SockShop application demo",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "sourceConfigPluginName": "",
+                "tags": [],
+                "active": true,
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [],
+                "properties": [],
+                "processes": [{
+                    "name": "Deploy_Container",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "componentTemplates\/174ff399-6e9a-ca8c-eb66-d243fdff598f\/processes\/174ff39c-dca2-5d35-4da7-42ee95d72e3a",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Verify-Container-is-Running",
+                                "from": "Deploy-Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy-Container",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "3146f5084cb9cd1227781308136774",
+                                "from": "Verify-Container-is-Running",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Deploy-Container",
+                                "x": -50,
+                                "y": 180,
+                                "h": 70,
+                                "w": 210
+                            },
+                            {
+                                "name": "Verify-Container-is-Running",
+                                "x": -25,
+                                "y": 350,
+                                "h": 70,
+                                "w": 270
+                            },
+                            {
+                                "name": "3146f5084cb9cd1227781308136774",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "397e6067-e3fb-480f-9ff9-99de1e4b9d4e",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "3146f5084cb9cd1227781308136774",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"deploy container\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy-Container",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo \"verify container is running\"",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Verify-Container-is-Running",
+                                "children": []
+                            }
+                        ]
+                    }
+                }],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "16f01dcb-4b6c-8fee-de70-3a6a1489e143",
+                "name": "Docker-Compose",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "sock-shop-directory",
+                    "value": "\/opt\/sockshop\/deploy\/docker-compose",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "mysql-db",
+                    "value": "socksdb",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Sock-Shop",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Sock-Shop\/DEV",
+                    "description": "",
+                    "parentName": "Sock-Shop",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Sock-Shop",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Sock-Shop\/DEV",
+                    "description": "",
+                    "parentName": "Sock-Shop",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "RTW",
+                            "path": "\/Sock-Shop\/DEV\/RTW",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "RTW",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [
+                                {
+                                    "name": "Sock-APITest",
+                                    "path": "\/Sock-Shop\/DEV\/RTW\/Sock-APITest",
+                                    "description": "",
+                                    "parentName": "RTW",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-APITest",
+                                    "roleProperties": {
+                                        "name": "Sock-APITest",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "Sock-FunctionalTest",
+                                    "path": "\/Sock-Shop\/DEV\/RTW\/Sock-FunctionalTest",
+                                    "description": "",
+                                    "parentName": "RTW",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-FunctionalTest",
+                                    "roleProperties": {
+                                        "name": "Sock-FunctionalTest",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "Sock-Performance Tests",
+                                    "path": "\/Sock-Shop\/DEV\/RTW\/Sock-Performance Tests",
+                                    "description": "",
+                                    "parentName": "RTW",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-Performance Tests",
+                                    "roleProperties": {
+                                        "name": "Sock-Performance Tests",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                            "path": "\/Sock-Shop\/DEV\/demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [
+                                {
+                                    "name": "Sock-Catalogue",
+                                    "path": "\/Sock-Shop\/DEV\/demo-ucd-test.DANIEL-CAPPON-s-Account.cloud\/Sock-Catalogue",
+                                    "description": "",
+                                    "parentName": "demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-Catalogue",
+                                    "roleProperties": {
+                                        "name": "Sock-Catalogue",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "Sock-DockerCompose",
+                                    "path": "\/Sock-Shop\/DEV\/demo-ucd-test.DANIEL-CAPPON-s-Account.cloud\/Sock-DockerCompose",
+                                    "description": "",
+                                    "parentName": "demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-DockerCompose",
+                                    "roleProperties": {
+                                        "name": "Sock-DockerCompose",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "Sock-Payment",
+                                    "path": "\/Sock-Shop\/DEV\/demo-ucd-test.DANIEL-CAPPON-s-Account.cloud\/Sock-Payment",
+                                    "description": "",
+                                    "parentName": "demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-Payment",
+                                    "roleProperties": {
+                                        "name": "Sock-Payment",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "Sock-Shipping",
+                                    "path": "\/Sock-Shop\/DEV\/demo-ucd-test.DANIEL-CAPPON-s-Account.cloud\/Sock-Shipping",
+                                    "description": "",
+                                    "parentName": "demo-ucd-test.DANIEL-CAPPON-s-Account.cloud",
+                                    "inheritTeam": true,
+                                    "roleName": "Sock-Shipping",
+                                    "roleProperties": {
+                                        "name": "Sock-Shipping",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Sock-APITest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Catalogue"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-DockerCompose"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-FunctionalTest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Payment"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Performance Tests"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Shipping"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "SIT",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": true,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "approvalProcess": {"rootActivity": {
+                "edges": [
+                    {
+                        "to": "6ae4fc3cc595782c3ac607173b132b",
+                        "from": "432004be778a173fd6d2b6b9c7a76d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "432004be778a173fd6d2b6b9c7a76d",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "6ae4fc3cc595782c3ac607173b132b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "432004be778a173fd6d2b6b9c7a76d",
+                        "x": -65,
+                        "y": 230,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "fcacde73-3163-478d-b0c4-d5836935cfd2",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "6ae4fc3cc595782c3ac607173b132b",
+                        "children": []
+                    },
+                    {
+                        "roleRestrictionData": {
+                            "contextType": "ENVIRONMENT",
+                            "roleRestrictions": [{"roleName": "Administrator"}]
+                        },
+                        "propDefs": [],
+                        "templateName": "ApprovalCreated",
+                        "commentRequired": false,
+                        "commentPrompt": "",
+                        "role": {},
+                        "type": "environmentApprovalTask",
+                        "name": "432004be778a173fd6d2b6b9c7a76d",
+                        "children": []
+                    }
+                ]
+            }},
+            "baseResources": [{
+                "basePath": "\/Sock-Shop",
+                "tree": {
+                    "name": "SIT",
+                    "path": "\/Sock-Shop\/SIT",
+                    "description": "",
+                    "parentName": "Sock-Shop",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Sock-Shop",
+                "tree": {
+                    "name": "SIT",
+                    "path": "\/Sock-Shop\/SIT",
+                    "description": "",
+                    "parentName": "Sock-Shop",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": []
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Sock-APITest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Catalogue"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-DockerCompose"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-FunctionalTest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Payment"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Performance Tests"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Shipping"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#DD731C",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Sock-APITest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Catalogue"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-DockerCompose"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-FunctionalTest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Payment"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Performance Tests"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Shipping"
+                }
+            ],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#D9182D",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Sock-APITest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Catalogue"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-DockerCompose"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-FunctionalTest"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Payment"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Performance Tests"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Sock-Shipping"
+                }
+            ],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Run RFT Test",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "8844db9f21f328f9d49bd26d02c70d",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "8f3179be8f6910954a0425b37849c1",
+                        "from": "8844db9f21f328f9d49bd26d02c70d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "8f3179be8f6910954a0425b37849c1",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "8844db9f21f328f9d49bd26d02c70d",
+                        "x": -100,
+                        "y": 230,
+                        "h": 80,
+                        "w": 310
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "2803cc3c-5ef4-474c-bc95-c717492dd0ef",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "8f3179be8f6910954a0425b37849c1",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Sock-FunctionalTest",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "8844db9f21f328f9d49bd26d02c70d",
+                        "children": [{
+                            "componentProcessName": "Run-Functional-Tests",
+                            "componentName": "Sock-FunctionalTest",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-FunctionalTest\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Run Performance Tests",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "f2170c58b6d70a0b0f1e4e651bac2f",
+                        "from": "56bee472219e5d5f5ecd3cc4acb59f",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "56bee472219e5d5f5ecd3cc4acb59f",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "f2170c58b6d70a0b0f1e4e651bac2f",
+                        "x": -5,
+                        "y": 460,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "56bee472219e5d5f5ecd3cc4acb59f",
+                        "x": -115,
+                        "y": 230,
+                        "h": 80,
+                        "w": 340
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "df210160-25b3-48ed-ac28-e9d80dc14f74",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "f2170c58b6d70a0b0f1e4e651bac2f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Sock-Performance Tests",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "56bee472219e5d5f5ecd3cc4acb59f",
+                        "children": [{
+                            "componentProcessName": "Run-Performance Tests",
+                            "componentName": "Sock-Performance Tests",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-Performance Tests\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-SockShop",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "b15f388757e9b2429c2d81108c6a4e",
+                        "from": "a1a76786c62a8a6ee39b0196a04ac1",
+                        "type": "FAILURE",
+                        "value": ""
+                    },
+                    {
+                        "to": "50ac7fde44725cf821f40d64151ff0",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "86a4f3c8b1f235c2261f702b21984e",
+                        "from": "a1a76786c62a8a6ee39b0196a04ac1",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "1f9ea6cfb3783113035349b7b5d270",
+                        "from": "aa16fe83e7f20cb8c75a394113a4c1",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "1d0e938fb186c031d94d514937c572",
+                        "from": "f5dad112e57de8d2b4a456ab796343",
+                        "type": "FAILURE",
+                        "value": ""
+                    },
+                    {
+                        "to": "f5dad112e57de8d2b4a456ab796343",
+                        "from": "dfb4a922a2e0e9141be41afecc3a15",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a1a76786c62a8a6ee39b0196a04ac1",
+                        "from": "f5dad112e57de8d2b4a456ab796343",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "f5dad112e57de8d2b4a456ab796343",
+                        "from": "412ae1f50d1b4672d67c57e1fd76a4",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "412ae1f50d1b4672d67c57e1fd76a4",
+                        "from": "dfb4a922a2e0e9141be41afecc3a15",
+                        "type": "FAILURE",
+                        "value": ""
+                    },
+                    {
+                        "to": "86a4f3c8b1f235c2261f702b21984e",
+                        "from": "b15f388757e9b2429c2d81108c6a4e",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "9edcb43527a5a557376e2c4e4cf1bc",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a1a76786c62a8a6ee39b0196a04ac1",
+                        "from": "1d0e938fb186c031d94d514937c572",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "1f9ea6cfb3783113035349b7b5d270",
+                        "from": "50ac7fde44725cf821f40d64151ff0",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "1f9ea6cfb3783113035349b7b5d270",
+                        "from": "9edcb43527a5a557376e2c4e4cf1bc",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "dfb4a922a2e0e9141be41afecc3a15",
+                        "from": "1f9ea6cfb3783113035349b7b5d270",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "aa16fe83e7f20cb8c75a394113a4c1",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "dfb4a922a2e0e9141be41afecc3a15",
+                        "x": -232.5,
+                        "y": 510,
+                        "h": 150,
+                        "w": 500
+                    },
+                    {
+                        "name": "1d0e938fb186c031d94d514937c572",
+                        "x": -45,
+                        "y": 1030,
+                        "h": 70,
+                        "w": 360
+                    },
+                    {
+                        "name": "50ac7fde44725cf821f40d64151ff0",
+                        "x": 360,
+                        "y": 150,
+                        "h": 150,
+                        "w": 530
+                    },
+                    {
+                        "name": "b15f388757e9b2429c2d81108c6a4e",
+                        "x": -45,
+                        "y": 1350,
+                        "h": 70,
+                        "w": 360
+                    },
+                    {
+                        "name": "412ae1f50d1b4672d67c57e1fd76a4",
+                        "x": -80,
+                        "y": 710,
+                        "h": 70,
+                        "w": 360
+                    },
+                    {
+                        "name": "a1a76786c62a8a6ee39b0196a04ac1",
+                        "x": -312.5,
+                        "y": 1150,
+                        "h": 150,
+                        "w": 650
+                    },
+                    {
+                        "name": "1f9ea6cfb3783113035349b7b5d270",
+                        "x": -209.375,
+                        "y": 350,
+                        "h": 110,
+                        "w": 540
+                    },
+                    {
+                        "name": "aa16fe83e7f20cb8c75a394113a4c1",
+                        "x": -720,
+                        "y": 150,
+                        "h": 150,
+                        "w": 510
+                    },
+                    {
+                        "name": "9edcb43527a5a557376e2c4e4cf1bc",
+                        "x": -180,
+                        "y": 150,
+                        "h": 150,
+                        "w": 510
+                    },
+                    {
+                        "name": "f5dad112e57de8d2b4a456ab796343",
+                        "x": -291.25,
+                        "y": 830,
+                        "h": 150,
+                        "w": 590
+                    },
+                    {
+                        "name": "86a4f3c8b1f235c2261f702b21984e",
+                        "x": -72.5,
+                        "y": 1470,
+                        "h": 100,
+                        "w": 170
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "5ed83692-89e9-41fb-b1b8-8e3063c0b17c",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "86a4f3c8b1f235c2261f702b21984e",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Sock-DockerCompose",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "1f9ea6cfb3783113035349b7b5d270",
+                        "children": [{
+                            "componentName": "Sock-DockerCompose",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "a587762e-951b-4e1b-87d3-092675e8eb82",
+                            "children": [{
+                                "componentProcessName": "Deploy_Container",
+                                "componentName": "Sock-DockerCompose",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"Sock-DockerCompose\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "Sock-Catalogue",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "50ac7fde44725cf821f40d64151ff0",
+                        "children": [{
+                            "componentProcessName": "Deploy_Container",
+                            "componentName": "Sock-Catalogue",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-Catalogue\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Sock-Payment",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "9edcb43527a5a557376e2c4e4cf1bc",
+                        "children": [{
+                            "componentProcessName": "Deploy_Container",
+                            "componentName": "Sock-Payment",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-Payment\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Sock-Shipping",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "aa16fe83e7f20cb8c75a394113a4c1",
+                        "children": [{
+                            "componentProcessName": "Deploy_Container",
+                            "componentName": "Sock-Shipping",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-Shipping\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Sock-FunctionalTest",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "f5dad112e57de8d2b4a456ab796343",
+                        "children": [{
+                            "componentProcessName": "Run-Functional-Tests",
+                            "componentName": "Sock-FunctionalTest",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-FunctionalTest\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Sock-APITest",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "dfb4a922a2e0e9141be41afecc3a15",
+                        "children": [{
+                            "componentProcessName": "Run-APITest",
+                            "componentName": "Sock-APITest",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-APITest\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "Sock-Performance Tests",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a1a76786c62a8a6ee39b0196a04ac1",
+                        "children": [{
+                            "componentProcessName": "Run-Performance Tests",
+                            "componentName": "Sock-Performance Tests",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Component: \"Sock-Performance Tests\"",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "status": "FAILURE",
+                        "type": "setStatus",
+                        "name": "412ae1f50d1b4672d67c57e1fd76a4",
+                        "children": []
+                    },
+                    {
+                        "status": "FAILURE",
+                        "type": "setStatus",
+                        "name": "1d0e938fb186c031d94d514937c572",
+                        "children": []
+                    },
+                    {
+                        "status": "FAILURE",
+                        "type": "setStatus",
+                        "name": "b15f388757e9b2429c2d81108c6a4e",
+                        "children": []
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "16f01568-af7d-c5fc-089c-d07b2b74c7c3",
+        "name": "Docker Compose",
+        "color": "#00B2EF",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

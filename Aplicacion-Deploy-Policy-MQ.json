@@ -1,0 +1,481 @@
+{
+    "name": "Aplicacion-Deploy-Policy-MQ",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "Componente-PoliticaMQ",
+        "description": "Componente de despliegue de politica de MQ",
+        "created": 1614314368589,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "uBuild",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [
+            {
+                "name": "NodoIntegracion",
+                "label": "NodoIntegracion",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "required": false,
+                "description": "",
+                "placeholder": ""
+            },
+            {
+                "name": "Filename",
+                "label": "Filename",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "required": false,
+                "description": "",
+                "placeholder": ""
+            },
+            {
+                "name": "QueueManager",
+                "label": "QueueManager",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "required": false,
+                "description": "",
+                "placeholder": ""
+            },
+            {
+                "name": "Endpoint",
+                "label": "Endpoint",
+                "pattern": "",
+                "type": "TEXT",
+                "isHidden": false,
+                "required": false,
+                "description": "",
+                "placeholder": ""
+            }
+        ],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "uBuildComponentProperties",
+                "properties": [
+                    {
+                        "name": "artifactSets",
+                        "value": "Default",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "password",
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|Kosp6kpzAqpo2NufGG0w6Q==|rUX0FQhIFCOQ60ChHZHTvw==}",
+                        "description": "",
+                        "secure": true
+                    },
+                    {
+                        "name": "workflow",
+                        "value": "Job Bitbucket Test V1",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "project",
+                        "value": "Proyecto-BitBucket-V1",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "uBuildUrl",
+                        "value": "https:\/\/172.30.32.134:8444",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "user",
+                        "value": "admin",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "status",
+                        "value": "Success",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": [{
+                    "name": "BusHome",
+                    "value": "\/product\/UrbanCode\/repo-ucd",
+                    "description": "Directorio base del destino en el bus",
+                    "secure": false
+                }]
+            }
+        ]},
+        "processes": [{
+            "name": "Generar-Politica",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/177dca26-e6fd-7c5e-2541-4004baffc0d1\/processes\/177dca26-e8c9-406c-5f3a-b5951387a81b",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Deploy Artifacts",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Policy Deploy",
+                        "from": "Deploy Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "d39f184d5999594a77ca6a0bcc6d27",
+                        "from": "Policy Deploy",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Clean WorkSpace",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "from": "Clean WorkSpace",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "d39f184d5999594a77ca6a0bcc6d27",
+                        "x": -15,
+                        "y": 700,
+                        "h": 90,
+                        "w": 180
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -135,
+                        "y": 280,
+                        "h": 90,
+                        "w": 420
+                    },
+                    {
+                        "name": "Policy Deploy",
+                        "x": -55,
+                        "y": 560,
+                        "h": 90,
+                        "w": 260
+                    },
+                    {
+                        "name": "Clean WorkSpace",
+                        "x": -190,
+                        "y": 140,
+                        "h": 90,
+                        "w": 530
+                    },
+                    {
+                        "name": "Deploy Artifacts",
+                        "x": -105,
+                        "y": 420,
+                        "h": 90,
+                        "w": 360
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "4a9148e6-66ba-42c6-b437-caa9fe10ee1d",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "d39f184d5999594a77ca6a0bcc6d27",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 75,
+                        "commandName": "Delete Files and Directories",
+                        "pluginName": "File Utils",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "baseDir": ".",
+                            "includes": "*",
+                            "excludes": "",
+                            "followSymlinks": "false",
+                            "caseSensitive": "true"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Clean WorkSpace",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 32,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "true",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "versionId": "${p:version.id}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "charset": "",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 75,
+                        "commandName": "Move Directory",
+                        "pluginName": "File Utils",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "sourceDir": ".",
+                            "destDir": "${p:BusHome}\/policy\/${p:Endpoint}",
+                            "includes": "**\/*",
+                            "excludes": "",
+                            "mapperRules": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "\/product\/IBM\/mqsi\/iib-10.0.0.15\/server\/bin\/mqsicreatepolicy ${p:NodoIntegracion} -t MQEndpoint -l ${p:Endpoint} -f ${p:BusHome}\/policy\/${p:Endpoint}\/${p:Filename}",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Policy Deploy",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [{
+        "name": "Env-Bus-Dev1",
+        "color": "#17AF4A",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": []},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [],
+        "baseResourcesFull": [],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "Componente-PoliticaMQ"
+        }],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [{
+        "name": "Proceso-Deploy-Policy-MQ",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "33ee3f7df2ac877b469f292e8511b6",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "f9eaf2b3e2fd86e8335a4dc53464a0",
+                    "from": "33ee3f7df2ac877b469f292e8511b6",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "33ee3f7df2ac877b469f292e8511b6",
+                    "x": -55,
+                    "y": 230,
+                    "h": 70,
+                    "w": 310
+                },
+                {
+                    "name": "f9eaf2b3e2fd86e8335a4dc53464a0",
+                    "x": -10,
+                    "y": 430,
+                    "h": 80,
+                    "w": 140
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "67480b24-4914-4f55-a1f1-4125215b2162",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "f9eaf2b3e2fd86e8335a4dc53464a0",
+                    "children": []
+                },
+                {
+                    "componentName": "Componente-PoliticaMQ",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "33ee3f7df2ac877b469f292e8511b6",
+                    "children": [{
+                        "componentName": "Componente-PoliticaMQ",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "1aa29e90-b6f1-420d-aa45-7579070b6e70",
+                        "children": [{
+                            "componentProcessName": "Generar-Politica",
+                            "componentName": "Componente-PoliticaMQ",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Instalar: \"Componente-PoliticaMQ\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "177dae2c-2388-d06c-9edb-7d681f6345d1",
+        "name": "IIB",
+        "color": "#17AF4A",
+        "description": "IBM Integration Bus",
+        "objectType": "Application"
+    }]
+}

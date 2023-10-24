@@ -1,0 +1,653 @@
+{
+    "name": "SNOW",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "SNOW-Example",
+        "description": "",
+        "created": 1626805854388,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": false,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {
+            "propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]
+        },
+        "processes": [
+            {
+                "name": "Create Ticket",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17ac52f6-0c5a-829b-811b-88fcd0e7a6fc\/processes\/17ac52fd-316c-24c1-d592-fab9f886aa52",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "8f5bfcd871cd18b3d5bb7ccf797826",
+                            "from": "Create Records",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Records",
+                            "type": "ALWAYS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "8f5bfcd871cd18b3d5bb7ccf797826",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Create Records",
+                            "x": -65,
+                            "y": 230,
+                            "h": 70,
+                            "w": 240
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "36380e43-5f00-4ac9-be9a-a6c4d224bb18",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "8f5bfcd871cd18b3d5bb7ccf797826",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Create Records",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev105063.service-now.com",
+                                "table": "incident",
+                                "fields": "business_service=IT Services\nshort_description=New short description randy",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|MhXud15P5VTXtSwTskpBIA==|IcSBMOqgOHTu9g7isUp5uw==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|2KYMd+aUe59leqqBHbD7RQ==|2lS2iSqr+ON6ZaXMXHBhgA==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Records",
+                            "children": []
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Update Ticket",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/17ac52f6-0c5a-829b-811b-88fcd0e7a6fc\/processes\/17ac5404-fdde-29a6-6e9b-3a500ba46faf",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "070cb00cc0622d8d3ba17d2aeda09e",
+                            "from": "Check Records",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Update Records",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Records",
+                            "from": "Update Records",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Update Records",
+                            "x": -80,
+                            "y": 190,
+                            "h": 80,
+                            "w": 280
+                        },
+                        {
+                            "name": "Check Records",
+                            "x": -80,
+                            "y": 370,
+                            "h": 80,
+                            "w": 280
+                        },
+                        {
+                            "name": "070cb00cc0622d8d3ba17d2aeda09e",
+                            "x": -5,
+                            "y": 550,
+                            "h": 90,
+                            "w": 130
+                        },
+                        {
+                            "name": "Set Change Request State",
+                            "x": -80,
+                            "y": 740,
+                            "h": 80,
+                            "w": 370
+                        },
+                        {
+                            "name": "Check Change Request State",
+                            "x": -80,
+                            "y": 650,
+                            "h": 80,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "bc588bf8-22be-4506-a1d1-b9df8166fd16",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "070cb00cc0622d8d3ba17d2aeda09e",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Check Change Request State",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev105063.service-now.com",
+                                "changeRequestId": "INC0010111",
+                                "status": "1",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|BgQoD9LXlkfJqzoCSIuL8w==|XISbkhlzLgi7x0XSPRY9dg==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|jFUUP1p+RA3W6pXTA3b4dw==|W\/0oBWEZA4qKvcB4HYHbcA==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Change Request State",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Update Records",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev105063.service-now.com",
+                                "table": "incident",
+                                "id": "INC0010111",
+                                "fields": "description=foobar",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|8A1Oxd3nVp2E2czZfUqhzw==|ZjnOcte58NcKWtGHUfHVXw==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|fgmJbC9kCk7C+aijlnVaOg==|peVK73y7iATpypeZMh7ATA==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Update Records",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Check Records",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev105063.service-now.com",
+                                "table": "incident",
+                                "id": "INC0010111",
+                                "fields": "state=1\ndescription=foobar",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|JrOeirngHmgDLExF+DNHVg==|ZlbGWE7l18u2NxcigCISFQ==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|4YTKt1JknMp8WGkafmzPYQ==|midu0hi7zho3cCBUyn\/hkA==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Records",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 28,
+                            "commandName": "Set Change Request State",
+                            "pluginName": "ServiceNow",
+                            "pluginId": "com.urbancode.air.plugin.ServiceNow",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "serverUrl": "https:\/\/dev105063.service-now.com",
+                                "changeRequestId": "INC0010111",
+                                "status": "2",
+                                "username": "admin",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|D1XVIt8UzZOKqXYV91np4Q==|EHfaQLB6PgtlcxlRlKjr7g==}",
+                                "proxyHost": "",
+                                "proxyPort": "",
+                                "proxyUser": "",
+                                "proxyPass": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|UYvUJ4MnUAmHY6ktN6wUKA==|vHJSc82cKVZBiNGKTdz8gg==}",
+                                "trustAllCerts": "false"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Set Change Request State",
+                            "children": []
+                        }
+                    ]
+                }
+            }
+        ],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [{
+            "id": "17a10870-197c-fe66-9767-372bb880b3d7",
+            "name": "ServiceNow",
+            "color": "#17AF4A",
+            "description": "",
+            "objectType": "Component"
+        }]
+    }],
+    "environments": [{
+        "name": "DEV",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": []
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "\/SNOW",
+            "tree": {
+                "name": "DEV",
+                "path": "\/SNOW\/DEV",
+                "description": "",
+                "parentName": "SNOW",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "\/SNOW",
+            "tree": {
+                "name": "DEV",
+                "path": "\/SNOW\/DEV",
+                "description": "",
+                "parentName": "SNOW",
+                "inheritTeam": true,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "virtualserver02-old",
+                    "path": "\/SNOW\/DEV\/virtualserver02-old",
+                    "description": "",
+                    "parentName": "DEV",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "virtualserver02-old",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "SNOW-Example",
+                        "path": "\/SNOW\/DEV\/virtualserver02-old\/SNOW-Example",
+                        "description": "",
+                        "parentName": "virtualserver02-old",
+                        "inheritTeam": true,
+                        "roleName": "SNOW-Example",
+                        "roleProperties": {
+                            "name": "SNOW-Example",
+                            "properties": []
+                        },
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": []
+                    }]
+                }]
+            }
+        }],
+        "componentPropSheets": [{
+            "properties": [],
+            "componentName": "SNOW-Example"
+        }],
+        "teamMappings": [],
+        "deploymentTriggers": []
+    }],
+    "processes": [
+        {
+            "name": "Create Ticket",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "9b168d3084d8101e0c589d9d4aec9d",
+                        "from": "4b7dcf49283da6b339a42a53802ffd",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "4b7dcf49283da6b339a42a53802ffd",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "9b168d3084d8101e0c589d9d4aec9d",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "4b7dcf49283da6b339a42a53802ffd",
+                        "x": -90,
+                        "y": 230,
+                        "h": 80,
+                        "w": 290
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "682acefe-cd0e-4eae-8565-95091f0bf60e",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "9b168d3084d8101e0c589d9d4aec9d",
+                        "children": []
+                    },
+                    {
+                        "componentName": "SNOW-Example",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "4b7dcf49283da6b339a42a53802ffd",
+                        "children": [{
+                            "componentProcessName": "Create Ticket",
+                            "componentName": "SNOW-Example",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"SNOW-Example\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Update Ticket",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "aac49eb8d9aeafc9efda2557941f48",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "77da9bbb2593a4e1a45c23c1d7f9cf",
+                        "from": "aac49eb8d9aeafc9efda2557941f48",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "aac49eb8d9aeafc9efda2557941f48",
+                        "x": -90,
+                        "y": 230,
+                        "h": 80,
+                        "w": 290
+                    },
+                    {
+                        "name": "77da9bbb2593a4e1a45c23c1d7f9cf",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "7d1a4216-f5db-4574-bdff-de8aec15df8d",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "77da9bbb2593a4e1a45c23c1d7f9cf",
+                        "children": []
+                    },
+                    {
+                        "componentName": "SNOW-Example",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "aac49eb8d9aeafc9efda2557941f48",
+                        "children": [{
+                            "componentProcessName": "Update Ticket",
+                            "componentName": "SNOW-Example",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"SNOW-Example\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "17ac5426-0897-a254-6b5b-0d196cab7ae0",
+        "name": "ServiceNow",
+        "color": "#17AF4A",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}

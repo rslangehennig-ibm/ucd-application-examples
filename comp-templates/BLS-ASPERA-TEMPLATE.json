@@ -1,0 +1,219 @@
+{
+    "name": "BLS-ASPERA-TEMPLATE",
+    "description": "An example Aspera application template",
+    "applicationProcessList": [{
+        "name": "Aspera Move Files",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "bb77a459fb37e37dcf4bd3a82dc76a",
+                    "from": "c9c69b52faa3155b3da7f7a8157a34",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "c9c69b52faa3155b3da7f7a8157a34",
+                    "type": "ALWAYS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "c9c69b52faa3155b3da7f7a8157a34",
+                    "x": -100,
+                    "y": 230,
+                    "h": 70,
+                    "w": 310
+                },
+                {
+                    "name": "bb77a459fb37e37dcf4bd3a82dc76a",
+                    "x": -5,
+                    "y": 460,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "3d123217-96bb-40bc-9f6f-7ca210043979",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "bb77a459fb37e37dcf4bd3a82dc76a",
+                    "children": []
+                },
+                {
+                    "name": "c9c69b52faa3155b3da7f7a8157a34",
+                    "componentTag": {
+                        "objectType": "Component",
+                        "name": "Aspera",
+                        "description": "",
+                        "color": "#17AF4A"
+                    },
+                    "properties": [
+                        {
+                            "name": "activity.componentProcess.name",
+                            "value": "Move-Files-using-Async"
+                        },
+                        {
+                            "name": "maxCompIteration",
+                            "value": "100"
+                        },
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": ""
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "multiComponentEnvironmentIterator",
+                    "children": [{
+                        "tag": {
+                            "objectType": "Resource",
+                            "name": "Pool .80",
+                            "description": "",
+                            "color": "#007670"
+                        },
+                        "properties": [{
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        }],
+                        "type": "componentEnvironmentIterator",
+                        "name": "f4f799f771749038e3bae3395405b1",
+                        "children": [{
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "744e929a-4fb7-4e26-8d80-e6c330038cf1",
+                            "children": [{
+                                "componentProcessName": "Move-Files-using-Async",
+                                "allowFailure": false,
+                                "properties": {
+                                    "activity.componentProcess.name": "Move-Files-using-Async",
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "activity.componentProcess.name": "Move-Files-using-Async",
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Copy Files to Pool 80 Targets",
+                                "children": []
+                            }]
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "tags": [],
+    "tagRequirements": [{
+        "type": "EQUALS",
+        "number": 1,
+        "tag": {
+            "objectType": "Component",
+            "name": "Aspera",
+            "description": "",
+            "color": "#17AF4A"
+        }
+    }],
+    "enforceCompleteSnapshots": false,
+    "environmentTemplates": [{
+        "name": "R1",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApproval": false,
+        "noSelfApprovals": false,
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "propDefs": [],
+        "resourceTemplate": {
+            "name": "BLS-ASPERA-R1-Resource-Template",
+            "resources": {
+                "name": "BLS-ASPERA-R1-Resource-Template",
+                "path": "\/BLS-ASPERA-R1-Resource-Template",
+                "parentName": "",
+                "inheritTeam": false,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "Agent Prototype",
+                    "path": "\/BLS-ASPERA-R1-Resource-Template\/Agent Prototype",
+                    "description": "",
+                    "parentName": "BLS-ASPERA-R1-Resource-Template",
+                    "inheritTeam": true,
+                    "roleName": "Agent Placeholder",
+                    "roleProperties": {
+                        "name": "Agent Placeholder",
+                        "properties": [{
+                            "name": "agentNamePatterns",
+                            "description": "",
+                            "secure": false
+                        }]
+                    },
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "Aspera",
+                        "componentTag": {
+                            "objectType": "Component",
+                            "name": "Aspera",
+                            "description": "",
+                            "color": "#17AF4A"
+                        },
+                        "path": "\/BLS-ASPERA-R1-Resource-Template\/Agent Prototype\/Aspera",
+                        "description": "",
+                        "parentName": "Agent Prototype",
+                        "inheritTeam": true,
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": []
+                    }]
+                }]
+            },
+            "description": "A resource template for the R1 source environment"
+        },
+        "exemptProcesses": []
+    }],
+    "propDefs": []
+}

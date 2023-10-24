@@ -1,0 +1,3245 @@
+{
+    "name": "JKE-Banking",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "MiniKube-API-Container",
+            "description": "",
+            "created": 1582290777106,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "basePath",
+                            "value": "\/tmp\/HelloWorld",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy_API",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/17067e13-422e-e8f1-bfdf-78f07191f333\/processes\/17067e1c-2a2d-67e7-7714-21f11316ac99",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Expose the container ports",
+                            "from": "Start API Container",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start minikube",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "4baf70da8120342091f581f88c5982",
+                            "from": "Get Service List from Minikube",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Get Service List from Minikube",
+                            "from": "Expose the container ports",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "4baf70da8120342091f581f88c5982",
+                            "from": "Kubectl get pods",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Status",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Status",
+                            "from": "Start minikube",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Start API Container",
+                            "from": "Check Status",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Kubectl get pods",
+                            "from": "Expose the container ports",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Kubectl get pods",
+                            "x": 132.5,
+                            "y": 740,
+                            "h": 100,
+                            "w": 290
+                        },
+                        {
+                            "name": "4baf70da8120342091f581f88c5982",
+                            "x": 2.5,
+                            "y": 890,
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "name": "Expose the container ports",
+                            "x": -129.5987654320988,
+                            "y": 590,
+                            "h": 100,
+                            "w": 410
+                        },
+                        {
+                            "name": "Get Service List from Minikube",
+                            "x": -347.5,
+                            "y": 740,
+                            "h": 100,
+                            "w": 450
+                        },
+                        {
+                            "name": "Start API Container",
+                            "x": -87.09876543209879,
+                            "y": 440,
+                            "h": 100,
+                            "w": 320
+                        },
+                        {
+                            "name": "Check Status",
+                            "x": -54.59876543209879,
+                            "y": 290,
+                            "h": 100,
+                            "w": 250
+                        },
+                        {
+                            "name": "Start minikube",
+                            "x": 117.5,
+                            "y": 140,
+                            "h": 100,
+                            "w": 260
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -302.5,
+                            "y": 140,
+                            "h": 100,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "1c854b8e-d8e1-4cab-8cf5-dc575a94a43f",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "4baf70da8120342091f581f88c5982",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo minikube start --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus 1 --vm-driver=none",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start minikube",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "minikube status",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Status",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl run hello-minikube --image=gcr.io\/google_containers\/echoserver:1.4 --port=8080",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Start API Container",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl expose deployment hello-minikube --type=NodePort",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Expose the container ports",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo kubectl get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Kubectl get pods",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "sudo minikube service list",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Get Service List from Minikube",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "true",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "MiniKube-Installation",
+            "description": "",
+            "created": 1582126521529,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "Deploy HelloWorld",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/1705e16d-cc95-17ad-9cb3-dbb8422cf23b\/processes\/1705ec5c-0535-f59b-cc19-de7df83644c1",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "4baf70da8120342091f581f88c5982",
+                                "from": "Get Service List from Minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Check Status",
+                                "from": "Start minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start minikube",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start HelloWold Container",
+                                "from": "Check Status",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Expose the container ports",
+                                "from": "Start HelloWold Container",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Get Service List from Minikube",
+                                "from": "Get Services",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "4baf70da8120342091f581f88c5982",
+                                "from": "Kubectl get pods",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Kubectl get pods",
+                                "from": "Get Services",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Get Services",
+                                "from": "Expose the container ports",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Check Status",
+                                "x": -33.450520833333314,
+                                "y": 250,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "Start minikube",
+                                "x": -40,
+                                "y": 130,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "4baf70da8120342091f581f88c5982",
+                                "x": 14.388020833333314,
+                                "y": 850,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Expose the container ports",
+                                "x": -65.71614583333331,
+                                "y": 490,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Get Service List from Minikube",
+                                "x": -208.11197916666669,
+                                "y": 730,
+                                "h": 70,
+                                "w": 290
+                            },
+                            {
+                                "name": "Start HelloWold Container",
+                                "x": -70.3515625,
+                                "y": 370,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Kubectl get pods",
+                                "x": 111.88802083333331,
+                                "y": 730,
+                                "h": 70,
+                                "w": 200
+                            },
+                            {
+                                "name": "Get Services",
+                                "x": -19.5703125,
+                                "y": 610,
+                                "h": 70,
+                                "w": 180
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "11d534cc-9371-4143-a175-06b63b59ef82",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "4baf70da8120342091f581f88c5982",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo minikube start --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus 1 --vm-driver=none",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start minikube",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "minikube status",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Check Status",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "kubectl run hello-minikube --image=gcr.io\/google_containers\/echoserver:1.4 --port=8080",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start HelloWold Container",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "kubectl expose deployment hello-minikube --type=NodePort",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Expose the container ports",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "kubectl get services",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Get Services",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo kubectl get pods",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Kubectl get pods",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo minikube service list",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Get Service List from Minikube",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Install MiniKube",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/1705e16d-cc95-17ad-9cb3-dbb8422cf23b\/processes\/1705e171-9d44-14c2-8169-b807864ec4c6",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Apt-get Update",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Minikube",
+                                "from": "Install Docker",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "199ef7ec843c801627a86f0e206444",
+                                "from": "Helm Install",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Helm Install",
+                                "from": "Install Minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Check minikube Version",
+                                "from": "Install Minikube",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Docker",
+                                "from": "Apt-get Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "199ef7ec843c801627a86f0e206444",
+                                "from": "Check minikube Version",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Move Kubectl to Bin Directory",
+                                "from": "Install Kubectl",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Minikube",
+                                "from": "Move Kubectl to Bin Directory",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install Kubectl",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Move Kubectl to Bin Directory",
+                                "x": 20,
+                                "y": 250,
+                                "h": 70,
+                                "w": 280
+                            },
+                            {
+                                "name": "Install Kubectl",
+                                "x": 70,
+                                "y": 130,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Apt-get Update",
+                                "x": -150,
+                                "y": 130,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Check minikube Version",
+                                "x": -170,
+                                "y": 490,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "Install Docker",
+                                "x": -190,
+                                "y": 250,
+                                "h": 70,
+                                "w": 180
+                            },
+                            {
+                                "name": "Install Minikube",
+                                "x": -42.5,
+                                "y": 370,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Helm Install",
+                                "x": 110,
+                                "y": 490,
+                                "h": 70,
+                                "w": 170
+                            },
+                            {
+                                "name": "199ef7ec843c801627a86f0e206444",
+                                "x": 15,
+                                "y": 610,
+                                "h": 80,
+                                "w": 120
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "d3d4cd55-7a59-43e2-ab9a-c40f8fa9bf20",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "199ef7ec843c801627a86f0e206444",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "curl -LO https:\/\/storage.googleapis.com\/kubernetes-release\/release\/`curl -s https:\/\/storage.googleapis.com\/kubernetes-release\/release\/stable.txt`\/bin\/linux\/amd64\/kubectl",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Kubectl",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "chmod +x .\/kubectl\nsudo mv .\/kubectl \/usr\/local\/bin\/kubectl",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Move Kubectl to Bin Directory",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo apt-get update",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Apt-get Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "sudo apt-get install docker.io -y",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Docker",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "curl -Lo minikube https:\/\/storage.googleapis.com\/minikube\/releases\/latest\/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube \/usr\/local\/bin\/",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install Minikube",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "minikube version",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Check minikube Version",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "curl -fsSL -o get_helm.sh https:\/\/raw.githubusercontent.com\/helm\/helm\/master\/scripts\/get-helm-3\nchmod 700 get_helm.sh\n.\/get_helm.sh",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Helm Install",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "MySQL Server",
+            "description": "This component contains the process to install MySQL Server",
+            "created": 1570812489530,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "deploy",
+                    "description": "Install mysql",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb86-f4a9-521d-6381-e851cdb6312d\/processes\/16dbbb87-758b-8f34-d7c9-aa9ab7658790",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Install lsb-core",
+                                "from": "Unzip",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "4ca7b4637565245c76c45aca105bb8",
+                                "from": "Restart MySQL Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install MySQL",
+                                "from": "Run Package Manager Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Package Manager Update",
+                                "from": "Install lsb-core",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Unzip",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Restart MySQL Server",
+                                "from": "Install MySQL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -185,
+                                "y": 160,
+                                "h": 130,
+                                "w": 530
+                            },
+                            {
+                                "name": "Restart MySQL Server",
+                                "x": -160,
+                                "y": 1060,
+                                "h": 130,
+                                "w": 480
+                            },
+                            {
+                                "name": "4ca7b4637565245c76c45aca105bb8",
+                                "x": -10,
+                                "y": 1240,
+                                "h": 110,
+                                "w": 180
+                            },
+                            {
+                                "name": "Run Package Manager Update",
+                                "x": -230,
+                                "y": 700,
+                                "h": 130,
+                                "w": 620
+                            },
+                            {
+                                "name": "Install MySQL",
+                                "x": -85,
+                                "y": 880,
+                                "h": 130,
+                                "w": 330
+                            },
+                            {
+                                "name": "Install lsb-core",
+                                "x": -90,
+                                "y": 520,
+                                "h": 130,
+                                "w": 340
+                            },
+                            {
+                                "name": "Unzip",
+                                "x": -75,
+                                "y": 340,
+                                "h": 130,
+                                "w": 310
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "719ad9c6-3c3e-4ac3-b32a-f88d7660e5e8",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "4ca7b4637565245c76c45aca105bb8",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "OS=$(lsb_release -si)\nif [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\necho \"Installing MySQL for ${OS}\"\nchmod u+x \"$PWD\"\/${OS}_percona.sh\nif [ \"${OS}\" == \"Ubuntu\" ] ; then\n    $CMD \"$PWD\"\/${OS}_percona.sh\nelse\n    $CMD \"$PWD\"\/${OS}_percona.sh\nfi",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install MySQL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": true,
+                                "impersonationUsername": "root",
+                                "impersonationGroup": "",
+                                "showHidden": false,
+                                "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|3IRC3GWN0Z+RowehHe42Fw==|fwi4fhqBG2i\/V+7XfLTAJ09QJNPytiLf3hldPobYhHBm1TiI6amy6SyBqUPEoPYfMceLzqlMZPc8hyLCIjnNu7A2LP2ZRpWok8zvDcjlqPRYjqqy6MPfAjgqOmPp+1v5}",
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "OS=$(lsb_release -si)\nif [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\necho \"Found Operating System: $OS\"\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\t$CMD yum clean all\n\t\t;;\n\tCentOS)\n\t\t$CMD yum clean all\n\t\t;;\n\tUbuntu)\n\t\t$CMD apt-get update -y;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n        exit 1;\n\t\t;;\nesac",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Package Manager Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\nif [ -f \/etc\/my.cnf ] ; then\n    sed -i \"s\/127.0.0.1\/0.0.0.0\/g\" \/etc\/my.cnf\nfi\n$CMD service mysql restart",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Restart MySQL Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if [ -z \"$USER\" ]; then\n    USER=`whoami`\nfi\n\nCMD=\nif [ \"$USER\" != \"root\" ]; then\n    CMD=\"sudo\"\nfi\nif command -v dpkg; then\n    $CMD apt-get -y update\n    $CMD apt-get -y install lsb-core\nelse\n    $CMD yum -y update\n    $CMD yum -y install redhat-lsb-core\nfi",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install lsb-core",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Unzip",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "zip": "MySQL+Server_5.6_artifacts.zip",
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "overwrite": "false",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Unzip",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "deploy mysql 5.7",
+                    "description": "Install mysql using the package manager",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb86-f4a9-521d-6381-e851cdb6312d\/processes\/16dbbf3f-6e04-b8ec-6937-b43fb00b41da",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Install MySQL",
+                                "from": "Run Package Manager Update",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Finish",
+                                "from": "Restart MySQL Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Configuration File",
+                                "from": "Install MySQL",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Restart MySQL Server",
+                                "from": "Replace Configuration File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Package Manager Update",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Download Artifacts",
+                                "x": -70,
+                                "y": 110,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Install MySQL",
+                                "x": -35,
+                                "y": 330,
+                                "h": 70,
+                                "w": 190
+                            },
+                            {
+                                "name": "Finish",
+                                "x": -5,
+                                "y": 690,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Replace Configuration File",
+                                "x": -70,
+                                "y": 450,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "Run Package Manager Update",
+                                "x": -70,
+                                "y": 220,
+                                "h": 70,
+                                "w": 290
+                            },
+                            {
+                                "name": "Restart MySQL Server",
+                                "x": -60,
+                                "y": 560,
+                                "h": 70,
+                                "w": 240
+                            }
+                        ],
+                        "layoutMode": "manual",
+                        "type": "graph",
+                        "name": "53807735-761c-462b-9fbb-a1461313aa10",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "Finish",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if command -v lsb_release; then \n  OS=$(lsb_release -si)\nelse \n  OS=\"CentOS\"\nfi\n\n\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\techo \"Installing MySQL for RHEL\"\n\t\tyum -y install mysql-server\n                service mysqld start\n\t\t;;\n\tCentOS)\n                echo \"Installing MySQL for CentOS\"\n\t\tyum -y install mysql-server\n                service mysqld start\n\t\t;;\n\tUbuntu)\n                echo \"Installing MySQL for Ubuntu\"\n\t\texport DEBIAN_FRONTEND=noninteractive\n\t\tsudo -E apt-get -q -y install mysql-server-5.7;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n                exit 1;\n\t\t;;\nesac\n\nmysqladmin -u root password passw0rd;",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install MySQL",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "if command -v lsb_release; then \n  OS=$(lsb_release -si)\nelse \n  OS=\"CentOS\"\nfi\necho \"Found Operating System: $OS\"\ncase \"$OS\" in\n\tRedHatEnterpriseServer)\n\t\tyum clean all\n\t\t;;\n\tCentOS)\n\t\tyum clean all\n\t\t;;\n\tUbuntu)\n\t\tapt-get update -y;\n\t\t;;\n\t*)\n\t\techo \"Could not determine Operating System.\"\n                exit 1;\n\t\t;;\nesac",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Package Manager Update",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 9,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "service mysql restart;",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Restart MySQL Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Copy Directory",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "sourceDir": ".",
+                                    "destDirList": "\/etc\/mysql\/",
+                                    "includes": "my.cnf",
+                                    "excludes": "",
+                                    "mapperRules": "",
+                                    "force": "",
+                                    "flatten": "",
+                                    "preserveLastModified": "",
+                                    "failOnError": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Configuration File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "WebSphere Liberty Profile",
+            "description": "This component contains the binaries and process to install WebSphere Liberty Profile",
+            "created": 1570812500351,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "deploy",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/16dbbb89-98fa-8593-fd08-859b42567023\/processes\/16dbbb8a-1c94-e793-6f91-07a8e982c5c3",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "8c5260c87db37f40dfd6d952d169ba",
+                            "from": "Install WLP",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Unzip",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Install WLP",
+                            "from": "Unzip",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "8c5260c87db37f40dfd6d952d169ba",
+                            "x": -5,
+                            "y": 730,
+                            "h": 100,
+                            "w": 160
+                        },
+                        {
+                            "name": "Unzip",
+                            "x": -60,
+                            "y": 360,
+                            "h": 110,
+                            "w": 270
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -145,
+                            "y": 175,
+                            "h": 110,
+                            "w": 440
+                        },
+                        {
+                            "name": "Install WLP",
+                            "x": -45,
+                            "y": 545,
+                            "h": 110,
+                            "w": 240
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "164b6a08-5a00-4eec-a204-5553bef123c1",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "8c5260c87db37f40dfd6d952d169ba",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "${p:agent\/JAVA_HOME}\/bin\/java  -jar wlp-developers-runtime-${p:version.name}.jar  --acceptLicense \/opt\/was\/liberty",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Install WLP",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 73,
+                            "commandName": "Unzip",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "dir": "",
+                                "zip": "WebSphere+Liberty+Profile_8.5.5.3_artifacts.zip",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "overwrite": "false",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Unzip",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "jke.db",
+            "description": "This component contains the process to setup and configure the JKE database on MySQL Server.",
+            "created": 1570812463339,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "deploy",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/16dbbb80-8fa7-58cb-98b5-ed8c149aca6c\/processes\/16dbbb81-186e-e5d2-166f-f6dae62d6008",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "6cf8f2acda314048a85f7c0c061c02",
+                            "from": "Create JKEDB Database",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create JKEDB Database",
+                            "from": "Unzip",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Unzip",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "6cf8f2acda314048a85f7c0c061c02",
+                            "x": 0,
+                            "y": 420,
+                            "h": 90,
+                            "w": 130
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -65,
+                            "y": 110,
+                            "h": 80,
+                            "w": 300
+                        },
+                        {
+                            "name": "Unzip",
+                            "x": 403.57142857142867,
+                            "y": 140,
+                            "h": 80,
+                            "w": 200
+                        },
+                        {
+                            "name": "Create JKEDB Database",
+                            "x": -60,
+                            "y": 250,
+                            "h": 80,
+                            "w": 300
+                        }
+                    ],
+                    "layoutMode": "manual",
+                    "type": "graph",
+                    "name": "806850bc-bb81-4ebe-8745-75ea00fb7de7",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "6cf8f2acda314048a85f7c0c061c02",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "mysql -u root -ppassw0rd < create_database.sql",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create JKEDB Database",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 31,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 73,
+                            "commandName": "Unzip",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "dir": "",
+                                "zip": "jke.db_2.0_artifacts.zip",
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "overwrite": "false",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Unzip",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "jke.war",
+            "description": "JKE Banking Sample Application Web Application Resource Archive",
+            "created": 1570812474199,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [
+                {
+                    "name": "JKE_DB_HOST",
+                    "label": "JKE_DB_HOST",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "value": "localhost",
+                    "required": false,
+                    "description": "",
+                    "placeholder": ""
+                },
+                {
+                    "name": "JKE_WEB_URL",
+                    "label": "JKE_WEB_URL",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "required": false,
+                    "description": "",
+                    "placeholder": ""
+                }
+            ],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": [{
+                        "name": "LIBERTY_HOME",
+                        "value": "\/opt\/was\/liberty",
+                        "description": "",
+                        "secure": false
+                    }]
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "basePath",
+                            "value": "\/tmp\/jke",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [
+                {
+                    "name": "create snapshot",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/16dbbb83-3675-8cd0-28f7-0bf5ca1f619a\/processes\/1709d401-64db-abb2-2fa5-c50429adf0ec",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Create Snapshot Of Environment",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "05ecb15e8d04a8cebf6f9e823d608d",
+                                "from": "Create Snapshot Of Environment",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "05ecb15e8d04a8cebf6f9e823d608d",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Create Snapshot Of Environment",
+                                "x": -120,
+                                "y": 230,
+                                "h": 70,
+                                "w": 350
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "0f180530-7faa-49b4-8e49-e59ddcfca0e0",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "05ecb15e8d04a8cebf6f9e823d608d",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 80,
+                                "commandName": "Create Snapshot Of Environment",
+                                "pluginName": "UrbanCode Deploy Applications",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "application": "${p:application.name}",
+                                    "environment": "${p:environment.name}",
+                                    "name": "RC ${p:version.name}",
+                                    "description": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create Snapshot Of Environment",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "deploy",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/16dbbb83-3675-8cd0-28f7-0bf5ca1f619a\/processes\/16dbbb83-b748-a4fa-5d89-58e5fd413798",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Unzip",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Send HTTP Call",
+                                "from": "Start Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "5902fde95deb22dbdd66792de7d275",
+                                "from": "Send HTTP Call",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Update Property File",
+                                "from": "Unzip",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start Server",
+                                "from": "Install or Update Application via Dropins",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create File",
+                                "from": "Stop Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start Server",
+                                "from": "Create File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create WAR archive",
+                                "from": "Update Property File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Stop Server",
+                                "from": "Create WAR archive",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install or Update Application via Dropins",
+                                "from": "Stop Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Create File",
+                                "x": 260.37506908055684,
+                                "y": 950,
+                                "h": 110,
+                                "w": 350
+                            },
+                            {
+                                "name": "Update Property File",
+                                "x": -201.81695599069758,
+                                "y": 470,
+                                "h": 110,
+                                "w": 590
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -150.45423899767434,
+                                "y": 150,
+                                "h": 110,
+                                "w": 460
+                            },
+                            {
+                                "name": "Start Server",
+                                "x": -54.31971829941574,
+                                "y": 1110,
+                                "h": 110,
+                                "w": 370
+                            },
+                            {
+                                "name": "Unzip",
+                                "x": -55.90847799534879,
+                                "y": 310,
+                                "h": 110,
+                                "w": 280
+                            },
+                            {
+                                "name": "Stop Server",
+                                "x": -56.772673575911995,
+                                "y": 790,
+                                "h": 110,
+                                "w": 360
+                            },
+                            {
+                                "name": "Install or Update Application via Dropins",
+                                "x": -569.6249309194432,
+                                "y": 950,
+                                "h": 110,
+                                "w": 800
+                            },
+                            {
+                                "name": "Send HTTP Call",
+                                "x": -85.41711198940197,
+                                "y": 1270,
+                                "h": 110,
+                                "w": 430
+                            },
+                            {
+                                "name": "5902fde95deb22dbdd66792de7d275",
+                                "x": 43.48549432061168,
+                                "y": 1430,
+                                "h": 100,
+                                "w": 170
+                            },
+                            {
+                                "name": "Create WAR archive",
+                                "x": -96.79481478330479,
+                                "y": 630,
+                                "h": 110,
+                                "w": 410
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "05ed4d92-be82-4e8b-a735-73f53b801e76",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "5902fde95deb22dbdd66792de7d275",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 31,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Update Java Properties File",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "customEncoding": "",
+                                    "useSystemEncoding": "",
+                                    "dir": "WEB-INF\/classes",
+                                    "includes": "JKEDB.properties",
+                                    "excludes": "",
+                                    "updateProps": "jdbc.hostname=${p:JKE_DB_HOST}",
+                                    "additionalProps": "",
+                                    "additionalPropsPrefix": "",
+                                    "deleteProps": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Update Property File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Create .zip File",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "zipName": "JKE.war",
+                                    "baseDir": ".",
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "update": "false",
+                                    "followSymlinks": "false",
+                                    "caseSensitive": "true",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create WAR archive",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 21,
+                                "commandName": "Stop Server",
+                                "pluginName": "WebSphere Liberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "defaultServer",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "",
+                                    "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|D+o+ih6\/nbPKkcFFCbeCQQ==|kjQ8QywChqNyI13e\/dROZ7KchXWwwqWEttWLzNoW9xpbKy+0DY\/hRABs8Zqouv4XXCAXZT4ekCEGh1ypWZ38ixJaTLBCkvJlVQjP5sqmDaJ6sN1HQSk9Zt0gg00puJhn}",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|uqmHYKE7a7nyNn4aE4VFKg==|efXng3Juxc0mLRoXtZXZVOTJi4cFTMTbDcfOPb9l7BMYmrxffC3xMvmPGNvwqrOgQrKxL9PuXJ8EiDdK\/3R6vFGq4mTD9hWQy9ZAa+L2y35h8gTgqe\/3mjUE5LSPHzGY}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Stop Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 21,
+                                "commandName": "Install or Update Applications with Dropins",
+                                "pluginName": "WebSphere Liberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "source": "JKE.war",
+                                    "server": "defaultServer",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install or Update Application via Dropins",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 21,
+                                "commandName": "Start Server",
+                                "pluginName": "WebSphere Liberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "defaultServer",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "",
+                                    "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|AMLOFpJKe5OpVdsfosxsGg==|wn3EX+LB1cQENXxZbl0kjleXqUKRtiQkUUbrvrSey+nJgqbfjx87cACXTij04K2q\/KvgS3jHdwM6XYmtrliVLr1MoDXUktMkCdM6hB0P1HSvVTk1RG3zObQ4Jqy4rLpX}",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|JxgVxNJshVZagcVXxkBDFg==|QlcBzX0y7DDGTa4Ne9YI+kV67fM07DqAJNxTmToExQC7MASNLjgF+u9Y15KNADbgNMX98ppLHCan7Gfv9DdsSvfLZMNAfiCHT00hiRhWZdSMz2KkCfMuJHnGATHmLbtG}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "${p:LIBERTY_HOME}\/wlp\/usr\/servers\/defaultServer",
+                                "pluginVersion": 73,
+                                "commandName": "Create File",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "file": "server.xml",
+                                    "contents": "<server description=\"new server\">\n\n    <!-- Enable features -->\n    <featureManager>\n        <feature>jsp-2.2<\/feature>\n    <\/featureManager>\n\n    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host=\"*\" -->\n    <httpEndpoint id=\"defaultHttpEndpoint\"\n                  host=\"*\"\n                  httpPort=\"9080\"\n                  httpsPort=\"9443\" \/>\n\n<\/server>",
+                                    "overwrite": "true",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 73,
+                                "commandName": "Unzip",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "dir": "",
+                                    "zip": "jke.war_2.0_artifacts.zip",
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "overwrite": "false",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Unzip",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 15,
+                                "commandName": "Send HTTP Call",
+                                "pluginName": "Web Utilities",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "url": "${p:environment\/JKE_WEB_URL}",
+                                    "method": "GET",
+                                    "headers": "",
+                                    "data": "",
+                                    "contentType": "*\/*",
+                                    "acceptType": "*\/*",
+                                    "untrustedSSL": "false",
+                                    "username": "",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|Gmeb7XW4I9+MygkgwW6oeQ==|JzVQeFY0U93Z\/RU7MgrWcA==}",
+                                    "outFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Send HTTP Call",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [{
+        "name": "DEV-934dab44c7e9",
+        "color": "#008ABF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "historyCleanupDaysToKeep": 365,
+        "order": 0,
+        "active": true,
+        "propSheet": {"properties": []},
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [],
+        "baseResourcesFull": [],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "MiniKube-API-Container"
+            },
+            {
+                "properties": [],
+                "componentName": "MiniKube-Installation"
+            },
+            {
+                "properties": [],
+                "componentName": "MySQL Server"
+            },
+            {
+                "properties": [],
+                "componentName": "WebSphere Liberty Profile"
+            },
+            {
+                "properties": [],
+                "componentName": "jke.db"
+            },
+            {
+                "properties": [
+                    {
+                        "name": "JKE_DB_HOST",
+                        "value": "localhost",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "JKE_WEB_URL",
+                        "value": "http:\/\/54.242.38.59:9080",
+                        "description": "",
+                        "secure": false
+                    }
+                ],
+                "componentName": "jke.war"
+            }
+        ],
+        "teamMappings": []
+    }],
+    "processes": [{
+        "name": "Deploy_JKE",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "9efe228156e13509bad957449e49cf",
+                    "from": "Check Environment",
+                    "type": "VALUE",
+                    "value": ""
+                },
+                {
+                    "to": "2ed090dfb737f0212f43352a80c990",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "e1ceb2fa13fbeda28db7ce8208c841",
+                    "from": "181381db62b4f5a1ce40f97bc9ef58",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "2e2deb0448891412ef5058b9aebef3",
+                    "from": "2ed090dfb737f0212f43352a80c990",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "2e2deb0448891412ef5058b9aebef3",
+                    "from": "181381db62b4f5a1ce40f97bc9ef58",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "12eb8c2f39c7edacdb1c372d072b11",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "07df8ab6f1a5a1d80519f0985a857c",
+                    "from": "12eb8c2f39c7edacdb1c372d072b11",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "2e2deb0448891412ef5058b9aebef3",
+                    "from": "e1ceb2fa13fbeda28db7ce8208c841",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "Check Environment",
+                    "from": "07df8ab6f1a5a1d80519f0985a857c",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "181381db62b4f5a1ce40f97bc9ef58",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "Check Environment",
+                    "from": "6b3893251a97db25225a51aa250d77",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "848d3fa8b1594a3296a5be3e00033e",
+                    "from": "Check Environment",
+                    "type": "VALUE",
+                    "value": "Dev"
+                },
+                {
+                    "to": "9efe228156e13509bad957449e49cf",
+                    "from": "848d3fa8b1594a3296a5be3e00033e",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "6b3893251a97db25225a51aa250d77",
+                    "from": "2e2deb0448891412ef5058b9aebef3",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "2ed090dfb737f0212f43352a80c990",
+                    "x": -105,
+                    "y": 135,
+                    "h": 70,
+                    "w": 320
+                },
+                {
+                    "name": "2e2deb0448891412ef5058b9aebef3",
+                    "x": 128.90625,
+                    "y": 390,
+                    "h": 50,
+                    "w": 120
+                },
+                {
+                    "name": "12eb8c2f39c7edacdb1c372d072b11",
+                    "x": -415,
+                    "y": 130,
+                    "h": 80,
+                    "w": 280
+                },
+                {
+                    "name": "Check Environment",
+                    "x": -81.09375,
+                    "y": 610,
+                    "h": 70,
+                    "w": 300
+                },
+                {
+                    "name": "07df8ab6f1a5a1d80519f0985a857c",
+                    "x": -356.23046875,
+                    "y": 260,
+                    "h": 80,
+                    "w": 300
+                },
+                {
+                    "name": "9efe228156e13509bad957449e49cf",
+                    "x": 50,
+                    "y": 860,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "181381db62b4f5a1ce40f97bc9ef58",
+                    "x": 245,
+                    "y": 135,
+                    "h": 70,
+                    "w": 260
+                },
+                {
+                    "name": "848d3fa8b1594a3296a5be3e00033e",
+                    "x": -100,
+                    "y": 730,
+                    "h": 80,
+                    "w": 260
+                },
+                {
+                    "name": "6b3893251a97db25225a51aa250d77",
+                    "x": 28.90625,
+                    "y": 490,
+                    "h": 70,
+                    "w": 200
+                },
+                {
+                    "name": "e1ceb2fa13fbeda28db7ce8208c841",
+                    "x": 115,
+                    "y": 265,
+                    "h": 70,
+                    "w": 190
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "3344540d-cb4e-4bf0-a84d-1ba75a1a2e42",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "9efe228156e13509bad957449e49cf",
+                    "children": []
+                },
+                {
+                    "componentName": "WebSphere Liberty Profile",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "2ed090dfb737f0212f43352a80c990",
+                    "children": [{
+                        "componentName": "WebSphere Liberty Profile",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "a9bb0aec-b5c3-4168-8edd-7f664331e69c",
+                        "children": [{
+                            "componentProcessName": "deploy",
+                            "componentName": "WebSphere Liberty Profile",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install: \"WebSphere Liberty Profile\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "MySQL Server",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "181381db62b4f5a1ce40f97bc9ef58",
+                    "children": [{
+                        "componentName": "MySQL Server",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "49e15d62-4bd9-4571-b067-7b8872f6a5f0",
+                        "children": [{
+                            "componentProcessName": "deploy mysql 5.7",
+                            "componentName": "MySQL Server",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install: \"MySQL Server\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "type": "join",
+                    "name": "2e2deb0448891412ef5058b9aebef3",
+                    "children": []
+                },
+                {
+                    "componentName": "jke.db",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "e1ceb2fa13fbeda28db7ce8208c841",
+                    "children": [{
+                        "componentName": "jke.db",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "517c3104-8553-4fec-9d94-487cfa7ac688",
+                        "children": [{
+                            "componentProcessName": "deploy",
+                            "componentName": "jke.db",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install: \"jke.db\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "jke.war",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "6b3893251a97db25225a51aa250d77",
+                    "children": [{
+                        "componentName": "jke.war",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "4d825f3e-956b-4e09-bbff-2eae1ddc105a",
+                        "children": [{
+                            "componentProcessName": "deploy",
+                            "componentName": "jke.war",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install: \"jke.war\"",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "MiniKube-API-Container",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "07df8ab6f1a5a1d80519f0985a857c",
+                    "children": [{
+                        "componentName": "MiniKube-API-Container",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "7e90dee4-00a0-4b4e-a426-2b1a435fd46c",
+                        "children": [{
+                            "componentProcessName": "Deploy_API",
+                            "componentName": "MiniKube-API-Container",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Install API to K8s",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "propertyName": "${p:environment.name}",
+                    "type": "switch",
+                    "name": "Check Environment",
+                    "children": []
+                },
+                {
+                    "componentName": "jke.war",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "1"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": "true"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "848d3fa8b1594a3296a5be3e00033e",
+                    "children": [{
+                        "name": "d64a0ab523ac5c78f4b843dc250a6b",
+                        "componentName": "jke.war",
+                        "type": "allVersionsIterator",
+                        "children": [{
+                            "componentProcessName": "create snapshot",
+                            "componentName": "jke.war",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Create a Snapshot",
+                            "children": []
+                        }]
+                    }]
+                },
+                {
+                    "componentName": "MiniKube-Installation",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "12eb8c2f39c7edacdb1c372d072b11",
+                    "children": [{
+                        "componentName": "MiniKube-Installation",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "a8d3a6c0-98fc-4beb-9a9f-dad250ddcf82",
+                        "children": [{
+                            "componentProcessName": "Install MiniKube",
+                            "componentName": "MiniKube-Installation",
+                            "allowFailure": false,
+                            "properties": {},
+                            "draftProperties": {},
+                            "type": "componentProcess",
+                            "name": "Minikube",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "16e67201-c763-1af1-9317-b24ecea8a8fa",
+        "name": "WebSphere Liberty",
+        "color": "#7F1C7D",
+        "description": "",
+        "objectType": "Application"
+    }]
+}

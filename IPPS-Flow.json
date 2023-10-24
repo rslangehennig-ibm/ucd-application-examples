@@ -1,0 +1,633 @@
+{
+    "name": "IPPS-Flow",
+    "description": "An example ACE BAR deployment",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "IPPS-Flow-BAR",
+        "description": "",
+        "created": 1614715208935,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "FileSystemVersionedComponentProperties",
+                "properties": [
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "includes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "excludes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "basePath",
+                        "value": "\/downloads\/iib-bar",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "custom",
+                "properties": []
+            }
+        ]},
+        "processes": [{
+            "name": "Deploy-BAR",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/177f486c-4f62-0587-9290-a76b2103d998\/processes\/177f4873-b3d4-6042-ee80-152e75cf3ecf",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "3532730630b08835394559855ecac6",
+                        "from": "Smoke Test IPPS Flow",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Smoke Test IPPS Flow",
+                        "from": "Deploy",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Deploy",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "3532730630b08835394559855ecac6",
+                        "x": -5,
+                        "y": 590,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Deploy",
+                        "x": -35,
+                        "y": 300,
+                        "h": 70,
+                        "w": 180
+                    },
+                    {
+                        "name": "Smoke Test IPPS Flow",
+                        "x": -65,
+                        "y": 445,
+                        "h": 70,
+                        "w": 240
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 155,
+                        "h": 70,
+                        "w": 260
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "d0f18435-8997-4755-8135-dd8a9f8e0401",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "3532730630b08835394559855ecac6",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 32,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "versionId": "${p:version.id}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "charset": "",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 3,
+                        "commandName": "Deploy",
+                        "pluginName": "IBM ACE",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "installDir": "C:\\Program Files\\IBM\\ACE\\11.0.0.9\\server",
+                            "integrationNodeName": "",
+                            "integrationNodeFileName": "",
+                            "ipAddress": "localhost",
+                            "port": "7600",
+                            "BARFile": "${p:resource\/work.dir}\\IPPS-Flow-BAR\\ipps-flow.bar",
+                            "deployedObjects": "",
+                            "integrationServerName": "TEST_SERVER",
+                            "clear": "true",
+                            "traceFileName": "${p?:resource\/ace.traceFileName}",
+                            "timeoutValue": "${p?:resource\/ace.timeoutValue}"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 15,
+                        "commandName": "Send HTTP Call",
+                        "pluginName": "Web Utilities",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "url": "http:\/\/localhost:7800\/ipps\/customer\/v1\/retrieve\/101",
+                            "method": "GET",
+                            "headers": "",
+                            "data": "",
+                            "contentType": "*\/*",
+                            "acceptType": "*\/*",
+                            "untrustedSSL": "false",
+                            "username": "",
+                            "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|0R9+zBj9+vb1xTAc0P3Rdw==|EjIJ9hNsXohAR97Qc7es7w==}",
+                            "outFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Smoke Test IPPS Flow",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": [
+            {
+                "id": "177fdf84-c7f8-880f-0aec-0532a9d1afdc",
+                "name": "ACE",
+                "color": "#FDB813",
+                "description": "",
+                "objectType": "Component"
+            },
+            {
+                "id": "17653c4d-87c2-b1e9-aafb-3cc30e36d643",
+                "name": "IIB (WMB)",
+                "color": "#17AF4A",
+                "description": "",
+                "objectType": "Component"
+            }
+        ]
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Integrations\/IIB-Skytap",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/IIB-Skytap\/DEV",
+                    "description": "",
+                    "parentName": "IIB-Skytap",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Integrations\/IIB-Skytap",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/IIB-Skytap\/DEV",
+                    "description": "",
+                    "parentName": "IIB-Skytap",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "skytap-win10-iib",
+                        "path": "\/CloudPak-for-Integrations\/IIB-Skytap\/DEV\/skytap-win10-iib",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "skytap-win10-iib",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "IPPS-Flow-BAR",
+                            "path": "\/CloudPak-for-Integrations\/IIB-Skytap\/DEV\/skytap-win10-iib\/IPPS-Flow-BAR",
+                            "description": "",
+                            "parentName": "skytap-win10-iib",
+                            "inheritTeam": true,
+                            "roleName": "IPPS-Flow-BAR",
+                            "roleProperties": {
+                                "name": "IPPS-Flow-BAR",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IPPS-Flow-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": true,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "approvalProcess": {"rootActivity": {
+                "edges": [
+                    {
+                        "to": "8e6bca43fe1d01bd7f6a61880b1b4b",
+                        "from": "0b2b25ac17e4bf9bfd428d8e7b8b2d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "0b2b25ac17e4bf9bfd428d8e7b8b2d",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "8e6bca43fe1d01bd7f6a61880b1b4b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "0b2b25ac17e4bf9bfd428d8e7b8b2d",
+                        "x": -65,
+                        "y": 230,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "af4fad51-1e6e-43ce-8546-b9beae433c37",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "8e6bca43fe1d01bd7f6a61880b1b4b",
+                        "children": []
+                    },
+                    {
+                        "roleRestrictionData": {
+                            "contextType": "ENVIRONMENT",
+                            "roleRestrictions": [{"roleName": "Administrator"}]
+                        },
+                        "propDefs": [],
+                        "templateName": "ApprovalCreated",
+                        "commentRequired": false,
+                        "commentPrompt": "",
+                        "role": {},
+                        "type": "environmentApprovalTask",
+                        "name": "0b2b25ac17e4bf9bfd428d8e7b8b2d",
+                        "children": []
+                    }
+                ]
+            }},
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IPPS-Flow-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "UAT",
+            "description": "",
+            "color": "#F389AF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IPPS-Flow-BAR"
+            }],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#FFCF01",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IPPS-Flow-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-BAR",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "011b3183d39cb92d2ff195e5f41d99",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "56d5d2d6103ed9f18ef4c6c450269e",
+                    "from": "011b3183d39cb92d2ff195e5f41d99",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "011b3183d39cb92d2ff195e5f41d99",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 250
+                },
+                {
+                    "name": "56d5d2d6103ed9f18ef4c6c450269e",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "c5420e42-367f-47f5-892b-7118e26a6122",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "56d5d2d6103ed9f18ef4c6c450269e",
+                    "children": []
+                },
+                {
+                    "componentName": "IPPS-Flow-BAR",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "011b3183d39cb92d2ff195e5f41d99",
+                    "children": [{
+                        "componentName": "IPPS-Flow-BAR",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "01f5d0fb-50b6-47c5-aa12-c11f22a7af9d",
+                        "children": [{
+                            "componentProcessName": "Deploy-BAR",
+                            "componentName": "IPPS-Flow-BAR",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"IPPS-Flow-BAR\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "177f5050-29ab-498d-7911-d104ffa1d3b6",
+            "name": "ACE",
+            "color": "#FDB813",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "177dae2c-2388-d06c-9edb-7d681f6345d1",
+            "name": "IIB",
+            "color": "#17AF4A",
+            "description": "IBM Integration Bus",
+            "objectType": "Application"
+        }
+    ]
+}

@@ -1,0 +1,1583 @@
+{
+    "name": "Kube-Example-AKS",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "Kube-Example-AKS-YAML",
+            "description": "",
+            "created": 1618417387613,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/downloads\/kube-statestreet",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "custom",
+                    "properties": [
+                        {
+                            "name": "docker-hub-url",
+                            "value": "https:\/\/hub.docker.com\/r\/ibmicpcoc\/kubetoy\/tags?page=1&ordering=last_updated",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "github-url",
+                            "value": "https:\/\/github.com\/IBM-ICP-CoC\/KubeToy",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy-Container",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/178d1318-8735-5d46-ae75-d67f2aa37d40\/processes\/178d1318-8879-c669-29ce-773b7b636398",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Get Nodes and Pods",
+                            "from": "Delete Resources",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "eff63fa00561398d05376b83ced89e",
+                            "from": "Check Deployment (Get Pods)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Deploy KubeToy with YML",
+                            "from": "Wait for 45 Seconds",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Deployment (Get Pods)",
+                            "from": "Deploy KubeToy with YML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Replace Tokens",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Wait for 45 Seconds",
+                            "from": "Get Nodes and Pods",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Login to Microsoft Azure AKS",
+                            "from": "Replace Tokens",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Delete Resources",
+                            "from": "Login to Microsoft Azure AKS",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Get Nodes and Pods",
+                            "x": -115,
+                            "y": 790,
+                            "h": 110,
+                            "w": 380
+                        },
+                        {
+                            "name": "Deploy KubeToy with YML",
+                            "x": -150,
+                            "y": 1110,
+                            "h": 110,
+                            "w": 450
+                        },
+                        {
+                            "name": "Replace Tokens",
+                            "x": -125,
+                            "y": 310,
+                            "h": 110,
+                            "w": 400
+                        },
+                        {
+                            "name": "eff63fa00561398d05376b83ced89e",
+                            "x": -5,
+                            "y": 1430,
+                            "h": 100,
+                            "w": 160
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -145,
+                            "y": 150,
+                            "h": 110,
+                            "w": 440
+                        },
+                        {
+                            "name": "Login to Microsoft Azure AKS",
+                            "x": -170,
+                            "y": 470,
+                            "h": 110,
+                            "w": 490
+                        },
+                        {
+                            "name": "Delete Resources",
+                            "x": -140,
+                            "y": 630,
+                            "h": 110,
+                            "w": 430
+                        },
+                        {
+                            "name": "Wait for 45 Seconds",
+                            "x": -110,
+                            "y": 950,
+                            "h": 110,
+                            "w": 370
+                        },
+                        {
+                            "name": "Check Deployment (Get Pods)",
+                            "x": -180,
+                            "y": 1270,
+                            "h": 110,
+                            "w": 510
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "fc9cfbd7-e367-46af-b04d-45f3d51d278c",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "eff63fa00561398d05376b83ced89e",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 32,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 75,
+                            "commandName": "Replace Tokens",
+                            "pluginName": "File Utils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "includes": "**\/*",
+                                "excludes": "",
+                                "envPropValues": "${p:environment\/allProperties}",
+                                "propertyPrefix": "",
+                                "explicitTokens": "@VERSION@->${p:version.name}",
+                                "startDelimiter": "@",
+                                "endDelimiter": "@",
+                                "propFile": "replace_tokens.properties",
+                                "dir": "",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Replace Tokens",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "# Login using a Service Principal\naz login --service-principal -u ${p:environment\/service-principal-user} -p ${p:environment\/service-principal-password} --tenant ${p:environment\/tenant}\n\n# This gets the credentials and caches them for a period of time so we can run kubectl commands\naz aks get-credentials --resource-group test01 --name myAKSCluster",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Login to Microsoft Azure AKS",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl get nodes\nkubectl get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Get Nodes and Pods",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 24,
+                            "commandName": "Apply Resources",
+                            "pluginName": "Kubernetes",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|W3T3Dol8I3JS\/aHd\/gz0gQ==|QuB1WPEMHbORZnm6tYElVg==}",
+                                "namespace": "",
+                                "path": "",
+                                "globals": "",
+                                "flags": "",
+                                "filename": "kubetoy-al-in-one-no-route.yaml"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Deploy KubeToy with YML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Deployment (Get Pods)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 24,
+                            "commandName": "Delete Resources",
+                            "pluginName": "Kubernetes",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|ZnIMeiQz0ik6VzbGp8u2CQ==|17eu0JHuYAn+0xhJcaEF1Q==}",
+                                "namespace": "",
+                                "path": "",
+                                "globals": "",
+                                "flags": "",
+                                "type": "filename",
+                                "resources": "kubetoy-al-in-one-no-route.yaml"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Delete Resources",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 2,
+                            "commandName": "Wait",
+                            "pluginName": "General Utilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {"duration": "45"},
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Wait for 45 Seconds",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [
+                {
+                    "id": "178d132c-b7df-1de9-7381-c99392ce9193",
+                    "name": "Azure",
+                    "color": "#FDB813",
+                    "description": "",
+                    "objectType": "Component"
+                },
+                {
+                    "id": "178d1327-dd62-bae4-3913-7bc61886ea46",
+                    "name": "Kubernetes",
+                    "color": "#F051A1",
+                    "description": "",
+                    "objectType": "Component"
+                }
+            ]
+        },
+        {
+            "name": "Kube-HelloWorld-Example-AKS-YAML",
+            "description": "",
+            "created": 1618598357451,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": [
+                        {
+                            "name": "docker-hub-url",
+                            "value": "https:\/\/hub.docker.com\/r\/ibmicpcoc\/kubetoy\/tags?page=1&ordering=last_updated",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "github-url",
+                            "value": "https:\/\/github.com\/IBM-ICP-CoC\/KubeToy",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "FileSystemVersionedComponentProperties",
+                    "properties": [
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "basePath",
+                            "value": "\/downloads\/kube-statestreet-2",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "Deploy-Container",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/178dbfae-9dd1-9ca8-e73e-4266b44f5ed5\/processes\/178dbfae-9f11-6447-4b62-fe13a12a682d",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Get Nodes and Pods",
+                            "from": "Delete Resources",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Check Deployment (Get Pods)",
+                            "from": "Deploy HelloWorld with YML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "eff63fa00561398d05376b83ced89e",
+                            "from": "Send HTTP Call",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Wait for 45 Seconds",
+                            "from": "Get Nodes and Pods",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Send HTTP Call",
+                            "from": "Check Deployment (Get Pods)",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Deploy HelloWorld with YML",
+                            "from": "Wait for 45 Seconds",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Delete Resources",
+                            "from": "Login to Microsoft Azure AKS",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Login to Microsoft Azure AKS",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "eff63fa00561398d05376b83ced89e",
+                            "x": -10,
+                            "y": 1430,
+                            "h": 100,
+                            "w": 170
+                        },
+                        {
+                            "name": "Delete Resources",
+                            "x": -150,
+                            "y": 470,
+                            "h": 110,
+                            "w": 450
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -155,
+                            "y": 150,
+                            "h": 110,
+                            "w": 460
+                        },
+                        {
+                            "name": "Send HTTP Call",
+                            "x": -140,
+                            "y": 1270,
+                            "h": 110,
+                            "w": 430
+                        },
+                        {
+                            "name": "Deploy HelloWorld with YML",
+                            "x": -175,
+                            "y": 950,
+                            "h": 110,
+                            "w": 500
+                        },
+                        {
+                            "name": "Check Deployment (Get Pods)",
+                            "x": -190,
+                            "y": 1110,
+                            "h": 110,
+                            "w": 530
+                        },
+                        {
+                            "name": "Login to Microsoft Azure AKS",
+                            "x": -185,
+                            "y": 310,
+                            "h": 110,
+                            "w": 520
+                        },
+                        {
+                            "name": "Get Nodes and Pods",
+                            "x": -125,
+                            "y": 630,
+                            "h": 110,
+                            "w": 400
+                        },
+                        {
+                            "name": "Wait for 45 Seconds",
+                            "x": -120,
+                            "y": 790,
+                            "h": 110,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "fd344c09-db88-4d9e-b806-8d03d0f67015",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "eff63fa00561398d05376b83ced89e",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 32,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "# Login using a Service Principal\naz login --service-principal -u ${p:environment\/service-principal-user} -p ${p:environment\/service-principal-password} --tenant ${p:environment\/tenant}\n\n# This gets the credentials and caches them for a period of time so we can run kubectl commands\naz aks get-credentials --resource-group test01 --name myAKSCluster",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Login to Microsoft Azure AKS",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl get nodes\nkubectl get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Get Nodes and Pods",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 24,
+                            "commandName": "Apply Resources",
+                            "pluginName": "Kubernetes",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|zoneS0isq4HRfLzd4YAC0A==|PMf92xT5eVux251PDv8Ieg==}",
+                                "namespace": "",
+                                "path": "",
+                                "globals": "",
+                                "flags": "",
+                                "filename": "helloworld-al-in-one-no-route.yaml"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Deploy HelloWorld with YML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "kubectl get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Check Deployment (Get Pods)",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 24,
+                            "commandName": "Delete Resources",
+                            "pluginName": "Kubernetes",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|4kB43SzmBnvBdE3sVKhegw==|ZfjMTVbWwkErhWse6NWczw==}",
+                                "namespace": "",
+                                "path": "",
+                                "globals": "",
+                                "flags": "",
+                                "type": "filename",
+                                "resources": "helloworld-al-in-one-no-route.yaml"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Delete Resources",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 2,
+                            "commandName": "Wait",
+                            "pluginName": "General Utilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {"duration": "45"},
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Wait for 45 Seconds",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 15,
+                            "commandName": "Send HTTP Call",
+                            "pluginName": "Web Utilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "http:\/\/aks-helloworld.31bff20a95f14ec5ba59.eastus.aksapp.io\/",
+                                "method": "GET",
+                                "headers": "",
+                                "data": "",
+                                "contentType": "*\/*",
+                                "acceptType": "*\/*",
+                                "untrustedSSL": "false",
+                                "username": "",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|tdjeK6EaMPTUcUsMYVx99w==|c3ByutVK75EkDL8nKWDLbw==}",
+                                "outFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Send HTTP Call",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": [
+                {
+                    "name": "service-principal-user",
+                    "value": "http:\/\/testprincipal",
+                    "description": "",
+                    "secure": false
+                },
+                {
+                    "name": "service-principal-password",
+                    "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|cvm548mMVrXI\/b\/Mu7lgQA==|FeCyFTaouib7nG9yqhPrG7Ckxd+EGdw79jfzCiaXKIujdRoa\/iS6z1exLZe2btkD}",
+                    "description": "",
+                    "secure": true
+                },
+                {
+                    "name": "tenant",
+                    "value": "7ee9f142-9cdf-4c17-b849-f63ec66fb485",
+                    "description": "",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/DEV",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Kubernetes\/Kube-Example-IKS",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Kubernetes\/Kube-Example-IKS\/DEV",
+                    "description": "",
+                    "parentName": "Kube-Example-IKS",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "Kube-Example-AKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Kube-Example-AKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-Example-AKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-Example-AKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Kube-Example-IKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Kube-Example-IKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-Example-IKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-Example-IKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Kube-HelloWorld-Example-AKS-YAML",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Kube-HelloWorld-Example-AKS-YAML",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Kube-HelloWorld-Example-AKS-YAML",
+                                "roleProperties": {
+                                    "name": "Kube-HelloWorld-Example-AKS-YAML",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "Online-Botanical-API-Container",
+                                "path": "\/Kubernetes\/Kube-Example-IKS\/DEV\/virtualserver02\/Online-Botanical-API-Container",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "Online-Botanical-API-Container",
+                                "roleProperties": {
+                                    "name": "Online-Botanical-API-Container",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Kube-Example-AKS-YAML"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Kube-HelloWorld-Example-AKS-YAML"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#F389AF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Kube-Example-AKS-YAML"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Kube-HelloWorld-Example-AKS-YAML"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "INT",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Kube-Example-AKS-YAML"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Kube-HelloWorld-Example-AKS-YAML"
+                }
+            ],
+            "teamMappings": [{
+                "resourceTypeId": "20000000000000000000000000000103",
+                "resourceTypeName": "Environment",
+                "teamId": "170abcc8-f842-cf75-ff94-02e4b9185c5f",
+                "teamLabel": "WebSphere Team"
+            }],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "Kube-Example-AKS-YAML"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Kube-HelloWorld-Example-AKS-YAML"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-Container",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "e700e4006e13be38bfe0177788b897",
+                        "from": "797c6a39818f265397b5b740b96272",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "797c6a39818f265397b5b740b96272",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "e700e4006e13be38bfe0177788b897",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "797c6a39818f265397b5b740b96272",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 320
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "e9eab8fa-97c8-4abc-83a9-33466efb7105",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "e700e4006e13be38bfe0177788b897",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Kube-Example-AKS-YAML",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "797c6a39818f265397b5b740b96272",
+                        "children": [{
+                            "componentName": "Kube-Example-AKS-YAML",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "f1b2207b-3f45-49b9-ada4-86233ed11180",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container",
+                                "componentName": "Kube-Example-AKS-YAML",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"Kube-Example-AKS-YAML\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-HelloWorld-Container",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "d1986db4a849c3263fa9484e4a2f6a",
+                        "from": "a7cac60358995643c04eb1f54eb608",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a7cac60358995643c04eb1f54eb608",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "a7cac60358995643c04eb1f54eb608",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 390
+                    },
+                    {
+                        "name": "d1986db4a849c3263fa9484e4a2f6a",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "2bd68f4b-56a2-4842-a6bc-5b9183c2ff5c",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "d1986db4a849c3263fa9484e4a2f6a",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Kube-HelloWorld-Example-AKS-YAML",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a7cac60358995643c04eb1f54eb608",
+                        "children": [{
+                            "componentName": "Kube-HelloWorld-Example-AKS-YAML",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "f573948a-ee3a-43b8-a377-642c056ddb96",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container",
+                                "componentName": "Kube-HelloWorld-Example-AKS-YAML",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"Kube-HelloWorld-Example-AKS-YAML\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-Containers",
+            "description": "This will deploy both containers to the AKS instance",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "c3c1d21eb072dbf033dea20049e9bb",
+                        "from": "d2500648b6a1d89ceeaed9e6707bfe",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "d2500648b6a1d89ceeaed9e6707bfe",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "f9a5e1ae4ebd3d4832323e8f0331b5",
+                        "from": "c3c1d21eb072dbf033dea20049e9bb",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "d2500648b6a1d89ceeaed9e6707bfe",
+                        "x": -105,
+                        "y": 180,
+                        "h": 70,
+                        "w": 320
+                    },
+                    {
+                        "name": "c3c1d21eb072dbf033dea20049e9bb",
+                        "x": -50,
+                        "y": 350,
+                        "h": 70,
+                        "w": 390
+                    },
+                    {
+                        "name": "f9a5e1ae4ebd3d4832323e8f0331b5",
+                        "x": -5,
+                        "y": 500,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "a3da0755-da5c-4256-8e43-89039fb12b56",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "f9a5e1ae4ebd3d4832323e8f0331b5",
+                        "children": []
+                    },
+                    {
+                        "componentName": "Kube-Example-AKS-YAML",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "d2500648b6a1d89ceeaed9e6707bfe",
+                        "children": [{
+                            "componentName": "Kube-Example-AKS-YAML",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "38b3b52f-d89b-4f43-83d6-bf7a12015b09",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container",
+                                "componentName": "Kube-Example-AKS-YAML",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"Kube-Example-AKS-YAML\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "Kube-HelloWorld-Example-AKS-YAML",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "c3c1d21eb072dbf033dea20049e9bb",
+                        "children": [{
+                            "componentName": "Kube-HelloWorld-Example-AKS-YAML",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "15a648ff-4771-4d79-be30-25d7c6420ca6",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container",
+                                "componentName": "Kube-HelloWorld-Example-AKS-YAML",
+                                "allowFailure": false,
+                                "properties": {"isIgnoreChildWarnings": "false"},
+                                "draftProperties": {"isIgnoreChildWarnings": "false"},
+                                "type": "componentProcess",
+                                "name": "Install: \"Kube-HelloWorld-Example-AKS-YAML\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "17060757-228e-f9a1-57e2-5a6465c389e0",
+            "name": "Kubernetes",
+            "color": "#F389AF",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "178d128b-7a0a-6436-94a3-a198485f7efd",
+            "name": "Azure",
+            "color": "#FFCF01",
+            "description": "",
+            "objectType": "Application"
+        }
+    ]
+}

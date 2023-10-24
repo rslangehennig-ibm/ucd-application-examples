@@ -1,0 +1,595 @@
+{
+    "name": "IIB-Bar-Example",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [{
+        "name": "IIB-Bar-Example-BAR",
+        "description": "Example IIB Bar deployment",
+        "created": 1614727957271,
+        "componentType": "STANDARD",
+        "ignoreQualifiers": 0,
+        "importAutomatically": false,
+        "useVfs": true,
+        "active": true,
+        "deleted": false,
+        "defaultVersionType": "FULL",
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "sourceConfigPluginName": "File System (Versioned)",
+        "envPropDefs": [],
+        "resPropDefs": [],
+        "versionPropDefs": [],
+        "propSheetGroup": {"propSheets": [
+            {
+                "name": "FileSystemVersionedComponentProperties",
+                "properties": [
+                    {
+                        "name": "saveFileExecuteBits",
+                        "value": "false",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "extensions",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "includes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "excludes",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "basePath",
+                        "value": "\/downloads\/iib-bar-2",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            {
+                "name": "template",
+                "properties": []
+            },
+            {
+                "name": "custom",
+                "properties": []
+            }
+        ]},
+        "processes": [{
+            "name": "Deploy-BAR",
+            "description": "",
+            "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+            "takesVersion": true,
+            "inventoryActionType": "ADD",
+            "status": "Active",
+            "configActionType": "ADD",
+            "active": true,
+            "path": "components\/177f5494-b28b-1d97-d944-ca0ac8514009\/processes\/177f54a0-cdcc-94c1-cf10-b00089547b08",
+            "deleted": false,
+            "propDefs": [],
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "Smoke Test BAR",
+                        "from": "Deploy BAR",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "3421b7c003c2414311eee863c50071",
+                        "from": "Smoke Test BAR",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Download Artifacts",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "Deploy BAR",
+                        "from": "Download Artifacts",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "Deploy BAR",
+                        "x": -25,
+                        "y": 300,
+                        "h": 70,
+                        "w": 160
+                    },
+                    {
+                        "name": "3421b7c003c2414311eee863c50071",
+                        "x": -5,
+                        "y": 590,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "Deploy",
+                        "x": -85,
+                        "y": 680,
+                        "h": 70,
+                        "w": 180
+                    },
+                    {
+                        "name": "Download Artifacts",
+                        "x": -75,
+                        "y": 155,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "Smoke Test BAR",
+                        "x": -85,
+                        "y": 445,
+                        "h": 70,
+                        "w": 240
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "a2ca6aed-0a6a-4124-abcd-2f9b85b0f35c",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "3421b7c003c2414311eee863c50071",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 32,
+                        "commandName": "Download Artifacts",
+                        "pluginName": "UrbanCode Deploy Versioned File Storage",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "artifactSetBaseDir": "",
+                            "fileIncludePatterns": "**\/*",
+                            "fileExcludePatterns": "",
+                            "syncMode": "FULL",
+                            "fullVerification": "true",
+                            "setFileExecuteBits": "false",
+                            "verifyFileIntegrity": "false",
+                            "versionId": "${p:version.id}",
+                            "serverUrl": "${p:server.url}",
+                            "compId": "${p:component.id}",
+                            "resId": "${p:resource.id}",
+                            "charset": "",
+                            "label": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Download Artifacts",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": true,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 47,
+                        "commandName": "Deploy",
+                        "pluginName": "WebSphere Message Broker - CMP",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "barFileNames": "myAPIproject.generated.bar",
+                            "executionGroup": "INTSERVERoC",
+                            "deployType": "full",
+                            "startStopMsgFlows": "false",
+                            "brokerHost": "",
+                            "port": "",
+                            "useSSL": "false",
+                            "integrationNodeName": "IBNODEoC",
+                            "channel": "${p?:resource\/iib.channel}",
+                            "queueManager": "jgrqmgr",
+                            "username": "",
+                            "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|VdydGzpzJLAB6Yt6R\/7S+A==|Hd7szrzenN69zHCWsA2tig==}",
+                            "debugFile": "trace.out",
+                            "version": "10.0.0.15",
+                            "jarPath": "\/home\/jgomezr\/iib-10.0.0.15\/common\/classes:\/home\/jgomezr\/iib-10.0.0.15\/common\/jetty\/lib",
+                            "mqsiprofile": "\/home\/jgomezr\/iib-10.0.0.15\/server\/bin\/mqsiprofile",
+                            "env": "${p?:resource\/iib.environment}",
+                            "timeout": "120000",
+                            "shell": "\/bin\/bash"
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": true,
+                        "impersonationUsername": "jgomezr",
+                        "impersonationGroup": "",
+                        "showHidden": false,
+                        "impersonationPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|YWhRHW5n2omDrymKMODYPQ==|qjQ8owAnpA2BEKCvh0iu6g==}",
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 9,
+                        "commandName": "Shell",
+                        "pluginName": "Shell",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "directoryOffset": ".",
+                            "shellInterpreter": "",
+                            "scriptBody": "#!\/bin\/bash\n. \/home\/jgomezr\/iib-10.0.0.15\/server\/bin\/mqsiprofile  \nenv | grep REGISTRY\n\necho -------------------------\npwd\nls -al *.bar\necho -------------------------\n\n#mqsideploy -n IBNODEoC -e INTSERVERoC -a myAPIproject.generated.bar -m -w 600\nmqsideploy -i localhost -p 4414 -e INTSERVERoC -a myAPIproject.generated.bar",
+                            "runAsDaemon": "false",
+                            "outputFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Deploy BAR",
+                        "children": []
+                    },
+                    {
+                        "allowFailure": false,
+                        "useImpersonation": false,
+                        "showHidden": false,
+                        "impersonationUseSudo": false,
+                        "pluginVersion": 15,
+                        "commandName": "Send HTTP Call",
+                        "pluginName": "Web Utilities",
+                        "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                        "properties": {
+                            "url": "http:\/\/52.116.10.226:7800\/myapi\/v1\/info",
+                            "method": "GET",
+                            "headers": "",
+                            "data": "",
+                            "contentType": "*\/*",
+                            "acceptType": "*\/*",
+                            "untrustedSSL": "false",
+                            "username": "",
+                            "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128key8ge4|M3vu2uSkHarytqjb+Le6ww==|+\/pNtdXqAlMOo4AR\/Cq74g==}",
+                            "outFile": ""
+                        },
+                        "cachedAuthTokenRestriction": {
+                            "name": "System Default",
+                            "description": "Used by default for any plugin steps without a specified token restriction",
+                            "restrictions": [{
+                                "verb": "ALL",
+                                "url": "\/*"
+                            }]
+                        },
+                        "type": "plugin",
+                        "name": "Smoke Test BAR",
+                        "children": []
+                    }
+                ]
+            }
+        }],
+        "configTemplates": [],
+        "genericProcesses": [],
+        "teamMappings": [],
+        "tags": []
+    }],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Integrations\/IIB-JoelGomez",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/IIB-JoelGomez\/DEV",
+                    "description": "",
+                    "parentName": "IIB-JoelGomez",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Integrations\/IIB-JoelGomez",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/IIB-JoelGomez\/DEV",
+                    "description": "",
+                    "parentName": "IIB-JoelGomez",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "iib-joel-gomez-virtualserver01",
+                        "path": "\/CloudPak-for-Integrations\/IIB-JoelGomez\/DEV\/iib-joel-gomez-virtualserver01",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "iib-joel-gomez-virtualserver01",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "IIB-Bar-Example-BAR",
+                            "path": "\/CloudPak-for-Integrations\/IIB-JoelGomez\/DEV\/iib-joel-gomez-virtualserver01\/IIB-Bar-Example-BAR",
+                            "description": "",
+                            "parentName": "iib-joel-gomez-virtualserver01",
+                            "inheritTeam": true,
+                            "roleName": "IIB-Bar-Example-BAR",
+                            "roleProperties": {
+                                "name": "IIB-Bar-Example-BAR",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IIB-Bar-Example-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IIB-Bar-Example-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "UAT",
+            "description": "",
+            "color": "#F389AF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 2,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IIB-Bar-Example-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 3,
+            "active": true,
+            "propSheet": {"properties": []},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [{
+                "properties": [],
+                "componentName": "IIB-Bar-Example-BAR"
+            }],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [{
+        "name": "Deploy-BAR",
+        "description": "",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "52ab81e6edb4077dbf3bf6c1bf561a",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "c767b8eb63a9fe6ff72ade1ca5c045",
+                    "from": "52ab81e6edb4077dbf3bf6c1bf561a",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "52ab81e6edb4077dbf3bf6c1bf561a",
+                    "x": -50,
+                    "y": 230,
+                    "h": 70,
+                    "w": 290
+                },
+                {
+                    "name": "c767b8eb63a9fe6ff72ade1ca5c045",
+                    "x": -5,
+                    "y": 430,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "e26a8ec1-f9c6-45f4-92a5-41713116ca31",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "c767b8eb63a9fe6ff72ade1ca5c045",
+                    "children": []
+                },
+                {
+                    "componentName": "IIB-Bar-Example-BAR",
+                    "properties": [
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "componentEnvironmentIterator",
+                    "name": "52ab81e6edb4077dbf3bf6c1bf561a",
+                    "children": [{
+                        "componentName": "IIB-Bar-Example-BAR",
+                        "status": "Active",
+                        "type": "inventoryVersionDiff",
+                        "name": "19869f2a-8c01-42c2-837b-39a828714878",
+                        "children": [{
+                            "componentProcessName": "Deploy-BAR",
+                            "componentName": "IIB-Bar-Example-BAR",
+                            "allowFailure": false,
+                            "properties": {"isIgnoreChildWarnings": "false"},
+                            "draftProperties": {"isIgnoreChildWarnings": "false"},
+                            "type": "componentProcess",
+                            "name": "Install: \"IIB-Bar-Example-BAR\"",
+                            "children": []
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "177dae2c-2388-d06c-9edb-7d681f6345d1",
+        "name": "IIB",
+        "color": "#17AF4A",
+        "description": "IBM Integration Bus",
+        "objectType": "Application"
+    }]
+}

@@ -1,0 +1,1375 @@
+{
+    "name": "OpenLiberty-System",
+    "description": "This is an example application deployed to Liberty (no container)",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "OpenLiberty-System",
+            "description": "An example Liberty application (.war file)",
+            "created": 1670620947960,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/openliberty-system",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "custom",
+                        "properties": [{
+                            "name": "server-name",
+                            "value": "openLibertySystem",
+                            "description": "",
+                            "secure": false
+                        }]
+                    }
+                ]
+            },
+            "processes": [
+                {
+                    "name": "Deploy",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/184f8c4a-6048-800a-88af-7d1f15822b51\/processes\/184f8c53-0176-a61d-2970-6b58586e401f",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Start Server",
+                                "from": "Create File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install or Update Applications with Dropins",
+                                "from": "Stop Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create File",
+                                "from": "Stop Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start Server",
+                                "from": "Install or Update Applications with Dropins",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Stop Server",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "1c295644c56a8eab40266ad53e2e4f",
+                                "from": "Start Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Start Server",
+                                "x": -53.50137174211255,
+                                "y": 490,
+                                "h": 70,
+                                "w": 220
+                            },
+                            {
+                                "name": "Install or Update Applications with Dropins",
+                                "x": -310.4149519890261,
+                                "y": 370,
+                                "h": 70,
+                                "w": 400
+                            },
+                            {
+                                "name": "Create File",
+                                "x": 119.58504801097388,
+                                "y": 370,
+                                "h": 70,
+                                "w": 210
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 130,
+                                "h": 70,
+                                "w": 260
+                            },
+                            {
+                                "name": "1c295644c56a8eab40266ad53e2e4f",
+                                "x": -3.5013717421125534,
+                                "y": 610,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Stop Server",
+                                "x": -48.95747599451306,
+                                "y": 250,
+                                "h": 70,
+                                "w": 210
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "154ac895-5ed7-4169-9ddd-f4dabc97b004",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "1c295644c56a8eab40266ad53e2e4f",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 44,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "pluginId": "com.urbancode.plugin.VFS",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 22,
+                                "commandName": "Stop Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "${p:component\/server-name}",
+                                    "wlpHome": "${p:environment\/wlp-install-dir}",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "password",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "password"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Stop Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 22,
+                                "commandName": "Start Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "${p:component\/server-name}",
+                                    "wlpHome": "${p:environment\/wlp-install-dir}",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "password",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "password"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 22,
+                                "commandName": "Install or Update Applications with Dropins",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "source": "guide-getting-started.war",
+                                    "server": "${p:component\/server-name}",
+                                    "wlpHome": "${p:environment\/wlp-install-dir}",
+                                    "wlpUserDir": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install or Update Applications with Dropins",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "${p:environment\/wlp-install-dir}\/usr\/servers\/openLibertySystem",
+                                "pluginVersion": 89,
+                                "commandName": "Create File",
+                                "pluginName": "File Utils",
+                                "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "file": "server.xml",
+                                    "contents": "<server description=\"Sample Liberty server\">\n    <!-- tag::features[] -->\n    <featureManager>\n        <feature>jaxrs-2.1<\/feature>\n        <feature>jsonp-1.1<\/feature>\n        <feature>cdi-2.0<\/feature>\n        <feature>mpMetrics-3.0<\/feature>\n        <!-- tag::mpHealth[] -->\n        <feature>mpHealth-3.0<\/feature>\n        <!-- end::mpHealth[] -->\n        <feature>mpConfig-2.0<\/feature>\n    <\/featureManager>\n    <!-- end::features[] -->\n\n    <variable name=\"default.http.port\" defaultValue=\"9080\"\/>\n    <variable name=\"default.https.port\" defaultValue=\"9443\"\/>\n\n    <!-- tag::webApplication[] -->\n    <webApplication location=\"guide-getting-started.war\" contextRoot=\"\/dev\" \/>\n    <!-- end::webApplication[] -->    \n    <mpMetrics authentication=\"false\"\/>\n\n    <!-- tag::logging[] -->\n    <logging traceSpecification=\"com.ibm.ws.microprofile.health.*=all\" \/>\n    <!-- end::logging[] -->\n\n    <httpEndpoint host=\"*\" httpPort=\"${default.http.port}\" \n        httpsPort=\"${default.https.port}\" id=\"defaultHttpEndpoint\"\/>\n\n    <variable name=\"io_openliberty_guides_system_inMaintenance\" value=\"false\"\/>\n<\/server>",
+                                    "overwrite": "true",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create File",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Start Server",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/184f8c4a-6048-800a-88af-7d1f15822b51\/processes\/184fa0ff-e1d1-6286-14db-dff187653609",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "f628962bd0b3b1441578b563c9b5ac",
+                                "from": "Start Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "f628962bd0b3b1441578b563c9b5ac",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Start Server",
+                                "x": -55,
+                                "y": 230,
+                                "h": 70,
+                                "w": 220
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "289996ec-968e-45e6-ad2b-9548f4823f9a",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "f628962bd0b3b1441578b563c9b5ac",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 22,
+                                "commandName": "Start Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "${p:component\/server-name}",
+                                    "wlpHome": "${p:environment\/wlp-install-dir}",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "password",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "password"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start Server",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Stop Server",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/184f8c4a-6048-800a-88af-7d1f15822b51\/processes\/184fa0f8-531c-fb82-10f7-6ea7f2f5b6c9",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Stop Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "42f2c951b7d6b49ecfbbde99999f5a",
+                                "from": "Stop Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "42f2c951b7d6b49ecfbbde99999f5a",
+                                "x": -5,
+                                "y": 450,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Stop Server",
+                                "x": -50,
+                                "y": 230,
+                                "h": 70,
+                                "w": 210
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "b333806f-dd04-4a9a-a414-466cfa35850a",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "42f2c951b7d6b49ecfbbde99999f5a",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 22,
+                                "commandName": "Stop Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "${p:component\/server-name}",
+                                    "wlpHome": "${p:environment\/wlp-install-dir}",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "password",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "password"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Stop Server",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "184f913c-f002-8fcc-3c9b-a845c9c2cd1a",
+                "name": "Liberty",
+                "color": "#7F1C7D",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "OpenLiberty-System-SmokeTest",
+            "description": "",
+            "created": 1670623935159,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [{
+                "name": "Run SmokeTest",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/184f8f23-ac41-8067-cb3e-018814e0def2\/processes\/184f8f28-098f-418b-12a7-48bc37bce6e5",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Send HTTP Call",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "c13406e4bed6d2a8df360925df2454",
+                            "from": "Send HTTP Call",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "c13406e4bed6d2a8df360925df2454",
+                            "x": -5,
+                            "y": 450,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Send HTTP Call",
+                            "x": -65,
+                            "y": 230,
+                            "h": 70,
+                            "w": 240
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "c52299cb-58d1-4a10-b63a-1152c15cffca",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "c13406e4bed6d2a8df360925df2454",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 17,
+                            "commandName": "Send HTTP Call",
+                            "pluginName": "Web Utilities",
+                            "pluginId": "com.urbancode.air.plugin.WebUtilities",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "url": "http:\/\/52.116.6.138:9080\/metrics\/",
+                                "method": "GET",
+                                "headers": "",
+                                "data": "",
+                                "contentType": "*\/*",
+                                "acceptType": "*\/*",
+                                "untrustedSSL": "false",
+                                "username": "admin",
+                                "password": "password",
+                                "outFile": "",
+                                "timeout": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Send HTTP Call",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "wlp-install-dir",
+                        "value": "\/opt\/IBM\/wlp",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "app-url",
+                        "value": "https:\/\/52.116.6.138:9443\/metrics\/",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/Acuity\/Liberty-Examples\/openLiberty-System",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Acuity\/Liberty-Examples\/openLiberty-System\/DEV",
+                    "description": "",
+                    "parentName": "openLiberty-System",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/Acuity\/Liberty-Examples\/openLiberty-System",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/Acuity\/Liberty-Examples\/openLiberty-System\/DEV",
+                    "description": "",
+                    "parentName": "openLiberty-System",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "path": "\/Acuity\/Liberty-Examples\/openLiberty-System\/DEV\/acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "OpenLiberty-System",
+                                "path": "\/Acuity\/Liberty-Examples\/openLiberty-System\/DEV\/acuity.DANIEL-CAPPON-s-Account.cloud\/OpenLiberty-System",
+                                "description": "",
+                                "parentName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "OpenLiberty-System",
+                                "roleProperties": {
+                                    "name": "OpenLiberty-System",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "OpenLiberty-System-SmokeTest",
+                                "path": "\/Acuity\/Liberty-Examples\/openLiberty-System\/DEV\/acuity.DANIEL-CAPPON-s-Account.cloud\/OpenLiberty-System-SmokeTest",
+                                "description": "",
+                                "parentName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "OpenLiberty-System-SmokeTest",
+                                "roleProperties": {
+                                    "name": "OpenLiberty-System-SmokeTest",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "OpenLiberty-System"
+                },
+                {
+                    "properties": [],
+                    "componentName": "OpenLiberty-System-SmokeTest"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#FDB813",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "OpenLiberty-System"
+                },
+                {
+                    "properties": [],
+                    "componentName": "OpenLiberty-System-SmokeTest"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "39b705a3caa575b7cbb177b584c884",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "443799e66f5e22eae321b7d010ac6b",
+                        "from": "a7ff7851ef237f02e3cc92eff891dd",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a7ff7851ef237f02e3cc92eff891dd",
+                        "from": "39b705a3caa575b7cbb177b584c884",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "443799e66f5e22eae321b7d010ac6b",
+                        "x": -5,
+                        "y": 520,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "39b705a3caa575b7cbb177b584c884",
+                        "x": -85,
+                        "y": 180,
+                        "h": 70,
+                        "w": 280
+                    },
+                    {
+                        "name": "a7ff7851ef237f02e3cc92eff891dd",
+                        "x": -140,
+                        "y": 350,
+                        "h": 80,
+                        "w": 390
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "c6756e16-04bb-408d-817c-3d9d8a16c6dd",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "443799e66f5e22eae321b7d010ac6b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "39b705a3caa575b7cbb177b584c884",
+                        "children": [{
+                            "componentName": "OpenLiberty-System",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "80867c40-78c7-4c56-b341-6b5443989aaa",
+                            "children": [{
+                                "componentProcessName": "Deploy",
+                                "componentName": "OpenLiberty-System",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"OpenLiberty-System\"",
+                                "children": []
+                            }]
+                        }]
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-SmokeTest",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "a7ff7851ef237f02e3cc92eff891dd",
+                        "children": [{
+                            "componentProcessName": "Run SmokeTest",
+                            "componentName": "OpenLiberty-System-SmokeTest",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Run SmokeTest to see if App Responds",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Stop Server",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "eddbeafc5a684360a05d6323f38cf9",
+                        "from": "6f0779926a055d0dc9aaf6a926db75",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "6f0779926a055d0dc9aaf6a926db75",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "eddbeafc5a684360a05d6323f38cf9",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "6f0779926a055d0dc9aaf6a926db75",
+                        "x": -105,
+                        "y": 230,
+                        "h": 80,
+                        "w": 320
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "8eb5cce5-f1d2-44ec-ab2b-21284d7c8413",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "eddbeafc5a684360a05d6323f38cf9",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "6f0779926a055d0dc9aaf6a926db75",
+                        "children": [{
+                            "componentProcessName": "Stop Server",
+                            "componentName": "OpenLiberty-System",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Stop Server",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Start Server",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "4c6dc7038dca6e755e46cd70b5c83f",
+                        "from": "c74322d1eddf9f090f8f2320268e15",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "c74322d1eddf9f090f8f2320268e15",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "c74322d1eddf9f090f8f2320268e15",
+                        "x": -105,
+                        "y": 230,
+                        "h": 80,
+                        "w": 320
+                    },
+                    {
+                        "name": "4c6dc7038dca6e755e46cd70b5c83f",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "ea39d9e0-0d0d-4133-bbf8-d3dbe5f3347d",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "4c6dc7038dca6e755e46cd70b5c83f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "c74322d1eddf9f090f8f2320268e15",
+                        "children": [{
+                            "componentProcessName": "Start Server",
+                            "componentName": "OpenLiberty-System",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Start Server",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Restart Server",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "203d05ca1d4f9a877e674f0df947c3",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "4d8bd44da7df9e6709430261f3e043",
+                        "from": "bc751c1c60e0f2ab30c14c855efc64",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "bc751c1c60e0f2ab30c14c855efc64",
+                        "from": "eb019d44662334bbad7be6aa228e46",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "eb019d44662334bbad7be6aa228e46",
+                        "from": "203d05ca1d4f9a877e674f0df947c3",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "eb019d44662334bbad7be6aa228e46",
+                        "x": -105,
+                        "y": 310,
+                        "h": 80,
+                        "w": 320
+                    },
+                    {
+                        "name": "bc751c1c60e0f2ab30c14c855efc64",
+                        "x": -140,
+                        "y": 465,
+                        "h": 80,
+                        "w": 390
+                    },
+                    {
+                        "name": "4d8bd44da7df9e6709430261f3e043",
+                        "x": -5,
+                        "y": 610,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "203d05ca1d4f9a877e674f0df947c3",
+                        "x": -105,
+                        "y": 155,
+                        "h": 80,
+                        "w": 320
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "b0599cea-eed8-40e0-8773-75c7e665708c",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "4d8bd44da7df9e6709430261f3e043",
+                        "children": []
+                    },
+                    {
+                        "componentName": "OpenLiberty-System",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "203d05ca1d4f9a877e674f0df947c3",
+                        "children": [{
+                            "componentProcessName": "Stop Server",
+                            "componentName": "OpenLiberty-System",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Stop Server",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "OpenLiberty-System",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "eb019d44662334bbad7be6aa228e46",
+                        "children": [{
+                            "componentProcessName": "Start Server",
+                            "componentName": "OpenLiberty-System",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Start Server",
+                            "children": []
+                        }]
+                    },
+                    {
+                        "componentName": "OpenLiberty-System-SmokeTest",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "bc751c1c60e0f2ab30c14c855efc64",
+                        "children": [{
+                            "componentProcessName": "Run SmokeTest",
+                            "componentName": "OpenLiberty-System-SmokeTest",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Run SmokeTest",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "184f8f3f-ee9c-51ec-0057-cc491ff66594",
+        "name": "Liberty",
+        "color": "#7F1C7D",
+        "description": "",
+        "objectType": "Application"
+    }],
+    "webhooks": []
+}
