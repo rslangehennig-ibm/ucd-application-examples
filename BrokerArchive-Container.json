@@ -1,0 +1,1687 @@
+{
+    "name": "BrokerArchive-Container",
+    "description": "This is an example of how to deploy a BAR in a container to an OpenShift Cluster",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "BrokerArchive-Container-Baked",
+            "description": "This is an example of deployment using the Baked approach for ACE container deployment",
+            "created": 1697725083099,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/broker-container\/baked",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [{
+                "name": "Deploy-Container-to-OpenShift",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/18b484ce-ddce-035c-3e7b-fc1eb1470cf0\/processes\/18b4854d-b8b0-29fb-e52f-3499c1a0b16d",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Deploy Application using oc apply",
+                            "from": "OpenShift Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "6bb47665808a5a4bb6b112ef5b8fff",
+                            "from": "Deploy Application using oc apply",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "OpenShift Login",
+                            "x": -45,
+                            "y": 300,
+                            "h": 70,
+                            "w": 200
+                        },
+                        {
+                            "name": "6bb47665808a5a4bb6b112ef5b8fff",
+                            "x": -5,
+                            "y": 590,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 155,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Deploy Application using oc apply",
+                            "x": -100,
+                            "y": 445,
+                            "h": 70,
+                            "w": 310
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "c751c7da-5fb6-4cc7-b347-37fbcc4431c2",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "6bb47665808a5a4bb6b112ef5b8fff",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 46,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 17,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c100-e.us-east.containers.cloud.ibm.com:30603\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project ucd\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 17,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc apply --namespace=ucd -f ace-deploy.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Deploy Application using oc apply",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "BrokerArchive-Container-Baked-Jenkins",
+            "description": "This is an example of deployment using the Baked approach for ACE container deployment.   A Jenkins pipeline integrates with UCD to push a new component version.",
+            "created": 1698412175708,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/broker-container\/baked",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            "processes": [
+                {
+                    "name": "Cleanup-Container-to-OpenShift",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/18b71412-15c8-6bc9-c9dd-e1fa5c6e5c98\/processes\/18b8c3c3-8ddb-b319-a4cc-a592a3b929fe",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "OpenShift Delete Routes",
+                                "from": "OpenShift Delete BrokerContainer",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "OpenShift Delete BrokerContainer",
+                                "from": "OpenShift Login and Display Details",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "OpenShift Login and Display Details",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "9651a577f0d17a768234031ad62c37",
+                                "from": "Display Pods to ensure they are Cleaning Up",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Display Pods to ensure they are Cleaning Up",
+                                "from": "OpenShift Delete Routes",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "OpenShift Delete Routes",
+                                "x": -70,
+                                "y": 490,
+                                "h": 70,
+                                "w": 250
+                            },
+                            {
+                                "name": "OpenShift Login and Display Details",
+                                "x": -105,
+                                "y": 250,
+                                "h": 70,
+                                "w": 320
+                            },
+                            {
+                                "name": "9651a577f0d17a768234031ad62c37",
+                                "x": -5,
+                                "y": 730,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "OpenShift Delete BrokerContainer",
+                                "x": -100,
+                                "y": 370,
+                                "h": 70,
+                                "w": 310
+                            },
+                            {
+                                "name": "Display Pods to ensure they are Cleaning Up",
+                                "x": -30,
+                                "y": 610,
+                                "h": 70,
+                                "w": 380
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 130,
+                                "h": 70,
+                                "w": 260
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "c04d2fa4-aadf-449b-b5a9-fdf58d1a5a97",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "9651a577f0d17a768234031ad62c37",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 46,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "pluginId": "com.urbancode.plugin.VFS",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ls",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "OpenShift Login and Display Details",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ls",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "OpenShift Delete BrokerContainer",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ls",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "OpenShift Delete Routes",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "ls",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Display Pods to ensure they are Cleaning Up",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy-Container-to-OpenShift",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/18b71412-15c8-6bc9-c9dd-e1fa5c6e5c98\/processes\/18b71412-170b-110b-af32-b752c73b9992",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Display contents of ace-deploy.yaml",
+                                "from": "Replace Tokens",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Tokens",
+                                "from": "OpenShift Login",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "OpenShift Login",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Deploy Application using oc apply",
+                                "from": "Display contents of ace-deploy.yaml",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "6bb47665808a5a4bb6b112ef5b8fff",
+                                "from": "Deploy Application using oc apply",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Replace Tokens",
+                                "x": -65,
+                                "y": 370,
+                                "h": 70,
+                                "w": 240
+                            },
+                            {
+                                "name": "6bb47665808a5a4bb6b112ef5b8fff",
+                                "x": -5,
+                                "y": 730,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "OpenShift Login",
+                                "x": -45,
+                                "y": 250,
+                                "h": 70,
+                                "w": 200
+                            },
+                            {
+                                "name": "Display contents of ace-deploy.yaml",
+                                "x": -105,
+                                "y": 490,
+                                "h": 70,
+                                "w": 320
+                            },
+                            {
+                                "name": "Deploy Application using oc apply",
+                                "x": -100,
+                                "y": 610,
+                                "h": 70,
+                                "w": 310
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -75,
+                                "y": 130,
+                                "h": 70,
+                                "w": 260
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "9b983bc1-ccd7-476f-968a-b9a56d14cfae",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "6bb47665808a5a4bb6b112ef5b8fff",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 46,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "pluginId": "com.urbancode.plugin.VFS",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c100-e.us-east.containers.cloud.ibm.com:30603\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project ucd\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "OpenShift Login",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc apply --namespace=ucd -f ace-deploy.yaml",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Deploy Application using oc apply",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 94,
+                                "commandName": "Replace Tokens",
+                                "pluginName": "File Utils",
+                                "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "envPropValues": "${p:environment\/allProperties},${p:component\/allProperties},${p:allProperties}",
+                                    "propertyPrefix": "",
+                                    "explicitTokens": "",
+                                    "startDelimiter": "@@",
+                                    "endDelimiter": "@@",
+                                    "propFile": "replace_tokens.properties",
+                                    "dir": "",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Tokens",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 17,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "pwd\nls -al\ncat ace-deploy.yaml",
+                                    "runAsDaemon": "false",
+                                    "outputFile": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Display contents of ace-deploy.yaml",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "BrokerArchive-Container-Fry",
+            "description": "This is an example of deployment using the Fry approach for ACE container deployment",
+            "created": 1697836137110,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/broker-container\/fry",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [{
+                "name": "Deploy-Container-to-OpenShift",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/18b4eeb7-a96c-b9e1-11d4-176e8a7fea63\/processes\/18b4eeb7-aaa1-f04b-2de8-7b1ae6614c74",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Deploy Application using oc apply",
+                            "from": "OpenShift Login",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "6bb47665808a5a4bb6b112ef5b8fff",
+                            "from": "Deploy Application using oc apply",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "6bb47665808a5a4bb6b112ef5b8fff",
+                            "x": -5,
+                            "y": 590,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "OpenShift Login",
+                            "x": -45,
+                            "y": 300,
+                            "h": 70,
+                            "w": 200
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 155,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Deploy Application using oc apply",
+                            "x": -100,
+                            "y": 445,
+                            "h": 70,
+                            "w": 310
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "45fd42b2-4b6f-4fac-b99e-cfb95905d2dc",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "6bb47665808a5a4bb6b112ef5b8fff",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 46,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 17,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c100-e.us-east.containers.cloud.ibm.com:30603\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project ucd\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 17,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc apply --namespace=ucd -f ace-fry-deploy.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Deploy Application using oc apply",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "oc-auth-token",
+                        "value": "sha256~duLUwWbgd_6hZcYELqA-cpEabJBC-JEBSeZ8JW9fbwQ",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "oc-platformui-url",
+                        "value": "https:\/\/cpd-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud\/",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "oc-platformui-creds",
+                        "value": "admin \/ 2uVQVUzmdaIBqeAuFGBf7bt9INKKdFWE",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "oc-url",
+                        "value": "https:\/\/c100-e.us-east.containers.cloud.ibm.com:30603",
+                        "description": "This is the server we will use to deploy the container",
+                        "secure": false
+                    },
+                    {
+                        "name": "namespace",
+                        "value": "ucd",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "ace-dashboard",
+                        "value": "https:\/\/cpd-tools.jgrocp412cp4i20232-dcd557ed086a97d77c2297a53c025612-0000.us-east.containers.appdomain.cloud\/integration\/run\/integrations\/ucd\/ucd-ace-dashboard\/dashboard?switch=servers&tab=contents",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Integrations\/ACE-Container",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/ACE-Container\/DEV",
+                    "description": "",
+                    "parentName": "ACE-Container",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Integrations\/ACE-Container",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Integrations\/ACE-Container\/DEV",
+                    "description": "",
+                    "parentName": "ACE-Container",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "virtualserver02",
+                        "path": "\/CloudPak-for-Integrations\/ACE-Container\/DEV\/virtualserver02",
+                        "description": "",
+                        "parentName": "DEV",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "virtualserver02",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [
+                            {
+                                "name": "BrokerArchive-Container-Baked",
+                                "path": "\/CloudPak-for-Integrations\/ACE-Container\/DEV\/virtualserver02\/BrokerArchive-Container-Baked",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "BrokerArchive-Container-Baked",
+                                "roleProperties": {
+                                    "name": "BrokerArchive-Container-Baked",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BrokerArchive-Container-Baked-Jenkins",
+                                "path": "\/CloudPak-for-Integrations\/ACE-Container\/DEV\/virtualserver02\/BrokerArchive-Container-Baked-Jenkins",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "BrokerArchive-Container-Baked-Jenkins",
+                                "roleProperties": {
+                                    "name": "BrokerArchive-Container-Baked-Jenkins",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            },
+                            {
+                                "name": "BrokerArchive-Container-Fry",
+                                "path": "\/CloudPak-for-Integrations\/ACE-Container\/DEV\/virtualserver02\/BrokerArchive-Container-Fry",
+                                "description": "",
+                                "parentName": "virtualserver02",
+                                "inheritTeam": true,
+                                "roleName": "BrokerArchive-Container-Fry",
+                                "roleProperties": {
+                                    "name": "BrokerArchive-Container-Fry",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }
+                        ]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Baked"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Baked-Jenkins"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Fry"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#AB1A86",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Baked"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Baked-Jenkins"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Fry"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 0,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": []
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [],
+            "baseResourcesFull": [],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Baked"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Baked-Jenkins"
+                },
+                {
+                    "properties": [],
+                    "componentName": "BrokerArchive-Container-Fry"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-Baked-Container-to-OpenShift",
+            "description": "This example process will deploy the baked ACE container to OpenShift",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "4f36adc0b953e7e6eced82cac1b1f2",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "63a1454729e7d96e063577f39fad7b",
+                        "from": "4f36adc0b953e7e6eced82cac1b1f2",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "4f36adc0b953e7e6eced82cac1b1f2",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 340
+                    },
+                    {
+                        "name": "63a1454729e7d96e063577f39fad7b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "5fc303fc-bbe4-447e-8565-dfa93049c85f",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "63a1454729e7d96e063577f39fad7b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BrokerArchive-Container-Baked",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "4f36adc0b953e7e6eced82cac1b1f2",
+                        "children": [{
+                            "componentName": "BrokerArchive-Container-Baked",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "d83e367a-70f7-4ce0-9f9e-637dfe22f50d",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container-to-OpenShift",
+                                "componentName": "BrokerArchive-Container-Baked",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"BrokerArchive-Container-Frye\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-Fry-Container-to-OpenShift",
+            "description": "This example process will deploy the fried ACE container to OpenShift",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "ebc4affecae6661b003b6740b06b8d",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "63a1454729e7d96e063577f39fad7b",
+                        "from": "ebc4affecae6661b003b6740b06b8d",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "ebc4affecae6661b003b6740b06b8d",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 330
+                    },
+                    {
+                        "name": "63a1454729e7d96e063577f39fad7b",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "8be03acb-97ca-4383-b039-707da4e0c29a",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "63a1454729e7d96e063577f39fad7b",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BrokerArchive-Container-Fry",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "ebc4affecae6661b003b6740b06b8d",
+                        "children": [{
+                            "componentName": "BrokerArchive-Container-Fry",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "c3b5e5e7-a544-41cd-934f-a4fb4973ecf4",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container-to-OpenShift",
+                                "componentName": "BrokerArchive-Container-Fry",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"BrokerArchive-Container-Fry\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-Baked-Container-Jenkins",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "83ffd47951813a6cbf3d93a69f1576",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "4ffc92687d338c854735e01162497f",
+                        "from": "83ffd47951813a6cbf3d93a69f1576",
+                        "type": "SUCCESS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "83ffd47951813a6cbf3d93a69f1576",
+                        "x": -50,
+                        "y": 230,
+                        "h": 70,
+                        "w": 400
+                    },
+                    {
+                        "name": "4ffc92687d338c854735e01162497f",
+                        "x": -5,
+                        "y": 430,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "fc30c462-44fe-4d3e-a3fe-8a65bdc74bd7",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "4ffc92687d338c854735e01162497f",
+                        "children": []
+                    },
+                    {
+                        "componentName": "BrokerArchive-Container-Baked-Jenkins",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "83ffd47951813a6cbf3d93a69f1576",
+                        "children": [{
+                            "componentName": "BrokerArchive-Container-Baked-Jenkins",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "6c168342-6922-465d-9feb-a85631476f90",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container-to-OpenShift",
+                                "componentName": "BrokerArchive-Container-Baked-Jenkins",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"BrokerArchive-Container-Baked-Jenkins\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "1738e96c-fbe4-ffb0-ede5-b11faa040915",
+            "name": "OpenShift",
+            "color": "#D9182D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "177f5050-29ab-498d-7911-d104ffa1d3b6",
+            "name": "ACE",
+            "color": "#FDB813",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": []
+}
