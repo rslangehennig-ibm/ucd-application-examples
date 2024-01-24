@@ -1,0 +1,1430 @@
+{
+    "name": "ArgoCD-Test",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": false,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "ArgoCD-Test-kubetoy",
+            "description": "Kubernetes image: hsternkicker\/kubetoy",
+            "created": 1705700928887,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": true,
+            "useVfs": false,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "18d2352b-31fa-e6f9-20a4-b43eddec7c26",
+                "path": "componentTemplates\/18d2352b-3217-7df8-2aa7-46aa77eab1c8",
+                "name": "Docker Template",
+                "description": "",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "tags": [],
+                "active": true,
+                "importConfigurationStrategy": "default",
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [
+                    {
+                        "name": "docker.image.name",
+                        "label": "Docker Image Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": false,
+                        "description": "Name of the Docker image to use with this component. i.e. tomcat, nginx, ubuntu",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "docker.qualified.image",
+                        "label": "Fully Qualified Docker Image",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "${p?:docker.registry}${p:docker.image.name}:${p:version\/dockerImageTag}",
+                        "required": true,
+                        "description": "Name to pass into pull command, in the form, [REGISTRY_HOST[:REGISTRY_PORT]\/]NAME[:TAG]",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "docker.registry",
+                        "label": "Docker Registry",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": false,
+                        "description": "Location of the docker registry used in pull commands",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "docker.container.name",
+                        "label": "Container Name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "value": "${p:docker.image.name}-${p:environment.name}",
+                        "required": true,
+                        "description": "Name to assign to the running docker container",
+                        "placeholder": ""
+                    }
+                ],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Deploy",
+                        "description": "",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "inventoryActionType": "ADD",
+                        "status": "Active",
+                        "configActionType": "ADD",
+                        "active": true,
+                        "path": "componentTemplates\/18d2352b-3217-7df8-2aa7-46aa77eab1c8\/processes\/18d2352b-6dfd-7572-e5d0-196260f4d8c2",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "3415bda2aafa244d16083d9f925b31",
+                                    "from": "Remove Docker Container",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Run Docker Container",
+                                    "from": "3415bda2aafa244d16083d9f925b31",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "efb4d1efddce74b0d171a47f62095d",
+                                    "from": "Run Docker Container",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "3415bda2aafa244d16083d9f925b31",
+                                    "from": "Pull Docker Image",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Stop Docker Container",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Pull Docker Image",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Remove Docker Container",
+                                    "from": "Stop Docker Container",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Remove Docker Container",
+                                    "x": 78.5,
+                                    "y": 180,
+                                    "h": 60,
+                                    "w": 250
+                                },
+                                {
+                                    "name": "Pull Docker Image",
+                                    "x": -215,
+                                    "y": 90,
+                                    "h": 60,
+                                    "w": 210
+                                },
+                                {
+                                    "name": "Run Docker Container",
+                                    "x": -75,
+                                    "y": 400,
+                                    "h": 60,
+                                    "w": 230
+                                },
+                                {
+                                    "name": "efb4d1efddce74b0d171a47f62095d",
+                                    "x": -5,
+                                    "y": 510,
+                                    "h": 50,
+                                    "w": 90
+                                },
+                                {
+                                    "name": "3415bda2aafa244d16083d9f925b31",
+                                    "x": -10,
+                                    "y": 300,
+                                    "h": 50,
+                                    "w": 100
+                                },
+                                {
+                                    "name": "Stop Docker Container",
+                                    "x": 88.5,
+                                    "y": 90,
+                                    "h": 60,
+                                    "w": 230
+                                }
+                            ],
+                            "layoutMode": "unknown",
+                            "type": "graph",
+                            "name": "84071702-4393-4093-85ec-ede42acc4c4d",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "efb4d1efddce74b0d171a47f62095d",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 11,
+                                    "commandName": "Pull Docker Image",
+                                    "pluginName": "Docker",
+                                    "pluginId": "com.urbancode.air.plugin.docker",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "image": "${p:docker.qualified.image}",
+                                        "commandOptions": "",
+                                        "globalOptions": "${p?:resource\/docker.opts}",
+                                        "envVars": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Pull Docker Image",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 11,
+                                    "commandName": "Run Docker Container",
+                                    "pluginName": "Docker",
+                                    "pluginId": "com.urbancode.air.plugin.docker",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "image": "${p:docker.qualified.image}",
+                                        "containerCommand": "",
+                                        "container": "${p:docker.container.name}",
+                                        "commandOptions": "-d\n",
+                                        "globalOptions": "${p?:resource\/docker.opts}",
+                                        "envVars": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Run Docker Container",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 11,
+                                    "commandName": "Stop Docker Container",
+                                    "pluginName": "Docker",
+                                    "pluginId": "com.urbancode.air.plugin.docker",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "container": "${p:docker.container.name}",
+                                        "commandOptions": "",
+                                        "globalOptions": "${p?:resource\/docker.opts}",
+                                        "envVars": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Stop Docker Container",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 11,
+                                    "commandName": "Remove Docker Container",
+                                    "pluginName": "Docker",
+                                    "pluginId": "com.urbancode.air.plugin.docker",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "container": "${p:docker.container.name}",
+                                        "commandOptions": "",
+                                        "globalOptions": "${p?:resource\/docker.opts}",
+                                        "envVars": ""
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Remove Docker Container",
+                                    "children": []
+                                },
+                                {
+                                    "type": "join",
+                                    "name": "3415bda2aafa244d16083d9f925b31",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Update Inventory",
+                        "description": "Empty process to help acquire component versions during a docker-compose up deployment.",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": true,
+                        "inventoryActionType": "ADD",
+                        "status": "Active",
+                        "configActionType": "ADD",
+                        "active": true,
+                        "path": "componentTemplates\/18d2352b-3217-7df8-2aa7-46aa77eab1c8\/processes\/18d2352b-6eae-93cb-fdd8-6b5cef758953",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [{
+                                "to": "52ab313f7bd1d841136630fa150808",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }],
+                            "offsets": [{
+                                "name": "52ab313f7bd1d841136630fa150808",
+                                "x": -5,
+                                "y": 420,
+                                "h": 80,
+                                "w": 120
+                            }],
+                            "layoutMode": "unknown",
+                            "type": "graph",
+                            "name": "78be62f4-d950-497c-bd8b-45233902dc61",
+                            "children": [{
+                                "type": "finish",
+                                "name": "52ab313f7bd1d841136630fa150808",
+                                "children": []
+                            }]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "sourceConfigPluginName": "Docker",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [
+                {
+                    "name": "dockerImageTag",
+                    "label": "dockerImageTag",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "",
+                    "placeholder": ""
+                },
+                {
+                    "name": "registry",
+                    "label": "registry",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "isHidden": false,
+                    "required": false,
+                    "description": "",
+                    "placeholder": ""
+                }
+            ],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "DockerTagImport",
+                        "properties": [
+                            {
+                                "name": "dockerImageName",
+                                "value": "hsternkicker\/kubetoy",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "regexForTag",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "dockerRegistryName",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "api",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "space",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "org",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "dockerHome",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "dockerRegistryUsername",
+                                "value": "${p?:dockerUsername}",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "dockerRegistryPassword",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|joekLZMCXuWP2pi1zWQCJg==|F2K8gxg1FhSSbkGszc2OG6KxWuygLx9pxgD3vtl0WpU=}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "dockerRegistryAPIKey",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|XZ3cRAnbDriG4AN17xpDPA==|0Quec6g1+q0j4esSGyeDfg==}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "allowInsecure",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "allowVersionLinks",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "namingConvention",
+                                "value": "tag_only",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "region",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "awsCli",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "importCustomPropertiesJFrog",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "registryType",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "template",
+                        "properties": [
+                            {
+                                "name": "docker.image.name",
+                                "value": "hsternkicker\/kubetoy",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "docker.qualified.image",
+                                "value": "${p?:docker.registry}${p:docker.image.name}:${p:version\/dockerImageTag}",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "docker.registry",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "docker.container.name",
+                                "value": "${p:docker.image.name}-${p:environment.name}",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": [{
+                            "name": "docker.registry.name",
+                            "description": "",
+                            "secure": false
+                        }]
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "18d23b2b-55e9-c2d0-80d0-4de7eedc2a2e",
+                "name": "kubernetes.image",
+                "color": "#FFFFFF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "KubeToy",
+            "description": "",
+            "created": 1705696039019,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "18d23531-ca15-beab-1ab6-c04c337ffae5",
+                "path": "componentTemplates\/18d23531-ca30-2495-5901-9f5826320ae9",
+                "name": "ArgoCD Template",
+                "description": "Component template for use with ArgoCD deployments",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "tags": [{
+                    "id": "18d23532-0b66-52f6-0de4-f573d1289a6d",
+                    "name": "ArgoCD",
+                    "color": "#00B2EF",
+                    "description": "",
+                    "objectType": "Component"
+                }],
+                "active": true,
+                "importConfigurationStrategy": "default",
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [
+                    {
+                        "name": "argocd.server",
+                        "label": "argocd.server",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The name or IP address of the Argo CD server to login to.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.user",
+                        "label": "argocd.user",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The username of an account to authenticate.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.password",
+                        "label": "argocd.password",
+                        "pattern": "",
+                        "type": "SECURE",
+                        "isHidden": false,
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|eslfGtPOZVDatJjEWb\/+Tw==|BbWRZXgIq+mwVmp5hqE6Eg==}",
+                        "required": true,
+                        "description": "The password of an account to authenticate.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.application.name",
+                        "label": "argocd.application.name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The name of the Argo CD application.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.global.flags",
+                        "label": "argocd.global.flags",
+                        "pattern": "",
+                        "type": "TEXTAREA",
+                        "isHidden": false,
+                        "required": false,
+                        "description": "Global flags that should be applied to all commands, such as --config=..\/argocd.config",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.cmd.path",
+                        "label": "argocd.cmd.path",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": false,
+                        "description": "The name of the argocd command if it is in the system path or the full path to run the argocd command.",
+                        "placeholder": ""
+                    }
+                ],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Sync And Get Status",
+                        "description": "Perform app-sync and app-get steps, then check the HealthStatus output property for the application",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": false,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/18d23531-ca30-2495-5901-9f5826320ae9\/processes\/18d23531-ff9c-4ee9-5978-4b407344ff02",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "App Rollback",
+                                    "from": "Check Health Status",
+                                    "type": "VALUE",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "App Rollback",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "Check Health Status",
+                                    "type": "VALUE",
+                                    "value": "Healthy"
+                                },
+                                {
+                                    "to": "Login",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Check Health Status",
+                                    "from": "App Get",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Sync",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Get",
+                                    "from": "App Sync",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Check Health Status",
+                                    "x": -100.87045903577256,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 290
+                                },
+                                {
+                                    "name": "App Rollback",
+                                    "x": 1.0610402878637757,
+                                    "y": 610,
+                                    "h": 70,
+                                    "w": 220
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "App Get",
+                                    "x": -41.22413913172714,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 180
+                                },
+                                {
+                                    "name": "App Sync",
+                                    "x": -43.112069565863564,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 190
+                                },
+                                {
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "x": -18.938959712136224,
+                                    "y": 730,
+                                    "h": 80,
+                                    "w": 120
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "27f3c282-fd78-4ece-a5fb-d61fbd471a5f",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "Login",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:argocd.server}",
+                                        "userName": "${p:argocd.user}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|B3sWB55XJcx\/EonEmecywg==|Waj+f2Xh37ltqe6LHSvXTdhG0tYf5PYIHeRHE8oarkI=}",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Get",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "flags": "${p?:argocd.global.flags}\n",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "waitonhealth": "false",
+                                        "waitonhealthtimeout": "300",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Get",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Sync",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "flags": "${p?:argocd.global.flags}\n",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}",
+                                        "componentTemplate": "Docker Template",
+                                        "deleteMissingInventory": "false",
+                                        "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|igxxoZNGiLTCnCZSNM+BWA==|AEir+G8yBUP\/yXvOwqIE4Q==}",
+                                        "resource": "${p?:resource.id}",
+                                        "resourcePath": "${p?:resource.path}",
+                                        "deployapplication": "${p?:application.id}",
+                                        "version": "${p?:version.name}",
+                                        "sourceConfigType": "Docker",
+                                        "environmentName": "${p?:environment.name}",
+                                        "environment": "${p?:environment.id}",
+                                        "componentProcessRequest": "${p?:request.id}",
+                                        "applicationProcessRequest": "${p?:parentRequest.id}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Sync",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Rollback",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "id": "",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Rollback",
+                                    "children": []
+                                },
+                                {
+                                    "propertyName": "App Get\/HealthStatus",
+                                    "type": "switch",
+                                    "name": "Check Health Status",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Sync And Run Tests",
+                        "description": "Perform an app-sync and then run tests on the application",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": false,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/18d23531-ca30-2495-5901-9f5826320ae9\/processes\/18d23532-0026-9f9f-3556-a144eb431b60",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "Run tests",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Sync",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Run tests",
+                                    "from": "App Sync",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Rollback",
+                                    "from": "Run tests",
+                                    "type": "FAILURE",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "App Rollback",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "x": -12.558906546745192,
+                                    "y": 610,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "App Rollback",
+                                    "x": 7.441093453254808,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 220
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "App Sync",
+                                    "x": -41.700019576240294,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 190
+                                },
+                                {
+                                    "name": "Run tests",
+                                    "x": -35.10005872872087,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 170
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "85aed39d-9122-4b7a-8197-ac9d3fd1ce3d",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "Login",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:argocd.server}",
+                                        "userName": "${p:argocd.user}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|wqG8sNxSiNb\/a9sQSNxWwQ==|WNcY7v3Txf7Ro8NGCXn3ZfS7lZTTrmYlGYnCnXdexS4=}",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Sync",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "flags": "${p?:argocd.global.flags}\n",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}",
+                                        "componentTemplate": "Docker Template",
+                                        "deleteMissingInventory": "false",
+                                        "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|6vfKIyeKChVjdofMua5+rQ==|R7Xc9j21X4H7t8dEYmN30Q==}",
+                                        "resource": "${p?:resource.id}",
+                                        "resourcePath": "${p?:resource.path}",
+                                        "deployapplication": "${p?:application.id}",
+                                        "version": "${p?:version.name}",
+                                        "sourceConfigType": "Docker",
+                                        "environmentName": "${p?:environment.name}",
+                                        "environment": "${p?:environment.id}",
+                                        "componentProcessRequest": "${p?:request.id}",
+                                        "applicationProcessRequest": "${p?:parentRequest.id}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Sync",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Rollback",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "id": "",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Rollback",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 20,
+                                    "commandName": "Shell",
+                                    "pluginName": "Shell",
+                                    "pluginId": "com.urbancode.air.plugin.Shell",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "shellInterpreter": "",
+                                        "scriptBody": "#!\/bin\/bash\n\n# Run tests to verify application sync\/deployment\necho \"Tests passed\"\nsleep 10\nexit 0",
+                                        "runAsDaemon": "false",
+                                        "outputFile": "",
+                                        "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Run tests",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "template",
+                        "properties": [
+                            {
+                                "name": "argocd.server",
+                                "value": "openshift-gitops-server-openshift-gitops.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.user",
+                                "value": "admin",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keycqs8|xSCDLoRCz0IJBxHE8t53tA==|yH6L23aRQ5W8jaYbTLbcWq\/PEdqswxHpss0jqM8D5+fGUCkdH1766Wyfo1XiNkPn}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "argocd.application.name",
+                                "value": "openshift-gitops\/kubetoy",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.global.flags",
+                                "value": "--config=..\/argocd.config\n--insecure",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.cmd.path",
+                                "value": "\/opt\/ibm-ucd\/agent\/conf\/argocd",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "18d23532-0b66-52f6-0de4-f573d1289a6d",
+                "name": "ArgoCD",
+                "color": "#00B2EF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        }
+    ],
+    "environments": [{
+        "name": "Test",
+        "description": "",
+        "color": "#00B2EF",
+        "requireApprovals": false,
+        "noSelfApprovals": false,
+        "exemptProcesses": [],
+        "lockSnapshots": false,
+        "requireSnapshots": false,
+        "snapshotDaysToKeep": 0,
+        "cleanupDaysToKeep": 0,
+        "cleanupCountToKeep": 0,
+        "enableProcessHistoryCleanup": true,
+        "useSystemDefaultDays": true,
+        "showCompliancyOnLoad": false,
+        "historyCleanupDaysToKeep": 0,
+        "order": 0,
+        "active": true,
+        "propSheet": {
+            "properties": []
+        },
+        "templatePropSheet": {
+            "name": "template",
+            "properties": []
+        },
+        "baseResources": [{
+            "basePath": "",
+            "tree": {
+                "name": "Test",
+                "path": "\/Test",
+                "description": "",
+                "parentName": "",
+                "inheritTeam": false,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false
+            }
+        }],
+        "baseResourcesFull": [{
+            "basePath": "",
+            "tree": {
+                "name": "Test",
+                "path": "\/Test",
+                "description": "",
+                "parentName": "",
+                "inheritTeam": false,
+                "propSheet": {
+                    "name": "custom",
+                    "properties": []
+                },
+                "tags": [],
+                "teamMappings": [],
+                "impersonationUseSudo": false,
+                "impersonationForce": false,
+                "prototype": false,
+                "children": [{
+                    "name": "agent-ucda80011164713-ibm-ucda-prod-0",
+                    "path": "\/Test\/agent-ucda80011164713-ibm-ucda-prod-0",
+                    "description": "",
+                    "parentName": "Test",
+                    "inheritTeam": true,
+                    "type": "agent",
+                    "typeName": "agent-ucda80011164713-ibm-ucda-prod-0",
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "KubeToy",
+                        "path": "\/Test\/agent-ucda80011164713-ibm-ucda-prod-0\/KubeToy",
+                        "description": "",
+                        "parentName": "agent-ucda80011164713-ibm-ucda-prod-0",
+                        "inheritTeam": true,
+                        "roleName": "KubeToy",
+                        "roleProperties": {
+                            "name": "KubeToy",
+                            "properties": []
+                        },
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "ArgoCD-Test-kubetoy",
+                            "path": "\/Test\/agent-ucda80011164713-ibm-ucda-prod-0\/KubeToy\/ArgoCD-Test-kubetoy",
+                            "parentName": "KubeToy",
+                            "inheritTeam": true,
+                            "roleName": "ArgoCD-Test-kubetoy",
+                            "roleProperties": {
+                                "name": "ArgoCD-Test-kubetoy",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }]
+            }
+        }],
+        "componentPropSheets": [
+            {
+                "properties": [],
+                "componentName": "ArgoCD-Test-kubetoy"
+            },
+            {
+                "properties": [],
+                "componentName": "KubeToy"
+            }
+        ],
+        "teamMappings": [],
+        "deploymentTriggers": [{
+            "component": "KubeToy",
+            "applicationProcess": "Deploy KubeToy",
+            "executingUser": "admin"
+        }]
+    }],
+    "processes": [{
+        "name": "Deploy KubeToy",
+        "description": "Deploy KubeToy K8s Kubernetes resources via Argo CD",
+        "inventoryManagementType": "AUTOMATIC",
+        "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+        "disableSnapshots": false,
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "b17c905961b84efd33ed36f482e142",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "151f5f7b53691a4763006007019de2",
+                    "from": "b17c905961b84efd33ed36f482e142",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "b17c905961b84efd33ed36f482e142",
+                    "x": -100,
+                    "y": 230,
+                    "h": 70,
+                    "w": 310
+                },
+                {
+                    "name": "151f5f7b53691a4763006007019de2",
+                    "x": -5,
+                    "y": 450,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "f7f89680-1001-4980-ae85-18e98f3c05a7",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "151f5f7b53691a4763006007019de2",
+                    "children": []
+                },
+                {
+                    "name": "b17c905961b84efd33ed36f482e142",
+                    "componentTag": {
+                        "objectType": "Component",
+                        "name": "ArgoCD",
+                        "description": "",
+                        "color": "#00B2EF"
+                    },
+                    "properties": [
+                        {
+                            "name": "activity.componentProcess.name",
+                            "value": "Sync And Run Tests"
+                        },
+                        {
+                            "name": "maxCompIteration",
+                            "value": "100"
+                        },
+                        {
+                            "name": "maxIteration",
+                            "value": "-1"
+                        },
+                        {
+                            "name": "isIgnoreChildWarnings",
+                            "value": "false"
+                        },
+                        {
+                            "name": "runOnlyOnFirst",
+                            "value": ""
+                        },
+                        {
+                            "name": "failFast",
+                            "value": "false"
+                        }
+                    ],
+                    "type": "multiComponentEnvironmentIterator",
+                    "children": [{
+                        "properties": [
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "afc65055a5241f2c6111da55644daa",
+                        "children": [{
+                            "type": "operationalProcessFilter",
+                            "name": "28c3c197-8610-4b60-b922-823719509853",
+                            "children": [{
+                                "componentProcessName": "Sync And Run Tests",
+                                "allowFailure": false,
+                                "properties": {
+                                    "activity.componentProcess.name": "Sync And Run Tests",
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "activity.componentProcess.name": "Sync And Run Tests",
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Sync And Run Tests",
+                                "children": []
+                            }]
+                        }]
+                    }]
+                }
+            ]
+        },
+        "propDefs": [],
+        "versionPresets": []
+    }],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [],
+    "webhooks": []
+}
