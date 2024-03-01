@@ -1,0 +1,2847 @@
+{
+    "name": "CP4A-Liberty",
+    "description": "An example application for Cloud Pak for Applications",
+    "enforceCompleteSnapshots": false,
+    "onlyChangedVersions": true,
+    "useWizard": false,
+    "propSheet": {
+        "properties": []
+    },
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "CP4A-ModResort",
+            "description": "An example Liberty application deployed to a Liberty instance running on a VM",
+            "created": 1708380157763,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "sourceConfigPluginName": "File System (Versioned)",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "template",
+                        "properties": []
+                    },
+                    {
+                        "name": "FileSystemVersionedComponentProperties",
+                        "properties": [
+                            {
+                                "name": "saveFileExecuteBits",
+                                "value": "false",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "extensions",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "includes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "excludes",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "basePath",
+                                "value": "\/downloads\/mod-resort",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [
+                {
+                    "name": "Create-and-Start-Server",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": false,
+                    "status": "",
+                    "active": true,
+                    "path": "components\/18dc3647-7432-eb8c-9805-15424c39eec1\/processes\/18dc3718-a9d6-dd7c-09a3-5b21e788379f",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "7be1e2745767a72d8ecf2e7c6197d8",
+                                "from": "Start Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start Server",
+                                "from": "Create Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Start Server",
+                                "x": -55,
+                                "y": 350,
+                                "h": 70,
+                                "w": 220
+                            },
+                            {
+                                "name": "7be1e2745767a72d8ecf2e7c6197d8",
+                                "x": -5,
+                                "y": 520,
+                                "h": 80,
+                                "w": 120
+                            },
+                            {
+                                "name": "Create Server",
+                                "x": -60,
+                                "y": 180,
+                                "h": 70,
+                                "w": 230
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "22883a64-e8ba-404e-8ba7-5fdd1b9bfdce",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "7be1e2745767a72d8ecf2e7c6197d8",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 23,
+                                "commandName": "Create Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "modresort-PROD",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 23,
+                                "commandName": "Start Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "modresort-PROD",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|Vr7sYfUyfMolXp0veOcPYw==|Vj7wWIJ5WeKCxqwzNg+SZg==}",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|BChFo7KvBuya2nUcezsE8Q==|73TPCGMpFgxgBx\/l1q7ZUg==}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start Server",
+                                "children": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Deploy",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "components\/18dc3647-7432-eb8c-9805-15424c39eec1\/processes\/18dc3655-b6e2-7a9c-cf75-a47c0407208a",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Start Server",
+                                "from": "Create File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Start Server",
+                                "from": "Install or Update Applications with Dropins",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Stop Server",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Install or Update Applications with Dropins",
+                                "from": "Stop Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "eb6a72889aeb89a55d2f96e74d1907",
+                                "from": "aec8c054e09b98397fa43e2c54b761",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Create File",
+                                "from": "Stop Server",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Add Status to Version - Failed",
+                                "from": "Run Functional Tests",
+                                "type": "FAILURE",
+                                "value": ""
+                            },
+                            {
+                                "to": "Add Status to Version - Functional Tests Passed",
+                                "from": "Run Functional Tests",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "aec8c054e09b98397fa43e2c54b761",
+                                "from": "Add Status to Version - Failed",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Which environment?",
+                                "from": "Start Server",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "221040ea0f9e557b5fa30d5b708941",
+                                "from": "Add Status to Version - Functional Tests Passed",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "type": "ALWAYS",
+                                "value": ""
+                            },
+                            {
+                                "to": "eb6a72889aeb89a55d2f96e74d1907",
+                                "from": "Which environment?",
+                                "type": "VALUE",
+                                "value": ""
+                            },
+                            {
+                                "to": "Run Functional Tests",
+                                "from": "Which environment?",
+                                "type": "VALUE",
+                                "value": "DEV"
+                            },
+                            {
+                                "to": "eb6a72889aeb89a55d2f96e74d1907",
+                                "from": "221040ea0f9e557b5fa30d5b708941",
+                                "type": "SUCCESS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "Stop Server",
+                                "x": -98.50022862368542,
+                                "y": 310,
+                                "h": 110,
+                                "w": 350
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -145,
+                                "y": 150,
+                                "h": 110,
+                                "w": 440
+                            },
+                            {
+                                "name": "Start Server",
+                                "x": -167.68118427069055,
+                                "y": 630,
+                                "h": 110,
+                                "w": 350
+                            },
+                            {
+                                "name": "Install or Update Applications with Dropins",
+                                "x": -584.5004572473708,
+                                "y": 470,
+                                "h": 110,
+                                "w": 750
+                            },
+                            {
+                                "name": "Run Functional Tests",
+                                "x": -201.0145176040238,
+                                "y": 950,
+                                "h": 110,
+                                "w": 380
+                            },
+                            {
+                                "name": "221040ea0f9e557b5fa30d5b708941",
+                                "x": -407.00045724737083,
+                                "y": 1270,
+                                "h": 70,
+                                "w": 370
+                            },
+                            {
+                                "name": "eb6a72889aeb89a55d2f96e74d1907",
+                                "x": -302.00045724737083,
+                                "y": 1390,
+                                "h": 100,
+                                "w": 160
+                            },
+                            {
+                                "name": "aec8c054e09b98397fa43e2c54b761",
+                                "x": -7.000457247370832,
+                                "y": 1270,
+                                "h": 70,
+                                "w": 350
+                            },
+                            {
+                                "name": "Which environment?",
+                                "x": -400.9890832190216,
+                                "y": 790,
+                                "h": 110,
+                                "w": 530
+                            },
+                            {
+                                "name": "Add Status to Version - Functional Tests Passed",
+                                "x": -644.5004572473708,
+                                "y": 1110,
+                                "h": 110,
+                                "w": 740
+                            },
+                            {
+                                "name": "Create File",
+                                "x": 195.49954275262917,
+                                "y": 470,
+                                "h": 110,
+                                "w": 340
+                            },
+                            {
+                                "name": "Add Status to Version - Failed",
+                                "x": 125.49954275262917,
+                                "y": 1110,
+                                "h": 110,
+                                "w": 500
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "f51b283e-5c6a-4e05-84ff-c20ef3980737",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "eb6a72889aeb89a55d2f96e74d1907",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 46,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "UrbanCode Deploy Versioned File Storage",
+                                "pluginId": "com.urbancode.plugin.VFS",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "FULL",
+                                    "handleIncrementalVersions": "false",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "charset": "",
+                                    "versionId": "${p:version.id}",
+                                    "versionType": "${p:version.type}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "envId": "${p:environment.id}",
+                                    "maxMemory": "1G",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 23,
+                                "commandName": "Install or Update Applications with Dropins",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "source": "modresorts-1.0.war",
+                                    "server": "modresort-${p:environment.name}",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Install or Update Applications with Dropins",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 23,
+                                "commandName": "Start Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "modresort-${p:environment.name}",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|wpF+X1ilvB0tl9HRHI4fgQ==|4zphXuRLPziv5m5oQQKEaA==}",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|wYEO5jtnT9LFgIAttg0fpQ==|T9emkig+LQ+agHfI6i40SQ==}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Start Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 23,
+                                "commandName": "Stop Server",
+                                "pluginName": "WebSphere Liberty",
+                                "pluginId": "com.urbancode.air.plugin.WebSphereLiberty",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "server": "modresort-${p:environment.name}",
+                                    "wlpHome": "${p:LIBERTY_HOME}\/wlp",
+                                    "wlpUserDir": "",
+                                    "serverHost": "",
+                                    "controllerHostName": "",
+                                    "controllerPort": "",
+                                    "adminUser": "admin",
+                                    "adminPassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|fRJWWWfwmBGkMGl5SvkuOw==|e\/i23Q6r97R2CxlyvLv7jg==}",
+                                    "trustStorePath": "",
+                                    "trustStorePassword": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|XdLTHM+OXlFHCfFQt2LkHw==|EifSjNAjDGw07\/P8Wl1C9w==}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Stop Server",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "workingDir": "${p:environment\/LIBERTY_HOME}\/wlp\/usr\/servers\/modresort-DEV",
+                                "pluginVersion": 96,
+                                "commandName": "Create File",
+                                "pluginName": "File Utils",
+                                "pluginId": "com.urbancode.air.plugin.FileUtils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "file": "server.xml",
+                                    "contents": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<server description=\"new server\">\n\n    <!-- Enable features -->\n    <featureManager>\n        <feature>webProfile-8.0<\/feature>\n    <\/featureManager>\n    \n    <variable name=\"default.http.port\" defaultValue=\"9080\"\/>\n    <variable name=\"default.https.port\" defaultValue=\"9443\"\/>\n\n    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host=\"*\" -->\n    <httpEndpoint host=\"*\" httpPort=\"${default.http.port}\" \n        httpsPort=\"${default.https.port}\" id=\"defaultHttpEndpoint\"\/>\n\n    <!-- Automatically expand WAR files and EAR files -->\n    <applicationManager autoExpand=\"true\"\/>\n\n<\/server>",
+                                    "overwrite": "true",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Create File",
+                                "children": []
+                            },
+                            {
+                                "propertyName": "${p:environment.name}",
+                                "type": "switch",
+                                "name": "Which environment?",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 20,
+                                "commandName": "Shell",
+                                "pluginName": "Shell",
+                                "pluginId": "com.urbancode.air.plugin.Shell",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "shellInterpreter": "",
+                                    "scriptBody": "echo 'Running Functional Tests'\nsleep 25",
+                                    "runAsDaemon": "false",
+                                    "outputFile": "",
+                                    "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Run Functional Tests",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 74,
+                                "commandName": "Add Status to Version",
+                                "pluginName": "UrbanCode Deploy Versions",
+                                "pluginId": "com.urbancode.air.plugin.uDeployVersion",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "status": "Functional Tests Passed",
+                                    "versionName": "${p:version.name}",
+                                    "componentName": "${p:component.name}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Add Status to Version - Functional Tests Passed",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 74,
+                                "commandName": "Add Status to Version",
+                                "pluginName": "UrbanCode Deploy Versions",
+                                "pluginId": "com.urbancode.air.plugin.uDeployVersion",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "status": "Functional Tests Failed",
+                                    "versionName": "${p:version.name}",
+                                    "componentName": "${p:component.name}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Add Status to Version - Failed",
+                                "children": []
+                            },
+                            {
+                                "status": "SUCCESS",
+                                "type": "setStatus",
+                                "name": "221040ea0f9e557b5fa30d5b708941",
+                                "children": []
+                            },
+                            {
+                                "status": "FAILURE",
+                                "type": "setStatus",
+                                "name": "aec8c054e09b98397fa43e2c54b761",
+                                "children": []
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "173bb5eb-b246-9df2-727c-d178ed51592c",
+                "name": "WebSphere Liberty",
+                "color": "#7F1C7D",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "CP4A-OpenLiberty-System-Microservice-ArgoCD",
+            "description": "This is an example component built using the Argo CD template",
+            "created": 1708469607150,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "18d7f7f4-14a4-7e4a-7a47-92774cdd50ff",
+                "path": "componentTemplates\/18d7f7f4-14c1-49c3-518b-d454941fce27",
+                "name": "ArgoCD Template",
+                "description": "Component template for use with ArgoCD deployments",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "tags": [{
+                    "id": "18d7f7f4-225b-fe6b-271c-afb9da610d3c",
+                    "name": "ArgoCD",
+                    "color": "#00B2EF",
+                    "description": "",
+                    "objectType": "Component"
+                }],
+                "active": true,
+                "importConfigurationStrategy": "default",
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [
+                    {
+                        "name": "argocd.server",
+                        "label": "argocd.server",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The name or IP address of the Argo CD server to login to.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.user",
+                        "label": "argocd.user",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The username of an account to authenticate.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.password",
+                        "label": "argocd.password",
+                        "pattern": "",
+                        "type": "SECURE",
+                        "isHidden": false,
+                        "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|6dZFnGjrFO7fPry+kVO\/ug==|YG5Ny20\/hAqiNfgLVrfLYg==}",
+                        "required": true,
+                        "description": "The password of an account to authenticate.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.application.name",
+                        "label": "argocd.application.name",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": true,
+                        "description": "The name of the Argo CD application.",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.global.flags",
+                        "label": "argocd.global.flags",
+                        "pattern": "",
+                        "type": "TEXTAREA",
+                        "isHidden": false,
+                        "required": false,
+                        "description": "Global flags that should be applied to all commands, such as --config=..\/argocd.config",
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "argocd.cmd.path",
+                        "label": "argocd.cmd.path",
+                        "pattern": "",
+                        "type": "TEXT",
+                        "isHidden": false,
+                        "required": false,
+                        "description": "The name of the argocd command if it is in the system path or the full path to run the argocd command.",
+                        "placeholder": ""
+                    }
+                ],
+                "properties": [],
+                "processes": [
+                    {
+                        "name": "Sync And Get Status",
+                        "description": "Perform app-sync and app-get steps, then check the HealthStatus output property for the application",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": false,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/18d7f7f4-14c1-49c3-518b-d454941fce27\/processes\/18d7f7f4-1b0d-ad6a-bf08-20a25b7097d7",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "App Get",
+                                    "from": "App Sync",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Sync",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Check Health Status",
+                                    "from": "App Get",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Rollback",
+                                    "from": "Check Health Status",
+                                    "type": "VALUE",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "App Rollback",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "Check Health Status",
+                                    "type": "VALUE",
+                                    "value": "Healthy"
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Check Health Status",
+                                    "x": -100.87045903577256,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 290
+                                },
+                                {
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "x": -18.938959712136224,
+                                    "y": 730,
+                                    "h": 80,
+                                    "w": 120
+                                },
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "App Get",
+                                    "x": -41.22413913172714,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 180
+                                },
+                                {
+                                    "name": "App Sync",
+                                    "x": -43.112069565863564,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 190
+                                },
+                                {
+                                    "name": "App Rollback",
+                                    "x": 1.0610402878637757,
+                                    "y": 610,
+                                    "h": 70,
+                                    "w": 220
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "d837953d-59f6-4a4b-bcfa-25a0443c9e41",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "Login",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:argocd.server}",
+                                        "userName": "${p:argocd.user}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|IvR\/4gkE2UEo+M6DLFcL2A==|JExH0yReE55o7C4USYuE+xquIvaru5mQfUiIROe4I70=}",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Get",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "flags": "${p?:argocd.global.flags}\n",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "waitonhealth": "false",
+                                        "waitonhealthtimeout": "300",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Get",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Sync",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "flags": "${p?:argocd.global.flags}\n",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}",
+                                        "componentTemplate": "Docker Template",
+                                        "deleteMissingInventory": "false",
+                                        "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|NXAmwXX\/fYVeaa\/JQJf1rw==|CS8nfzXvle\/lNTjzvwVTXg==}",
+                                        "resource": "${p?:resource.id}",
+                                        "resourcePath": "${p?:resource.path}",
+                                        "deployapplication": "${p?:application.id}",
+                                        "version": "${p?:version.name}",
+                                        "sourceConfigType": "Docker",
+                                        "environmentName": "${p?:environment.name}",
+                                        "environment": "${p?:environment.id}",
+                                        "componentProcessRequest": "${p?:request.id}",
+                                        "applicationProcessRequest": "${p?:parentRequest.id}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Sync",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Rollback",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "id": "",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Rollback",
+                                    "children": []
+                                },
+                                {
+                                    "propertyName": "App Get\/HealthStatus",
+                                    "type": "switch",
+                                    "name": "Check Health Status",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Sync And Run Tests",
+                        "description": "Perform an app-sync and then run tests on the application",
+                        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                        "takesVersion": false,
+                        "status": "",
+                        "active": true,
+                        "path": "componentTemplates\/18d7f7f4-14c1-49c3-518b-d454941fce27\/processes\/18d7f7f4-1c5b-327d-e146-71419e7023fd",
+                        "deleted": false,
+                        "propDefs": [],
+                        "rootActivity": {
+                            "edges": [
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "Run tests",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Sync",
+                                    "from": "Login",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Login",
+                                    "type": "ALWAYS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "from": "App Rollback",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "App Rollback",
+                                    "from": "Run tests",
+                                    "type": "FAILURE",
+                                    "value": ""
+                                },
+                                {
+                                    "to": "Run tests",
+                                    "from": "App Sync",
+                                    "type": "SUCCESS",
+                                    "value": ""
+                                }
+                            ],
+                            "offsets": [
+                                {
+                                    "name": "Login",
+                                    "x": -30,
+                                    "y": 130,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "App Rollback",
+                                    "x": 7.441093453254808,
+                                    "y": 490,
+                                    "h": 70,
+                                    "w": 220
+                                },
+                                {
+                                    "name": "Run tests",
+                                    "x": -35.10005872872087,
+                                    "y": 370,
+                                    "h": 70,
+                                    "w": 170
+                                },
+                                {
+                                    "name": "App Sync",
+                                    "x": -41.700019576240294,
+                                    "y": 250,
+                                    "h": 70,
+                                    "w": 190
+                                },
+                                {
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "x": -12.558906546745192,
+                                    "y": 610,
+                                    "h": 80,
+                                    "w": 120
+                                }
+                            ],
+                            "layoutMode": "auto",
+                            "type": "graph",
+                            "name": "ca3dd56d-42b9-4879-9c2b-9a0d3865edd6",
+                            "children": [
+                                {
+                                    "type": "finish",
+                                    "name": "eb9f4e3703811a90a091bad3f3f8c7",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "Login",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "server": "${p:argocd.server}",
+                                        "userName": "${p:argocd.user}",
+                                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|w\/OVTJgtrpvVWazfSIFlzw==|klfNw2\/bgLt6xsNJdwrJ9MqGiu4FxF9vUCqUf+a2kBM=}",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Login",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Sync",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "flags": "${p?:argocd.global.flags}\n",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}",
+                                        "componentTemplate": "Docker Template",
+                                        "deleteMissingInventory": "false",
+                                        "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|D0s6brWGVglvEy41nzEFjg==|0BRv4RmvdgNaqR37aIejKA==}",
+                                        "resource": "${p?:resource.id}",
+                                        "resourcePath": "${p?:resource.path}",
+                                        "deployapplication": "${p?:application.id}",
+                                        "version": "${p?:version.name}",
+                                        "sourceConfigType": "Docker",
+                                        "environmentName": "${p?:environment.name}",
+                                        "environment": "${p?:environment.id}",
+                                        "componentProcessRequest": "${p?:request.id}",
+                                        "applicationProcessRequest": "${p?:parentRequest.id}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Sync",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": true,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 1,
+                                    "commandName": "App Rollback",
+                                    "pluginName": "Argo CD",
+                                    "pluginId": "com.urbancode.air.plugin.argocd",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "application": "${p:argocd.application.name}",
+                                        "id": "",
+                                        "flags": "${p?:argocd.global.flags}",
+                                        "cmdpath": "${p?:argocd.cmd.path}",
+                                        "loggerLevel": "${p?:log4jLevel}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "App Rollback",
+                                    "children": []
+                                },
+                                {
+                                    "allowFailure": false,
+                                    "useImpersonation": false,
+                                    "showHidden": false,
+                                    "impersonationUseSudo": false,
+                                    "pluginVersion": 20,
+                                    "commandName": "Shell",
+                                    "pluginName": "Shell",
+                                    "pluginId": "com.urbancode.air.plugin.Shell",
+                                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                    "properties": {
+                                        "directoryOffset": ".",
+                                        "shellInterpreter": "",
+                                        "scriptBody": "#!\/bin\/bash\n\n# Run tests to verify application sync\/deployment\necho \"Tests passed\"\nsleep 10\nexit 0",
+                                        "runAsDaemon": "false",
+                                        "outputFile": "",
+                                        "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                                    },
+                                    "cachedAuthTokenRestriction": {
+                                        "name": "System Default",
+                                        "description": "Used by default for any plugin steps without a specified token restriction",
+                                        "restrictions": [{
+                                            "verb": "ALL",
+                                            "url": "\/*"
+                                        }]
+                                    },
+                                    "type": "plugin",
+                                    "name": "Run tests",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "template",
+                        "properties": [
+                            {
+                                "name": "argocd.server",
+                                "value": "openshift-gitops-server-openshift-gitops.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.user",
+                                "value": "admin",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.password",
+                                "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes256keykwyv|ipvUvJ6lWemKRlgBINfN\/A==|xtVP2rODX4w84ncToJU0FZ537obxLcM\/2NLILf5xsUTRlIm7ZtQxZMBPQXozZMS5}",
+                                "description": "",
+                                "secure": true
+                            },
+                            {
+                                "name": "argocd.application.name",
+                                "value": "openliberty-system-microservice-cp4a",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.global.flags",
+                                "value": "--config=..\/argocd.config\n--insecure",
+                                "description": "",
+                                "secure": false
+                            },
+                            {
+                                "name": "argocd.cmd.path",
+                                "value": "\/usr\/local\/bin\/argocd",
+                                "description": "",
+                                "secure": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "custom",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [
+                {
+                    "id": "173bb5e6-3bab-0c05-3902-c7dc3e48b0ca",
+                    "name": "OpenShift",
+                    "color": "#D9182D",
+                    "description": "",
+                    "objectType": "Component"
+                },
+                {
+                    "id": "18602e81-12bd-3cb4-6876-d707ca00b0cd",
+                    "name": "Liberty",
+                    "color": "#7F1C7D",
+                    "description": "",
+                    "objectType": "Component"
+                },
+                {
+                    "id": "18d7f7f4-225b-fe6b-271c-afb9da610d3c",
+                    "name": "ArgoCD",
+                    "color": "#00B2EF",
+                    "description": "",
+                    "objectType": "Component"
+                }
+            ]
+        },
+        {
+            "name": "CP4A-OpenLiberty-System-Microservice-LO",
+            "description": "An example container that deploys to OpenShift using the OpenLiberty Operator",
+            "created": 1708403530834,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {
+                "propSheets": [
+                    {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    {
+                        "name": "template",
+                        "properties": []
+                    }
+                ]
+            },
+            "processes": [{
+                "name": "Deploy-Container-to-OpenShift-using-Operator",
+                "description": "This process deploys the container to an OCP Kube Cluster",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/18dc4c91-c53b-63f6-1298-41bdf0b79c71\/processes\/18dc4cb3-cefd-62db-f03e-703adf8d56da",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "107d1e3427b20319a424e8cf5b6411",
+                            "from": "Add Status to Version - Passed",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Apply Deployment YAML",
+                            "from": "OpenShift Login and Display OpenShift Details",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "from": "Display Running Pods",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "from": "da6afe2cba8e1be475151e740e1dbe",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Replace Tokens",
+                            "from": "Create yaml file",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "da6afe2cba8e1be475151e740e1dbe",
+                            "from": "Add Status to Version - Failed",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "OpenShift Login and Display OpenShift Details",
+                            "from": "Replace Tokens",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Add Status to Version - Failed",
+                            "from": "Run Functional Tests",
+                            "type": "FAILURE",
+                            "value": ""
+                        },
+                        {
+                            "to": "Display Running Pods",
+                            "from": "Which environment?",
+                            "type": "VALUE",
+                            "value": ""
+                        },
+                        {
+                            "to": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "from": "107d1e3427b20319a424e8cf5b6411",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run Functional Tests",
+                            "from": "Which environment?",
+                            "type": "VALUE",
+                            "value": "DEV"
+                        },
+                        {
+                            "to": "Create yaml file",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Which environment?",
+                            "from": "OpenShift Apply Deployment YAML",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Add Status to Version - Passed",
+                            "from": "Run Functional Tests",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Replace Tokens",
+                            "x": -142.0772050775904,
+                            "y": 470,
+                            "h": 110,
+                            "w": 400
+                        },
+                        {
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "x": -100.34492025159511,
+                            "y": 1550,
+                            "h": 100,
+                            "w": 160
+                        },
+                        {
+                            "name": "Add Status to Version - Failed",
+                            "x": 154.6550797484049,
+                            "y": 1270,
+                            "h": 110,
+                            "w": 500
+                        },
+                        {
+                            "name": "da6afe2cba8e1be475151e740e1dbe",
+                            "x": 194.6550797484049,
+                            "y": 1430,
+                            "h": 70,
+                            "w": 350
+                        },
+                        {
+                            "name": "Download Artifacts",
+                            "x": -148.55031291551796,
+                            "y": 150,
+                            "h": 110,
+                            "w": 440
+                        },
+                        {
+                            "name": "Run Functional Tests",
+                            "x": 27.251466035188855,
+                            "y": 1110,
+                            "h": 110,
+                            "w": 380
+                        },
+                        {
+                            "name": "Which environment?",
+                            "x": -246.8011283052801,
+                            "y": 950,
+                            "h": 110,
+                            "w": 530
+                        },
+                        {
+                            "name": "OpenShift Apply Deployment YAML",
+                            "x": -249.90631698621803,
+                            "y": 790,
+                            "h": 110,
+                            "w": 570
+                        },
+                        {
+                            "name": "Create yaml file",
+                            "x": -87.10062583103593,
+                            "y": 310,
+                            "h": 110,
+                            "w": 310
+                        },
+                        {
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "x": -312.0537843241449,
+                            "y": 630,
+                            "h": 110,
+                            "w": 720
+                        },
+                        {
+                            "name": "Add Status to Version - Passed",
+                            "x": -385.3449202515951,
+                            "y": 1270,
+                            "h": 110,
+                            "w": 510
+                        },
+                        {
+                            "name": "107d1e3427b20319a424e8cf5b6411",
+                            "x": -205.3449202515951,
+                            "y": 1430,
+                            "h": 70,
+                            "w": 370
+                        },
+                        {
+                            "name": "Display Running Pods",
+                            "x": -392.74853396481114,
+                            "y": 1110,
+                            "h": 110,
+                            "w": 390
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "10bb5ca0-721a-47f1-91b4-03ab8b43bbe5",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "d14f600d7ea1a9ad1c8dc4a2c7cfd0",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 46,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "UrbanCode Deploy Versioned File Storage",
+                            "pluginId": "com.urbancode.plugin.VFS",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "FULL",
+                                "handleIncrementalVersions": "false",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "charset": "",
+                                "versionId": "${p:version.id}",
+                                "versionType": "${p:version.type}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "envId": "${p:environment.id}",
+                                "maxMemory": "1G",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 20,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc login --token ${p:environment\/oc-auth-token} --server=https:\/\/c117-e.us-south.containers.cloud.ibm.com:30443\necho \"I am user ${id}\"\necho \"My home directory is $HOME\"\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": "",
+                                "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Login and Display OpenShift Details",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 20,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\n#docker login quay.io -u \"rslangehennig0\" -p \"S\/8YMG1bPu2ozRPe75sOMM8LdD6leVOoxBSsyqA6HhmOO2x0R7s1ZTI\/GPX14oix\"\ndocker login -u='rslangehennig0' -p='ohVuF8Mdw6MOsp4jT6AEH\/+nb7efGiyAPGWcc3Qu5gYDSMpcnnuqUsCwnfoDxqYYhReSXOOXn68TIufLBUrXmg==' quay.io\n#oc apply --namespace=rlange -f yaml-for-deployment\/liberty-deployment.yaml\noc apply --namespace=rlange -f deploy-operator.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": "",
+                                "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "OpenShift Apply Deployment YAML",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 20,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "touch deploy-operator.yaml\necho \"apiVersion: openliberty.io\/v1beta1\nkind: OpenLibertyApplication\nmetadata:\n  name: openliberty-system-microservice-cp4a\nspec:\n  replicas: 1\n  applicationImage: quay.io\/rslangehennig0\/openliberty-system-microservice-cp4a:@BUILDTAG@\n  service:\n    type: ClusterIP\n    port: 9080\n  expose: true\" >> deploy-operator.yaml\n  \n  cat deploy-operator.yaml",
+                                "runAsDaemon": "false",
+                                "outputFile": "",
+                                "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create yaml file",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 20,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\nexport KUBECONFIG=.\/kubeconfig\noc project rlange\necho \"My current OpenShift project is $(oc project)\"\necho \"Pods running in this namespace are\" \noc get pods",
+                                "runAsDaemon": "false",
+                                "outputFile": "",
+                                "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Display Running Pods",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 96,
+                            "commandName": "Replace Tokens",
+                            "pluginName": "File Utils",
+                            "pluginId": "com.urbancode.air.plugin.FileUtils",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "includes": "**\/deploy-operator.yaml",
+                                "excludes": "",
+                                "envPropValues": "${p:environment\/allProperties}",
+                                "propertyPrefix": "",
+                                "explicitTokens": "@BUILDTAG@->${p:version.name}",
+                                "startDelimiter": "@",
+                                "endDelimiter": "@",
+                                "propFile": "replace_tokens.properties",
+                                "dir": "",
+                                "customEncoding": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Replace Tokens",
+                            "children": []
+                        },
+                        {
+                            "propertyName": "${p:environment.name}",
+                            "type": "switch",
+                            "name": "Which environment?",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 20,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "pluginId": "com.urbancode.air.plugin.Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "echo 'Running Functional Tests'\nsleep 30",
+                                "runAsDaemon": "false",
+                                "outputFile": "",
+                                "tempDirectory": "${p?:agent\/temporaryDirectory}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run Functional Tests",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 74,
+                            "commandName": "Add Status to Version",
+                            "pluginName": "UrbanCode Deploy Versions",
+                            "pluginId": "com.urbancode.air.plugin.uDeployVersion",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "status": "Functional Tests Passed",
+                                "versionName": "${p:version.name}",
+                                "componentName": "${p:component.name}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Add Status to Version - Passed",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 74,
+                            "commandName": "Add Status to Version",
+                            "pluginName": "UrbanCode Deploy Versions",
+                            "pluginId": "com.urbancode.air.plugin.uDeployVersion",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "status": "Functional Tests Failed",
+                                "versionName": "${p:version.name}",
+                                "componentName": "${p:component.name}"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Add Status to Version - Failed",
+                            "children": []
+                        },
+                        {
+                            "status": "SUCCESS",
+                            "type": "setStatus",
+                            "name": "107d1e3427b20319a424e8cf5b6411",
+                            "children": []
+                        },
+                        {
+                            "status": "FAILURE",
+                            "type": "setStatus",
+                            "name": "da6afe2cba8e1be475151e740e1dbe",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [
+                {
+                    "id": "173bb5e6-3bab-0c05-3902-c7dc3e48b0ca",
+                    "name": "OpenShift",
+                    "color": "#D9182D",
+                    "description": "",
+                    "objectType": "Component"
+                },
+                {
+                    "id": "175e1dee-d04b-e903-9508-4c204064e025",
+                    "name": "Docker",
+                    "color": "#AB1A86",
+                    "description": "",
+                    "objectType": "Component"
+                },
+                {
+                    "id": "18602e81-12bd-3cb4-6876-d707ca00b0cd",
+                    "name": "Liberty",
+                    "color": "#7F1C7D",
+                    "description": "",
+                    "objectType": "Component"
+                }
+            ]
+        }
+    ],
+    "environments": [
+        {
+            "name": "DEV",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "showCompliancyOnLoad": false,
+            "historyCleanupDaysToKeep": 0,
+            "order": 0,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "oc-auth-token",
+                        "value": "sha256~qWsZss14LA9wgkjBBfBEukOpKA8oqJvulsJbZV_Kvs4",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "LIBERTY_HOME",
+                        "value": "\/opt\/IBM",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "modresort-url",
+                        "value": "https:\/\/52.116.6.138:9443\/resorts",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Applications\/CP4A-Liberty",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV",
+                    "description": "",
+                    "parentName": "CP4A-Liberty",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Applications\/CP4A-Liberty",
+                "tree": {
+                    "name": "DEV",
+                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV",
+                    "description": "",
+                    "parentName": "CP4A-Liberty",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [
+                        {
+                            "name": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                            "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV\/acuity.DANIEL-CAPPON-s-Account.cloud",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [{
+                                "name": "CP4A-ModResort",
+                                "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV\/acuity.DANIEL-CAPPON-s-Account.cloud\/CP4A-ModResort",
+                                "description": "",
+                                "parentName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                                "inheritTeam": true,
+                                "roleName": "CP4A-ModResort",
+                                "roleProperties": {
+                                    "name": "CP4A-ModResort",
+                                    "properties": []
+                                },
+                                "propSheet": {
+                                    "name": "custom",
+                                    "properties": []
+                                },
+                                "tags": [],
+                                "teamMappings": [],
+                                "impersonationUseSudo": false,
+                                "impersonationForce": false,
+                                "prototype": false,
+                                "children": []
+                            }]
+                        },
+                        {
+                            "name": "virtualserver02",
+                            "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV\/virtualserver02",
+                            "description": "",
+                            "parentName": "DEV",
+                            "inheritTeam": true,
+                            "type": "agent",
+                            "typeName": "virtualserver02",
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": [
+                                {
+                                    "name": "CP4A-ModResort-LO",
+                                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV\/virtualserver02\/CP4A-ModResort-LO",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "CP4A-ModResort-LO",
+                                    "roleProperties": {
+                                        "name": "CP4A-ModResort-LO",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "CP4A-OpenLiberty-System-Microservice-ArgoCD",
+                                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV\/virtualserver02\/CP4A-OpenLiberty-System-Microservice-ArgoCD",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "CP4A-OpenLiberty-System-Microservice-ArgoCD",
+                                    "roleProperties": {
+                                        "name": "CP4A-OpenLiberty-System-Microservice-ArgoCD",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                },
+                                {
+                                    "name": "CP4A-OpenLiberty-System-Microservice-LO",
+                                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/DEV\/virtualserver02\/CP4A-OpenLiberty-System-Microservice-LO",
+                                    "description": "",
+                                    "parentName": "virtualserver02",
+                                    "inheritTeam": true,
+                                    "roleName": "CP4A-OpenLiberty-System-Microservice-LO",
+                                    "roleProperties": {
+                                        "name": "CP4A-OpenLiberty-System-Microservice-LO",
+                                        "properties": []
+                                    },
+                                    "propSheet": {
+                                        "name": "custom",
+                                        "properties": []
+                                    },
+                                    "tags": [],
+                                    "teamMappings": [],
+                                    "impersonationUseSudo": false,
+                                    "impersonationForce": false,
+                                    "prototype": false,
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "CP4A-ModResort"
+                },
+                {
+                    "properties": [],
+                    "componentName": "CP4A-OpenLiberty-System-Microservice-ArgoCD"
+                },
+                {
+                    "properties": [],
+                    "componentName": "CP4A-OpenLiberty-System-Microservice-LO"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "QA",
+            "description": "",
+            "color": "#EEA10F",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "showCompliancyOnLoad": false,
+            "historyCleanupDaysToKeep": 0,
+            "order": 1,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "oc-auth-token",
+                        "value": "sha256~JTBYg9ONHiuWFjeT-AehV18Hl0l9CZiuDMGvjS6Cl8Y",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "LIBERTY_HOME",
+                        "value": "\/opt\/IBM",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "modresort-url",
+                        "value": "https:\/\/52.116.6.138:9443\/resorts",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Applications\/CP4A-Liberty",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/QA",
+                    "description": "",
+                    "parentName": "CP4A-Liberty",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Applications\/CP4A-Liberty",
+                "tree": {
+                    "name": "QA",
+                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/QA",
+                    "description": "",
+                    "parentName": "CP4A-Liberty",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/QA\/acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "description": "",
+                        "parentName": "QA",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "CP4A-ModResort",
+                            "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/QA\/acuity.DANIEL-CAPPON-s-Account.cloud\/CP4A-ModResort",
+                            "description": "",
+                            "parentName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                            "inheritTeam": true,
+                            "roleName": "CP4A-ModResort",
+                            "roleProperties": {
+                                "name": "CP4A-ModResort",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "CP4A-ModResort"
+                },
+                {
+                    "properties": [],
+                    "componentName": "CP4A-OpenLiberty-System-Microservice-ArgoCD"
+                },
+                {
+                    "properties": [],
+                    "componentName": "CP4A-OpenLiberty-System-Microservice-LO"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "snapshotDaysToKeep": 0,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": true,
+            "useSystemDefaultDays": true,
+            "showCompliancyOnLoad": false,
+            "historyCleanupDaysToKeep": 0,
+            "order": 2,
+            "active": true,
+            "propSheet": {
+                "properties": [
+                    {
+                        "name": "oc-auth-token",
+                        "value": "sha256~JTBYg9ONHiuWFjeT-AehV18Hl0l9CZiuDMGvjS6Cl8Y",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "LIBERTY_HOME",
+                        "value": "\/opt\/IBM",
+                        "description": "",
+                        "secure": false
+                    },
+                    {
+                        "name": "modresort-url",
+                        "value": "https:\/\/52.116.6.138:9443\/resorts",
+                        "description": "",
+                        "secure": false
+                    }
+                ]
+            },
+            "templatePropSheet": {
+                "name": "template",
+                "properties": []
+            },
+            "baseResources": [{
+                "basePath": "\/CloudPak-for-Applications\/CP4A-Liberty",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/PROD",
+                    "description": "",
+                    "parentName": "CP4A-Liberty",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false
+                }
+            }],
+            "baseResourcesFull": [{
+                "basePath": "\/CloudPak-for-Applications\/CP4A-Liberty",
+                "tree": {
+                    "name": "PROD",
+                    "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/PROD",
+                    "description": "",
+                    "parentName": "CP4A-Liberty",
+                    "inheritTeam": true,
+                    "propSheet": {
+                        "name": "custom",
+                        "properties": []
+                    },
+                    "tags": [],
+                    "teamMappings": [],
+                    "impersonationUseSudo": false,
+                    "impersonationForce": false,
+                    "prototype": false,
+                    "children": [{
+                        "name": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/PROD\/acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "description": "",
+                        "parentName": "PROD",
+                        "inheritTeam": true,
+                        "type": "agent",
+                        "typeName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                        "propSheet": {
+                            "name": "custom",
+                            "properties": []
+                        },
+                        "tags": [],
+                        "teamMappings": [],
+                        "impersonationUseSudo": false,
+                        "impersonationForce": false,
+                        "prototype": false,
+                        "children": [{
+                            "name": "CP4A-ModResort",
+                            "path": "\/CloudPak-for-Applications\/CP4A-Liberty\/PROD\/acuity.DANIEL-CAPPON-s-Account.cloud\/CP4A-ModResort",
+                            "description": "",
+                            "parentName": "acuity.DANIEL-CAPPON-s-Account.cloud",
+                            "inheritTeam": true,
+                            "roleName": "CP4A-ModResort",
+                            "roleProperties": {
+                                "name": "CP4A-ModResort",
+                                "properties": []
+                            },
+                            "propSheet": {
+                                "name": "custom",
+                                "properties": []
+                            },
+                            "tags": [],
+                            "teamMappings": [],
+                            "impersonationUseSudo": false,
+                            "impersonationForce": false,
+                            "prototype": false,
+                            "children": []
+                        }]
+                    }]
+                }
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "CP4A-ModResort"
+                },
+                {
+                    "properties": [],
+                    "componentName": "CP4A-OpenLiberty-System-Microservice-ArgoCD"
+                },
+                {
+                    "properties": [],
+                    "componentName": "CP4A-OpenLiberty-System-Microservice-LO"
+                }
+            ],
+            "teamMappings": [],
+            "deploymentTriggers": []
+        }
+    ],
+    "processes": [
+        {
+            "name": "Deploy-Liberty-running-in-VM-ModResort",
+            "description": "This is an example of how to deploy a Liberty application to a Liberty instance running on a VM",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "52de324fc5b7ba85c0ac037073a887",
+                        "from": "d9c74533f82b006a519263aeae0e9a",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "d9c74533f82b006a519263aeae0e9a",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "d9c74533f82b006a519263aeae0e9a",
+                        "x": -75,
+                        "y": 230,
+                        "h": 70,
+                        "w": 260
+                    },
+                    {
+                        "name": "52de324fc5b7ba85c0ac037073a887",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "941901a9-6964-4c95-87e8-54ddc7c00fb3",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "52de324fc5b7ba85c0ac037073a887",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4A-ModResort",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "d9c74533f82b006a519263aeae0e9a",
+                        "children": [{
+                            "componentName": "CP4A-ModResort",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "46302193-5766-4e91-b6eb-0d36df6aeef5",
+                            "children": [{
+                                "componentProcessName": "Deploy",
+                                "componentName": "CP4A-ModResort",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"CP4A-ModResort\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-CP4A-Liberty-using-ArgoCD",
+            "description": "This process will initiate a deployment of the container using the Argo CD plugin",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "cabd59c4a5d825675d653c12f62717",
+                        "from": "08d7cad631bb891c03556dfd3e2b4f",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "08d7cad631bb891c03556dfd3e2b4f",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "08d7cad631bb891c03556dfd3e2b4f",
+                        "x": -100,
+                        "y": 230,
+                        "h": 70,
+                        "w": 310
+                    },
+                    {
+                        "name": "cabd59c4a5d825675d653c12f62717",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "10ed9880-ef56-4628-a4a2-19852a8a2e87",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "cabd59c4a5d825675d653c12f62717",
+                        "children": []
+                    },
+                    {
+                        "name": "08d7cad631bb891c03556dfd3e2b4f",
+                        "componentTag": {
+                            "objectType": "Component",
+                            "name": "ArgoCD",
+                            "description": "",
+                            "color": "#00B2EF"
+                        },
+                        "properties": [
+                            {
+                                "name": "activity.componentProcess.name",
+                                "value": "Sync And Run Tests"
+                            },
+                            {
+                                "name": "maxCompIteration",
+                                "value": "100"
+                            },
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": ""
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "multiComponentEnvironmentIterator",
+                        "children": [{
+                            "properties": [
+                                {
+                                    "name": "isIgnoreChildWarnings",
+                                    "value": "false"
+                                },
+                                {
+                                    "name": "runOnlyOnFirst",
+                                    "value": "false"
+                                }
+                            ],
+                            "type": "componentEnvironmentIterator",
+                            "name": "9d9cbdfb1058e33bf2fa3761c4d180",
+                            "children": [{
+                                "type": "operationalProcessFilter",
+                                "name": "86fed8f0-8fec-4a70-aac0-be38f7c55923",
+                                "children": [{
+                                    "componentProcessName": "Sync And Run Tests",
+                                    "allowFailure": false,
+                                    "properties": {
+                                        "activity.componentProcess.name": "Sync And Run Tests",
+                                        "isIgnoreChildWarnings": "false"
+                                    },
+                                    "draftProperties": {
+                                        "activity.componentProcess.name": "Sync And Run Tests",
+                                        "isIgnoreChildWarnings": "false"
+                                    },
+                                    "type": "componentProcess",
+                                    "name": "Sync and Run Tests",
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Create and Start Liberty Server",
+            "description": "Will create a Liberty Server and start it",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "627216bb38540224e461b4ad8f6195",
+                        "from": "d5e122ead95c97a0ba7c6adc84d68f",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "d5e122ead95c97a0ba7c6adc84d68f",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "d5e122ead95c97a0ba7c6adc84d68f",
+                        "x": -100,
+                        "y": 230,
+                        "h": 80,
+                        "w": 310
+                    },
+                    {
+                        "name": "627216bb38540224e461b4ad8f6195",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "41332df2-e429-4f7a-b81c-0f70aacb872d",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "627216bb38540224e461b4ad8f6195",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4A-ModResort",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "d5e122ead95c97a0ba7c6adc84d68f",
+                        "children": [{
+                            "componentProcessName": "Create-and-Start-Server",
+                            "componentName": "CP4A-ModResort",
+                            "allowFailure": false,
+                            "properties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "draftProperties": {
+                                "isIgnoreChildWarnings": "false"
+                            },
+                            "type": "componentProcess",
+                            "name": "Component: \"CP4A-ModResort\"",
+                            "children": []
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        },
+        {
+            "name": "Deploy-CP4A-Liberty-using-Liberty-Operator",
+            "description": "This deploys the CP4A-Liberty container to OpenShift using OpenLiberty Operator",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "disableSnapshots": false,
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "77d8141a58362a8073cb2427ce51c0",
+                        "from": "e43b495184baf02acba9006978fbb5",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "e43b495184baf02acba9006978fbb5",
+                        "type": "ALWAYS",
+                        "value": ""
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "77d8141a58362a8073cb2427ce51c0",
+                        "x": -5,
+                        "y": 450,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "e43b495184baf02acba9006978fbb5",
+                        "x": -170,
+                        "y": 230,
+                        "h": 70,
+                        "w": 450
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "9673c5ad-d4f1-4b3e-b3be-56872c9e147d",
+                "children": [
+                    {
+                        "type": "finish",
+                        "name": "77d8141a58362a8073cb2427ce51c0",
+                        "children": []
+                    },
+                    {
+                        "componentName": "CP4A-OpenLiberty-System-Microservice-LO",
+                        "properties": [
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "isIgnoreChildWarnings",
+                                "value": "false"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "componentEnvironmentIterator",
+                        "name": "e43b495184baf02acba9006978fbb5",
+                        "children": [{
+                            "componentName": "CP4A-OpenLiberty-System-Microservice-LO",
+                            "status": "Active",
+                            "type": "inventoryVersionDiff",
+                            "name": "09159c1e-4763-4fa2-8421-acd809c06c32",
+                            "children": [{
+                                "componentProcessName": "Deploy-Container-to-OpenShift-using-Operator",
+                                "componentName": "CP4A-OpenLiberty-System-Microservice-LO",
+                                "allowFailure": false,
+                                "properties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "draftProperties": {
+                                    "isIgnoreChildWarnings": "false"
+                                },
+                                "type": "componentProcess",
+                                "name": "Install: \"CP4A-OpenLiberty-System-Microservice-LO\"",
+                                "children": []
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }
+    ],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [
+        {
+            "id": "18602e81-19ed-c900-7375-e5a99165508a",
+            "name": "Liberty",
+            "color": "#7F1C7D",
+            "description": "",
+            "objectType": "Application"
+        },
+        {
+            "id": "1738e96c-fbe4-ffb0-ede5-b11faa040915",
+            "name": "OpenShift",
+            "color": "#D9182D",
+            "description": "",
+            "objectType": "Application"
+        }
+    ],
+    "webhooks": [
+        {
+            "url": "https:\/\/hooks.slack.com\/services\/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",
+            "environments": ["DEV"],
+            "webhookTemplate": {
+                "name": "Slack-Application Deployment Failure",
+                "description": "",
+                "body": "## BEGIN SECTION Body\n## PROPERTY Content-Type: application\/json\n#macro (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\",\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n#end\n#macro (showFailure $analysis $indent)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section and recurse down\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"plain_text\",\n            \"text\": \"$indent$fn.escapeJson($analysis.getTrace().getName())\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n        #set ($analysisChildren = $analysis.getChildren())\n        #if ($analysisChildren && $analysisChildren.size() > 0)\n            #set ($newindent = $indent+\"--\")\n            #foreach ($child in $analysisChildren)\n                #showFailure($child, $newindent)\n            #end\n        #end\n    #end\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Version*: $fn.escapeJson($version.getName())\"\n         #if ($version.getDescription() and !$version.getDescription().trim().isEmpty())\n         },{\n             \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## block 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n                \"type\": \"plain_text\",\n                \"text\": \"A process on $fn.escapeJson($application.getName()) failed\"\n            }\n        },\n        ## block 2\n        {\n            \"type\": \"context\",\n            \"elements\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Environment*: $fn.escapeJson($environment.getName())\"\n                },\n                #if ($snapshot)\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },\n                #end\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested On*: $fn.formatDate($request.getSubmittedDate())\"\n                }\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Duration in Milliseconds*: $request.getDurationInMillis()\"\n                }\n                #if ($request.getDescription())\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n                }\n                #end\n                #set ($warningCount = $workflowTrace.getWarningCount())\n                #if ($warningCount > 0)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Warning Count*: $warningCount\"\n                }\n                #end\n            ]\n        },\n        ## block 3\n        {\n            \"type\":\"section\",\n            \"text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request>\"\n            }\n        },\n        ## block 4\n        {\n            \"type\":\"divider\"\n        },\n        ## block 5\n        #set ($warnMessList = $workflowTrace.getChildWarningMessages())\n        #if ($warnMessList && $warnMessList.size() > 0)\n        {\n            \"type\": \"section\",\n            \"fields\": [{\n                \"type\": \"mrkdwn\",\n                \"text\": \"*Warnings*\"\n            #foreach ($mess in $warnMessList)\n                #if($velocityCount == 9)\n                    ## add link\n            },{\n                \"type\": \"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|See process request for more>\"\n                #elseif ($velocityCount > 9)\n                    ## ignore\n                #else\n            },{\n                \"type\": \"plain_text\",\n                \"text\": \"$fn.escapeJson($mess)\"\n                #end\n            #end\n            }]\n        },\n        #end\n        ## block 6\n        {\n            \"type\":\"divider\"\n        }\n        ## Show as many of the failure analysis and versions as we can.\n        ## If we run out of blocks(slack limits to 50), make the last block\n        ## a link to the process request\n        ## for brevity we don't show summary of other steps as we do in emails\n        ##block 7 - 50\n        #set ($blockCount = 7)\n        #set ($rootAnalyses = $failureAnalysis.getRootAnalyses())\n        #if ($rootAnalyses && $rootAnalyses.size() > 0)\n            ## block 7\n            ,{\n                \"type\": \"section\",\n                \"text\": {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Failures*\"\n                }\n            }\n            #set ($blockCount = $blockCount + 1)\n            #foreach ($failure in $rootAnalyses)\n                #showFailure ($failure \"\")\n            #end\n        #end\n        ##Show as many versions as we have space for\n        #if ($versions && $versions.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Versions*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n                    #showVersion ($version)\n                #end\n            #end\n        #end\n    ]\n}\n## END SECTION Body",
+                "type": "PROCESS_FAILURE"
+            }
+        },
+        {
+            "url": "https:\/\/hooks.slack.com\/services\/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",
+            "environments": ["DEV"],
+            "webhookTemplate": {
+                "name": "Slack-Application Deployment Success",
+                "description": "",
+                "body": "## BEGIN SECTION Body\n## PROPERTY Content-Type: application\/json\n#macro (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\",\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Version*: $version.getName()\"\n         #if ($version.getDescription() and !$version.getDescription().trim().isEmpty())\n         },{\n             \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## block 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n                \"type\": \"plain_text\",\n                \"text\": \"A process on $fn.escapeJson($application.getName()) completed successfully\"\n            }\n        },\n        ## block 2\n        {\n            \"type\": \"context\",\n            \"elements\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Environment*: $fn.escapeJson($environment.getName())\"\n                },\n                #if ($snapshot)\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },\n                #end\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\n                },\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested On*: $fn.formatDate($request.getSubmittedDate())\"\n                }\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Duration in Milliseconds*: $request.getDurationInMillis()\"\n                }\n                #if ($request.getDescription())\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n                }\n                #end\n                #set ($warningCount = $workflowTrace.getWarningCount())\n                #if ($warningCount > 0)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Warning Count*: $warningCount\"\n                }\n                #end\n            ]\n        },\n        ## block 3\n        {\n            \"type\":\"section\",\n            \"text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request>\"\n            }\n        },\n        ## block 4\n        {\n            \"type\":\"divider\"\n        },\n        ## block 5\n        #set ($warnMessList = $workflowTrace.getChildWarningMessages())\n        #if ($warnMessList && $warnMessList.size() > 0)\n        {\n            \"type\": \"section\",\n            \"fields\": [{\n                \"type\": \"mrkdwn\",\n                \"text\": \"*Warnings*\"\n            #foreach ($mess in $warnMessList)\n                #if($velocityCount == 9)\n                    ## add link\n            },{\n                \"type\": \"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|See process request for more>\"\n                #elseif ($velocityCount > 9)\n                    ## ignore\n                #else\n            },{\n                \"type\": \"plain_text\",\n                \"text\": \"$fn.escapeJson($mess)\"\n                #end\n            #end\n            }]\n        },\n        #end\n        ## block 6\n        {\n            \"type\":\"divider\"\n        }\n        ##block 7 - 50\n        #set ($blockCount = 7)\n        ## show as many versions as possible\n        ## in the email template we show step summaries as well.\n        ## this is omitted here due to slack limits on sections and\n        ## my personal believe version list is more valuable than a bunch\n        ## of successful steps\n        ##Show as many versions as we have space for\n        #if ($versions && $versions.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Versions*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n                    #showVersion ($version)\n                #end\n            #end\n        #end\n    ]\n}\n## END SECTION Body",
+                "type": "PROCESS_SUCCESS"
+            }
+        },
+        {
+            "url": "https:\/\/hooks.slack.com\/services\/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",
+            "environments": ["DEV"],
+            "webhookTemplate": {
+                "name": "Slack-Process Request Started",
+                "description": "",
+                "body": "## BEGIN SECTION Body\n## PROPERTY Content-Type: application\/json\n#macro (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\",\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"*Version*: $fn.escapeJson($version.getName())\"\n         #if ($version.getDescription() and !$version.getDescription().trim().isEmpty())\n         },{\n             \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n#macro (showChanges $compName)\n    #if ($blockCount == 50)\n        #addLimitReached()\n        #set ($blockCount = $blockCount + 1)\n    #elseif ($blockCount > 50)\n        ## do nothing\n    #else\n        ,{\n            \"type\":\"section\",\n            \"fields\": [\n                {\n                    \"type\":\"mrkdwn\",\n                    \"text\": \"*$fn.escapeJson($compName)*:\"\n                }\n                #set ($changes = $changesByComponent.get($compName))\n                #foreach ($change in $changes)\n                    #if ($velocityCount < 9)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"$fn.escapeJson($fn.getChangeTypeDisplayName($change)) $fn.escapeJson($fn.getChangeVersionDisplayName($change)) to <$fn.escapeJson($externalUrl)#resource\/$change.getResource().getId().toString()|$fn.escapeJson($change.getResource().getName())>\"\n                }\n                    #elseif ($velocityCount == 9)\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n                }\n                    #end\n                #end\n            ]\n        }\n        #set ($blockCount = $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## Block 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n                \"type\": \"plain_text\",\n                \"text\": \"An application process started.\"\n            }\n        },\n        ## Block 2\n        {\n            \"type\": \"context\",\n            \"elements\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n                },{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\n                },{\n                #if ($snapshot)\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },{\n                #end\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\n                },{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Request on*: $fn.formatDate($request.getSubmittedDate())\"\n                }\n                #if ($request.getDescription())\n                ,{\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n                }\n                #end\n            ]\n        },\n        ## Block 3\n        {\n            \"type\": \"section\",\n            \"text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest\/$request.getId().toString()|View Process Request For More>\"\n            }\n        }\n        #set ($blockCount = 4)\n        ##Show as many versions as we have space for\n        #if ($versions && $versions.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Versions*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n                    #showVersion ($version)\n                #end\n            #end\n        #end\n        ## show as many Components as possible\n        #if ($uniqueComponentNames && $uniqueComponentNames.size() > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n            #elseif ($blockCount > 50)\n                ## do nothing\n            #else\n                ,{\n                    \"type\": \"section\",\n                    \"text\": {\n                        \"type\": \"mrkdwn\",\n                        \"text\": \"*Pending Changes*\"\n                    }\n                }\n                #set ($blockCount = $blockCount + 1)\n                #foreach($compName in $uniqueComponentNames)\n                    #showChanges ($compName)\n                #end\n            #end\n        #end\n    ]\n}\n## END SECTION Body",
+                "type": "PROCESS_STARTED"
+            }
+        }
+    ]
+}
