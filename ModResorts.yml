@@ -1,0 +1,3330 @@
+---
+name: "ModResorts"
+description: "An example Liberty-based application"
+enforceCompleteSnapshots: false
+onlyChangedVersions: true
+useWizard: false
+propSheet:
+  properties: []
+templatePropSheet:
+  name: "template"
+  properties: []
+components:
+- name: "ModResorts-BAR"
+  description: "An example BAR that Joel Gomez provided"
+  created: 1716316175193
+  componentType: "STANDARD"
+  ignoreQualifiers: 0
+  importAutomatically: false
+  useVfs: true
+  active: true
+  deleted: false
+  defaultVersionType: "FULL"
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  componentTemplate:
+    securityResourceId: "18610618-30f3-813d-7799-4a5d0b065f26"
+    path: "componentTemplates/18610618-3127-7412-5630-d802ee0be5af"
+    name: "ACE-BAR"
+    description: "A template for ACE-based broker archive file deployments"
+    ignoreQualifiers: 0
+    componentType: "STANDARD"
+    tags:
+    - id: "177fdf84-c7f8-880f-0aec-0532a9d1afdc"
+      name: "ACE"
+      color: "#FDB813"
+      description: ""
+      objectType: "Component"
+    active: true
+    envPropDefs:
+    - name: "ace-install-directory"
+      label: "ACE Install Directory"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      required: true
+      description: "The installation directory for the ACE software"
+      placeholder: ""
+    - name: "ace-ip-address"
+      label: "ACE IP Address"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      value: "localhost"
+      required: true
+      description: "The IP Address for the ACE instance"
+      placeholder: ""
+    - name: "ace-port"
+      label: "ACE Port"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      value: "4414"
+      required: true
+      description: "The port that ACE is listening on"
+      placeholder: ""
+    - name: "ace-user"
+      label: "ACE User"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      value: "aceuser"
+      required: true
+      description: "The user for the ACE software"
+      placeholder: ""
+    - name: "integration-node-name"
+      label: "Integration Node Name"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      required: true
+      description: "The Integration Node Name"
+      placeholder: ""
+    - name: "integration-server-name"
+      label: "Integration Server Name"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      required: true
+      description: "The Integration Server Name"
+      placeholder: ""
+    resPropDefs: []
+    propDefs:
+    - name: "bar-name"
+      label: "BAR File Name"
+      pattern: ""
+      type: "TEXT"
+      isHidden: false
+      required: true
+      description: "The name of the bar to deploy"
+      placeholder: ""
+    properties: []
+    processes:
+    - name: "Create Integration Server"
+      description: "This process will create a traditional ACE Integration Server"
+      defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+      takesVersion: false
+      status: ""
+      active: true
+      path: "componentTemplates/18610618-3127-7412-5630-d802ee0be5af/processes/1869ac20-34f7-bee9-5425-c6455f55c076"
+      deleted: false
+      propDefs: []
+      rootActivity:
+        edges:
+        - to: "a3a38f0bad0c8fec6f18cdfd7f1059"
+          from: "Create Integration Server"
+          type: "SUCCESS"
+          value: ""
+        - to: "Create Integration Server"
+          type: "ALWAYS"
+          value: ""
+        offsets:
+        - name: "a3a38f0bad0c8fec6f18cdfd7f1059"
+          x: -5
+          "y": 450
+          h: 80
+          w: 120
+        - name: "Create Integration Server"
+          x: -95
+          "y": 230
+          h: 70
+          w: 300
+        layoutMode: "auto"
+        type: "graph"
+        name: "223c7960-e434-4ec4-9292-1efa93bba90b"
+        children:
+        - type: "finish"
+          name: "a3a38f0bad0c8fec6f18cdfd7f1059"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 11
+          commandName: "Create Integration Server"
+          pluginName: "IBM ACE"
+          pluginId: "com.urbancode.air.plugin.ibmace"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            integrationServerName: "${p:integration-server-name}"
+            brokerHost: "${p:ace-ip-address}"
+            useSSL: "false"
+            UserId: "${p:ace-user}"
+            Password: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|bw9bYnKJLTbOdPSHs9Ijpw==|VbBJNq2YAZyGIOzYYtnXAQ==}"
+            port: "${p:ace-port}"
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Create Integration Server"
+          children: []
+    - name: "Deploy-BAR-on-Linux-ACE12"
+      description: ""
+      defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+      takesVersion: true
+      inventoryActionType: "ADD"
+      status: "Active"
+      configActionType: "ADD"
+      active: true
+      path: "componentTemplates/18610618-3127-7412-5630-d802ee0be5af/processes/18610620-d85c-ab02-eb33-a3554bcb1500"
+      deleted: false
+      propDefs: []
+      rootActivity:
+        edges:
+        - to: "Add Status to Version - System Test Pass"
+          from: "Which environment are we deploying to?"
+          type: "VALUE"
+          value: "QA"
+        - to: "3532730630b08835394559855ecac6"
+          from: "Run IBM DevOps API Tests"
+          type: "SUCCESS"
+          value: ""
+        - to: "Add Status to Version - Pass"
+          from: "Run IBM DevOps Test Hub API Tests"
+          type: "SUCCESS"
+          value: ""
+        - to: "3532730630b08835394559855ecac6"
+          from: "358ca5bdc3b6db844b6c46551d636b"
+          type: "SUCCESS"
+          value: ""
+        - to: "47178b1ebcdb40ca71a15121c83439"
+          from: "Add Status to Version - System Test Pass"
+          type: "SUCCESS"
+          value: ""
+        - to: "Download Artifacts"
+          type: "ALWAYS"
+          value: ""
+        - to: "Add Status to Version - Fail"
+          from: "Run IBM DevOps Test Hub API Tests"
+          type: "FAILURE"
+          value: ""
+        - to: "1b74ccf90695ebf7e5fddb74f05265"
+          from: "Add Status to Version - Fail"
+          type: "SUCCESS"
+          value: ""
+        - to: "Run IBM DevOps Test Hub API Tests"
+          from: "Which environment are we deploying to?"
+          type: "VALUE"
+          value: "DEV"
+        - to: "3532730630b08835394559855ecac6"
+          from: "47178b1ebcdb40ca71a15121c83439"
+          type: "SUCCESS"
+          value: ""
+        - to: "3532730630b08835394559855ecac6"
+          from: "1b74ccf90695ebf7e5fddb74f05265"
+          type: "SUCCESS"
+          value: ""
+        - to: "Run IBM DevOps API Tests"
+          from: "Which environment are we deploying to?"
+          type: "VALUE"
+          value: "UAT"
+        - to: "358ca5bdc3b6db844b6c46551d636b"
+          from: "Add Status to Version - Pass"
+          type: "SUCCESS"
+          value: ""
+        - to: "Deploy"
+          from: "Download Artifacts"
+          type: "SUCCESS"
+          value: ""
+        - to: "47178b1ebcdb40ca71a15121c83439"
+          from: "Which environment are we deploying to?"
+          type: "VALUE"
+          value: ""
+        - to: "Which environment are we deploying to?"
+          from: "Deploy"
+          type: "SUCCESS"
+          value: ""
+        offsets:
+        - name: "Add Status to Version - Fail"
+          x: 2.800085832782088
+          "y": 790
+          h: 110
+          w: 480
+        - name: "Run IBM DevOps API Tests"
+          x: 717.8000858327821
+          "y": 630
+          h: 110
+          w: 520
+        - name: "3532730630b08835394559855ecac6"
+          x: 227.8000858327821
+          "y": 1070
+          h: 100
+          w: 160
+        - name: "358ca5bdc3b6db844b6c46551d636b"
+          x: 317.8000858327821
+          "y": 950
+          h: 70
+          w: 370
+        - name: "Add Status to Version - Pass"
+          x: 512.8000858327821
+          "y": 790
+          h: 110
+          w: 480
+        - name: "1b74ccf90695ebf7e5fddb74f05265"
+          x: -62.19991416721791
+          "y": 950
+          h: 70
+          w: 350
+        - name: "Which environment are we deploying to?"
+          x: -250.80354027206477
+          "y": 470
+          h: 110
+          w: 640
+        - name: "Download Artifacts"
+          x: -145
+          "y": 150
+          h: 110
+          w: 440
+        - name: "Run IBM DevOps Test Hub API Tests"
+          x: 97.80008583278209
+          "y": 630
+          h: 110
+          w: 590
+        - name: "Deploy"
+          x: -66.93451342402159
+          "y": 310
+          h: 110
+          w: 280
+        - name: "Add Status to Version - System Test Pass"
+          x: -582.1999141672179
+          "y": 630
+          h: 110
+          w: 650
+        - name: "47178b1ebcdb40ca71a15121c83439"
+          x: -505.5332475005512
+          "y": 810
+          h: 70
+          w: 370
+        layoutMode: "auto"
+        type: "graph"
+        name: "058dc082-9141-438a-a996-9124bb5e1380"
+        children:
+        - type: "finish"
+          name: "3532730630b08835394559855ecac6"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 46
+          commandName: "Download Artifacts"
+          pluginName: "UrbanCode Deploy Versioned File Storage"
+          pluginId: "com.urbancode.plugin.VFS"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            directoryOffset: "."
+            artifactSetBaseDir: ""
+            fileIncludePatterns: "**/*"
+            fileExcludePatterns: ""
+            syncMode: "FULL"
+            handleIncrementalVersions: "false"
+            fullVerification: "true"
+            setFileExecuteBits: "false"
+            verifyFileIntegrity: "false"
+            charset: ""
+            versionId: "${p:version.id}"
+            versionType: "${p:version.type}"
+            serverUrl: "${p:server.url}"
+            compId: "${p:component.id}"
+            resId: "${p:resource.id}"
+            envId: "${p:environment.id}"
+            maxMemory: "1G"
+            label: ""
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Download Artifacts"
+          children: []
+        - allowFailure: false
+          useImpersonation: true
+          impersonationUsername: "aceuser"
+          impersonationGroup: ""
+          showHidden: false
+          impersonationPassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|+ukyv+RT8R92HcL8zU6O1g==|drkAW2ddBNAO/1VE6lGo4g==}"
+          impersonationUseSudo: false
+          pluginVersion: 11
+          commandName: "Deploy"
+          pluginName: "IBM ACE"
+          pluginId: "com.urbancode.air.plugin.ibmace"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            installDir: "${p:environment/ace-install-directory}"
+            useSSL: "false"
+            UserId: "${p:environment/ace-user}"
+            Password: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|eOYdfmkP+xkF/LU6yfOIEQ==|KqI+VCy4dOZdt1RFZkgcD7/k3Nrv0ivffUu6cu08GCo=}"
+            integrationNodeName: "${p:environment/integration-node-name}"
+            integrationNodeFileName: ""
+            ipAddress: "${p:environment/ace-ip-address}"
+            port: "${p:environment/ace-port}"
+            BARFile: "${p:resource/work.dir}/AceCapital-Core-BAR/${p:component/bar-name}"
+            deployedObjects: ""
+            integrationServerName: "${p:environment/integration-server-name}"
+            clear: "false"
+            traceFileName: "${p?:resource/ace.traceFileName}"
+            timeoutValue: "${p?:resource/ace.timeoutValue}"
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Deploy"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 87
+          commandName: "Run Application Process"
+          pluginName: "UrbanCode Deploy Applications"
+          pluginId: "com.urbancode.air.plugin.uDeployApplication"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            application: "AceCapital-Banking"
+            process: "Run RIT API Test"
+            environment: "DEV"
+            snapshot: ""
+            onlyChanged: "false"
+            componentVersions: ""
+            requestProperties: ""
+            waitForProcess: "true"
+            timeout: ""
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Run IBM DevOps API Tests"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 74
+          commandName: "Add Status to Version"
+          pluginName: "UrbanCode Deploy Versions"
+          pluginId: "com.urbancode.air.plugin.uDeployVersion"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            status: "Functional Tests Passed"
+            versionName: "${p:version.name}"
+            componentName: "${p:component.name}"
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Add Status to Version - Pass"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 74
+          commandName: "Add Status to Version"
+          pluginName: "UrbanCode Deploy Versions"
+          pluginId: "com.urbancode.air.plugin.uDeployVersion"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            status: "Functional Tests Failed"
+            versionName: "${p:version.name}"
+            componentName: "${p:component.name}"
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Add Status to Version - Fail"
+          children: []
+        - status: "SUCCESS"
+          type: "setStatus"
+          name: "358ca5bdc3b6db844b6c46551d636b"
+          children: []
+        - status: "FAILURE"
+          type: "setStatus"
+          name: "1b74ccf90695ebf7e5fddb74f05265"
+          children: []
+        - propertyName: "${p:environment.name}"
+          type: "switch"
+          name: "Which environment are we deploying to?"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 74
+          commandName: "Add Status to Version"
+          pluginName: "UrbanCode Deploy Versions"
+          pluginId: "com.urbancode.air.plugin.uDeployVersion"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            status: "System Tests Passed"
+            versionName: "${p:version.name}"
+            componentName: "${p:component.name}"
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Add Status to Version - System Test Pass"
+          children: []
+        - status: "SUCCESS"
+          type: "setStatus"
+          name: "47178b1ebcdb40ca71a15121c83439"
+          children: []
+        - allowFailure: false
+          useImpersonation: false
+          showHidden: false
+          impersonationUseSudo: false
+          pluginVersion: 87
+          commandName: "Run Application Process"
+          pluginName: "UrbanCode Deploy Applications"
+          pluginId: "com.urbancode.air.plugin.uDeployApplication"
+          authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+          properties:
+            application: "AceCapital-Banking"
+            process: "Run DevOps-TestHub API Tests"
+            environment: "DEV"
+            snapshot: ""
+            onlyChanged: "false"
+            componentVersions: ""
+            requestProperties: ""
+            waitForProcess: "true"
+            timeout: ""
+          cachedAuthTokenRestriction:
+            name: "System Default"
+            description: "Used by default for any plugin steps without a specified\
+              \ token restriction"
+            restrictions:
+            - verb: "ALL"
+              url: "/*"
+          type: "plugin"
+          name: "Run IBM DevOps Test Hub API Tests"
+          children: []
+    genericProcesses: []
+    teamMappings: []
+  sourceConfigPluginName: "File System (Versioned)"
+  envPropDefs: []
+  resPropDefs: []
+  versionPropDefs: []
+  propSheetGroup:
+    propSheets:
+    - name: "FileSystemVersionedComponentProperties"
+      properties:
+      - name: "saveFileExecuteBits"
+        value: "false"
+        description: ""
+        secure: false
+      - name: "extensions"
+        description: ""
+        secure: false
+      - name: "includes"
+        description: ""
+        secure: false
+      - name: "excludes"
+        description: ""
+        secure: false
+      - name: "basePath"
+        value: "/downloads/cp4i-aceivt"
+        description: ""
+        secure: false
+    - name: "custom"
+      properties: []
+    - name: "template"
+      properties:
+      - name: "bar-name"
+        value: "jgr-cp4i-aceivt.bar"
+        description: ""
+        secure: false
+  processes:
+  - name: "Deploy-ModResorts-BAR-on-Linux-ACE12"
+    description: ""
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: true
+    inventoryActionType: "ADD"
+    status: "Active"
+    configActionType: "ADD"
+    active: true
+    path: "components/18f9c6a7-b590-c1c1-b028-321547c13247/processes/18f9e0ee-e600-8de4-36e8-654713e1c955"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "Run IBM DevOps API Tests"
+        from: "Which environment are we deploying to?"
+        type: "VALUE"
+        value: "UAT"
+      - to: "Download Artifacts"
+        type: "ALWAYS"
+        value: ""
+      - to: "3532730630b08835394559855ecac6"
+        from: "358ca5bdc3b6db844b6c46551d636b"
+        type: "SUCCESS"
+        value: ""
+      - to: "Add Status to Version - System Test Pass"
+        from: "Which environment are we deploying to?"
+        type: "VALUE"
+        value: "QA"
+      - to: "3532730630b08835394559855ecac6"
+        from: "Run IBM DevOps API Tests"
+        type: "SUCCESS"
+        value: ""
+      - to: "3532730630b08835394559855ecac6"
+        from: "47178b1ebcdb40ca71a15121c83439"
+        type: "SUCCESS"
+        value: ""
+      - to: "47178b1ebcdb40ca71a15121c83439"
+        from: "Which environment are we deploying to?"
+        type: "VALUE"
+        value: ""
+      - to: "Add Status to Version - Fail"
+        from: "Run IBM DevOps Test Hub API Tests"
+        type: "FAILURE"
+        value: ""
+      - to: "47178b1ebcdb40ca71a15121c83439"
+        from: "Add Status to Version - System Test Pass"
+        type: "SUCCESS"
+        value: ""
+      - to: "358ca5bdc3b6db844b6c46551d636b"
+        from: "Add Status to Version - Pass"
+        type: "SUCCESS"
+        value: ""
+      - to: "Run IBM DevOps Test Hub API Tests"
+        from: "Which environment are we deploying to?"
+        type: "VALUE"
+        value: "DEV"
+      - to: "Deploy"
+        from: "Download Artifacts"
+        type: "SUCCESS"
+        value: ""
+      - to: "1b74ccf90695ebf7e5fddb74f05265"
+        from: "Add Status to Version - Fail"
+        type: "SUCCESS"
+        value: ""
+      - to: "3532730630b08835394559855ecac6"
+        from: "1b74ccf90695ebf7e5fddb74f05265"
+        type: "SUCCESS"
+        value: ""
+      - to: "Which environment are we deploying to?"
+        from: "Deploy"
+        type: "SUCCESS"
+        value: ""
+      - to: "Add Status to Version - Pass"
+        from: "Run IBM DevOps Test Hub API Tests"
+        type: "SUCCESS"
+        value: ""
+      offsets:
+      - name: "Deploy"
+        x: -58.214197755804435
+        "y": 290
+        h: 100
+        w: 260
+      - name: "Run IBM DevOps Test Hub API Tests"
+        x: 266.64643766290897
+        "y": 590
+        h: 100
+        w: 530
+      - name: "3532730630b08835394559855ecac6"
+        x: -356.32231233709103
+        "y": 1000
+        h: 90
+        w: 150
+      - name: "Add Status to Version - Pass"
+        x: 176.64643766290897
+        "y": 740
+        h: 100
+        w: 430
+      - name: "358ca5bdc3b6db844b6c46551d636b"
+        x: 1.6464376629089656
+        "y": 890
+        h: 60
+        w: 330
+      - name: "Run IBM DevOps API Tests"
+        x: -863.353562337091
+        "y": 590
+        h: 100
+        w: 460
+      - name: "47178b1ebcdb40ca71a15121c83439"
+        x: -643.353562337091
+        "y": 760
+        h: 60
+        w: 330
+      - name: "Add Status to Version - Fail"
+        x: -283.35356233709103
+        "y": 740
+        h: 100
+        w: 430
+      - name: "Add Status to Version - System Test Pass"
+        x: -373.35356233709103
+        "y": 590
+        h: 100
+        w: 580
+      - name: "Download Artifacts"
+        x: -125
+        "y": 140
+        h: 100
+        w: 390
+      - name: "1b74ccf90695ebf7e5fddb74f05265"
+        x: -338.35356233709103
+        "y": 890
+        h: 60
+        w: 310
+      - name: "Which environment are we deploying to?"
+        x: -209.6425932674133
+        "y": 440
+        h: 100
+        w: 570
+      layoutMode: "auto"
+      type: "graph"
+      name: "c874d147-8a87-4c7d-9de6-8e0d584da046"
+      children:
+      - type: "finish"
+        name: "3532730630b08835394559855ecac6"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 46
+        commandName: "Download Artifacts"
+        pluginName: "UrbanCode Deploy Versioned File Storage"
+        pluginId: "com.urbancode.plugin.VFS"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          artifactSetBaseDir: ""
+          fileIncludePatterns: "**/*"
+          fileExcludePatterns: ""
+          syncMode: "FULL"
+          handleIncrementalVersions: "false"
+          fullVerification: "true"
+          setFileExecuteBits: "false"
+          verifyFileIntegrity: "false"
+          charset: ""
+          versionId: "${p:version.id}"
+          versionType: "${p:version.type}"
+          serverUrl: "${p:server.url}"
+          compId: "${p:component.id}"
+          resId: "${p:resource.id}"
+          envId: "${p:environment.id}"
+          maxMemory: "1G"
+          label: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Download Artifacts"
+        children: []
+      - allowFailure: false
+        useImpersonation: true
+        impersonationUsername: "aceuser"
+        impersonationGroup: ""
+        showHidden: false
+        impersonationPassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|3cpihDoOkGAFh2FPc8HwTQ==|gFLC++/Vy7qP5dpX58gWTw==}"
+        impersonationUseSudo: false
+        pluginVersion: 11
+        commandName: "Deploy"
+        pluginName: "IBM ACE"
+        pluginId: "com.urbancode.air.plugin.ibmace"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          installDir: "${p:environment/ace-install-directory}"
+          useSSL: "false"
+          UserId: "${p:environment/ace-user}"
+          Password: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|/+KiK0c3Dc69OY4C7adycA==|kaL3cg8K3v2Xi4C+x6exswHcDsLMeyOXrKwQqskGreI=}"
+          integrationNodeName: "${p:environment/integration-node-name}"
+          integrationNodeFileName: ""
+          ipAddress: "${p:environment/ace-ip-address}"
+          port: "${p:environment/ace-port}"
+          BARFile: "${p:resource/work.dir}/AceCapital-Core-BAR/${p:component/bar-name}"
+          deployedObjects: ""
+          integrationServerName: "${p:environment/integration-server-name}"
+          clear: "false"
+          traceFileName: "${p?:resource/ace.traceFileName}"
+          timeoutValue: "${p?:resource/ace.timeoutValue}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Deploy"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 87
+        commandName: "Run Application Process"
+        pluginName: "UrbanCode Deploy Applications"
+        pluginId: "com.urbancode.air.plugin.uDeployApplication"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          application: "ModResorts"
+          process: "Run RIT API Test"
+          environment: "DEV"
+          snapshot: ""
+          onlyChanged: "false"
+          componentVersions: ""
+          requestProperties: ""
+          waitForProcess: "true"
+          timeout: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run IBM DevOps API Tests"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 74
+        commandName: "Add Status to Version"
+        pluginName: "UrbanCode Deploy Versions"
+        pluginId: "com.urbancode.air.plugin.uDeployVersion"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          status: "Functional Tests Passed"
+          versionName: "${p:version.name}"
+          componentName: "${p:component.name}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Add Status to Version - Pass"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 74
+        commandName: "Add Status to Version"
+        pluginName: "UrbanCode Deploy Versions"
+        pluginId: "com.urbancode.air.plugin.uDeployVersion"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          status: "Functional Tests Failed"
+          versionName: "${p:version.name}"
+          componentName: "${p:component.name}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Add Status to Version - Fail"
+        children: []
+      - status: "SUCCESS"
+        type: "setStatus"
+        name: "358ca5bdc3b6db844b6c46551d636b"
+        children: []
+      - status: "FAILURE"
+        type: "setStatus"
+        name: "1b74ccf90695ebf7e5fddb74f05265"
+        children: []
+      - propertyName: "${p:environment.name}"
+        type: "switch"
+        name: "Which environment are we deploying to?"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 74
+        commandName: "Add Status to Version"
+        pluginName: "UrbanCode Deploy Versions"
+        pluginId: "com.urbancode.air.plugin.uDeployVersion"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          status: "System Tests Passed"
+          versionName: "${p:version.name}"
+          componentName: "${p:component.name}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Add Status to Version - System Test Pass"
+        children: []
+      - status: "SUCCESS"
+        type: "setStatus"
+        name: "47178b1ebcdb40ca71a15121c83439"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 87
+        commandName: "Run Application Process"
+        pluginName: "UrbanCode Deploy Applications"
+        pluginId: "com.urbancode.air.plugin.uDeployApplication"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          application: "ModResorts"
+          process: "Run DevOps-TestHub API Tests"
+          environment: "DEV"
+          snapshot: ""
+          onlyChanged: "false"
+          componentVersions: ""
+          requestProperties: ""
+          waitForProcess: "true"
+          timeout: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run IBM DevOps Test Hub API Tests"
+        children: []
+  configTemplates: []
+  genericProcesses: []
+  teamMappings: []
+  tags:
+  - id: "177fdf84-c7f8-880f-0aec-0532a9d1afdc"
+    name: "ACE"
+    color: "#FDB813"
+    description: ""
+    objectType: "Component"
+- name: "ModResorts-DevOps-TestHub"
+  description: "A component used to perform API tests using IBM DevOps Test Hub"
+  created: 1716317960442
+  componentType: "STANDARD"
+  ignoreQualifiers: 0
+  importAutomatically: false
+  useVfs: true
+  active: true
+  deleted: false
+  defaultVersionType: "FULL"
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  envPropDefs: []
+  resPropDefs: []
+  versionPropDefs: []
+  propSheetGroup:
+    propSheets:
+    - name: "custom"
+      properties: []
+    - name: "template"
+      properties: []
+  processes:
+  - name: "Run Performance Tests"
+    description: "This will run a performance test to place load on the AceCapital\
+      \ Banking application"
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: false
+    status: ""
+    active: true
+    path: "components/18f9c85b-8fac-734f-ec43-bcec85fb5e0d/processes/18f9c85b-90de-b3f2-7362-0252deb9f4f0"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "Run IBM Rational Test Automation Server Performance Test"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: "QA"
+      - to: "Run IBM DevOps Test Hub Test"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: "QA-OLD"
+      - to: "ebcc1eeab86c2c488a591a02b30f9a"
+        from: "Run IBM Rational Test Automation Server Performance Test"
+        type: "SUCCESS"
+        value: ""
+      - to: "ebcc1eeab86c2c488a591a02b30f9a"
+        from: "Run RPT Test"
+        type: "SUCCESS"
+        value: ""
+      - to: "Run RPT Test"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: ""
+      - to: "ebcc1eeab86c2c488a591a02b30f9a"
+        from: "Run IBM DevOps Test Hub Test"
+        type: "SUCCESS"
+        value: ""
+      - to: "Which Environment?"
+        type: "ALWAYS"
+        value: ""
+      offsets:
+      - name: "Run RPT Test"
+        x: 321.015625
+        "y": 250
+        h: 70
+        w: 170
+      - name: "ebcc1eeab86c2c488a591a02b30f9a"
+        x: -3.984375
+        "y": 370
+        h: 80
+        w: 120
+      - name: "Run IBM Rational Test Automation Server Performance Test"
+        x: -178.984375
+        "y": 250
+        h: 70
+        w: 470
+      - name: "Which Environment?"
+        x: -95
+        "y": 130
+        h: 70
+        w: 300
+      - name: "Run IBM DevOps Test Hub Test"
+        x: -508.984375
+        "y": 250
+        h: 70
+        w: 300
+      layoutMode: "auto"
+      type: "graph"
+      name: "6f209a05-1f3c-484e-bbf0-b7a28964c36d"
+      children:
+      - type: "finish"
+        name: "ebcc1eeab86c2c488a591a02b30f9a"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 3
+        commandName: "Run IBM Rational Test Automation Server test"
+        pluginName: "IBM Rational Test Automation Server"
+        pluginId: "com.hcl.urbancode.air.plugin.rtas"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          serverUrl: "https://devops.devops-test-hub-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-south.containers.appdomain.cloud/"
+          offlineToken: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|DRppoy5NOXRfePPBPwhqVQ==|LOC8rm+DvRrV3WDLVZ7ATZxwm0XgSdZJ/k/pLhbT228z/dEjFcAtokoY6m9/3yono3Vbn0MQkex31CFAa5x7QogKVOZ/LcRmGL8h0i8nIXc2bzJKkt5yyICJ8SBQhKOq0faPK4fqW2zvEvwzCpBJCUh5P772ZcqVUovsfcPoJqxCuEI198b5zFrLq+UJs+239Hkd4gpMAP/zKIUO3iTTXjqhiPGPotCKrSV6+FvzSRr+3+DsXMWnxHDvZhGiczl/anTA1v9KPH34rjFC2hFbBeIsQN4qS7A0V0jusdeDeV961v3FLcuySbFbCcRjpxTeQChUDoz80ye2NWczK9zSHa8n+PXTR99xhmhsSgfHWTbvLqe2JEWxYgRh+THtlgdzpDywgC0UUsZ/taFVG6BOctbSmMyHElwDuOnga2bQMWjnl5eVA3Gv13wjFzLzdjDTrLDVVZwwzEFGpEIMOSclIj3R9tnDuijoeU5ppwaw+zqkIm+dxBidJHODyXeQqalEl5jW/P3Pd0yP+K+w2L61IsH8fuI0oXCifvzSN5UqrVLLG/vm6L+zmiZPincbzr5uuL82eMpA7IykEeRV2lBKunETwTyr1X3De5QwNgnwGUC9oLV7DBqivUhHxgMIPml7iWP8pG5euaT15bFzN0ENN1yCWMvHfssxC2AgsOkwqpo5l5JRHaaK6u/XUbfiyigtAef13jw+l6cY9PQqMp4X9tngZn7d6b0pVMAC7M05+XDIiUMEqvJkOQJrajmxphXy+uvFMGwb4HhvYFY+HgD0YzgFzKAnTQo9jHftVhbYHNQkzi4GtIc6wVsxxB3C/l5AyPYJPQGMSvUa6yFi6uPp1VOOv3hyY/RTwVXFPpegMh9Qqg3FhfY2Wn9/a+z7D/HdDvtc3EtM4IlCJmQ9+oOxj69u5l5hGSaJq+PEUqaOD6t03HvCS18uVzpUIUnzvIXTinuMgHNjU31/8dcZyoEmfPgtI09kVi5i4ggjHdvs3m1rUK3siuyY+C2n+7D7kvB1NNJYIoyBx9LqsmVEN1gJBZzqLrnsFgMRT5Jq99lZeYdsqxplVrj11pLcF0kCnVT3gIEejKA1fhMf8Sax2FiHr9iBial7gYDTUf2LHe29pO8FS3OxWZckyyeZJeByztnp977b9ujolBNd6jfj0KOoQ4jcwJN5MfakfeDSYOEepJM=}"
+          teamspace: "Initial Team Space"
+          projName: "ACE"
+          branchName: "main"
+          repoName: "https://gitlab.com/dcappon.ibm/ace-randy"
+          filepath: "Logical/ACE.scm/ACETests.gts"
+          datasets: ""
+          variables: ""
+          tags: "${p:environment.name}"
+          secretsCollectionName: ""
+          ritEnv: "${p:environment.name}"
+          trustStorePath: ""
+          trustStorePassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|yYm7YJ6KTFyNYZFWHhuyKA==|oPI39IHc6EyLykVs2XuWag==}"
+          proxyHost: ""
+          proxyPort: ""
+          proxyUser: ""
+          proxyPass: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|1AhSlP4yX5oCYDHU1H7lKA==|b6ujyez0jzcqRBI5f6mpvg==}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run IBM Rational Test Automation Server Performance Test"
+        children: []
+      - propertyName: "${p:environment.name}"
+        type: "switch"
+        name: "Which Environment?"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "echo \"Run RPT Test\"\nsleep 60"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run RPT Test"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "sleep 35\necho test finished successfully"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run IBM DevOps Test Hub Test"
+        children: []
+  - name: "Run RTAS API Test Suite"
+    description: "This will run an API tests using Rational Test Automation Server"
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: false
+    status: ""
+    active: true
+    path: "components/18f9c85b-8fac-734f-ec43-bcec85fb5e0d/processes/18f9e12a-b9a0-1b32-04ac-672f91db4e30"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "Which Environment?"
+        type: "ALWAYS"
+        value: ""
+      - to: "Run DevOps Test Hub Suite"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: ""
+      - to: "a5997b3c53104ae6dcefb6fe1010e5"
+        from: "Run DevOps Test Hub Suite"
+        type: "SUCCESS"
+        value: ""
+      - to: "a5997b3c53104ae6dcefb6fe1010e5"
+        from: "Run IBM DevOps Test Hub ACE API Test"
+        type: "SUCCESS"
+        value: ""
+      - to: "Run IBM DevOps Test Hub ACE API Test"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: "DEV"
+      offsets:
+      - name: "a5997b3c53104ae6dcefb6fe1010e5"
+        x: -5.679012345678984
+        "y": 370
+        h: 80
+        w: 120
+      - name: "Run IBM DevOps Test Hub ACE API Test"
+        x: 14.320987654321016
+        "y": 250
+        h: 70
+        w: 420
+      - name: "Which Environment?"
+        x: -95
+        "y": 130
+        h: 70
+        w: 300
+      - name: "Run DevOps Test Hub Suite"
+        x: -215.67901234567898
+        "y": 250
+        h: 70
+        w: 270
+      layoutMode: "auto"
+      type: "graph"
+      name: "78961046-bcf8-4ac6-9da8-75fa58183bf2"
+      children:
+      - type: "finish"
+        name: "a5997b3c53104ae6dcefb6fe1010e5"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 3
+        commandName: "Run IBM Rational Test Automation Server test"
+        pluginName: "IBM Rational Test Automation Server"
+        pluginId: "com.hcl.urbancode.air.plugin.rtas"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          serverUrl: "https://devops.devops-test-hub-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-south.containers.appdomain.cloud/"
+          offlineToken: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|0PGsW7X0adH+Ksu4IPKcKw==|HqYEnOxczJZo1JQy59SXPqBKGYW0cb02N7FU+F/GeVMCZpktnT4wxk9kSJIGdpGaEeJjtp1kNRvTAlChP/IGAHSF8bhg3rCIcotIyedwCfqtmDfSBw76lbVrkrDS18Bc99mwJIN8bkJ2LFHXnjeKHi4vFdOJJG8Tg0hT1Mn2BY/kMeRv40ubkplwvyOHQlZY7abN9ozTmmYX6YPDClNBQV+O/8AvtAkOpS8rooaqJVbQKVO15UThnTHU49wsFLTa1+eqTXJZphvWCnTIZ3C8gLkEuKqTb/ADpCoMASNTvpWZUuGxmaUXgCiE9jJzG25yRl4saMnanwdozFqrzllbXeeJRDMfcEL0y/N77UKwNS6ZKHbjhUwKOYkHiNkIDJdStcdCAEN7tw/bHD7G/9AtRwnZXae9kO5SMbEaLRVxA5NnxzsbDHxKGmmXPAAx8h3wKJAGNlf9H/ETRqiT5Md3mCDcQdKNHSdrle46MYhDEyjNjmPeOxMeoPeddjDv95WWWMWOS39aO3jC/kImeUyB32K52yVM6+zX1WRHkUzleHGaNupALhoC2t4XuRDHqr+wis8mNX08539tGn3EhCHyJOyUcExxcYmAZV4gQfBgKDVUX+Ptl5jwfNh1CeR3Ew8mHJ/Sg2r6Q6OOlfbG0mrz15kGqf8m0tAiE2IM3uJALmejRENPLBCkS6ZD8O725XQ0H2rcEp6cK4MP7ruDna95HGMDQXpEeIYtNpHVQx0g7DFhcIyCk9D0OqZZrbH1xhIbLxQK+5x1PH9Qvb7LcnUCTXah+rphGJKCpUts18CZQlPZW6+j1EY1lXmBY8ENGTKgMHEnPT5WRcdG1gXPvbvamd6Nm5jmCkt0DTNceoa27zW8MwG8qIWyiSYzrnU6JrkbAt8IKhxAjSU6gUKUKlfiqWB8TWn0M9qskgseVE7DZ7a/hST6CBJAB5t++YDp35PXHC4O8spPVOGPl14YMU9Gz6iJj0bKV3rwiSinoFzZ74t9fhpyK9D+z5z6YLxnO5t4QoGaNcepODNiXA15hM3UY+Hoq82nUQWouoACtVuLg/IzxcHdBFmhTjbi7Wq+7uVYXfFtfTyWNeJeL4APxkCFMIv36RFdmeL04BxSSnow/KBHIgXc0crkgtLVglAuAg3iwX5GjvjJ//1L86GIhJBt+HbR6Gbg18gnzBzgOQ7S56g=}"
+          teamspace: "Initial Team Space"
+          projName: "ACE"
+          branchName: "main"
+          repoName: "https://github.com/VialeMuriel/ace-randy-main.git"
+          filepath: "Logical/ACE.scm/ACETests.gts"
+          datasets: ""
+          variables: ""
+          tags: "${p:environment.name}"
+          secretsCollectionName: ""
+          ritEnv: "DEV"
+          trustStorePath: ""
+          trustStorePassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|QGpZqDNhQTdgB7T1IOISHg==|G4te2ZklASexh4kuFWsFGg==}"
+          proxyHost: ""
+          proxyPort: ""
+          proxyUser: ""
+          proxyPass: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|ekzJQx9Ia7AadjhorzVBsg==|IuOyGzlYJT2etmi6JqnfDA==}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run IBM DevOps Test Hub ACE API Test"
+        children: []
+      - propertyName: "${p:environment.name}"
+        type: "switch"
+        name: "Which Environment?"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "echo \"Run RTAS Suite\"\nsleep 30"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run DevOps Test Hub Suite"
+        children: []
+  - name: "Run TestHub ModResort Suite"
+    description: "This will run an functional UI tests using IBM DevOps Test Hub"
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: false
+    status: ""
+    active: true
+    path: "components/18f9c85b-8fac-734f-ec43-bcec85fb5e0d/processes/18f9c85b-913b-1b6c-a02d-ce7fda32313f"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "a5997b3c53104ae6dcefb6fe1010e5"
+        from: "Run Test Hub Suite"
+        type: "SUCCESS"
+        value: ""
+      - to: "Which Environment?"
+        type: "ALWAYS"
+        value: ""
+      - to: "Run Test Hub Suite"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: ""
+      - to: "a5997b3c53104ae6dcefb6fe1010e5"
+        from: "Run IBM DevOps Test Hub ModResorts Test"
+        type: "SUCCESS"
+        value: ""
+      - to: "Run IBM DevOps Test Hub ModResorts Test"
+        from: "Which Environment?"
+        type: "VALUE"
+        value: "DEV"
+      offsets:
+      - name: "Run IBM DevOps Test Hub ModResorts Test"
+        x: -329.3827160493827
+        "y": 250
+        h: 70
+        w: 420
+      - name: "a5997b3c53104ae6dcefb6fe1010e5"
+        x: -4.38271604938268
+        "y": 370
+        h: 80
+        w: 120
+      - name: "Run Test Hub Suite"
+        x: 120.61728395061732
+        "y": 250
+        h: 70
+        w: 220
+      - name: "Which Environment?"
+        x: -95
+        "y": 130
+        h: 70
+        w: 300
+      layoutMode: "auto"
+      type: "graph"
+      name: "bd812e93-2416-4ad1-b5d2-81604fb50605"
+      children:
+      - type: "finish"
+        name: "a5997b3c53104ae6dcefb6fe1010e5"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 3
+        commandName: "Run IBM Rational Test Automation Server test"
+        pluginName: "IBM Rational Test Automation Server"
+        pluginId: "com.hcl.urbancode.air.plugin.rtas"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          serverUrl: "https://devops.devops-test-hub-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-south.containers.appdomain.cloud/"
+          offlineToken: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|Ze5MIItXOBGeALwtIaQ4kg==|KvZBdX8RPQ922/7Gh8YTgFTLTyveumzPoZM+nuCaj7Y8HTGQGBcA4CUNRbhyNujw5u9qDF77Q7eQV9jwv+HVQnS54o2vONQZUE7ioyW2TiD4/VPMJnwug6McaLqIUfAjqE7K/XmQWEasNuDwFxgumgKfg8q0S/XxiorgAhrDyaUKG+yNS3C6JZcD5xSf5pq8ZeGeZajeLuw+giwRFDV1bR3SSVUgpw0hIC7prWgQzbOJyprunqfC73EO7RuirG29+1GU/JrA8nUkllHUDk1lu6TW5QVaEEbuCC66fWSWU1QqfkMBI31kERlEy2Iko2DqKEXhO/P9wotamzEaSecgZ0HF7KD6IzEgZ5h0XakfFnkDuba+umjxXSvVVkjLkxPywQXVZqGaaVX1gfPTjBuVp2+R19SeFQNpIk9+trinfquYcCnOFWIAw5k0dkFuEdUVvlnPSag2MRgEfdfciyp0pdbEexuBqRKVHm4yGPlNOtbMRR5aCnLUQ9cI8Fu6bshtjV6gU5iM+TIHDw1Drair7t/Yjj3tCGi61Uz3jnco2MIGSFq0w3+eKrrEoEk2oAHgx+l6RVdvKdL39fclo3q+Sjh6mUzvypL56hzvTRFJ4TM3xqp1WjqLkFI79maFPWiEumBeCo6Q//+aiCe085g0r4YNmwFczC/qJB778ROX9vqK8yE4q/TC1BjYhXDRn6zpStjPDojFo2AkHpQoszrEXLJUEQRj8QbjqAoXNtPMCvaYogv6MZr98cASIG6BpAmDPRFjoYo4iot3rG+Qn14vS52CrCFTBmymTXA0Vu3iNR75w4yoaMmBECFYX+V79YTZ/tBSE0xdILjhEcGPpUO7Yz20ADMgcvfSeHH4O9SX5YwA7r9ORwnhG9jNMWSl1h9d1OBKMD3yRbJKhXjZccwDDH4u2n42jz/3ajVCyiiZX4xcd2DdPxQ2iqZ9s1f18KUJCcXCCSlwKsAMEtxosYppY8/02gX9BZll/FhPpvy0QEN2QGbw2PG7mUXSCZluNPdwGap1A/jgRtpxHNAfJGNsDtgtHbEiJ4GkVM9fQdxFD4+M3PZ2Q8djyLoRcoSSpZUyq/hG+8YvmODpCBXcMU51n7hN0vuC3fi7kxYJiqjMa+QVE05VcSVFWp/xCaVB84ABE1AAloQEbmGU/yUKQN1hTfrPbU+R6JpeBefLVO6vlXw=}"
+          teamspace: "Initial Team Space"
+          projName: "ModResort"
+          branchName: "master"
+          repoName: "https://github.com/VialeMuriel/ModResort.git"
+          filepath: "ModResort/TestUI-simple.testsuite"
+          datasets: ""
+          variables: "IPaddress=${p:test-target}"
+          tags: "${p:environment.name}"
+          secretsCollectionName: ""
+          ritEnv: "DEV"
+          trustStorePath: ""
+          trustStorePassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|1EHw+YpPCTJ36agv2qNiOg==|K867RIUUI21LBHgIeykT8Q==}"
+          proxyHost: ""
+          proxyPort: ""
+          proxyUser: ""
+          proxyPass: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|lMimVHN4/6aw+5JN6n7SGA==|aSGnHFawjyYsbFiy3t9SLQ==}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run IBM DevOps Test Hub ModResorts Test"
+        children: []
+      - propertyName: "${p:environment.name}"
+        type: "switch"
+        name: "Which Environment?"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "echo \"Run RTAS Suite\"\nsleep 30"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run Test Hub Suite"
+        children: []
+  configTemplates: []
+  genericProcesses: []
+  teamMappings: []
+  tags:
+  - id: "18e491bd-7ccd-04d3-4d2c-3818a13e1d8a"
+    name: "DevOps Test Hub"
+    color: "#D86FAC"
+    description: ""
+    objectType: "Component"
+- name: "ModResorts-Jenkins"
+  description: "An example Liberty application deployed to a Liberty instance running\
+    \ on a VM"
+  created: 1716316034888
+  componentType: "STANDARD"
+  ignoreQualifiers: 0
+  importAutomatically: false
+  useVfs: true
+  active: true
+  deleted: false
+  defaultVersionType: "FULL"
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  sourceConfigPluginName: "File System (Versioned)"
+  envPropDefs: []
+  resPropDefs: []
+  versionPropDefs: []
+  propSheetGroup:
+    propSheets:
+    - name: "FileSystemVersionedComponentProperties"
+      properties:
+      - name: "saveFileExecuteBits"
+        value: "false"
+        description: ""
+        secure: false
+      - name: "extensions"
+        description: ""
+        secure: false
+      - name: "includes"
+        description: ""
+        secure: false
+      - name: "excludes"
+        description: ""
+        secure: false
+      - name: "basePath"
+        value: "/downloads/mod-resort"
+        description: ""
+        secure: false
+    - name: "custom"
+      properties:
+      - name: "target-address"
+        value: "169.61.33.228:9443"
+        description: "The target ip address and port for this deployment"
+        secure: false
+    - name: "template"
+      properties: []
+  processes:
+  - name: "Create-and-Start-Server"
+    description: ""
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: false
+    status: ""
+    active: true
+    path: "components/18f9c685-7489-8a04-e483-1b42af505bcd/processes/18f9c685-770b-d0a9-634a-bfe9be03dc1e"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "7be1e2745767a72d8ecf2e7c6197d8"
+        from: "Start Server"
+        type: "SUCCESS"
+        value: ""
+      - to: "Create Server"
+        type: "ALWAYS"
+        value: ""
+      - to: "Start Server"
+        from: "Create Server"
+        type: "SUCCESS"
+        value: ""
+      offsets:
+      - name: "Start Server"
+        x: -55
+        "y": 350
+        h: 70
+        w: 220
+      - name: "7be1e2745767a72d8ecf2e7c6197d8"
+        x: -5
+        "y": 520
+        h: 80
+        w: 120
+      - name: "Create Server"
+        x: -60
+        "y": 180
+        h: 70
+        w: 230
+      layoutMode: "auto"
+      type: "graph"
+      name: "22883a64-e8ba-404e-8ba7-5fdd1b9bfdce"
+      children:
+      - type: "finish"
+        name: "7be1e2745767a72d8ecf2e7c6197d8"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 23
+        commandName: "Create Server"
+        pluginName: "WebSphere Liberty"
+        pluginId: "com.urbancode.air.plugin.WebSphereLiberty"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          server: "modresort-PROD"
+          wlpHome: "${p:LIBERTY_HOME}/wlp"
+          wlpUserDir: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Create Server"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 23
+        commandName: "Start Server"
+        pluginName: "WebSphere Liberty"
+        pluginId: "com.urbancode.air.plugin.WebSphereLiberty"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          server: "modresort-PROD"
+          wlpHome: "${p:LIBERTY_HOME}/wlp"
+          wlpUserDir: ""
+          serverHost: ""
+          controllerHostName: ""
+          controllerPort: ""
+          adminUser: "admin"
+          adminPassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|TPTDfrR3ltRTUKCM0tkNgw==|b8uG7Qd1YtFaO5Q7sEOFAg==}"
+          trustStorePath: ""
+          trustStorePassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|/dvP7fjHWfIREJw377MarA==|TajyQpnQuUPm9MzywwTGcQ==}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Start Server"
+        children: []
+  - name: "Deploy"
+    description: ""
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: true
+    inventoryActionType: "ADD"
+    status: "Active"
+    configActionType: "ADD"
+    active: true
+    path: "components/18f9c685-7489-8a04-e483-1b42af505bcd/processes/18f9c685-7768-4d01-a124-91ea9c6a2bb5"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "aec8c054e09b98397fa43e2c54b761"
+        from: "Add Status to Version - Failed"
+        type: "SUCCESS"
+        value: ""
+      - to: "eb6a72889aeb89a55d2f96e74d1907"
+        from: "221040ea0f9e557b5fa30d5b708941"
+        type: "SUCCESS"
+        value: ""
+      - to: "Create File"
+        from: "Stop Server"
+        type: "ALWAYS"
+        value: ""
+      - to: "Install or Update Applications with Dropins"
+        from: "Stop Server"
+        type: "ALWAYS"
+        value: ""
+      - to: "Show contents of server.xml file"
+        from: "Replace Tokens"
+        type: "SUCCESS"
+        value: ""
+      - to: "eb6a72889aeb89a55d2f96e74d1907"
+        from: "Add Status to Version - QA - Passed"
+        type: "SUCCESS"
+        value: ""
+      - to: "Download Artifacts"
+        type: "ALWAYS"
+        value: ""
+      - to: "Add Status to Version - QA - Passed"
+        from: "Which environment?"
+        type: "VALUE"
+        value: "QA"
+      - to: "Which environment?"
+        from: "Start Server"
+        type: "SUCCESS"
+        value: ""
+      - to: "eb6a72889aeb89a55d2f96e74d1907"
+        from: "aec8c054e09b98397fa43e2c54b761"
+        type: "SUCCESS"
+        value: ""
+      - to: "Add Status to Version - Functional Tests Passed"
+        from: "Run Functional Tests using IBM DevOps Test Hub"
+        type: "SUCCESS"
+        value: ""
+      - to: "Stop Server"
+        from: "Download Artifacts"
+        type: "SUCCESS"
+        value: ""
+      - to: "Add Status to Version - Failed"
+        from: "Run Functional Tests using IBM DevOps Test Hub"
+        type: "FAILURE"
+        value: ""
+      - to: "Run Functional Tests using IBM DevOps Test Hub"
+        from: "Which environment?"
+        type: "VALUE"
+        value: "DEV"
+      - to: "Replace Tokens"
+        from: "Create File"
+        type: "SUCCESS"
+        value: ""
+      - to: "Start Server"
+        from: "Install or Update Applications with Dropins"
+        type: "SUCCESS"
+        value: ""
+      - to: "221040ea0f9e557b5fa30d5b708941"
+        from: "Add Status to Version - Functional Tests Passed"
+        type: "SUCCESS"
+        value: ""
+      - to: "Start Server"
+        from: "Show contents of server.xml file"
+        type: "SUCCESS"
+        value: ""
+      - to: "eb6a72889aeb89a55d2f96e74d1907"
+        from: "Which environment?"
+        type: "VALUE"
+        value: ""
+      offsets:
+      - name: "Add Status to Version - Failed"
+        x: 330.30521262002753
+        "y": 1430
+        h: 110
+        w: 520
+      - name: "eb6a72889aeb89a55d2f96e74d1907"
+        x: 105.30521262002753
+        "y": 1710
+        h: 100
+        w: 170
+      - name: "Stop Server"
+        x: -106.09739368998623
+        "y": 310
+        h: 110
+        w: 360
+      - name: "Run Functional Tests using IBM DevOps Test Hub"
+        x: 90.30521262002753
+        "y": 1270
+        h: 110
+        w: 810
+      - name: "Add Status to Version - Functional Tests Passed"
+        x: -479.69478737997247
+        "y": 1430
+        h: 110
+        w: 780
+      - name: "Replace Tokens"
+        x: -240.75815543552812
+        "y": 630
+        h: 110
+        w: 420
+      - name: "221040ea0f9e557b5fa30d5b708941"
+        x: -199.69478737997247
+        "y": 1590
+        h: 70
+        w: 380
+      - name: "Install or Update Applications with Dropins"
+        x: -24.694787379972468
+        "y": 470
+        h: 110
+        w: 800
+      - name: "Start Server"
+        x: 183.1350737311385
+        "y": 950
+        h: 110
+        w: 370
+      - name: "Show contents of server.xml file"
+        x: -106.82152349108367
+        "y": 790
+        h: 110
+        w: 550
+      - name: "Download Artifacts"
+        x: -155
+        "y": 150
+        h: 110
+        w: 460
+      - name: "Which environment?"
+        x: 187.96146262002753
+        "y": 1110
+        h: 110
+        w: 550
+      - name: "Add Status to Version - QA - Passed"
+        x: -559.6947873799725
+        "y": 1270
+        h: 110
+        w: 620
+      - name: "aec8c054e09b98397fa43e2c54b761"
+        x: 210.30521262002753
+        "y": 1590
+        h: 70
+        w: 360
+      - name: "Create File"
+        x: -404.69478737997247
+        "y": 470
+        h: 110
+        w: 350
+      layoutMode: "auto"
+      type: "graph"
+      name: "8b31342c-7da8-4920-838e-19c168efaef1"
+      children:
+      - type: "finish"
+        name: "eb6a72889aeb89a55d2f96e74d1907"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 46
+        commandName: "Download Artifacts"
+        pluginName: "UrbanCode Deploy Versioned File Storage"
+        pluginId: "com.urbancode.plugin.VFS"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          artifactSetBaseDir: ""
+          fileIncludePatterns: "**/*"
+          fileExcludePatterns: ""
+          syncMode: "FULL"
+          handleIncrementalVersions: "false"
+          fullVerification: "true"
+          setFileExecuteBits: "false"
+          verifyFileIntegrity: "false"
+          charset: ""
+          versionId: "${p:version.id}"
+          versionType: "${p:version.type}"
+          serverUrl: "${p:server.url}"
+          compId: "${p:component.id}"
+          resId: "${p:resource.id}"
+          envId: "${p:environment.id}"
+          maxMemory: "1G"
+          label: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Download Artifacts"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 23
+        commandName: "Install or Update Applications with Dropins"
+        pluginName: "WebSphere Liberty"
+        pluginId: "com.urbancode.air.plugin.WebSphereLiberty"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          source: "modresorts-2.0.0.war"
+          server: "modresort-${p:environment.name}"
+          wlpHome: "${p:LIBERTY_HOME}/wlp"
+          wlpUserDir: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Install or Update Applications with Dropins"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 23
+        commandName: "Start Server"
+        pluginName: "WebSphere Liberty"
+        pluginId: "com.urbancode.air.plugin.WebSphereLiberty"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          server: "modresort-${p:environment.name}"
+          wlpHome: "${p:LIBERTY_HOME}/wlp"
+          wlpUserDir: ""
+          serverHost: ""
+          controllerHostName: ""
+          controllerPort: ""
+          adminUser: "admin"
+          adminPassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|6JcP5uVH/43L53uaEG4QbQ==|B4VY6lxTuT1Nd5IDXI3BxA==}"
+          trustStorePath: ""
+          trustStorePassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|MWWVsuI6y7BWq0h+IX7ROQ==|mmYhi6iFY+k1bIXDZfiOJA==}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Start Server"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 23
+        commandName: "Stop Server"
+        pluginName: "WebSphere Liberty"
+        pluginId: "com.urbancode.air.plugin.WebSphereLiberty"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          server: "modresort-${p:environment.name}"
+          wlpHome: "${p:LIBERTY_HOME}/wlp"
+          wlpUserDir: ""
+          serverHost: ""
+          controllerHostName: ""
+          controllerPort: ""
+          adminUser: "admin"
+          adminPassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|mub89tdO1BhSxZhoLbYueA==|9ao5zIsUQ6WFgKQQxOzCqA==}"
+          trustStorePath: ""
+          trustStorePassword: "crypt_v1{AES/CBC/PKCS5Padding|aes256keykwyv|StWCTvDRrYTpe/3C/sdkww==|CHt0aMjOCoqT7sIDzfTX6g==}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Stop Server"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        workingDir: "${p:environment/LIBERTY_HOME}/wlp/usr/servers/modresort-${p:environment.name}"
+        pluginVersion: 96
+        commandName: "Create File"
+        pluginName: "File Utils"
+        pluginId: "com.urbancode.air.plugin.FileUtils"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          file: "server.xml"
+          contents: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<server description=\"\
+            new server\">\n\n    <!-- Enable features -->\n    <featureManager>\n\
+            \        <feature>webProfile-8.0</feature>\n    </featureManager>\n  \
+            \  \n    <variable name=\"default.http.port\" defaultValue=\"@@MYHTTPPORT@@\"\
+            />\n    <variable name=\"default.https.port\" defaultValue=\"@@MYHTTPSPORT@@\"\
+            />\n\n    <!-- To access this server from a remote client add a host attribute\
+            \ to the following element, e.g. host=\"*\" -->\n    <httpEndpoint host=\"\
+            *\" httpPort=\"${default.http.port}\" \n        httpsPort=\"${default.https.port}\"\
+            \ id=\"defaultHttpEndpoint\"/>\n\n    <!-- Automatically expand WAR files\
+            \ and EAR files -->\n    <applicationManager autoExpand=\"true\"/>\n\n\
+            </server>"
+          overwrite: "true"
+          customEncoding: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Create File"
+        children: []
+      - propertyName: "${p:environment.name}"
+        type: "switch"
+        name: "Which environment?"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 74
+        commandName: "Add Status to Version"
+        pluginName: "UrbanCode Deploy Versions"
+        pluginId: "com.urbancode.air.plugin.uDeployVersion"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          status: "Functional Tests Passed"
+          versionName: "${p:version.name}"
+          componentName: "${p:component.name}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Add Status to Version - Functional Tests Passed"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 74
+        commandName: "Add Status to Version"
+        pluginName: "UrbanCode Deploy Versions"
+        pluginId: "com.urbancode.air.plugin.uDeployVersion"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          status: "Functional Tests Failed"
+          versionName: "${p:version.name}"
+          componentName: "${p:component.name}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Add Status to Version - Failed"
+        children: []
+      - status: "SUCCESS"
+        type: "setStatus"
+        name: "221040ea0f9e557b5fa30d5b708941"
+        children: []
+      - status: "FAILURE"
+        type: "setStatus"
+        name: "aec8c054e09b98397fa43e2c54b761"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 87
+        commandName: "Run Application Process"
+        pluginName: "UrbanCode Deploy Applications"
+        pluginId: "com.urbancode.air.plugin.uDeployApplication"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          application: "ModResorts"
+          process: "Run ModResorts Test in IBM DevOps Test Hub"
+          environment: "DEV"
+          snapshot: ""
+          onlyChanged: "false"
+          componentVersions: ""
+          requestProperties: "test-target:${p:component/target-address}"
+          waitForProcess: "true"
+          timeout: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Run Functional Tests using IBM DevOps Test Hub"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        workingDir: "${p:environment/LIBERTY_HOME}/wlp/usr/servers/modresort-${p:environment.name}"
+        pluginVersion: 96
+        commandName: "Replace Tokens"
+        pluginName: "File Utils"
+        pluginId: "com.urbancode.air.plugin.FileUtils"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          includes: "**/server.xml"
+          excludes: ""
+          envPropValues: "${p:environment/allProperties}"
+          propertyPrefix: ""
+          explicitTokens: "@@MYHTTPPORT@@->${p:environment/http-port}\n@@MYHTTPSPORT@@->${p:environment/https-port}"
+          startDelimiter: "@@"
+          endDelimiter: "@@"
+          propFile: "replace_tokens.properties"
+          dir: ""
+          customEncoding: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Replace Tokens"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        workingDir: "${p:environment/LIBERTY_HOME}/wlp/usr/servers/modresort-${p:environment.name}"
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "echo ----------------------------------\ncat server.xml"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Show contents of server.xml file"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 74
+        commandName: "Add Status to Version"
+        pluginName: "UrbanCode Deploy Versions"
+        pluginId: "com.urbancode.air.plugin.uDeployVersion"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          status: "System Tests Passed"
+          versionName: "${p:version.name}"
+          componentName: "${p:component.name}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Add Status to Version - QA - Passed"
+        children: []
+  configTemplates: []
+  genericProcesses: []
+  teamMappings: []
+  tags:
+  - id: "173bb5eb-b246-9df2-727c-d178ed51592c"
+    name: "WebSphere Liberty"
+    color: "#7F1C7D"
+    description: ""
+    objectType: "Component"
+environments:
+- name: "DEV"
+  description: ""
+  color: "#00B2EF"
+  requireApprovals: false
+  noSelfApprovals: false
+  exemptProcesses: []
+  lockSnapshots: false
+  requireSnapshots: false
+  snapshotDaysToKeep: 0
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  enableProcessHistoryCleanup: true
+  useSystemDefaultDays: true
+  showCompliancyOnLoad: false
+  historyCleanupDaysToKeep: 0
+  order: 0
+  active: true
+  propSheet:
+    properties:
+    - name: "ACE-12-URL-Joel-Gomez"
+      value: "http://169.61.33.227:4414/servers/JGRIS01 (old)\n\nhttp://169.61.33.227:4414/servers/AceCapital"
+      description: ""
+      secure: false
+    - name: "ace-web-console-url"
+      value: "http://169.61.33.227:4414/"
+      description: ""
+      secure: false
+    - name: "oc-auth-token"
+      value: "sha256~qWsZss14LA9wgkjBBfBEukOpKA8oqJvulsJbZV_Kvs4"
+      description: ""
+      secure: false
+    - name: "LIBERTY_HOME"
+      value: "/opt/IBM"
+      description: ""
+      secure: false
+    - name: "modresort-url"
+      value: "https://169.61.33.228:9443/resorts/"
+      description: ""
+      secure: false
+    - name: "modresort-contain-url"
+      value: "http://169.61.33.228:9080/resorts/"
+      description: ""
+      secure: false
+    - name: "modresort-openshifturl"
+      value: "http://modresorts-container-rlange.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud/resorts/"
+      description: ""
+      secure: false
+    - name: "devops-testhub-url"
+      value: "https://devops.devops-test-hub-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-south.containers.appdomain.cloud/#/Initial/space"
+      description: ""
+      secure: false
+    - name: "argocd-server-url"
+      value: "https://openshift-gitops-server-openshift-gitops.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud/"
+      description: ""
+      secure: false
+    - name: "http-port"
+      value: "9080"
+      description: ""
+      secure: false
+    - name: "https-port"
+      value: "9443"
+      description: ""
+      secure: false
+  templatePropSheet:
+    name: "template"
+    properties: []
+  baseResources:
+  - basePath: "/Helix/ModResorts"
+    tree:
+      name: "DEV"
+      path: "/Helix/ModResorts/DEV"
+      description: ""
+      parentName: "ModResorts"
+      inheritTeam: true
+      propSheet:
+        name: "custom"
+        properties: []
+      tags: []
+      teamMappings: []
+      impersonationUseSudo: false
+      impersonationForce: false
+      prototype: false
+  baseResourcesFull:
+  - basePath: "/Helix/ModResorts"
+    tree:
+      name: "DEV"
+      path: "/Helix/ModResorts/DEV"
+      description: ""
+      parentName: "ModResorts"
+      inheritTeam: true
+      propSheet:
+        name: "custom"
+        properties: []
+      tags: []
+      teamMappings: []
+      impersonationUseSudo: false
+      impersonationForce: false
+      prototype: false
+      children:
+      - name: "acemqserver-jgr.IBM.cloud"
+        path: "/Helix/ModResorts/DEV/acemqserver-jgr.IBM.cloud"
+        description: ""
+        parentName: "DEV"
+        inheritTeam: true
+        type: "agent"
+        typeName: "acemqserver-jgr.IBM.cloud"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-BAR"
+          path: "/Helix/ModResorts/DEV/acemqserver-jgr.IBM.cloud/ModResorts-BAR"
+          description: ""
+          parentName: "acemqserver-jgr.IBM.cloud"
+          inheritTeam: true
+          roleName: "ModResorts-BAR"
+          roleProperties:
+            name: "ModResorts-BAR"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+      - name: "eshop-instana-ucd-instance"
+        path: "/Helix/ModResorts/DEV/eshop-instana-ucd-instance"
+        description: ""
+        parentName: "DEV"
+        inheritTeam: true
+        type: "agent"
+        typeName: "eshop-instana-ucd-instance"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-DevOps-TestHub"
+          path: "/Helix/ModResorts/DEV/eshop-instana-ucd-instance/ModResorts-DevOps-TestHub"
+          description: ""
+          parentName: "eshop-instana-ucd-instance"
+          inheritTeam: true
+          roleName: "ModResorts-DevOps-TestHub"
+          roleProperties:
+            name: "ModResorts-DevOps-TestHub"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+      - name: "helix-linux.ibmcloud"
+        path: "/Helix/ModResorts/DEV/helix-linux.ibmcloud"
+        description: ""
+        parentName: "DEV"
+        inheritTeam: true
+        type: "agent"
+        typeName: "helix-linux.ibmcloud"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-Jenkins"
+          path: "/Helix/ModResorts/DEV/helix-linux.ibmcloud/ModResorts-Jenkins"
+          description: ""
+          parentName: "helix-linux.ibmcloud"
+          inheritTeam: true
+          roleName: "ModResorts-Jenkins"
+          roleProperties:
+            name: "ModResorts-Jenkins"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+  componentPropSheets:
+  - properties:
+    - name: "ace-ip-address"
+      value: "localhost"
+      description: ""
+      secure: false
+    - name: "ace-port"
+      value: "4414"
+      description: ""
+      secure: false
+    - name: "ace-user"
+      value: "aceuser"
+      description: ""
+      secure: false
+    - name: "ace-install-directory"
+      value: "/opt/mqsi/ace-12.0.10.0/server"
+      description: ""
+      secure: false
+    - name: "integration-node-name"
+      value: "UCDINODE"
+      description: ""
+      secure: false
+    - name: "integration-server-name"
+      value: "ModResorts-API"
+      description: ""
+      secure: false
+    componentName: "ModResorts-BAR"
+  - properties: []
+    componentName: "ModResorts-DevOps-TestHub"
+  - properties: []
+    componentName: "ModResorts-Jenkins"
+  versionGate:
+    OR:
+    - AND:
+      - id: "17276659-92c0-f6e9-f6f2-e31a198672f8"
+        type: "VERSION"
+        name: "Unit Tests Passed"
+        description: ""
+        deleted: false
+        color: "#FFCF01"
+        unique: false
+        shouldLocalize: false
+  teamMappings: []
+  deploymentTriggers: []
+- name: "QA"
+  description: ""
+  color: "#EEA10F"
+  requireApprovals: false
+  noSelfApprovals: false
+  exemptProcesses: []
+  lockSnapshots: false
+  requireSnapshots: false
+  snapshotDaysToKeep: 0
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  enableProcessHistoryCleanup: true
+  useSystemDefaultDays: true
+  showCompliancyOnLoad: false
+  historyCleanupDaysToKeep: 0
+  order: 1
+  active: true
+  propSheet:
+    properties:
+    - name: "ACE-12-URL-Joel-Gomez"
+      value: "http://169.61.33.227:4414/servers/JGRIS01 (old)\n\nhttp://169.61.33.227:4414/servers/AceCapital"
+      description: ""
+      secure: false
+    - name: "ace-web-console-url"
+      value: "http://169.61.33.227:4414/"
+      description: ""
+      secure: false
+    - name: "oc-auth-token"
+      value: "sha256~qWsZss14LA9wgkjBBfBEukOpKA8oqJvulsJbZV_Kvs4"
+      description: ""
+      secure: false
+    - name: "LIBERTY_HOME"
+      value: "/opt/IBM"
+      description: ""
+      secure: false
+    - name: "modresort-url"
+      value: "https://169.61.33.228:9443/resorts/"
+      description: ""
+      secure: false
+    - name: "modresort-contain-url"
+      value: "http://169.61.33.228:9080/resorts/"
+      description: ""
+      secure: false
+    - name: "modresort-openshifturl"
+      value: "http://modresorts-container-rlange.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud/resorts/"
+      description: ""
+      secure: false
+    - name: "devops-testhub-url"
+      value: "https://devops.devops-test-hub-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-south.containers.appdomain.cloud/#/Initial/space"
+      description: ""
+      secure: false
+    - name: "argocd-server-url"
+      value: "https://openshift-gitops-server-openshift-gitops.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud/"
+      description: ""
+      secure: false
+    - name: "http-port"
+      value: "9081"
+      description: ""
+      secure: false
+    - name: "https-port"
+      value: "9444"
+      description: ""
+      secure: false
+  templatePropSheet:
+    name: "template"
+    properties: []
+  baseResources:
+  - basePath: "/Helix/ModResorts"
+    tree:
+      name: "QA"
+      path: "/Helix/ModResorts/QA"
+      description: ""
+      parentName: "ModResorts"
+      inheritTeam: true
+      propSheet:
+        name: "custom"
+        properties: []
+      tags: []
+      teamMappings: []
+      impersonationUseSudo: false
+      impersonationForce: false
+      prototype: false
+  baseResourcesFull:
+  - basePath: "/Helix/ModResorts"
+    tree:
+      name: "QA"
+      path: "/Helix/ModResorts/QA"
+      description: ""
+      parentName: "ModResorts"
+      inheritTeam: true
+      propSheet:
+        name: "custom"
+        properties: []
+      tags: []
+      teamMappings: []
+      impersonationUseSudo: false
+      impersonationForce: false
+      prototype: false
+      children:
+      - name: "acemqserver-jgr.IBM.cloud"
+        path: "/Helix/ModResorts/QA/acemqserver-jgr.IBM.cloud"
+        description: ""
+        parentName: "QA"
+        inheritTeam: true
+        type: "agent"
+        typeName: "acemqserver-jgr.IBM.cloud"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-BAR"
+          path: "/Helix/ModResorts/QA/acemqserver-jgr.IBM.cloud/ModResorts-BAR"
+          description: ""
+          parentName: "acemqserver-jgr.IBM.cloud"
+          inheritTeam: true
+          roleName: "ModResorts-BAR"
+          roleProperties:
+            name: "ModResorts-BAR"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+      - name: "eshop-instana-ucd-instance"
+        path: "/Helix/ModResorts/QA/eshop-instana-ucd-instance"
+        description: ""
+        parentName: "QA"
+        inheritTeam: true
+        type: "agent"
+        typeName: "eshop-instana-ucd-instance"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-DevOps-TestHub"
+          path: "/Helix/ModResorts/QA/eshop-instana-ucd-instance/ModResorts-DevOps-TestHub"
+          description: ""
+          parentName: "eshop-instana-ucd-instance"
+          inheritTeam: true
+          roleName: "ModResorts-DevOps-TestHub"
+          roleProperties:
+            name: "ModResorts-DevOps-TestHub"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+      - name: "helix-linux.ibmcloud"
+        path: "/Helix/ModResorts/QA/helix-linux.ibmcloud"
+        description: ""
+        parentName: "QA"
+        inheritTeam: true
+        type: "agent"
+        typeName: "helix-linux.ibmcloud"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-Jenkins"
+          path: "/Helix/ModResorts/QA/helix-linux.ibmcloud/ModResorts-Jenkins"
+          description: ""
+          parentName: "helix-linux.ibmcloud"
+          inheritTeam: true
+          roleName: "ModResorts-Jenkins"
+          roleProperties:
+            name: "ModResorts-Jenkins"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+  componentPropSheets:
+  - properties:
+    - name: "ace-ip-address"
+      value: "localhost"
+      description: ""
+      secure: false
+    - name: "ace-port"
+      value: "4414"
+      description: ""
+      secure: false
+    - name: "ace-user"
+      value: "aceuser"
+      description: ""
+      secure: false
+    - name: "ace-install-directory"
+      value: "/opt/mqsi/ace-12.0.10.0/server"
+      description: ""
+      secure: false
+    - name: "integration-node-name"
+      value: "UCDINODE"
+      description: ""
+      secure: false
+    - name: "integration-server-name"
+      value: "ModResorts-API-QA"
+      description: ""
+      secure: false
+    componentName: "ModResorts-BAR"
+  - properties: []
+    componentName: "ModResorts-DevOps-TestHub"
+  - properties: []
+    componentName: "ModResorts-Jenkins"
+  versionGate:
+    OR:
+    - AND:
+      - id: "17276659-92c0-f6e9-f6f2-e31a198672f8"
+        type: "VERSION"
+        name: "Unit Tests Passed"
+        description: ""
+        deleted: false
+        color: "#FFCF01"
+        unique: false
+        shouldLocalize: false
+      - id: "184a4cdd-1480-2d49-0d33-04ab58f12494"
+        type: "VERSION"
+        name: "Functional Tests Passed"
+        description: ""
+        deleted: false
+        color: "#007670"
+        unique: false
+        shouldLocalize: false
+  teamMappings: []
+  deploymentTriggers: []
+- name: "PROD"
+  description: ""
+  color: "#17AF4A"
+  requireApprovals: false
+  noSelfApprovals: false
+  exemptProcesses: []
+  lockSnapshots: false
+  requireSnapshots: false
+  snapshotDaysToKeep: 0
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  enableProcessHistoryCleanup: true
+  useSystemDefaultDays: true
+  showCompliancyOnLoad: false
+  historyCleanupDaysToKeep: 0
+  order: 2
+  active: true
+  propSheet:
+    properties:
+    - name: "ACE-12-URL-Joel-Gomez"
+      value: "http://169.61.33.227:4414/servers/JGRIS01 (old)\n\nhttp://169.61.33.227:4414/servers/AceCapital"
+      description: ""
+      secure: false
+    - name: "ace-web-console-url"
+      value: "http://169.61.33.227:4414/"
+      description: ""
+      secure: false
+    - name: "oc-auth-token"
+      value: "sha256~qWsZss14LA9wgkjBBfBEukOpKA8oqJvulsJbZV_Kvs4"
+      description: ""
+      secure: false
+    - name: "LIBERTY_HOME"
+      value: "/opt/IBM"
+      description: ""
+      secure: false
+    - name: "modresort-url"
+      value: "https://169.61.33.228:9443/resorts/"
+      description: ""
+      secure: false
+    - name: "modresort-contain-url"
+      value: "http://169.61.33.228:9080/resorts/"
+      description: ""
+      secure: false
+    - name: "modresort-openshifturl"
+      value: "http://modresorts-container-rlange.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud/resorts/"
+      description: ""
+      secure: false
+    - name: "devops-testhub-url"
+      value: "https://devops.devops-test-hub-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-south.containers.appdomain.cloud/#/Initial/space"
+      description: ""
+      secure: false
+    - name: "argocd-server-url"
+      value: "https://openshift-gitops-server-openshift-gitops.ucd-ocp12-e3a3d814b8ff2369cc3d5b63c99b22ba-0000.us-east.containers.appdomain.cloud/"
+      description: ""
+      secure: false
+    - name: "http-port"
+      value: "9082"
+      description: ""
+      secure: false
+    - name: "https-port"
+      value: "9445"
+      description: ""
+      secure: false
+  templatePropSheet:
+    name: "template"
+    properties: []
+  baseResources:
+  - basePath: "/Helix/ModResorts"
+    tree:
+      name: "PROD"
+      path: "/Helix/ModResorts/PROD"
+      description: ""
+      parentName: "ModResorts"
+      inheritTeam: true
+      propSheet:
+        name: "custom"
+        properties: []
+      tags: []
+      teamMappings: []
+      impersonationUseSudo: false
+      impersonationForce: false
+      prototype: false
+  baseResourcesFull:
+  - basePath: "/Helix/ModResorts"
+    tree:
+      name: "PROD"
+      path: "/Helix/ModResorts/PROD"
+      description: ""
+      parentName: "ModResorts"
+      inheritTeam: true
+      propSheet:
+        name: "custom"
+        properties: []
+      tags: []
+      teamMappings: []
+      impersonationUseSudo: false
+      impersonationForce: false
+      prototype: false
+      children:
+      - name: "acemqserver-jgr.IBM.cloud"
+        path: "/Helix/ModResorts/PROD/acemqserver-jgr.IBM.cloud"
+        description: ""
+        parentName: "PROD"
+        inheritTeam: true
+        type: "agent"
+        typeName: "acemqserver-jgr.IBM.cloud"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-BAR"
+          path: "/Helix/ModResorts/PROD/acemqserver-jgr.IBM.cloud/ModResorts-BAR"
+          description: ""
+          parentName: "acemqserver-jgr.IBM.cloud"
+          inheritTeam: true
+          roleName: "ModResorts-BAR"
+          roleProperties:
+            name: "ModResorts-BAR"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+      - name: "eshop-instana-ucd-instance"
+        path: "/Helix/ModResorts/PROD/eshop-instana-ucd-instance"
+        description: ""
+        parentName: "PROD"
+        inheritTeam: true
+        type: "agent"
+        typeName: "eshop-instana-ucd-instance"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-DevOps-TestHub"
+          path: "/Helix/ModResorts/PROD/eshop-instana-ucd-instance/ModResorts-DevOps-TestHub"
+          description: ""
+          parentName: "eshop-instana-ucd-instance"
+          inheritTeam: true
+          roleName: "ModResorts-DevOps-TestHub"
+          roleProperties:
+            name: "ModResorts-DevOps-TestHub"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+      - name: "helix-linux.ibmcloud"
+        path: "/Helix/ModResorts/PROD/helix-linux.ibmcloud"
+        description: ""
+        parentName: "PROD"
+        inheritTeam: true
+        type: "agent"
+        typeName: "helix-linux.ibmcloud"
+        propSheet:
+          name: "custom"
+          properties: []
+        tags: []
+        teamMappings: []
+        impersonationUseSudo: false
+        impersonationForce: false
+        prototype: false
+        children:
+        - name: "ModResorts-Jenkins"
+          path: "/Helix/ModResorts/PROD/helix-linux.ibmcloud/ModResorts-Jenkins"
+          description: ""
+          parentName: "helix-linux.ibmcloud"
+          inheritTeam: true
+          roleName: "ModResorts-Jenkins"
+          roleProperties:
+            name: "ModResorts-Jenkins"
+            properties: []
+          propSheet:
+            name: "custom"
+            properties: []
+          tags: []
+          teamMappings: []
+          impersonationUseSudo: false
+          impersonationForce: false
+          prototype: false
+          children: []
+  componentPropSheets:
+  - properties:
+    - name: "ace-ip-address"
+      value: "localhost"
+      description: ""
+      secure: false
+    - name: "ace-port"
+      value: "4414"
+      description: ""
+      secure: false
+    - name: "ace-user"
+      value: "aceuser"
+      description: ""
+      secure: false
+    componentName: "ModResorts-BAR"
+  - properties: []
+    componentName: "ModResorts-DevOps-TestHub"
+  - properties: []
+    componentName: "ModResorts-Jenkins"
+  versionGate:
+    OR:
+    - AND:
+      - id: "17276659-92c0-f6e9-f6f2-e31a198672f8"
+        type: "VERSION"
+        name: "Unit Tests Passed"
+        description: ""
+        deleted: false
+        color: "#FFCF01"
+        unique: false
+        shouldLocalize: false
+      - id: "184a4cdd-1480-2d49-0d33-04ab58f12494"
+        type: "VERSION"
+        name: "Functional Tests Passed"
+        description: ""
+        deleted: false
+        color: "#007670"
+        unique: false
+        shouldLocalize: false
+      - id: "1727665d-693d-a572-36b5-33a5f8f1390e"
+        type: "VERSION"
+        name: "System Tests Passed"
+        description: ""
+        deleted: false
+        color: "#17AF4A"
+        unique: false
+        shouldLocalize: false
+  teamMappings: []
+  deploymentTriggers: []
+processes:
+- name: "Deploy-Liberty-running-in-VM-ModResort"
+  description: ""
+  inventoryManagementType: "AUTOMATIC"
+  offlineAgentHandling: "PRE_EXECUTION_CHECK"
+  disableSnapshots: false
+  rootActivity:
+    edges:
+    - to: "5cb6194553a1445f74f89c7914ce02"
+      from: "d64e3d658b25cb19c280e4999ddbd5"
+      type: "SUCCESS"
+      value: ""
+    - to: "d64e3d658b25cb19c280e4999ddbd5"
+      type: "ALWAYS"
+      value: ""
+    offsets:
+    - name: "5cb6194553a1445f74f89c7914ce02"
+      x: -5
+      "y": 450
+      h: 80
+      w: 120
+    - name: "d64e3d658b25cb19c280e4999ddbd5"
+      x: -85
+      "y": 230
+      h: 70
+      w: 280
+    layoutMode: "auto"
+    type: "graph"
+    name: "23559d26-fe2b-4534-b295-082e00280a6f"
+    children:
+    - type: "finish"
+      name: "5cb6194553a1445f74f89c7914ce02"
+      children: []
+    - componentName: "ModResorts-Jenkins"
+      properties:
+      - name: "maxIteration"
+        value: "-1"
+      - name: "isIgnoreChildWarnings"
+        value: "false"
+      - name: "failFast"
+        value: "false"
+      type: "componentEnvironmentIterator"
+      name: "d64e3d658b25cb19c280e4999ddbd5"
+      children:
+      - componentName: "ModResorts-Jenkins"
+        status: "Active"
+        type: "inventoryVersionDiff"
+        name: "5306bf83-8681-4120-9679-bfe606373c2c"
+        children:
+        - componentProcessName: "Deploy"
+          componentName: "ModResorts-Jenkins"
+          allowFailure: false
+          properties:
+            isIgnoreChildWarnings: "false"
+          draftProperties:
+            isIgnoreChildWarnings: "false"
+          type: "componentProcess"
+          name: "Install: \"ModResorts-Jenkins\""
+          children: []
+  propDefs: []
+  versionPresets: []
+- name: "Run ModResorts Test in IBM DevOps Test Hub"
+  description: ""
+  inventoryManagementType: "AUTOMATIC"
+  offlineAgentHandling: "PRE_EXECUTION_CHECK"
+  disableSnapshots: false
+  rootActivity:
+    edges:
+    - to: "815ca841ef22accb49995aa49b406c"
+      from: "6f6e43b885bd7a6f926badc5e1afb3"
+      type: "SUCCESS"
+      value: ""
+    - to: "6f6e43b885bd7a6f926badc5e1afb3"
+      type: "ALWAYS"
+      value: ""
+    offsets:
+    - name: "6f6e43b885bd7a6f926badc5e1afb3"
+      x: -135
+      "y": 230
+      h: 80
+      w: 380
+    - name: "815ca841ef22accb49995aa49b406c"
+      x: -5
+      "y": 450
+      h: 80
+      w: 120
+    layoutMode: "auto"
+    type: "graph"
+    name: "c6a0b638-db14-435a-a788-bcb2b73caa84"
+    children:
+    - type: "finish"
+      name: "815ca841ef22accb49995aa49b406c"
+      children: []
+    - componentName: "ModResorts-DevOps-TestHub"
+      properties:
+      - name: "maxIteration"
+        value: "-1"
+      - name: "isIgnoreChildWarnings"
+        value: "false"
+      - name: "runOnlyOnFirst"
+        value: "false"
+      - name: "failFast"
+        value: "false"
+      type: "componentEnvironmentIterator"
+      name: "6f6e43b885bd7a6f926badc5e1afb3"
+      children:
+      - componentProcessName: "Run TestHub ModResort Suite"
+        componentName: "ModResorts-DevOps-TestHub"
+        allowFailure: false
+        properties:
+          isIgnoreChildWarnings: "false"
+        draftProperties:
+          isIgnoreChildWarnings: "false"
+        type: "componentProcess"
+        name: "Component: \"ModResorts-DevOps-TestHub\""
+        children: []
+  propDefs: []
+  versionPresets: []
+- name: "Run DevOps-TestHub API Tests"
+  description: ""
+  inventoryManagementType: "AUTOMATIC"
+  offlineAgentHandling: "PRE_EXECUTION_CHECK"
+  disableSnapshots: false
+  rootActivity:
+    edges:
+    - to: "4ed37911f7a96da57fd26c3411cff2"
+      type: "ALWAYS"
+      value: ""
+    - to: "d3dca517d709c7ae8b80b489f1331a"
+      from: "4ed37911f7a96da57fd26c3411cff2"
+      type: "SUCCESS"
+      value: ""
+    offsets:
+    - name: "d3dca517d709c7ae8b80b489f1331a"
+      x: -5
+      "y": 450
+      h: 80
+      w: 120
+    - name: "4ed37911f7a96da57fd26c3411cff2"
+      x: -135
+      "y": 230
+      h: 80
+      w: 380
+    layoutMode: "auto"
+    type: "graph"
+    name: "6d3ffcb4-6338-4746-a609-e114f47ba682"
+    children:
+    - type: "finish"
+      name: "d3dca517d709c7ae8b80b489f1331a"
+      children: []
+    - componentName: "ModResorts-DevOps-TestHub"
+      properties:
+      - name: "maxIteration"
+        value: "-1"
+      - name: "isIgnoreChildWarnings"
+        value: "false"
+      - name: "runOnlyOnFirst"
+        value: "false"
+      - name: "failFast"
+        value: "false"
+      type: "componentEnvironmentIterator"
+      name: "4ed37911f7a96da57fd26c3411cff2"
+      children:
+      - componentProcessName: "Run RTAS API Test Suite"
+        componentName: "ModResorts-DevOps-TestHub"
+        allowFailure: false
+        properties:
+          isIgnoreChildWarnings: "false"
+        draftProperties:
+          isIgnoreChildWarnings: "false"
+        type: "componentProcess"
+        name: "Component: \"ModResorts-DevOps-TestHub\""
+        children: []
+  propDefs: []
+  versionPresets: []
+- name: "Deploy-ModResorts"
+  description: ""
+  inventoryManagementType: "AUTOMATIC"
+  offlineAgentHandling: "PRE_EXECUTION_CHECK"
+  disableSnapshots: false
+  rootActivity:
+    edges:
+    - to: "b9a30f2dfd079e323a08fff43bfad9"
+      from: "0d348d28f0d5695712ccde44a960d7"
+      type: "SUCCESS"
+      value: ""
+    - to: "0d348d28f0d5695712ccde44a960d7"
+      type: "ALWAYS"
+      value: ""
+    - to: "6b4669fb8a8bb5a5146cf2d38ee832"
+      from: "b9a30f2dfd079e323a08fff43bfad9"
+      type: "SUCCESS"
+      value: ""
+    offsets:
+    - name: "b9a30f2dfd079e323a08fff43bfad9"
+      x: -85
+      "y": 350
+      h: 70
+      w: 280
+    - name: "6b4669fb8a8bb5a5146cf2d38ee832"
+      x: -5
+      "y": 520
+      h: 80
+      w: 120
+    - name: "0d348d28f0d5695712ccde44a960d7"
+      x: -115
+      "y": 180
+      h: 70
+      w: 420
+    layoutMode: "auto"
+    type: "graph"
+    name: "4c3a3304-b2f3-4855-85a7-674011676a48"
+    children:
+    - type: "finish"
+      name: "6b4669fb8a8bb5a5146cf2d38ee832"
+      children: []
+    - componentName: "ModResorts-BAR"
+      properties:
+      - name: "maxIteration"
+        value: "-1"
+      - name: "isIgnoreChildWarnings"
+        value: "false"
+      - name: "failFast"
+        value: "false"
+      type: "componentEnvironmentIterator"
+      name: "0d348d28f0d5695712ccde44a960d7"
+      children:
+      - componentName: "ModResorts-BAR"
+        status: "Active"
+        type: "inventoryVersionDiff"
+        name: "ebb1c8c2-d65c-4f8c-b41f-ca7c57ea66d2"
+        children:
+        - componentProcessName: "Deploy-ModResorts-BAR-on-Linux-ACE12"
+          componentName: "ModResorts-BAR"
+          allowFailure: false
+          properties:
+            isIgnoreChildWarnings: "false"
+          draftProperties:
+            isIgnoreChildWarnings: "false"
+          type: "componentProcess"
+          name: "Install: \"ModResorts-BAR\""
+          children: []
+    - componentName: "ModResorts-Jenkins"
+      properties:
+      - name: "maxIteration"
+        value: "-1"
+      - name: "isIgnoreChildWarnings"
+        value: "false"
+      - name: "runOnlyOnFirst"
+        value: "false"
+      - name: "failFast"
+        value: "false"
+      type: "componentEnvironmentIterator"
+      name: "b9a30f2dfd079e323a08fff43bfad9"
+      children:
+      - componentName: "ModResorts-Jenkins"
+        status: "Active"
+        type: "inventoryVersionDiff"
+        name: "12520630-fd61-464a-bbce-54640af95888"
+        children:
+        - componentProcessName: "Deploy"
+          componentName: "ModResorts-Jenkins"
+          allowFailure: false
+          properties:
+            isIgnoreChildWarnings: "false"
+          draftProperties:
+            isIgnoreChildWarnings: "false"
+          type: "componentProcess"
+          name: "Install: \"ModResorts-Jenkins\""
+          children: []
+  propDefs: []
+  versionPresets: []
+genericProcesses: []
+teamMappings: []
+tags:
+- id: "18602e81-19ed-c900-7375-e5a99165508a"
+  name: "Liberty"
+  color: "#7F1C7D"
+  description: ""
+  objectType: "Application"
+- id: "177f5050-29ab-498d-7911-d104ffa1d3b6"
+  name: "ACE"
+  color: "#FDB813"
+  description: ""
+  objectType: "Application"
+webhooks:
+- url: "https://hooks.slack.com/services/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"
+  environments:
+  - "DEV"
+  - "PROD"
+  - "QA"
+  webhookTemplate:
+    name: "Slack-Application Deployment Failure"
+    description: ""
+    body: "## BEGIN SECTION Body\n## PROPERTY Content-Type: application/json\n#macro\
+      \ (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"\
+      type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\"\
+      ,\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request For More>\"\n        }\n    }\n        #set ($blockCount =\
+      \ $blockCount + 1)\n#end\n#macro (showFailure $analysis $indent)\n    #if ($blockCount\
+      \ == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n     \
+      \   ##ignore no room left\n    #else\n        ## add section and recurse down\n\
+      \    ,{\n        \"type\": \"section\",\n        \"text\": {\n            \"\
+      type\": \"plain_text\",\n            \"text\": \"$indent$fn.escapeJson($analysis.getTrace().getName())\"\
+      \n        }\n    }\n        #set ($blockCount = $blockCount + 1)\n        #set\
+      \ ($analysisChildren = $analysis.getChildren())\n        #if ($analysisChildren\
+      \ && $analysisChildren.size() > 0)\n            #set ($newindent = $indent+\"\
+      --\")\n            #foreach ($child in $analysisChildren)\n                #showFailure($child,\
+      \ $newindent)\n            #end\n        #end\n    #end\n#end\n\n#macro (showVersion\
+      \ $version)\n    #if ($blockCount == 50)\n        #addLimitReached()\n    #elseif\
+      \ ($blockCount > 50)\n        ##ignore no room left\n    #else\n        ## add\
+      \ section\n    ,{\n        \"type\": \"section\",\n        \"fields\": [{\n\
+      \             \"type\": \"mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\
+      \n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"\
+      *Version*: $fn.escapeJson($version.getName())\"\n         #if ($version.getDescription()\
+      \ and !$version.getDescription().trim().isEmpty())\n         },{\n         \
+      \    \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\
+      \n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount\
+      \ + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## block 1\n       \
+      \ {\n            \"type\": \"header\",\n            \"text\": {\n          \
+      \      \"type\": \"plain_text\",\n                \"text\": \"A process on $fn.escapeJson($application.getName())\
+      \ failed\"\n            }\n        },\n        ## block 2\n        {\n     \
+      \       \"type\": \"context\",\n            \"elements\": [\n              \
+      \  {\n                    \"type\": \"mrkdwn\",\n                    \"text\"\
+      : \"*Application*: $fn.escapeJson($application.getName())\"\n              \
+      \  },\n                {\n                    \"type\": \"mrkdwn\",\n      \
+      \              \"text\": \"*Environment*: $fn.escapeJson($environment.getName())\"\
+      \n                },\n                #if ($snapshot)\n                {\n \
+      \                   \"type\": \"mrkdwn\",\n                    \"text\": \"\
+      *Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },\n    \
+      \            #end\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\
+      \n                },\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\
+      \n                },\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Requested On*: $fn.formatDate($request.getSubmittedDate())\"\
+      \n                }\n                ,{\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Duration in Milliseconds*: $request.getDurationInMillis()\"\
+      \n                }\n                #if ($request.getDescription())\n     \
+      \           ,{\n                    \"type\": \"mrkdwn\",\n                \
+      \    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n\
+      \                }\n                #end\n                #set ($warningCount\
+      \ = $workflowTrace.getWarningCount())\n                #if ($warningCount >\
+      \ 0)\n                ,{\n                    \"type\": \"mrkdwn\",\n      \
+      \              \"text\": \"*Warning Count*: $warningCount\"\n              \
+      \  }\n                #end\n            ]\n        },\n        ## block 3\n\
+      \        {\n            \"type\":\"section\",\n            \"text\": {\n   \
+      \             \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request>\"\n            }\n        },\n        ## block 4\n      \
+      \  {\n            \"type\":\"divider\"\n        },\n        ## block 5\n   \
+      \     #set ($warnMessList = $workflowTrace.getChildWarningMessages())\n    \
+      \    #if ($warnMessList && $warnMessList.size() > 0)\n        {\n          \
+      \  \"type\": \"section\",\n            \"fields\": [{\n                \"type\"\
+      : \"mrkdwn\",\n                \"text\": \"*Warnings*\"\n            #foreach\
+      \ ($mess in $warnMessList)\n                #if($velocityCount == 9)\n     \
+      \               ## add link\n            },{\n                \"type\": \"mrkdwn\"\
+      ,\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|See\
+      \ process request for more>\"\n                #elseif ($velocityCount > 9)\n\
+      \                    ## ignore\n                #else\n            },{\n   \
+      \             \"type\": \"plain_text\",\n                \"text\": \"$fn.escapeJson($mess)\"\
+      \n                #end\n            #end\n            }]\n        },\n     \
+      \   #end\n        ## block 6\n        {\n            \"type\":\"divider\"\n\
+      \        }\n        ## Show as many of the failure analysis and versions as\
+      \ we can.\n        ## If we run out of blocks(slack limits to 50), make the\
+      \ last block\n        ## a link to the process request\n        ## for brevity\
+      \ we don't show summary of other steps as we do in emails\n        ##block 7\
+      \ - 50\n        #set ($blockCount = 7)\n        #set ($rootAnalyses = $failureAnalysis.getRootAnalyses())\n\
+      \        #if ($rootAnalyses && $rootAnalyses.size() > 0)\n            ## block\
+      \ 7\n            ,{\n                \"type\": \"section\",\n              \
+      \  \"text\": {\n                    \"type\": \"mrkdwn\",\n                \
+      \    \"text\": \"*Failures*\"\n                }\n            }\n          \
+      \  #set ($blockCount = $blockCount + 1)\n            #foreach ($failure in $rootAnalyses)\n\
+      \                #showFailure ($failure \"\")\n            #end\n        #end\n\
+      \        ##Show as many versions as we have space for\n        #if ($versions\
+      \ && $versions.size() > 0)\n            #if ($blockCount == 50)\n          \
+      \      #addLimitReached()\n            #elseif ($blockCount > 50)\n        \
+      \        ## do nothing\n            #else\n                ,{\n            \
+      \        \"type\": \"section\",\n                    \"text\": {\n         \
+      \               \"type\": \"mrkdwn\",\n                        \"text\": \"\
+      *Versions*\"\n                    }\n                }\n                #set\
+      \ ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n\
+      \                    #showVersion ($version)\n                #end\n       \
+      \     #end\n        #end\n    ]\n}\n## END SECTION Body"
+    type: "PROCESS_FAILURE"
+- url: "https://hooks.slack.com/services/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"
+  environments:
+  - "DEV"
+  - "PROD"
+  - "QA"
+  webhookTemplate:
+    name: "Slack-Application Deployment Success"
+    description: ""
+    body: "## BEGIN SECTION Body\n## PROPERTY Content-Type: application/json\n#macro\
+      \ (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"\
+      type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\"\
+      ,\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request For More>\"\n        }\n    }\n        #set ($blockCount =\
+      \ $blockCount + 1)\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount\
+      \ == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n     \
+      \   ##ignore no room left\n    #else\n        ## add section\n    ,{\n     \
+      \   \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"\
+      mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\
+      \n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"\
+      *Version*: $version.getName()\"\n         #if ($version.getDescription() and\
+      \ !$version.getDescription().trim().isEmpty())\n         },{\n             \"\
+      type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\
+      \n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount\
+      \ + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## block 1\n       \
+      \ {\n            \"type\": \"header\",\n            \"text\": {\n          \
+      \      \"type\": \"plain_text\",\n                \"text\": \"A process on $fn.escapeJson($application.getName())\
+      \ completed successfully\"\n            }\n        },\n        ## block 2\n\
+      \        {\n            \"type\": \"context\",\n            \"elements\": [\n\
+      \                {\n                    \"type\": \"mrkdwn\",\n            \
+      \        \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\
+      \n                },\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Environment*: $fn.escapeJson($environment.getName())\"\
+      \n                },\n                #if ($snapshot)\n                {\n \
+      \                   \"type\": \"mrkdwn\",\n                    \"text\": \"\
+      *Snapshot*: $fn.escapeJson($snapshot.getName())\"\n                },\n    \
+      \            #end\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\
+      \n                },\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\
+      \n                },\n                {\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Requested On*: $fn.formatDate($request.getSubmittedDate())\"\
+      \n                }\n                ,{\n                    \"type\": \"mrkdwn\"\
+      ,\n                    \"text\": \"*Duration in Milliseconds*: $request.getDurationInMillis()\"\
+      \n                }\n                #if ($request.getDescription())\n     \
+      \           ,{\n                    \"type\": \"mrkdwn\",\n                \
+      \    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n\
+      \                }\n                #end\n                #set ($warningCount\
+      \ = $workflowTrace.getWarningCount())\n                #if ($warningCount >\
+      \ 0)\n                ,{\n                    \"type\": \"mrkdwn\",\n      \
+      \              \"text\": \"*Warning Count*: $warningCount\"\n              \
+      \  }\n                #end\n            ]\n        },\n        ## block 3\n\
+      \        {\n            \"type\":\"section\",\n            \"text\": {\n   \
+      \             \"type\":\"mrkdwn\",\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request>\"\n            }\n        },\n        ## block 4\n      \
+      \  {\n            \"type\":\"divider\"\n        },\n        ## block 5\n   \
+      \     #set ($warnMessList = $workflowTrace.getChildWarningMessages())\n    \
+      \    #if ($warnMessList && $warnMessList.size() > 0)\n        {\n          \
+      \  \"type\": \"section\",\n            \"fields\": [{\n                \"type\"\
+      : \"mrkdwn\",\n                \"text\": \"*Warnings*\"\n            #foreach\
+      \ ($mess in $warnMessList)\n                #if($velocityCount == 9)\n     \
+      \               ## add link\n            },{\n                \"type\": \"mrkdwn\"\
+      ,\n                \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|See\
+      \ process request for more>\"\n                #elseif ($velocityCount > 9)\n\
+      \                    ## ignore\n                #else\n            },{\n   \
+      \             \"type\": \"plain_text\",\n                \"text\": \"$fn.escapeJson($mess)\"\
+      \n                #end\n            #end\n            }]\n        },\n     \
+      \   #end\n        ## block 6\n        {\n            \"type\":\"divider\"\n\
+      \        }\n        ##block 7 - 50\n        #set ($blockCount = 7)\n       \
+      \ ## show as many versions as possible\n        ## in the email template we\
+      \ show step summaries as well.\n        ## this is omitted here due to slack\
+      \ limits on sections and\n        ## my personal believe version list is more\
+      \ valuable than a bunch\n        ## of successful steps\n        ##Show as many\
+      \ versions as we have space for\n        #if ($versions && $versions.size()\
+      \ > 0)\n            #if ($blockCount == 50)\n                #addLimitReached()\n\
+      \            #elseif ($blockCount > 50)\n                ## do nothing\n   \
+      \         #else\n                ,{\n                    \"type\": \"section\"\
+      ,\n                    \"text\": {\n                        \"type\": \"mrkdwn\"\
+      ,\n                        \"text\": \"*Versions*\"\n                    }\n\
+      \                }\n                #set ($blockCount = $blockCount + 1)\n \
+      \               #foreach($version in $versions)\n                    #showVersion\
+      \ ($version)\n                #end\n            #end\n        #end\n    ]\n\
+      }\n## END SECTION Body"
+    type: "PROCESS_SUCCESS"
+- url: "https://hooks.slack.com/services/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"
+  environments:
+  - "DEV"
+  - "PROD"
+  - "QA"
+  webhookTemplate:
+    name: "Slack-Process Request Started"
+    description: ""
+    body: "## BEGIN SECTION Body\n## PROPERTY Content-Type: application/json\n#macro\
+      \ (addLimitReached)\n        ## show limit message & link\n    ,{\n        \"\
+      type\": \"section\",\n        \"text\": {\n            \"type\": \"mrkdwn\"\
+      ,\n            \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request For More>\"\n        }\n    }\n        #set ($blockCount =\
+      \ $blockCount + 1)\n#end\n\n#macro (showVersion $version)\n    #if ($blockCount\
+      \ == 50)\n        #addLimitReached()\n    #elseif ($blockCount > 50)\n     \
+      \   ##ignore no room left\n    #else\n        ## add section\n    ,{\n     \
+      \   \"type\": \"section\",\n        \"fields\": [{\n             \"type\": \"\
+      mrkdwn\",\n             \"text\": \"*Component*: $fn.escapeJson($version.getComponent().getName())\"\
+      \n         },{\n             \"type\": \"mrkdwn\",\n             \"text\": \"\
+      *Version*: $fn.escapeJson($version.getName())\"\n         #if ($version.getDescription()\
+      \ and !$version.getDescription().trim().isEmpty())\n         },{\n         \
+      \    \"type\": \"plain_text\",\n             \"text\": \"$fn.escapeJson($version.getDescription())\"\
+      \n         #end\n         }]\n    }\n        #set ($blockCount = $blockCount\
+      \ + 1)\n    #end\n#end\n#macro (showChanges $compName)\n    #if ($blockCount\
+      \ == 50)\n        #addLimitReached()\n        #set ($blockCount = $blockCount\
+      \ + 1)\n    #elseif ($blockCount > 50)\n        ## do nothing\n    #else\n \
+      \       ,{\n            \"type\":\"section\",\n            \"fields\": [\n \
+      \               {\n                    \"type\":\"mrkdwn\",\n              \
+      \      \"text\": \"*$fn.escapeJson($compName)*:\"\n                }\n     \
+      \           #set ($changes = $changesByComponent.get($compName))\n         \
+      \       #foreach ($change in $changes)\n                    #if ($velocityCount\
+      \ < 9)\n                ,{\n                    \"type\": \"mrkdwn\",\n    \
+      \                \"text\": \"$fn.escapeJson($fn.getChangeTypeDisplayName($change))\
+      \ $fn.escapeJson($fn.getChangeVersionDisplayName($change)) to <$fn.escapeJson($externalUrl)#resource/$change.getResource().getId().toString()|$fn.escapeJson($change.getResource().getName())>\"\
+      \n                }\n                    #elseif ($velocityCount == 9)\n   \
+      \             ,{\n                    \"type\": \"mrkdwn\",\n              \
+      \      \"text\": \"<$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request For More>\"\n                }\n                    #end\n\
+      \                #end\n            ]\n        }\n        #set ($blockCount =\
+      \ $blockCount + 1)\n    #end\n#end\n\n{\n    \"blocks\": [\n        ## Block\
+      \ 1\n        {\n            \"type\": \"header\",\n            \"text\": {\n\
+      \                \"type\": \"plain_text\",\n                \"text\": \"An application\
+      \ process started.\"\n            }\n        },\n        ## Block 2\n      \
+      \  {\n            \"type\": \"context\",\n            \"elements\": [\n    \
+      \            {\n                    \"type\": \"mrkdwn\",\n                \
+      \    \"text\": \"*Application*: $fn.escapeJson($application.getName())\"\n \
+      \               },{\n                    \"type\": \"mrkdwn\",\n           \
+      \         \"text\": \"*Process*: $fn.escapeJson($applicationProcess.getName())\"\
+      \n                },{\n                #if ($snapshot)\n                   \
+      \ \"type\": \"mrkdwn\",\n                    \"text\": \"*Snapshot*: $fn.escapeJson($snapshot.getName())\"\
+      \n                },{\n                #end\n                    \"type\": \"\
+      mrkdwn\",\n                    \"text\": \"*Requested by*: $fn.escapeJson($user.getDisplayName())\"\
+      \n                },{\n                    \"type\": \"mrkdwn\",\n         \
+      \           \"text\": \"*Request on*: $fn.formatDate($request.getSubmittedDate())\"\
+      \n                }\n                #if ($request.getDescription())\n     \
+      \           ,{\n                    \"type\": \"mrkdwn\",\n                \
+      \    \"text\": \"*Description*: $fn.escapeJson($request.getDescription())\"\n\
+      \                }\n                #end\n            ]\n        },\n      \
+      \  ## Block 3\n        {\n            \"type\": \"section\",\n            \"\
+      text\": {\n                \"type\":\"mrkdwn\",\n                \"text\": \"\
+      <$fn.escapeJson($externalUrl)#applicationProcessRequest/$request.getId().toString()|View\
+      \ Process Request For More>\"\n            }\n        }\n        #set ($blockCount\
+      \ = 4)\n        ##Show as many versions as we have space for\n        #if ($versions\
+      \ && $versions.size() > 0)\n            #if ($blockCount == 50)\n          \
+      \      #addLimitReached()\n            #elseif ($blockCount > 50)\n        \
+      \        ## do nothing\n            #else\n                ,{\n            \
+      \        \"type\": \"section\",\n                    \"text\": {\n         \
+      \               \"type\": \"mrkdwn\",\n                        \"text\": \"\
+      *Versions*\"\n                    }\n                }\n                #set\
+      \ ($blockCount = $blockCount + 1)\n                #foreach($version in $versions)\n\
+      \                    #showVersion ($version)\n                #end\n       \
+      \     #end\n        #end\n        ## show as many Components as possible\n \
+      \       #if ($uniqueComponentNames && $uniqueComponentNames.size() > 0)\n  \
+      \          #if ($blockCount == 50)\n                #addLimitReached()\n   \
+      \         #elseif ($blockCount > 50)\n                ## do nothing\n      \
+      \      #else\n                ,{\n                    \"type\": \"section\"\
+      ,\n                    \"text\": {\n                        \"type\": \"mrkdwn\"\
+      ,\n                        \"text\": \"*Pending Changes*\"\n               \
+      \     }\n                }\n                #set ($blockCount = $blockCount\
+      \ + 1)\n                #foreach($compName in $uniqueComponentNames)\n     \
+      \               #showChanges ($compName)\n                #end\n           \
+      \ #end\n        #end\n    ]\n}\n## END SECTION Body"
+    type: "PROCESS_STARTED"
