@@ -1,6 +1,7 @@
 ---
 name: "Where-am-I-running"
-description: "An example Liberty application"
+description: "An example where we install and configure a full stack of Liberty with\
+  \ two applications (Where-am-I-running and PlantsbyWebsphere)"
 enforceCompleteSnapshots: false
 onlyChangedVersions: true
 useWizard: false
@@ -529,8 +530,9 @@ environments:
   teamMappings: []
   deploymentTriggers: []
 processes:
-- name: "Deploy"
-  description: ""
+- name: "Deploy-Full-Stack"
+  description: "This is an example where we deploy the full stack for Liberty with\
+    \ collective controller, create two servers, and setup HTTP Server to route traffic."
   inventoryManagementType: "AUTOMATIC"
   offlineAgentHandling: "PRE_EXECUTION_CHECK"
   disableSnapshots: false
@@ -544,19 +546,19 @@ processes:
       type: "SUCCESS"
       value: ""
     offsets:
+    - name: "21ed2d0a13ae143388dd6da378009d"
+      x: -115
+      "y": 230
+      h: 80
+      w: 490
     - name: "f5f7af1b0e6886b87c2c13f6b21ea1"
       x: -5
-      "y": 430
+      "y": 460
       h: 80
       w: 120
-    - name: "21ed2d0a13ae143388dd6da378009d"
-      x: -50
-      "y": 230
-      h: 70
-      w: 280
     layoutMode: "auto"
     type: "graph"
-    name: "2d2c851c-54a0-4364-bb46-c03fa23c15fd"
+    name: "04f4043c-a35e-43b1-97f2-9c629af31b3e"
     children:
     - type: "finish"
       name: "f5f7af1b0e6886b87c2c13f6b21ea1"
@@ -575,7 +577,7 @@ processes:
       - componentName: "Where-am-I-running-FullStack"
         status: "Active"
         type: "inventoryVersionDiff"
-        name: "62405c94-616c-4894-b515-8f136f2f1932"
+        name: "e19b09ff-c96a-4d2f-b5d3-baf15bfca537"
         children:
         - componentProcessName: "Deploy-Full-Package"
           componentName: "Where-am-I-running-FullStack"
@@ -585,7 +587,7 @@ processes:
           draftProperties:
             isIgnoreChildWarnings: "false"
           type: "componentProcess"
-          name: "Install: \"PBW-FullyPackaged\""
+          name: "Install the Full Stack of Liberty with the applications embedded"
           children: []
   propDefs: []
   versionPresets: []
