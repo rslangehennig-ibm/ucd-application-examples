@@ -1,0 +1,600 @@
+---
+name: "Where-am-I-running"
+description: "An example Liberty application"
+enforceCompleteSnapshots: false
+onlyChangedVersions: true
+useWizard: false
+propSheet:
+  properties: []
+templatePropSheet:
+  name: "template"
+  properties: []
+components:
+- name: "Where-am-I-running-FullStack"
+  description: "This is an example of a component that creates the full stack needed\
+    \ for the Liberty application including the collective controller, the servers,\
+    \ and HTTP front end for dynamic routing"
+  created: 1732023549428
+  componentType: "STANDARD"
+  ignoreQualifiers: 0
+  importAutomatically: false
+  useVfs: true
+  active: true
+  deleted: false
+  defaultVersionType: "FULL"
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  sourceConfigPluginName: "File System (Versioned)"
+  envPropDefs: []
+  resPropDefs: []
+  versionPropDefs: []
+  propSheetGroup:
+    propSheets:
+    - name: "custom"
+      properties: []
+    - name: "template"
+      properties: []
+    - name: "FileSystemVersionedComponentProperties"
+      properties:
+      - name: "saveFileExecuteBits"
+        value: "false"
+        description: ""
+        secure: false
+      - name: "extensions"
+        description: ""
+        secure: false
+      - name: "includes"
+        description: ""
+        secure: false
+      - name: "excludes"
+        description: ""
+        secure: false
+      - name: "basePath"
+        value: "/home/IBM/pbw-versions"
+        description: ""
+        secure: false
+  processes:
+  - name: "Deploy-Full-Package"
+    description: "This deploys the underlying Liberty runtime and the PBW application"
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: true
+    inventoryActionType: "ADD"
+    status: "Active"
+    configActionType: "ADD"
+    active: true
+    path: "components/19344a5f-df4c-d1af-a81a-38c00990c401/processes/19344a5f-e091-cc06-7255-824d806c3461"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "Open the Admin Center"
+        from: "Create Collective"
+        type: "SUCCESS"
+        value: ""
+      - to: "Create Collective"
+        from: "Download Artifacts"
+        type: "SUCCESS"
+        value: ""
+      - to: "Check that the app is deployed to both servers in cluster and start the\
+          \ servers"
+        from: "Deploy Fully Packaged Application"
+        type: "SUCCESS"
+        value: ""
+      - to: "Maven Build"
+        from: "Open the Admin Center"
+        type: "SUCCESS"
+        value: ""
+      - to: "Deploy Fully Packaged Application"
+        from: "Maven Build"
+        type: "SUCCESS"
+        value: ""
+      - to: "Setup Dynamic Routing using HTTP Server"
+        from: "Check that the app is deployed to both servers in cluster and start\
+          \ the servers"
+        type: "SUCCESS"
+        value: ""
+      - to: "aa63cac4198392a7a30dfd7063e853"
+        from: "Setup Dynamic Routing using HTTP Server"
+        type: "SUCCESS"
+        value: ""
+      - to: "Download Artifacts"
+        type: "ALWAYS"
+        value: ""
+      offsets:
+      - name: "Setup Dynamic Routing using HTTP Server"
+        x: -280
+        "y": 1110
+        h: 110
+        w: 710
+      - name: "Open the Admin Center"
+        x: -140
+        "y": 470
+        h: 110
+        w: 430
+      - name: "Download Artifacts"
+        x: -155
+        "y": 150
+        h: 110
+        w: 460
+      - name: "780e061b7e0a9a92a49dc2bfacf148"
+        x: 730
+        "y": 620
+        h: 130
+        w: 600
+      - name: "Check that the app is deployed to both servers in cluster and start\
+          \ the servers"
+        x: -520
+        "y": 950
+        h: 110
+        w: 1190
+      - name: "aa63cac4198392a7a30dfd7063e853"
+        x: -10
+        "y": 1270
+        h: 100
+        w: 170
+      - name: "0302674ab6ade4571b9908fc9547c9"
+        x: 730
+        "y": 950
+        h: 110
+        w: 560
+      - name: "Maven Build"
+        x: -60
+        "y": 630
+        h: 110
+        w: 270
+      - name: "Deploy Fully Packaged Application"
+        x: -220
+        "y": 790
+        h: 110
+        w: 590
+      - name: "Create Collective"
+        x: -95
+        "y": 310
+        h: 110
+        w: 340
+      - name: "6f4486b57b35b74cc4655eef2de4a9"
+        x: -1120
+        "y": 950
+        h: 110
+        w: 540
+      layoutMode: "auto"
+      type: "graph"
+      name: "2135beeb-92cf-4b2a-9f08-8710c6e29c92"
+      children:
+      - type: "finish"
+        name: "aa63cac4198392a7a30dfd7063e853"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 46
+        commandName: "Download Artifacts"
+        pluginName: "UrbanCode Deploy Versioned File Storage"
+        pluginId: "com.urbancode.plugin.VFS"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          artifactSetBaseDir: ""
+          fileIncludePatterns: "**/*"
+          fileExcludePatterns: ""
+          syncMode: "FULL"
+          handleIncrementalVersions: "false"
+          fullVerification: "true"
+          setFileExecuteBits: "false"
+          verifyFileIntegrity: "false"
+          charset: ""
+          versionId: "${p:version.id}"
+          versionType: "${p:version.type}"
+          serverUrl: "${p:server.url}"
+          compId: "${p:component.id}"
+          resId: "${p:resource.id}"
+          envId: "${p:environment.id}"
+          maxMemory: "1G"
+          label: ""
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Download Artifacts"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "#!/usr/bin/bash\ncd /home/techzone/liberty_admin_pot/lab-scripts\n\
+            export JAVA_HOME=/opt/IBM/ibm-java-x86_64-80/jre\n./createController.sh"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Create Collective"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "#!/usr/bin/bash\ncd /home/techzone/liberty_admin_pot/lab-scripts\n\
+            export JAVA_HOME=/opt/IBM/ibm-java-x86_64-80/jre\n./mavenBuild.sh -v 22.0.0.8"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Maven Build"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "#!/usr/bin/bash\nexport JAVA_HOME=/opt/IBM/ibm-java-x86_64-80/jre\n\
+            cd /home/techzone/liberty_admin_pot/lab-scripts\n./deploy-22.0.0.8.sh"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Deploy Fully Packaged Application"
+        children: []
+      - templateName: "TaskCreated"
+        roleRestrictionData: {}
+        propDefs: []
+        deployingUserOnly: false
+        type: "componentManualTask"
+        name: "Check that the app is deployed to both servers in cluster and start\
+          \ the servers"
+        children: []
+      - templateName: "TaskCreated"
+        roleRestrictionData: {}
+        propDefs:
+        - name: "admincenter-url"
+          label: "Admin Center URL"
+          pattern: ""
+          type: "TEXT"
+          isHidden: false
+          value: "https://server0.gym.lan:9491/adminCenter/"
+          required: false
+          description: "The admin center URL"
+          inherited: false
+          index: 0
+        deployingUserOnly: false
+        type: "componentManualTask"
+        name: "Open the Admin Center"
+        children: []
+      - name: "780e061b7e0a9a92a49dc2bfacf148"
+        text: "Following the build, if you use the file explorer, navigate to /home/techzone/lab-work/packagedServers\
+          \ and you will see a 22.0.0.8-pbwServerX.zip file that was created during\
+          \ the build."
+        type: "note"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "#!/usr/bin/bash\ncd /home/techzone/liberty_admin_pot/lab-scripts\n\
+            export JAVA_HOME=/opt/IBM/ibm-java-x86_64-80/jre\n./setupDynamicRouting.sh"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Setup Dynamic Routing using HTTP Server"
+        children: []
+      - name: "6f4486b57b35b74cc4655eef2de4a9"
+        text: "Start each server and then navigate to the application in two browser\
+          \ tabs"
+        type: "note"
+        children: []
+      - name: "0302674ab6ade4571b9908fc9547c9"
+        text: "Add a new tab for the HTTP Server and show that it is running but not\
+          \ configured yet"
+        type: "note"
+        children: []
+  - name: "Reset-Environment"
+    description: "This process will reset the demo environment"
+    defaultWorkingDir: "${p:resource/work.dir}/${p:component.name}"
+    takesVersion: false
+    status: ""
+    active: true
+    path: "components/19344a5f-df4c-d1af-a81a-38c00990c401/processes/19344a5f-e0fe-c273-c2d5-86756b80a699"
+    deleted: false
+    propDefs: []
+    rootActivity:
+      edges:
+      - to: "8cf589a4d9b205d63fc8ef6323a38d"
+        from: "Reset the environment"
+        type: "SUCCESS"
+        value: ""
+      - to: "Reset the environment"
+        type: "ALWAYS"
+        value: ""
+      offsets:
+      - name: "Reset the environment"
+        x: -65
+        "y": 230
+        h: 70
+        w: 240
+      - name: "8cf589a4d9b205d63fc8ef6323a38d"
+        x: -5
+        "y": 450
+        h: 80
+        w: 120
+      layoutMode: "auto"
+      type: "graph"
+      name: "b172047a-f480-4b5c-8b39-c27f981b38a9"
+      children:
+      - type: "finish"
+        name: "8cf589a4d9b205d63fc8ef6323a38d"
+        children: []
+      - allowFailure: false
+        useImpersonation: false
+        showHidden: false
+        impersonationUseSudo: false
+        pluginVersion: 20
+        commandName: "Shell"
+        pluginName: "Shell"
+        pluginId: "com.urbancode.air.plugin.Shell"
+        authTokenRestriction: "20000001-0001-0001-0001-000000000000"
+        properties:
+          directoryOffset: "."
+          shellInterpreter: ""
+          scriptBody: "cd /home/techzone/liberty_admin_pot/lab-scripts\n\nexport JAVA_HOME=/opt/IBM/ibm-java-x86_64-80/jre\n\
+            \necho \"Delete the Liberty Collective\"\necho \"--->  This should take\
+            \ less than 1 minute\"\nsleep 5\n/home/techzone/liberty_admin_pot/lab-scripts/scriptArtifacts/INSTRUCTOR_delete_collective.sh\
+            \ --force\n/home/techzone/liberty_admin_pot/lab-scripts/scriptArtifacts/INSTRUCTOR_delete_instana_agent.sh\n\
+            echo \"\"\necho \"---------------------------------------\"\necho \"The\
+            \ Liberty Collective has been deleted\"\necho \"---------------------------------------\"\
+            \n"
+          runAsDaemon: "false"
+          outputFile: ""
+          tempDirectory: "${p?:agent/temporaryDirectory}"
+        cachedAuthTokenRestriction:
+          name: "System Default"
+          description: "Used by default for any plugin steps without a specified token\
+            \ restriction"
+          restrictions:
+          - verb: "ALL"
+            url: "/*"
+        type: "plugin"
+        name: "Reset the environment"
+        children: []
+  configTemplates: []
+  genericProcesses: []
+  teamMappings: []
+  tags:
+  - id: "18602e81-12bd-3cb4-6876-d707ca00b0cd"
+    name: "Liberty"
+    color: "#7F1C7D"
+    description: ""
+    objectType: "Component"
+environments:
+- name: "DEV"
+  description: ""
+  color: "#00B2EF"
+  requireApprovals: false
+  noSelfApprovals: false
+  exemptProcesses: []
+  lockSnapshots: false
+  requireSnapshots: false
+  snapshotDaysToKeep: 0
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  enableProcessHistoryCleanup: true
+  useSystemDefaultDays: true
+  showCompliancyOnLoad: false
+  historyCleanupDaysToKeep: 0
+  order: 0
+  active: true
+  propSheet:
+    properties:
+    - name: "where-url-server0"
+      value: "https://server0.gym.lan:9441/WhereAmI"
+      description: "The URL for the WhereAmI application on server0"
+      secure: false
+    - name: "where-url-server1"
+      value: "https://server1.gym.lan:9442/WhereAmI"
+      description: "The URL for the WhereAmI application on server1"
+      secure: false
+    - name: "http-web-where-url"
+      value: "https://server0.gym.lan:8443/WhereAmI"
+      description: "When the HTTP front end is setup, use this URL"
+      secure: false
+  templatePropSheet:
+    name: "template"
+    properties: []
+  baseResources: []
+  baseResourcesFull: []
+  componentPropSheets:
+  - properties: []
+    componentName: "Where-am-I-running-FullStack"
+  teamMappings: []
+  deploymentTriggers: []
+- name: "QA"
+  description: ""
+  color: "#FDB813"
+  requireApprovals: false
+  noSelfApprovals: false
+  exemptProcesses: []
+  lockSnapshots: false
+  requireSnapshots: false
+  snapshotDaysToKeep: 0
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  enableProcessHistoryCleanup: true
+  useSystemDefaultDays: true
+  showCompliancyOnLoad: false
+  historyCleanupDaysToKeep: 0
+  order: 1
+  active: true
+  propSheet:
+    properties: []
+  templatePropSheet:
+    name: "template"
+    properties: []
+  baseResources: []
+  baseResourcesFull: []
+  componentPropSheets:
+  - properties: []
+    componentName: "Where-am-I-running-FullStack"
+  teamMappings: []
+  deploymentTriggers: []
+- name: "PROD"
+  description: ""
+  color: "#17AF4A"
+  requireApprovals: false
+  noSelfApprovals: false
+  exemptProcesses: []
+  lockSnapshots: false
+  requireSnapshots: false
+  snapshotDaysToKeep: 0
+  cleanupDaysToKeep: 0
+  cleanupCountToKeep: 0
+  enableProcessHistoryCleanup: true
+  useSystemDefaultDays: true
+  showCompliancyOnLoad: false
+  historyCleanupDaysToKeep: 0
+  order: 2
+  active: true
+  propSheet:
+    properties: []
+  templatePropSheet:
+    name: "template"
+    properties: []
+  baseResources: []
+  baseResourcesFull: []
+  componentPropSheets:
+  - properties: []
+    componentName: "Where-am-I-running-FullStack"
+  teamMappings: []
+  deploymentTriggers: []
+processes:
+- name: "Deploy"
+  description: ""
+  inventoryManagementType: "AUTOMATIC"
+  offlineAgentHandling: "PRE_EXECUTION_CHECK"
+  disableSnapshots: false
+  rootActivity:
+    edges:
+    - to: "21ed2d0a13ae143388dd6da378009d"
+      type: "ALWAYS"
+      value: ""
+    - to: "f5f7af1b0e6886b87c2c13f6b21ea1"
+      from: "21ed2d0a13ae143388dd6da378009d"
+      type: "SUCCESS"
+      value: ""
+    offsets:
+    - name: "f5f7af1b0e6886b87c2c13f6b21ea1"
+      x: -5
+      "y": 430
+      h: 80
+      w: 120
+    - name: "21ed2d0a13ae143388dd6da378009d"
+      x: -50
+      "y": 230
+      h: 70
+      w: 280
+    layoutMode: "auto"
+    type: "graph"
+    name: "2d2c851c-54a0-4364-bb46-c03fa23c15fd"
+    children:
+    - type: "finish"
+      name: "f5f7af1b0e6886b87c2c13f6b21ea1"
+      children: []
+    - componentName: "Where-am-I-running-FullStack"
+      properties:
+      - name: "maxIteration"
+        value: "-1"
+      - name: "isIgnoreChildWarnings"
+        value: "false"
+      - name: "failFast"
+        value: "false"
+      type: "componentEnvironmentIterator"
+      name: "21ed2d0a13ae143388dd6da378009d"
+      children:
+      - componentName: "Where-am-I-running-FullStack"
+        status: "Active"
+        type: "inventoryVersionDiff"
+        name: "62405c94-616c-4894-b515-8f136f2f1932"
+        children:
+        - componentProcessName: "Deploy-Full-Package"
+          componentName: "Where-am-I-running-FullStack"
+          allowFailure: false
+          properties:
+            isIgnoreChildWarnings: "false"
+          draftProperties:
+            isIgnoreChildWarnings: "false"
+          type: "componentProcess"
+          name: "Install: \"PBW-FullyPackaged\""
+          children: []
+  propDefs: []
+  versionPresets: []
+genericProcesses: []
+teamMappings: []
+tags:
+- id: "18602e81-19ed-c900-7375-e5a99165508a"
+  name: "Liberty"
+  color: "#7F1C7D"
+  description: ""
+  objectType: "Application"
+webhooks: []
